@@ -1,0 +1,13 @@
+# Local AI agent and harness configuration
+/.agents/
+/.claude/
+/.codex/
+/.Codex/
+/.harness/
+/AGENTS.md
+/CLAUDE*.md
+/_workspace/
+/_workspace_prev/
+
+# Local-only portfolio working documents
+/portfolio/
