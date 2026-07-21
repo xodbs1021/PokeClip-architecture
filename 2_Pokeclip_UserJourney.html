@@ -6,215 +6,215 @@
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Pretendard','Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo',sans-serif;
-         background:#f7f8f9; width:2620px; height:1400px; position:relative; -webkit-font-smoothing:antialiased; }
+         background:#ffffff; width:2620px; height:1400px; position:relative; -webkit-font-smoothing:antialiased;
+         color:#111827; }
 
-  .banner { position:absolute; left:0; top:0; width:100%; height:84px; background:#0d9488; }
-  .banner .logo { position:absolute; left:40px; top:18px; color:#fff; }
-  .banner .logo b { font-size:22px; font-weight:800; letter-spacing:0.2px; }
-  .banner .logo span { display:block; font-size:9.5px; letter-spacing:2.5px; opacity:0.85; margin-top:3px; }
-  .banner h1 { position:absolute; left:0; right:0; top:26px; text-align:center; color:#fff; font-size:21px; font-weight:800; }
-  .banner .badge { position:absolute; right:40px; top:22px; background:#fff; border:1.6px solid #ef4444; color:#b91c1c;
-                   font-size:11.5px; font-weight:700; padding:9px 14px; border-radius:9px; }
-  .subtitle { position:absolute; left:40px; top:100px; font-size:12px; color:#4b5563; }
-  .subtitle b { color:#111827; }
+  /* 상단 타이틀 — 검정 띠 + 굵은 흰 제목 + 얇은 밑줄 바 (EDGE 슬라이드 문법, 3_SA와 동일).
+     그리드 파서가 리프로 오인하지 않도록 SVG로 그린다(div/section/article/ul 아님 → 노드 미검출). */
+  svg.title-svg { position:absolute; left:0; top:0; width:2620px; height:130px; pointer-events:none; }
+  .subtitle { position:absolute; left:36px; top:112px; font-size:14.5px; color:#111827; }
+  .subtitle b { font-weight:700; }
+  /* 보조자료 배지 — 흰 박스 + 얇은 검정 테두리 + 검정 텍스트 (컴팩트 · 리프 밴드 밖) */
+  .badge { position:absolute; right:40px; top:34px; background:#ffffff; border:1.3px solid #1f2937;
+           color:#111827; font-size:12px; font-weight:700; padding:6px 13px; border-radius:6px; }
 
-  .lane-label { position:absolute; left:40px; width:225px; background:#fff; border:1.6px solid #9ca3af; border-radius:12px;
-                display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:14px 12px; }
-  .lane-label .t { font-size:14.5px; font-weight:800; color:#111827; }
-  .lane-label .s { font-size:10.5px; color:#6b7280; margin-top:6px; line-height:1.45; }
+  /* 페이즈 열 — 점(dotted) 테두리 세로 컨테이너 + 상단 가운데 라벨 (.env 방식) */
+  .phase { position:absolute; top:175px; height:825px; border:2px dotted #9ca3af; border-radius:16px; }
+  .phase-label { position:absolute; top:163px; background:#ffffff; padding:0 12px; transform:translateX(-50%);
+                 font-size:15px; font-weight:800; color:#374151; letter-spacing:-0.2px; }
 
-  .phase { position:absolute; top:150px; height:860px; border-radius:18px; border:2.6px solid; }
-  .phase .ph { position:absolute; top:-19px; left:26px; background:#fff; border-radius:10px; padding:6px 16px;
-               font-size:15px; font-weight:800; border:2px solid; }
-  .p1 { border-color:#10b981; background:rgba(16,185,129,0.05); }
-  .p1 .ph { color:#059669; border-color:#10b981; }
-  .p2 { border-color:#f59e0b; background:rgba(245,158,11,0.055); }
-  .p2 .ph { color:#d97706; border-color:#f59e0b; }
-  .p3 { border-color:#ec4899; background:rgba(236,72,153,0.05); }
-  .p3 .ph { color:#db2777; border-color:#ec4899; }
-  .lane-divider { position:absolute; left:16px; right:16px; top:310px; border-top:1.8px dashed #cbd5e1; }
+  /* 레인 행 — 점선(dashed) 가로 컨테이너 + 좌상단 라벨 (.grp 방식, 페이즈보다 옅게) */
+  .lane { position:absolute; left:40px; width:2540px; border:1.3px dashed #6b7280; border-radius:14px; }
+  .lane-label { position:absolute; left:56px; background:#ffffff; padding:0 8px;
+                font-size:13px; font-weight:700; color:#4b5563; }
+  .lane-label span { font-weight:500; color:#6b7280; }
+  /* 레인 내부 역할 구분선 (편집자 / 자동화) */
+  .sub-split { position:absolute; left:56px; right:56px; border-top:1.2px dashed #cbd5e1; }
+  .sub-tag { position:absolute; left:70px; background:#ffffff; padding:0 7px; font-size:11px; font-weight:700; color:#374151; }
 
-  .card { position:absolute; background:#fff; border:1.4px solid #d1d5db; border-radius:12px; padding:12px 16px;
-          box-shadow:0 1px 3px rgba(0,0,0,0.05); }
-  .card .h { font-size:13px; font-weight:800; color:#111827; line-height:1.4; }
-  .card .b { font-size:11.5px; color:#4b5563; line-height:1.55; margin-top:5px; }
-  .card .b b { color:#111827; }
-  .tag { display:inline-block; font-size:10px; font-weight:800; padding:2.5px 9px; border-radius:999px; margin-bottom:7px; }
-  .tag.ed { background:#fdf2f8; color:#be185d; border:1.2px solid #f9a8d4; }
-  .tag.auto { background:#f0fdfa; color:#0f766e; border:1.2px solid #5eead4; }
-  .emo { position:absolute; font-size:11.5px; color:#374151; font-style:italic; background:#fff;
-         border:1.4px dashed #9ca3af; border-radius:999px; padding:7px 14px; }
+  /* 카드 — 흰 채움 + 얇은 검정 테두리 + 검정 텍스트 (이모지·파스텔 없음) */
+  .card { position:absolute; background:#ffffff; border:1.3px solid #1f2937; border-radius:7px;
+          padding:13px 16px; overflow:hidden; }
+  .card .h { font-size:14px; font-weight:800; color:#111827; line-height:1.38; }
+  .card .b { font-size:11.8px; color:#374151; line-height:1.55; margin-top:7px; }
+  .card .b b { color:#111827; font-weight:700; }
+  /* 기능 ID 태그 — 색·배경 없는 텍스트, 카드 하단 (파서 리프 밴드 오염 방지: 노드 아님) */
+  .ids { margin-top:9px; font-size:11px; font-weight:800; color:#111827; letter-spacing:0.3px;
+         font-family:'SFMono-Regular','Menlo',monospace; }
+  /* 감정 비트 — 색 대신 텍스트 마커(↑)로 표현 (모노크롬).
+     테두리·배경을 주지 않는다 — 주면 파서가 이 줄을 리프로 잡아 부모 카드가 리프에서 빠진다. */
+  .emo { margin-top:11px; font-size:11.5px; font-style:italic; color:#4b5563; }
+  .emo b { font-style:normal; font-weight:800; color:#111827; letter-spacing:0.5px; }
 
-  .strip { position:absolute; left:300px; top:1040px; width:2280px; height:150px; border:2.2px solid #14b8a6;
-           border-radius:16px; background:rgba(20,184,166,0.05); }
-  .strip .ph { position:absolute; top:-16px; left:24px; background:#fff; border:2px solid #14b8a6; color:#0f766e;
-               border-radius:10px; padding:5px 14px; font-size:13.5px; font-weight:800; }
-  .flow { position:absolute; left:30px; right:30px; top:44px; display:flex; align-items:center; gap:10px; }
-  .step { background:#fff; border:1.5px solid #14b8a6; color:#0f766e; border-radius:10px; padding:9px 13px;
-          font-size:11.5px; font-weight:700; text-align:center; line-height:1.4; flex:none; }
-  .step .t { color:#6b7280; font-weight:600; font-size:10px; display:block; margin-top:3px; }
-  .arr { color:#0d9488; font-size:15px; font-weight:800; flex:none; }
-  .arr small { display:block; font-size:9.5px; color:#6b7280; font-weight:600; text-align:center; }
-  .stage-note { position:absolute; right:26px; top:-16px; background:#fff; border:1.4px dashed #9ca3af; color:#4b5563;
-                border-radius:10px; padding:5px 12px; font-size:10.5px; font-weight:600; }
+  /* 하단 파이프라인 스트립 — 흰 박스 + 얇은 검정 테두리 (시스템 흐름·시간 목표) */
+  .strip { position:absolute; left:40px; top:1030px; width:2540px; height:168px;
+           border:1.5px solid #1f2937; border-radius:12px; background:#ffffff; }
+  .strip-label { position:absolute; top:-13px; left:24px; background:#ffffff; padding:0 12px;
+                 font-size:14px; font-weight:800; color:#111827; }
+  .strip-note { position:absolute; top:-13px; right:24px; background:#ffffff; padding:0 12px;
+                font-size:11.5px; font-weight:600; color:#4b5563; }
+  .flow { position:absolute; left:26px; right:26px; top:52px; display:flex; align-items:flex-start; gap:8px; }
+  .step { border:1.2px solid #4b5563; border-radius:8px; padding:8px 11px; text-align:center; flex:none;
+          max-width:200px; }
+  .step .st { font-size:11.8px; font-weight:800; color:#111827; line-height:1.3; }
+  .step .ss { display:block; font-size:10px; font-weight:500; color:#6b7280; margin-top:3px; line-height:1.3; }
+  .arr { flex:none; text-align:center; padding-top:6px; }
+  .arr .g { font-size:15px; font-weight:800; color:#111827; line-height:1; }
+  .arr .tm { display:block; font-size:10px; font-weight:800; color:#111827; margin-top:3px; white-space:nowrap; }
 
-  .footer { position:absolute; left:300px; top:1218px; width:2280px; background:#fff; border:1px solid #e5e7eb;
-            border-radius:14px; padding:16px 24px; }
-  .footer h3 { font-size:12.5px; font-weight:800; color:#111827; margin-bottom:8px; }
-  .footer p { font-size:11px; color:#4b5563; line-height:1.65; }
-  .footer b { color:#111827; }
+  /* 푸터 — 흰 박스 + 얇은 회색 테두리 (전폭 → 리프 밴드 밖) */
+  .footer { position:absolute; left:40px; top:1226px; width:2540px; height:118px; background:#ffffff;
+            border:1.2px solid #d1d5db; border-radius:12px; padding:16px 26px; }
+  .footer h3 { font-size:13px; font-weight:800; color:#111827; margin-bottom:9px; }
+  .footer p { font-size:11.6px; color:#374151; line-height:1.7; }
+  .footer b { color:#111827; font-weight:700; }
 
   svg.wires { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
 </style>
 </head>
 <body>
-  <div class="banner">
-    <div class="logo"><b>Pokeclip</b><span>HIGHLIGHT → CLIP</span></div>
-    <h1>User Journey (사용자 여정) · 방송 레인 × 클립 제작 레인</h1>
-    <div class="badge">ⓘ 보조자료 (Not Architecture) · UX 참고용</div>
-  </div>
-  <div class="subtitle">방송 전 · 중 · 후 3단계 — <b>클립 제작 레인은 편집자(고용 시) 또는 자동화(미고용 시)가 수행</b> · 시스템 계층은 SA / SysA / CA 참조</div>
+  <svg class="title-svg">
+    <rect x="34" y="22" width="270" height="64" fill="#111111"></rect>
+    <text x="56" y="66" font-family="'Pretendard','Noto Sans KR','Apple SD Gothic Neo',sans-serif"
+          font-size="34" font-weight="800" letter-spacing="-0.5" fill="#ffffff">User Journey</text>
+    <rect x="34" y="94" width="300" height="7" fill="#111111"></rect>
+  </svg>
+  <div class="subtitle">방송 전·중·후 여정 — <b>클립 제작 레인은 편집자(고용 시) 또는 자동화(미고용 시)가 수행</b> · 시스템 계층은 3 SA / 4 SysA / 5 CA 참조</div>
+  <div class="badge">보조자료 · Not Architecture</div>
 
-  <!-- lane labels -->
-  <div class="lane-label" style="top:255px; height:150px;">
-    <div class="t">🎤 방송 레인</div>
-    <div class="s">스트리머<br>방송에만 집중</div>
+  <!-- 레인 행 (점선 가로 컨테이너) -->
+  <div class="lane" style="top:175px; height:255px;">
+    <span class="lane-label">방송 레인 <span>· 스트리머는 방송에만 집중</span></span>
   </div>
-  <div class="lane-label" style="top:520px; height:200px;">
-    <div class="t">🎬 클립 제작 레인</div>
-    <div class="s">편집자 <b>또는</b> 자동화<br>고용 여부와 무관하게<br>클립은 나온다</div>
-  </div>
-  <div class="lane-label" style="top:1052px; height:126px; border-color:#14b8a6;">
-    <div class="t">⏱ 클립의 흐름</div>
-    <div class="s">하이라이트가 유튜브에<br>도착하기까지 (시스템)</div>
-  </div>
-
-  <!-- phases -->
-  <div class="phase p1" style="left:300px; width:700px;"><div class="ph">1. 방송 전 · Before</div>
-    <div class="lane-divider"></div>
-  </div>
-  <div class="phase p2" style="left:1030px; width:850px;"><div class="ph">2. 방송 중 · During</div>
-    <div class="lane-divider"></div>
-  </div>
-  <div class="phase p3" style="left:1910px; width:670px;"><div class="ph">3. 방송 후 · After</div>
-    <div class="lane-divider"></div>
+  <div class="lane" style="top:445px; height:555px;">
+    <span class="lane-label">클립 제작 레인 <span>· 편집자(고용 시) 또는 자동화(미고용 시) — 고용 여부와 무관하게 클립은 나온다</span></span>
+    <div class="sub-split" style="top:245px;"></div>
+    <div class="sub-tag" style="top:20px;">편집자 (고용 시)</div>
+    <div class="sub-tag" style="top:257px;">자동화 (미고용 시)</div>
   </div>
 
-  <!-- Lane 1 cards -->
-  <div class="card" style="left:330px; top:205px; width:640px;">
+  <!-- 페이즈 열 (점 dotted 세로 컨테이너) -->
+  <div class="phase" style="left:40px;   width:820px;"></div>
+  <div class="phase" style="left:875px;  width:940px;"></div>
+  <div class="phase" style="left:1830px; width:750px;"></div>
+  <div class="phase-label" style="left:450px;">1. 방송 전 · Before</div>
+  <div class="phase-label" style="left:1345px;">2. 방송 중 · During</div>
+  <div class="phase-label" style="left:2205px;">3. 방송 후 · After</div>
+
+  <!-- ── 레인 1 · 방송 레인 (스트리머) ── -->
+  <div class="card" style="left:68px;   top:240px; width:764px; height:150px;">
     <div class="h">OBS 켜고 '방송 시작' — 준비 끝</div>
     <div class="b">플러그인·오디오 트랙·개인 키·유튜브 연동은 <b>온보딩 1회로 완료된 상태</b>. 매 방송 반복 설정 0회 — 서버가 영상·트랙을 알아서 수신.</div>
+    <div class="ids">[A1] [A3] [H1~H3]</div>
+    <div class="emo"><b>안심 ↑</b> · "설정? 오늘도 할 게 없는데"</div>
   </div>
-  <div class="emo" style="left:330px; top:298px;">💬 "설정? 오늘도 할 게 없는데"</div>
-
-  <div class="card" id="c-hotkey" style="left:1060px; top:185px; width:520px;">
-    <div class="h">방송·게임에만 집중, 명장면엔 핫키만 탁</div>
-    <div class="b">전역 단축키라 <b>게임 풀스크린 중에도 동작</b>. 놓친 장면은 채팅 분석이 자동으로 잡음.</div>
+  <div class="card" id="c-hotkey" style="left:903px;  top:240px; width:884px; height:150px;">
+    <div class="h">게임에만 집중, 명장면엔 핫키만 탁</div>
+    <div class="b">전역 단축키라 <b>게임 풀스크린 중에도 동작</b>. 놓친 장면은 채팅 분석이 자동으로 포착. 가끔 대시보드 흘끗 — 송출 상태(SRT)·점프카드 확인.</div>
+    <div class="ids">[A4] [C3] [D1] [D2]</div>
+    <div class="emo"><b>몰입 ↑</b> · "방금 놓쳤어도 카드가 이미 떠 있네"</div>
   </div>
-  <div class="card" style="left:1600px; top:185px; width:250px;">
-    <div class="h">가끔 대시보드 흘끗</div>
-    <div class="b">송출 상태(SRT)·점프카드 쌓이는 것 확인.</div>
-  </div>
-  <div class="emo" style="left:1060px; top:295px;">💬 "방금 거 놓쳤어도 카드가 이미 떠 있네"</div>
-
-  <div class="card" id="c-approve" style="left:1940px; top:190px; width:610px;">
+  <div class="card" id="c-approve" style="left:1858px; top:240px; width:694px; height:150px;">
     <div class="h">승인 대기함 확인 → 승인·반려, 결과 확인</div>
     <div class="b">방송 종료 직후 <b>이미 올라간 클립</b>의 유튜브 링크 확인. 반려는 사유와 함께 편집 레인으로.</div>
+    <div class="ids">[H5] [F3]</div>
+    <div class="emo"><b>만족 ↑↑</b> · "방송 끝났는데 클립이 벌써 채널에 있다"</div>
   </div>
-  <div class="emo" style="left:1940px; top:288px;">💬 "방송 끝났는데 클립이 벌써 채널에 있다"</div>
 
-  <!-- Lane 2 cards -->
-  <div class="card" style="left:330px; top:490px; width:640px;">
-    <div><span class="tag ed">편집자 (고용 시)</span></div>
+  <!-- ── 레인 2 · 클립 제작 레인 / 편집자 (고용 시) ── -->
+  <div class="card" style="left:68px;   top:500px; width:764px; height:200px;">
     <div class="h">라이브 뷰 접속 · 대기</div>
-    <div class="b">오늘 방송 일정 확인, 템플릿(비율·자막 스타일) 점검, 라이브 뷰에서 대기.</div>
+    <div class="b">오늘 방송 일정 확인, 템플릿(비율·자막 스타일) 점검, 라이브 뷰에서 대기. 점프카드가 뜨기를 기다린다.</div>
+    <div class="ids">[D1] [E8]</div>
   </div>
-  <div class="card" style="left:330px; top:625px; width:640px;">
-    <div><span class="tag auto">자동화 (미고용 시)</span></div>
-    <div class="h">템플릿이 준비된 상태</div>
-    <div class="b">스트리머가 저장해둔 템플릿(화면비율·자막 트랙·프리롤·공개범위)이 대기 — 사람 없이도 클립 제작 가능.</div>
-  </div>
-
-  <div class="card" id="c-editor" style="left:1060px; top:475px; width:790px;">
-    <div><span class="tag ed">편집자 (고용 시)</span></div>
+  <div class="card" id="c-editor" style="left:903px;  top:500px; width:884px; height:200px;">
     <div class="h">점프카드 뜨는 즉시 클립 제작 — 방송이 끝나기 전에</div>
-    <div class="b">카드 클릭 → 에디터: 구간 미세조정 → 화면비율·크롭 → <b>오디오 트랙 선택(무음 자동 숨김·미리듣기)</b> → AI 자막(Whisper) → 추천 제목 → 저장. 권한 있으면 즉시 업로드, 없으면 <b>승인 요청</b>.</div>
+    <div class="b">카드 클릭 → 구간 미세조정 → 화면비율·크롭 → <b>오디오 트랙 선택(무음 자동 숨김·미리듣기)</b> → AI 자막(Whisper) → 추천 제목 → 저장. 권한 있으면 즉시 업로드, 없으면 <b>승인 요청</b>.</div>
+    <div class="ids">[D4] [E1] [E2] [E4] [E7] [H5]</div>
   </div>
-  <div class="card" id="c-auto" style="left:1060px; top:640px; width:790px;">
-    <div><span class="tag auto">자동화 (미고용 시)</span></div>
-    <div class="h">점프카드에서 원클릭 자동 업로드</div>
-    <div class="b">템플릿대로 인코딩(비율·번인 자막·CC)→업로드까지 무인 진행. 스트리머·권한 있는 편집자 누구나 누를 수 있음.</div>
-  </div>
-
-  <div class="card" style="left:1940px; top:475px; width:610px;">
-    <div><span class="tag ed">편집자 (고용 시)</span></div>
+  <div class="card" style="left:1858px; top:500px; width:694px; height:200px;">
     <div class="h">반려 수정 · VOD로 추가 클립</div>
     <div class="b">레시피 열어 반려 사유만 고쳐 재렌더. <b>VOD(60일)</b>에서 놓친 장면 추가 클립 — 점프카드가 챕터로 재활성.</div>
-  </div>
-  <div class="card" style="left:1940px; top:640px; width:610px;">
-    <div><span class="tag auto">자동화 (미고용 시)</span></div>
-    <div class="h">업로드 리포트 · VOD 자동 생성</div>
-    <div class="b">업로드 완료·실패 리포트 정리, 방송 종료 시 VOD 자동 생성 알림(전 오디오 트랙 포함).</div>
+    <div class="ids">[E8] [G1] [G2] [D2]</div>
   </div>
 
-  <!-- strip -->
+  <!-- ── 레인 2 · 클립 제작 레인 / 자동화 (미고용 시) ── -->
+  <div class="card" style="left:68px;   top:780px; width:764px; height:160px;">
+    <div class="h">템플릿이 준비된 상태</div>
+    <div class="b">스트리머가 저장해둔 템플릿(화면비율·자막 트랙·프리롤·공개범위)이 대기 — <b>사람 없이도 클립 제작 가능</b>.</div>
+    <div class="ids">[E8] [H4]</div>
+  </div>
+  <div class="card" id="c-auto" style="left:903px;  top:780px; width:884px; height:160px;">
+    <div class="h">점프카드에서 원클릭 자동 업로드</div>
+    <div class="b">템플릿대로 인코딩(비율·번인 자막·CC) → 업로드까지 무인 진행. 스트리머·권한 있는 편집자 누구나 누를 수 있음.</div>
+    <div class="ids">[F4] [F5]</div>
+  </div>
+  <div class="card" style="left:1858px; top:780px; width:694px; height:160px;">
+    <div class="h">업로드 리포트 · VOD 자동 생성</div>
+    <div class="b">업로드 완료·실패 리포트 정리, 방송 종료 시 VOD 자동 생성 알림(전 오디오 트랙 포함).</div>
+    <div class="ids">[F3] [B5]</div>
+  </div>
+
+  <!-- 하단 파이프라인 스트립 (시스템 흐름 · 시간 목표) -->
   <div class="strip">
-    <div class="ph">클립 파이프라인 (시간 목표)</div>
-    <div class="stage-note">레시피 저장 → 언제든 재렌더 (60일 내)</div>
+    <div class="strip-label">클립 파이프라인 (시간 목표)</div>
+    <div class="strip-note">레시피 저장 → 언제든 재렌더 (60일 내)</div>
     <div class="flow">
-      <div class="step">하이라이트 발생<span class="t">채팅 스파이크 / 핫키</span></div>
-      <div class="arr">→<small>3초 내</small></div>
-      <div class="step">점프카드 생성<span class="t">라이브 뷰에 푸시</span></div>
-      <div class="arr">→</div>
-      <div class="step">에디터 편집 / 원클릭<span class="t">사람 또는 템플릿</span></div>
-      <div class="arr">→<small>클립당 ~30초</small></div>
-      <div class="step">AI 자막·추천 제목<span class="t">Whisper · 선택 트랙</span></div>
-      <div class="arr">→<small>수십 초</small></div>
-      <div class="step">렌더 (레시피 확정)<span class="t">FFmpeg · 비율·번인</span></div>
-      <div class="arr">→<small>권한별</small></div>
-      <div class="step">(승인 →) 유튜브 게시<span class="t">기본 비공개 · CC 등록</span></div>
-      <div class="arr">→</div>
-      <div class="step">방송 종료 → VOD<span class="t">60일 보관 · 카드 챕터화</span></div>
+      <div class="step"><div class="st">하이라이트 발생</div><span class="ss">채팅 스파이크 / 핫키</span></div>
+      <div class="arr"><div class="g">→</div><span class="tm">3초 내</span></div>
+      <div class="step"><div class="st">점프카드 생성</div><span class="ss">라이브 뷰에 푸시</span></div>
+      <div class="arr"><div class="g">→</div></div>
+      <div class="step"><div class="st">에디터 편집 / 원클릭</div><span class="ss">사람 또는 템플릿</span></div>
+      <div class="arr"><div class="g">→</div><span class="tm">클립당 ~30초</span></div>
+      <div class="step"><div class="st">AI 자막·추천 제목</div><span class="ss">Whisper · 선택 트랙</span></div>
+      <div class="arr"><div class="g">→</div><span class="tm">수십 초</span></div>
+      <div class="step"><div class="st">렌더 (레시피 확정)</div><span class="ss">FFmpeg · 비율·번인</span></div>
+      <div class="arr"><div class="g">→</div><span class="tm">권한별</span></div>
+      <div class="step"><div class="st">(승인 →) 유튜브 게시</div><span class="ss">기본 비공개 · CC 등록</span></div>
+      <div class="arr"><div class="g">→</div></div>
+      <div class="step"><div class="st">방송 종료 → VOD</div><span class="ss">60일 보관 · 카드 챕터화</span></div>
     </div>
   </div>
 
   <div class="footer">
     <h3>이 문서와 아키텍처 그림의 관계</h3>
-    <p>· 본 User Journey는 사용자 관점 흐름을 정리한 <b>보조자료</b>이며, 시스템 관점의 정보는 <b>3 SA · 4 SysA · 5 CA</b>를 따른다. &nbsp;·&nbsp; 클립 제작 레인은 <b>편집자 고용 여부와 무관하게 동작</b>한다 — 사람(편집자) 또는 자동화(템플릿+원클릭)가 같은 레인을 수행. &nbsp;·&nbsp; 시간 목표: 하이라이트→카드 <b>3초 내</b>, 클립 렌더 <b>수십 초</b>, 게시까지 <b>수 분 내</b> (SLA 목표치, SysA에서 상세화).</p>
+    <p>· 본 User Journey는 사용자 관점 흐름을 정리한 <b>보조자료</b>이며, 시스템 관점의 정보는 <b>3 SA · 4 SysA · 5 CA</b>를 따른다. &nbsp;·&nbsp; 클립 제작 레인은 <b>편집자 고용 여부와 무관하게 동작</b>한다 — 사람(편집자) 또는 자동화(템플릿+원클릭)가 같은 레인을 수행. &nbsp;·&nbsp; 시간 목표: 하이라이트→카드 <b>3초 내</b>, 클립 렌더 <b>수십 초</b>, 게시까지 <b>수 분 내</b> (SLA 목표치, 4 SysA에서 상세화).</p>
   </div>
 
   <svg class="wires" id="wires"></svg>
 <script>
 (function(){
-  const svg = document.getElementById('wires');
-  const NS='http://www.w3.org/2000/svg';
-  svg.innerHTML = `<defs><marker id="ar" markerWidth="11" markerHeight="11" refX="8.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
-    <path d="M1,1 L8,4.5 L1,8" fill="none" stroke="#0d9488" stroke-width="1.6"/></marker></defs>`;
-  function r(id){ const b=document.getElementById(id).getBoundingClientRect(); return b; }
-  function arrow(x1,y1,x2,y2,txt,tx,ty){
-    const l=document.createElementNS(NS,'line');
-    l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);
-    l.setAttribute('stroke','#0d9488');l.setAttribute('stroke-width','1.7');l.setAttribute('stroke-dasharray','7 5');
-    l.setAttribute('marker-end','url(#ar)'); svg.appendChild(l);
-    if(txt){ const t=document.createElementNS(NS,'text');
-      t.setAttribute('x',tx);t.setAttribute('y',ty);t.setAttribute('text-anchor','middle');
-      t.setAttribute('style','font-size:11px;font-weight:700;fill:#0f766e;paint-order:stroke;stroke:#ffffff;stroke-width:5px;');
-      t.textContent=txt; svg.appendChild(t); }
+  // 이 다이어그램은 grid 모드(뷰어가 리프 카드의 행/열 정렬로 연계 추론) — 장식 화살표는 2개 이하로 유지한다.
+  // 흐름 강조용 화살표 2개만 그린다: (1) 핫키 → 에디터(점프카드 3초 내), (2) 에디터 → 승인 대기함(승인 요청).
+  // 파서 wired 오판을 막으려 배선 호출 형태나 두 문자열 배열 리터럴을 이 스크립트 어디에도 두지 않는다(주석 포함).
+  var svg = document.getElementById('wires');
+  var NS = 'http://www.w3.org/2000/svg';
+  svg.innerHTML = '<defs><marker id="ar" markerWidth="11" markerHeight="11" refX="8.4" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">'
+    + '<path d="M1,1 L8,4.5 L1,8" fill="none" stroke="#1f2937" stroke-width="1.3"/></marker></defs>';
+  function R(id){ var b = document.getElementById(id).getBoundingClientRect();
+    return { l:b.left, r:b.right, t:b.top, b:b.bottom, cx:b.left+b.width/2, cy:b.top+b.height/2 }; }
+  function draw(d){
+    var p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', d); p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', '#1f2937'); p.setAttribute('stroke-width', '1.6');
+    p.setAttribute('stroke-dasharray', '7 5'); p.setAttribute('marker-end', 'url(#ar)');
+    svg.appendChild(p);
   }
-  const hk=r('c-hotkey'), ed=r('c-editor'), au=r('c-auto'), ap=r('c-approve');
-  // 핫키 -> 편집 레인 (점프카드 실시간 전달)
-  arrow(hk.left+hk.width*0.35, hk.bottom+2, ed.left+ed.width*0.35, ed.top-4, '점프카드 실시간 전달 (3초 내)', hk.left+hk.width*0.35, (hk.bottom+ed.top)/2+4);
-  // 편집 레인 승인 요청 -> 방송 후 승인 (꺾은선)
-  const x0 = ed.right-80, y0 = ed.top-3, ym = 366, x1 = ap.left+90, y1 = ap.bottom+5;
-  const p = document.createElementNS(NS,'path');
-  p.setAttribute('d', `M ${x0} ${y0} L ${x0} ${ym} L ${x1} ${ym} L ${x1} ${y1}`);
-  p.setAttribute('fill','none'); p.setAttribute('stroke','#0d9488'); p.setAttribute('stroke-width','1.7');
-  p.setAttribute('stroke-dasharray','7 5'); p.setAttribute('marker-end','url(#ar)');
-  svg.appendChild(p);
-  const t2 = document.createElementNS(NS,'text');
-  t2.setAttribute('x', (x0+x1)/2); t2.setAttribute('y', ym-8); t2.setAttribute('text-anchor','middle');
-  t2.setAttribute('style','font-size:11px;font-weight:700;fill:#0f766e;paint-order:stroke;stroke:#ffffff;stroke-width:5px;');
-  t2.textContent='승인 요청 (업로드 권한 없을 때)'; svg.appendChild(t2);
+  function label(x, y, txt){
+    var t = document.createElementNS(NS, 'text');
+    t.setAttribute('x', x); t.setAttribute('y', y); t.setAttribute('text-anchor', 'middle');
+    t.setAttribute('style', 'font-size:11.5px;font-weight:800;fill:#111827;paint-order:stroke;stroke:#ffffff;stroke-width:5px;');
+    t.textContent = txt; svg.appendChild(t);
+  }
+  var hk = R('c-hotkey'), ed = R('c-editor'), ap = R('c-approve');
+  // (1) 핫키(방송 레인) → 에디터(편집 레인) : 점프카드 실시간 전달
+  var ax = hk.l + 150, ay = hk.b, by = ed.t;
+  draw('M ' + ax + ' ' + ay + ' L ' + ax + ' ' + by);
+  label(ax + 118, (ay + by) / 2 + 4, '점프카드 실시간 전달 · 3초 내');
+  // (2) 에디터(편집 레인) → 승인 대기함(방송 레인, 방송 후) : 승인 요청 (꺾은선)
+  var x0 = ed.r, y0 = ed.t + 24, ym = 452, x1 = ap.cx, y1 = ap.b;
+  draw('M ' + x0 + ' ' + y0 + ' L ' + (x0 + 30) + ' ' + y0 + ' L ' + (x0 + 30) + ' ' + ym + ' L ' + x1 + ' ' + ym + ' L ' + x1 + ' ' + y1);
+  label((x0 + 30 + x1) / 2, ym - 8, '승인 요청 (업로드 권한 없을 때)');
 })();
 </script>
 </body>

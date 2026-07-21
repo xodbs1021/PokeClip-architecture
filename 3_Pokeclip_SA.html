@@ -6,236 +6,295 @@
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Pretendard','Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo',sans-serif;
-         background:#f4f5f7; width:2700px; height:1560px; position:relative; -webkit-font-smoothing:antialiased; }
-  .page-title { position:absolute; left:34px; top:22px; }
-  .page-title h1 { font-size:18px; font-weight:800; color:#111827; }
-  .page-title p { font-size:11.5px; color:#6b7280; margin-top:5px; }
-  .pos-note { position:absolute; left:34px; top:78px; width:560px; background:#fff; border:1px solid #e5e7eb; border-radius:10px;
-              padding:10px 14px; font-size:10.5px; color:#4b5563; line-height:1.55; }
-  .pos-note b { color:#111827; }
+         background:#ffffff; width:2700px; height:1560px; position:relative; -webkit-font-smoothing:antialiased;
+         color:#111827; }
 
-  .actor { position:absolute; width:100px; text-align:center; }
-  .actor .face { width:60px; height:60px; border-radius:50%; margin:0 auto; display:flex; align-items:center; justify-content:center;
-                 font-size:27px; border:2px solid; background:#fff; }
-  .actor .name { margin-top:7px; font-size:12.5px; font-weight:800; color:#111827; }
-  .a-str .face { background:#eff6ff; border-color:#93c5fd; }
-  .a-ed .face { background:#fdf2f8; border-color:#f9a8d4; }
-  .a-ops .face { background:#fef2f2; border-color:#fca5a5; }
+  /* 상단 타이틀 — 검정 띠 + 굵은 흰 제목 + 얇은 밑줄 바 (EDGE 슬라이드 문법) */
+  .title-bar { position:absolute; left:34px; top:24px; height:66px; background:#111111;
+               display:flex; align-items:center; padding:0 26px 0 22px; }
+  .title-bar h1 { font-size:34px; font-weight:800; color:#ffffff; letter-spacing:-0.5px; }
+  .title-underline { position:absolute; left:34px; top:98px; width:452px; height:8px; background:#111111; }
+  .subtitle { position:absolute; left:36px; top:118px; font-size:14.5px; color:#111827; }
 
-  .box { position:absolute; background:#fff; border-radius:12px; border:1.8px solid; padding:12px 16px;
-         box-shadow:0 1px 3px rgba(0,0,0,0.05); }
-  .box h3 { font-size:13px; font-weight:800; margin-bottom:3px; }
-  .box .lang { font-size:10px; font-weight:700; opacity:0.75; margin-bottom:7px; }
-  .box ul { list-style:none; }
-  .box li { font-size:11px; color:#374151; line-height:1.6; padding-left:10px; position:relative; }
-  .box li:before { content:'·'; position:absolute; left:0; }
+  /* 최상위 환경 컨테이너 — 점(dotted) 테두리 대형 둥근 박스 + 좌상단 라벨 */
+  .env { position:absolute; border:2px dotted #9ca3af; border-radius:16px; }
+  .env-label { position:absolute; left:16px; top:-11px; background:#ffffff; padding:0 8px;
+               font-size:13.5px; font-weight:700; color:#374151; }
 
-  .ui { border-color:#eab308; } .ui h3 { color:#a16207; }
-  .ui-blue { border-color:#3b82f6; } .ui-blue h3 { color:#1d4ed8; }
-  .ui-red { border-color:#ef4444; } .ui-red h3 { color:#b91c1c; }
-  .spring { border-color:#6db33f; } .spring h3 { color:#3f6212; } .spring .lang { color:#3f6212; }
-  .golang { border-color:#06b6d4; border-width:2.4px; } .golang h3 { color:#0e7490; } .golang .lang { color:#0e7490; }
-  .nodejs { border-color:#d97706; } .nodejs h3 { color:#92400e; } .nodejs .lang { color:#92400e; }
-  .python { border-color:#8b5cf6; } .python h3 { color:#6d28d9; } .python .lang { color:#6d28d9; }
-  .ext { border-color:#fb923c; background:#fff7ed; } .ext h3 { color:#c2410c; font-size:12px; }
-  .ext .sub { font-size:10px; color:#9a3412; margin-top:3px; }
+  /* 역할 그룹 — 점선(dashed) 둥근 컨테이너 + 좌상단 작은 라벨 (노드보다 옅게) */
+  .grp { position:absolute; border:1.2px dashed #6b7280; border-radius:12px; }
+  .grp-label { position:absolute; left:14px; top:-9px; background:#ffffff; padding:0 6px;
+               font-size:11.5px; font-weight:600; color:#6b7280; }
 
-  .cyl { position:absolute; border:2px solid; border-top:none; background:#fff; padding:22px 18px 14px 18px;
-         border-radius:0 0 50% 50% / 0 0 14px 14px; }
-  .cyl:before { content:''; position:absolute; left:-2px; right:-2px; top:-9px; height:20px;
-                border:2px solid; border-color:inherit; border-radius:50%; background:#fff; }
-  .cyl h3 { font-size:13px; font-weight:800; position:relative; z-index:1; margin-bottom:5px; }
-  .cyl p { font-size:10.5px; color:#4b5563; line-height:1.55; position:relative; z-index:1; }
-  .cy-pg { border-color:#3b82f6; } .cy-pg h3 { color:#1d4ed8; }
-  .cy-rd { border-color:#ef4444; } .cy-rd h3 { color:#b91c1c; }
-  .cy-s3 { border-color:#10b981; } .cy-s3 h3 { color:#047857; }
-
-  .queue { position:absolute; border:2.2px solid #78716c; background:#fafaf9; border-radius:50%;
-           display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
-  .queue h3 { font-size:13px; font-weight:800; color:#44403c; }
-  .queue p { font-size:10px; color:#78716c; margin-top:3px; }
-
-  .legend { position:absolute; background:#fff; border:1px solid #e5e7eb; border-radius:14px;
-            box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:16px 22px; }
-  .legend h3 { font-size:12.5px; font-weight:800; color:#111827; margin-bottom:10px; }
-  .legend .row { display:flex; align-items:center; gap:10px; margin-bottom:7px; }
-  .legend .chip { width:120px; flex:none; font-size:10px; font-weight:800; text-align:center;
-                  border:1.8px solid; border-radius:7px; padding:3.5px 6px; background:#fff; }
-  .legend .d { font-size:10.5px; color:#374151; }
+  /* 노드 — 흰 채움 + 얇은 검정 테두리 + 둥근 모서리 + 검정 텍스트 (이름 + 괄호 부제 한 줄) */
+  .node { position:absolute; background:#ffffff; border:1.3px solid #1f2937; border-radius:7px;
+          display:flex; flex-direction:column; align-items:center; justify-content:center;
+          text-align:center; padding:6px 8px; }
+  .node .nm { font-size:13px; font-weight:700; color:#111827; line-height:1.25; }
+  .node .sub { font-size:10.5px; font-weight:500; color:#374151; line-height:1.3; margin-top:3px; }
+  /* 강조 — Media Origin만 연한 파랑 채움 (EDGE의 Customer System과 동일 처리) */
+  .node.hl { background:#dbeafe; }
 
   svg.wires { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
 </style>
 </head>
 <body>
-  <div class="page-title">
-    <h1>Pokeclip · 애플리케이션 아키텍처 SA (2026.07) — 화면 ↔ 서비스 6종 ↔ 데이터</h1>
-    <p>실선 = 동기(REST·스트림·SSE) · 점선 = 비동기(큐·이벤트)/외부 API · 서비스 색 = 구현 언어</p>
-  </div>
-  <div class="pos-note"><b>이 문서의 위치:</b> IA(화면 트리)와 SysA(서비스·배포) 사이의 <b>화면↔서비스↔데이터 매핑</b>. 서비스 분해와 언어(Spring·Go·Node·Python)는 팀 3인(FE1·BE2) 확정 스택. 클립 렌더는 FFmpeg 프로세스 호출이므로 Spring 잡 워커에 편입.</div>
+  <div class="title-bar"><h1>Service Architecture</h1></div>
+  <div class="title-underline"></div>
+  <div class="subtitle">화면 ↔ 서비스 4종 + 워커 2종 ↔ 큐 ↔ 데이터 — 역할 그룹으로 구획한 PokeClip 서비스 아키텍처</div>
 
-  <!-- actors -->
-  <div class="actor a-str" id="ac-str" style="left:36px; top:300px;"><div class="face">🎤</div><div class="name">스트리머</div></div>
-  <div class="actor a-ed" id="ac-ed" style="left:36px; top:660px;"><div class="face">🎬</div><div class="name">편집자</div></div>
-  <div class="actor a-ops" id="ac-ops" style="left:36px; top:1040px;"><div class="face">🛠️</div><div class="name">운영자</div></div>
+  <!-- 최상위 환경 컨테이너 (점선 프레임 · 노드와 형제 · 시각 구획만) -->
+  <div class="env" id="env-ext"    style="left:1500px; top:150px; width:1160px; height:150px;"><span class="env-label">외부 서비스</span></div>
+  <div class="env" id="env-client" style="left:40px;   top:345px; width:352px;  height:1150px;"><span class="env-label">클라이언트 환경</span></div>
+  <div class="env" id="env-poke"   style="left:432px;  top:345px; width:2228px; height:1150px;"><span class="env-label">PokeClip 환경</span></div>
 
-  <!-- col1: UI -->
-  <div class="box ui-blue" id="ui-plugin" style="left:210px; top:168px; width:310px;">
-    <h3>OBS 플러그인 (클라이언트)</h3>
-    <ul><li>SRT+TS 동시 송출 (영상+오디오 10트랙)</li><li>오디오 소스 탐지·트랙 매핑</li><li>핫키 하이라이트 마킹</li><li>자동 재연결·송출 통계</li></ul>
-  </div>
-  <div class="box ui" id="ui-setup" style="left:210px; top:330px; width:310px;">
-    <h3>온보딩·설정</h3>
-    <ul><li>구글 로그인 · 유튜브 연동</li><li>채널 등록 (치지직·SOOP)</li><li>편집자 초대·권한 토글</li><li>템플릿 관리</li></ul>
-  </div>
-  <div class="box ui" id="ui-live" style="left:210px; top:530px; width:310px;">
-    <h3>라이브 뷰</h3>
-    <ul><li>DVR 플레이어 (저지연+1h)</li><li>점프카드 스트립 (실시간)</li><li>채팅량 차트</li><li>송출 상태 위젯</li></ul>
-  </div>
-  <div class="box ui" id="ui-editor" style="left:210px; top:730px; width:310px;">
-    <h3>클립 에디터·보관함</h3>
-    <ul><li>구간·비율·오디오 트랙 선택</li><li>AI 자막·추천 제목</li><li>저장(레시피)·재편집</li><li>승인 대기함·업로드 결과</li></ul>
-  </div>
-  <div class="box ui" id="ui-vod" style="left:210px; top:930px; width:310px;">
-    <h3>VOD 뷰 (60일)</h3>
-    <ul><li>VOD 재생·챕터 탐색</li><li>오디오 트랙 전환</li><li>VOD에서 클립 제작</li></ul>
-  </div>
-  <div class="box ui-red" id="ui-ops" style="left:210px; top:1100px; width:310px;">
-    <h3>운영 콘솔 (운영자)</h3>
-    <ul><li>계정 관리 · 사용 통계</li><li>시스템 모니터링·장애 대응</li></ul>
-  </div>
+  <!-- 역할 그룹 컨테이너 (점선 프레임 + 좌상단 라벨) -->
+  <div class="grp" id="grp-client" style="left:72px;   top:402px; width:288px; height:1068px;"><span class="grp-label">Client</span></div>
+  <div class="grp" id="grp-svc"    style="left:476px;  top:410px; width:344px; height:762px;"><span class="grp-label">Service</span></div>
+  <div class="grp" id="grp-q"      style="left:950px;  top:470px; width:300px; height:700px;"><span class="grp-label">Queue</span></div>
+  <div class="grp" id="grp-wrk"    style="left:1380px; top:574px; width:320px; height:346px;"><span class="grp-label">Worker</span></div>
+  <div class="grp" id="grp-cache"  style="left:2020px; top:410px; width:440px; height:175px;"><span class="grp-label">Cache</span></div>
+  <div class="grp" id="grp-db"     style="left:2020px; top:640px; width:440px; height:200px;"><span class="grp-label">Database</span></div>
+  <div class="grp" id="grp-store"  style="left:2020px; top:900px; width:440px; height:200px;"><span class="grp-label">Storage</span></div>
 
-  <!-- col2: services -->
-  <div class="box spring" id="sv-auth" style="left:790px; top:120px; width:380px;">
-    <h3>Auth·Account Service</h3><div class="lang">Java · Spring Boot</div>
-    <ul><li>구글 OAuth 로그인 · JWT</li><li>편집자 초대·권한(업로드/자동업로드)</li><li>채널 등록·유튜브 토큰 보관</li><li>스트림 키 발급·검증</li></ul>
-  </div>
-  <div class="box spring" id="sv-clip" style="left:790px; top:330px; width:380px;">
-    <h3>Clip Service</h3><div class="lang">Java · Spring Boot</div>
-    <ul><li>점프카드 생성·SSE 푸시 (핫키·자동)</li><li>레시피 CRUD · 템플릿</li><li>웨이브폼·무음 필터 (구간 디코드)</li><li>승인 플로우 · 클립 상태 관리</li></ul>
-  </div>
-  <div class="box golang" id="sv-media" style="left:790px; top:565px; width:380px;">
-    <h3>Media Origin ⭐</h3><div class="lang">Go — 직접 구현 (MediaMTX 참조)</div>
-    <ul><li>SRT 수신(streamid·암호) · TS 디먹스</li><li>CMAF 세그먼트·LL-HLS 서빙 (DVR 1h)</li><li>멀티오디오 rendition · 세그먼트 S3 적재</li><li>VOD 매니페스트 확정 · 방송 이벤트 발행</li></ul>
-  </div>
-  <div class="box nodejs" id="sv-chat" style="left:790px; top:800px; width:380px;">
-    <h3>Chat Collector·Analytics</h3><div class="lang">TypeScript · Node (기존 자산 리팩토링)</div>
-    <ul><li>치지직(공식/비공식)·SOOP 수집</li><li>플랫폼별 시차 보정 → 타임라인 정렬</li><li>채팅 차트 집계 (윈도우·참여율)</li><li>하이라이트 탐지 → 점프카드 요청</li></ul>
-  </div>
-  <div class="box spring" id="sv-render" style="left:790px; top:1030px; width:380px;">
-    <h3>Render·Upload Worker</h3><div class="lang">Java · Spring (FFmpeg 프로세스 지휘)</div>
-    <ul><li>클립 렌더 (비율 5종·번인·amix·-14 LUFS)</li><li>유튜브 resumable 업로드 · CC 등록</li><li>쿼터 관리·재시도·상태 보고</li></ul>
-  </div>
-  <div class="box python" id="sv-ai" style="left:790px; top:1230px; width:380px;">
-    <h3>AI Worker</h3><div class="lang">Python (faster-whisper)</div>
-    <ul><li>선택 트랙 자막 생성 (vad_filter)</li><li>자막 기반 추천 제목</li></ul>
-  </div>
+  <!-- Client 노드 -->
+  <div class="node" id="ui-plugin" style="left:96px; top:452px;  width:240px; height:80px;"><div class="nm">OBS 플러그인</div><div class="sub">(SRT 송출)</div></div>
+  <div class="node" id="ui-setup"  style="left:96px; top:610px;  width:240px; height:80px;"><div class="nm">온보딩·설정</div></div>
+  <div class="node" id="ui-live"   style="left:96px; top:768px;  width:240px; height:80px;"><div class="nm">라이브 뷰</div></div>
+  <div class="node" id="ui-editor" style="left:96px; top:926px;  width:240px; height:80px;"><div class="nm">클립 에디터·보관함</div></div>
+  <div class="node" id="ui-vod"    style="left:96px; top:1084px; width:240px; height:80px;"><div class="nm">VOD 뷰</div><div class="sub">(60일)</div></div>
+  <div class="node" id="ui-ops"    style="left:96px; top:1242px; width:240px; height:80px;"><div class="nm">운영 콘솔</div><div class="sub">(운영자)</div></div>
 
-  <!-- external top-right -->
-  <div class="box ext" id="ex-google" style="left:1780px; top:100px; width:190px;"><h3>Google OAuth</h3><div class="sub">로그인 · 채널 토큰</div></div>
-  <div class="box ext" id="ex-youtube" style="left:2000px; top:100px; width:210px;"><h3>YouTube Data API</h3><div class="sub">videos.insert · captions</div></div>
-  <div class="box ext" id="ex-chzzk" style="left:2240px; top:100px; width:200px;"><h3>CHZZK</h3><div class="sub">공식 Open API / 비공식 WS</div></div>
-  <div class="box ext" id="ex-soop" style="left:2470px; top:100px; width:150px;"><h3>SOOP</h3><div class="sub">채팅 WS</div></div>
+  <!-- Service 노드 (sv-media만 파랑 강조) -->
+  <div class="node"    id="sv-auth"  style="left:506px; top:470px; width:284px; height:98px;"><div class="nm">Auth·Account Service</div><div class="sub">(Spring Boot · H1~H5)</div></div>
+  <div class="node hl" id="sv-media" style="left:506px; top:632px; width:284px; height:98px;"><div class="nm">Media Origin</div><div class="sub">(Go · B1~B7)</div></div>
+  <div class="node"    id="sv-clip"  style="left:506px; top:794px; width:284px; height:98px;"><div class="nm">Clip Service</div><div class="sub">(Spring Boot · D2·E2·E3·E8·F4)</div></div>
+  <div class="node"    id="sv-chat"  style="left:506px; top:956px; width:284px; height:98px;"><div class="nm">Chat Collector·Analytics</div><div class="sub">(Node·TS · C1~C6)</div></div>
 
-  <!-- data stores -->
-  <div class="cyl cy-pg" id="st-pg" style="left:2270px; top:360px; width:350px;">
-    <h3>PostgreSQL</h3><p>계정·권한 · 채널 연동 · 레시피 · 점프카드 · 클립·잡 상태 · 하이라이트 지표</p>
-  </div>
-  <div class="cyl cy-rd" id="st-rd" style="left:2270px; top:580px; width:350px;">
-    <h3>Redis</h3><p>세션 · 라이브 상태 · 채팅 집계 캐시 · SSE 팬아웃(pub/sub)</p>
-  </div>
-  <div class="cyl cy-s3" id="st-s3" style="left:2270px; top:780px; width:350px;">
-    <h3>S3 (오브젝트 스토리지)</h3><p>세그먼트 한 벌(핫 1h 롤링·콜드 전체) · VOD(60일) · 클립(영구) · 채팅 아카이브</p>
-  </div>
+  <!-- Queue 노드 (사각) -->
+  <div class="node" id="q-evt"    style="left:980px; top:540px; width:240px; height:84px;"><div class="nm">방송이벤트 큐</div></div>
+  <div class="node" id="q-render" style="left:980px; top:690px; width:240px; height:84px;"><div class="nm">렌더 잡 큐</div></div>
+  <div class="node" id="q-ai"     style="left:980px; top:840px; width:240px; height:84px;"><div class="nm">AI 잡 큐</div></div>
+  <div class="node" id="q-upload" style="left:980px; top:1004px; width:240px; height:84px;"><div class="nm">업로드 잡 큐</div></div>
 
-  <!-- queue -->
-  <div class="queue" id="q" style="left:1560px; top:1180px; width:420px; height:110px;">
-    <h3>이벤트·잡 큐 (SQS / Redis Streams)</h3>
-    <p>방송 시작·종료 이벤트 · 렌더 잡 · AI 잡 · 업로드 잡</p>
-  </div>
+  <!-- Worker 노드 -->
+  <div class="node" id="sv-render" style="left:1415px; top:600px; width:250px; height:98px;"><div class="nm">Render·Upload Worker</div><div class="sub">(Spring+FFmpeg · F1~F5)</div></div>
+  <div class="node" id="sv-ai"     style="left:1415px; top:760px; width:250px; height:98px;"><div class="nm">AI Worker</div><div class="sub">(Python·Whisper · E4·E7)</div></div>
 
-  <!-- legend -->
-  <div class="legend" style="left:2100px; top:1180px; width:520px;">
-    <h3>범례</h3>
-    <div class="row"><div class="chip" style="border-color:#eab308; color:#a16207;">UI 화면</div><div class="d">웹 대시보드 (React·TS) / 파랑=OBS 플러그인, 빨강=운영자</div></div>
-    <div class="row"><div class="chip" style="border-color:#6db33f; color:#3f6212;">Spring Boot</div><div class="d">코어 API·워커 (BE 2인 주력)</div></div>
-    <div class="row"><div class="chip" style="border-color:#06b6d4; color:#0e7490;">Go</div><div class="d">미디어 계층 직접 구현 (⭐ 핵심 어필)</div></div>
-    <div class="row"><div class="chip" style="border-color:#d97706; color:#92400e;">Node/TS</div><div class="d">채팅 수집·분석 (기존 자산)</div></div>
-    <div class="row"><div class="chip" style="border-color:#8b5cf6; color:#6d28d9;">Python</div><div class="d">AI 워커 (Whisper)</div></div>
-    <div class="row"><div class="chip" style="border-color:#fb923c; color:#c2410c;">외부 API</div><div class="d">Google·YouTube·CHZZK·SOOP</div></div>
-    <div class="row"><div class="chip" style="border-color:#9ca3af; color:#4b5563;">— / - - -</div><div class="d">실선=동기(REST·스트림·SSE) · 점선=비동기(큐)/외부</div></div>
-  </div>
+  <!-- Cache · Database · Storage 노드 -->
+  <div class="node" id="st-rd" style="left:2060px; top:470px; width:360px; height:95px;"><div class="nm">Redis</div></div>
+  <div class="node" id="st-pg" style="left:2060px; top:705px; width:360px; height:110px;"><div class="nm">PostgreSQL</div></div>
+  <div class="node" id="st-s3" style="left:2060px; top:965px; width:360px; height:110px;"><div class="nm">S3</div></div>
+
+  <!-- External 노드 -->
+  <div class="node" id="ex-google"  style="left:1524px; top:214px; width:250px; height:64px;"><div class="nm">Google OAuth</div></div>
+  <div class="node" id="ex-youtube" style="left:1800px; top:214px; width:270px; height:64px;"><div class="nm">YouTube Data API</div></div>
+  <div class="node" id="ex-chzzk"   style="left:2100px; top:214px; width:240px; height:64px;"><div class="nm">CHZZK</div></div>
+  <div class="node" id="ex-soop"    style="left:2366px; top:214px; width:240px; height:64px;"><div class="nm">SOOP</div></div>
 
   <svg class="wires" id="wires"></svg>
 <script>
 (function(){
   const svg = document.getElementById('wires');
   const NS='http://www.w3.org/2000/svg';
+  // 배선 = 단일 스타일: 얇은 짙은회색 직교 엘보 실선 + 작은 화살촉 (엣지 라벨·점선 없음).
   svg.innerHTML = `<defs>
-    <marker id="ar" markerWidth="11" markerHeight="11" refX="8.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M1,1 L8,4.5 L1,8" fill="none" stroke="#6b7280" stroke-width="1.4"/></marker>
-    <marker id="ar2" markerWidth="11" markerHeight="11" refX="8.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M1,1 L8,4.5 L1,8" fill="none" stroke="#9ca3af" stroke-width="1.2"/></marker>
+    <marker id="ar" markerWidth="11" markerHeight="11" refX="8.4" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L8,4.5 L1,8" fill="none" stroke="#1f2937" stroke-width="1.3"/></marker>
   </defs>`;
-  function R(id){ const b=document.getElementById(id).getBoundingClientRect();
+  function R(id){ const el=document.getElementById(id); const b=el.getBoundingClientRect();
     return {l:b.left,r:b.right,t:b.top,b:b.bottom,cx:b.left+b.width/2,cy:b.top+b.height/2,w:b.width,h:b.height}; }
-  function edgePoint(A, tx, ty){
-    const dx=tx-A.cx, dy=ty-A.cy;
-    const sx=(A.w/2)/Math.abs(dx||1e-9), sy=(A.h/2)/Math.abs(dy||1e-9);
-    const s=Math.min(sx,sy);
-    return {x:A.cx+dx*s, y:A.cy+dy*s};
+  const SIDE_PAD=12;
+  function clamp(v,lo,hi){ return lo>hi ? (lo+hi)/2 : Math.min(Math.max(v,lo),hi); }
+  function padT(N){ return N.t+SIDE_PAD; }
+  function padB(N){ return N.b-SIDE_PAD; }
+  function padL(N){ return N.l+SIDE_PAD; }
+  function padR(N){ return N.r-SIDE_PAD; }
+  // 장애물 회피 라우터 — 모든 노드 rect를 장애물로 등록하고,
+  // 중간축 후보들 중 '노드 관통 0 + 레인 중복 최소'인 경로를 자동 선택한다(결정적).
+  const OBST=[];
+  document.querySelectorAll('.node').forEach(function(el){
+    const b=el.getBoundingClientRect();
+    OBST.push({id:el.id||'', l:b.left-10, r:b.right+10, t:b.top-10, b:b.bottom+10});
+  });
+  function segCross(x1,y1,x2,y2,skipA,skipB){
+    let n=0;
+    const lo_x=Math.min(x1,x2), hi_x=Math.max(x1,x2), lo_y=Math.min(y1,y2), hi_y=Math.max(y1,y2);
+    for(const o of OBST){
+      if(o.id===skipA||o.id===skipB) continue;
+      if(hi_x<o.l||lo_x>o.r||hi_y<o.t||lo_y>o.b) continue;
+      n++;
+    }
+    return n;
   }
-  function wire(a,b,opts){
-    const A=R(a), B=R(b);
-    const p1=edgePoint(A,B.cx,B.cy), p2=edgePoint(B,A.cx,A.cy);
-    const l=document.createElementNS(NS,'line');
-    l.setAttribute('x1',p1.x);l.setAttribute('y1',p1.y);l.setAttribute('x2',p2.x);l.setAttribute('y2',p2.y);
-    if(opts&&opts.dash){ l.setAttribute('stroke','#6b7280');l.setAttribute('stroke-width','1.4');l.setAttribute('stroke-dasharray','6 5');l.setAttribute('marker-end','url(#ar)'); }
-    else { l.setAttribute('stroke','#9ca3af');l.setAttribute('stroke-width','1.3');l.setAttribute('opacity','0.9');l.setAttribute('marker-end','url(#ar2)'); }
+  const USED_MX={}, USED_MY={}, USED_LANE={};
+  function bkt(v,s){ return Math.round(v/s); }
+  function pickAxis(cands, from, to, horiz, skipA, skipB, used){
+    let best=null, bestScore=Infinity, mid=cands[0];
+    for(const m of cands){
+      let cross;
+      if(horiz){
+        cross=segCross(from.x,from.y,m,from.y,skipA,skipB)
+             +segCross(m,from.y,m,to.y,skipA,skipB)
+             +segCross(m,to.y,to.x,to.y,skipA,skipB);
+      } else {
+        cross=segCross(from.x,from.y,from.x,m,skipA,skipB)
+             +segCross(from.x,m,to.x,m,skipA,skipB)
+             +segCross(to.x,m,to.x,to.y,skipA,skipB);
+      }
+      const reuse=used[bkt(m,20)]||0;
+      const score=cross*100000 + reuse*80 + Math.abs(m-mid)*0.12;
+      if(score<bestScore){ bestScore=score; best=m; }
+    }
+    used[bkt(best,20)]=(used[bkt(best,20)]||0)+1;
+    return best;
+  }
+  function candRange(a,b,step){
+    const lo=Math.min(a,b)+10, hi=Math.max(a,b)-10, midv=(a+b)/2, out=[midv];
+    for(let k=1;k<=8;k++){ out.push(midv+k*step, midv-k*step); }
+    out.push(lo+8, hi-8, lo+30, hi-30);
+    return out.filter(function(v){ return v>=lo&&v<=hi; });
+  }
+  function hvhCross(p1,p2,mx,a,b){
+    return segCross(p1.x,p1.y,mx,p1.y,a,b)+segCross(mx,p1.y,mx,p2.y,a,b)+segCross(mx,p2.y,p2.x,p2.y,a,b);
+  }
+  // 클리어-레인 라우트(5세그) — 소스·대상 cy가 제3 노드 밴드에 함께 갇혀 3세그 엘보가
+  // 반드시 관통할 때: 소스 옆 거터에서 세로로 빠져 '노드 없는 가로 레인'을 타고 건너간 뒤
+  // 대상 옆 거터에서 대상 변으로 진입한다. 관통 0인 (레인y·거터x) 조합을 탐색.
+  function laneRoute(A,B,a,b,by){
+    const right=B.cx>=A.cx, dir=right?1:-1;
+    const ax=right?A.r:A.l, bx=right?B.l:B.r;
+    const ay=clamp(A.cy,padT(A),padB(A));
+    const yMid=(ay+by)/2, span=Math.abs(bx-ax);
+    // 거터 후보: g1은 소스 오른쪽으로 전진, g2는 대상에서 소스 쪽으로 후퇴.
+    const g1=[], g2=[];
+    for(let d=24; d<span-16; d+=20){ g1.push(ax+dir*d); g2.push(bx-dir*d); }
+    const yc=[yMid];
+    for(let k=1;k<=150;k++){ yc.push(yMid+k*7, yMid-k*7); }
+    for(const y0 of yc){
+      // 병렬 하이웨이 분산 — 같은 버킷 재사용 시 살짝 이동한 레인을 우선 시도
+      const stag=[y0, y0+((USED_LANE[bkt(y0,12)]||0))*11, y0-((USED_LANE[bkt(y0,12)]||0))*11];
+      for(const laneY of stag){
+        if(segCross(ax,laneY,bx,laneY,a,b)>0) continue;
+        let gx1=null;
+        for(const g of g1){
+          if(segCross(ax,ay,g,ay,a,b)>0) continue;
+          if(segCross(g,Math.min(ay,laneY),g,Math.max(ay,laneY),a,b)>0) continue;
+          gx1=g; break;
+        }
+        if(gx1===null) continue;
+        let gx2=null;
+        for(const g of g2){
+          if(segCross(bx,by,g,by,a,b)>0) continue;
+          if(segCross(g,Math.min(by,laneY),g,Math.max(by,laneY),a,b)>0) continue;
+          gx2=g; break;
+        }
+        if(gx2===null) continue;
+        USED_LANE[bkt(laneY,12)]=(USED_LANE[bkt(laneY,12)]||0)+1;
+        return 'M '+ax+' '+ay+' L '+gx1+' '+ay+' L '+gx1+' '+laneY+' L '+gx2+' '+laneY+' L '+gx2+' '+by+' L '+bx+' '+by;
+      }
+    }
+    return null;
+  }
+  function draw(d){
+    const l=document.createElementNS(NS,'path');
+    l.setAttribute('d',d); l.setAttribute('fill','none');
+    l.setAttribute('stroke','#1f2937'); l.setAttribute('stroke-width','1.3');
+    l.setAttribute('marker-end','url(#ar)');
     svg.appendChild(l);
-    if(opts&&opts.label){
-      const t=(opts.t===undefined)?0.5:opts.t;
-      const tx=p1.x+(p2.x-p1.x)*t, ty=p1.y+(p2.y-p1.y)*t-7;
-      const el=document.createElementNS(NS,'text');
-      el.setAttribute('x',tx);el.setAttribute('y',ty);el.setAttribute('text-anchor','middle');
-      el.setAttribute('style','font-size:10.5px;font-weight:700;fill:#374151;paint-order:stroke;stroke:#ffffff;stroke-width:5px;');
-      el.textContent=opts.label; svg.appendChild(el);
+  }
+  // 2단계 라우팅 — 호출은 스펙만 수집, flush가 선언 순서 그대로 그린다(파서 위치매칭 불변).
+  const WIRES=[];
+  function wire(a,b,opts){ WIRES.push([a,b,opts||{}]); }
+  // 도착 변 판정(L/R/T/B) — 그리기 분기 조건과 동일해야 슬롯 카운트가 맞다.
+  function edgeOf(a,b,opts){
+    if(opts.gx!==undefined) return 'B';
+    const A=R(a),B=R(b),dx=B.cx-A.cx,dy=B.cy-A.cy;
+    if(!opts.v && (opts.h || Math.abs(dx)>=Math.abs(dy))) return dx>0?'L':'R';
+    return dy>0?'T':'B';
+  }
+  // off=변 중앙 기준 대칭 슬롯 오프셋 — 가로 도착 y, 세로/gx 도착 x에 적용(출발점은 기존 유지).
+  function drawWire(a,b,opts,off){
+    const A=R(a), B=R(b);
+    const dx=B.cx-A.cx, dy=B.cy-A.cy;
+    if(opts.gx!==undefined){
+      const gx=opts.gx, hw=(opts.hw===undefined?330:opts.hw);
+      const ay=clamp(A.cy,padT(A),padB(A)), bx=clamp(B.cx+off,padL(B),padR(B));
+      draw('M '+A.r+' '+ay+' L '+gx+' '+ay+' L '+gx+' '+hw+' L '+bx+' '+hw+' L '+bx+' '+B.b);
+      return;
+    }
+    if(!opts.v && (opts.h || Math.abs(dx)>=Math.abs(dy))){
+      const p1={x:dx>0?A.r:A.l, y:clamp(B.cy,padT(A),padB(A))};
+      const p2={x:dx>0?B.l:B.r, y:clamp(B.cy+off,padT(B),padB(B))};
+      const mx=pickAxis(candRange(p1.x,p2.x,22), {x:p1.x,y:p1.y}, {x:p2.x,y:p2.y}, true, a, b, USED_MX);
+      if(hvhCross(p1,p2,mx,a,b)===0){
+        draw('M '+p1.x+' '+p1.y+' L '+mx+' '+p1.y+' L '+mx+' '+p2.y+' L '+p2.x+' '+p2.y);
+      } else {
+        // 3세그가 노드 관통 → 클리어-레인 우회(도착 y=슬롯). 실패 시 최소관통 엘보로 폴백.
+        const lr=laneRoute(A,B,a,b,p2.y);
+        draw(lr || ('M '+p1.x+' '+p1.y+' L '+mx+' '+p1.y+' L '+mx+' '+p2.y+' L '+p2.x+' '+p2.y));
+      }
+    } else {
+      const x1=clamp(B.cx,padL(A),padR(A));
+      const x2=clamp(B.cx+off,padL(B),padR(B)); // 도착 x = 변 중앙 + 슬롯
+      const p1={x:x1, y:dy>0?A.b:A.t};
+      const p2={x:x2, y:dy>0?B.t:B.b};
+      const my=pickAxis(candRange(p1.y,p2.y,18), {x:p1.x,y:p1.y}, {x:p2.x,y:p2.y}, false, a, b, USED_MY);
+      draw('M '+p1.x+' '+p1.y+' L '+p1.x+' '+my+' L '+x2+' '+my+' L '+p2.x+' '+p2.y);
     }
   }
-  // actors -> UI
-  wire('ac-str','ui-plugin'); wire('ac-str','ui-setup'); wire('ac-str','ui-live');
-  wire('ac-ed','ui-live'); wire('ac-ed','ui-editor'); wire('ac-ed','ui-vod');
-  wire('ac-ops','ui-ops');
-  // UI -> services
-  wire('ui-plugin','sv-media',{label:'SRT 송출 (영상+A10)',t:0.55});
-  wire('ui-plugin','sv-auth',{label:'스트림 키',t:0.45});
-  wire('ui-plugin','sv-clip',{label:'컨트롤 채널 (핫키·트랙 매니페스트)',t:0.6});
+  // 사전 패스: 대상id:변별 진입 수 n 집계 → 대칭 슬롯. 그리기 패스: 선언 순서 그대로.
+  function flush(){
+    const cnt={}, meta=[];
+    WIRES.forEach(function(w){ const e=edgeOf(w[0],w[1],w[2]); const k=w[1]+e; meta.push({e:e,i:(cnt[k]||0)}); cnt[k]=(cnt[k]||0)+1; });
+    WIRES.forEach(function(w,idx){
+      const e=meta[idx].e, i=meta[idx].i, n=cnt[w[1]+e], B=R(w[1]);
+      const edgeLen=(e==='L'||e==='R')?B.h:B.w;
+      const step=Math.min(24, edgeLen*0.6/Math.max(n,1));
+      const off=(i-(n-1)/2)*step;
+      drawWire(w[0],w[1],w[2],off);
+    });
+  }
+  // UI -> 서비스
+  wire('ui-plugin','sv-media');
+  wire('ui-plugin','sv-auth');
+  wire('ui-plugin','sv-clip');
   wire('ui-setup','sv-auth');
-  wire('ui-live','sv-media',{label:'LL-HLS · DVR 1h',t:0.3});
-  wire('ui-live','sv-clip',{label:'점프카드 SSE',t:0.42});
-  wire('ui-live','sv-chat',{label:'채팅 차트',t:0.42});
-  wire('ui-editor','sv-clip',{label:'레시피·웨이브폼',t:0.62});
-  wire('ui-vod','sv-media',{label:'VOD 재생',t:0.4});
-  wire('ui-ops','sv-clip',{dash:true,label:'전 서비스 모니터링',t:0.35});
-  // services -> stores
+  wire('ui-live','sv-media');
+  wire('ui-live','sv-clip');
+  wire('ui-live','sv-chat');
+  wire('ui-editor','sv-clip');
+  wire('ui-vod','sv-media',{h:true});
+  wire('ui-ops','sv-clip',{h:true});
+  // 서비스 -> 저장소  (워커→PG 직접 쓰기 없음 — 불변식·계약8)
   wire('sv-auth','st-pg');
-  wire('sv-clip','st-pg'); wire('sv-clip','st-rd',{label:'SSE 팬아웃',t:0.55});
-  wire('sv-media','st-s3',{label:'세그먼트 실시간 적재',t:0.5});
-  wire('sv-media','st-rd',{t:0.6});
-  wire('sv-chat','st-pg'); wire('sv-chat','st-s3',{label:'채팅 아카이브',t:0.55});
-  wire('sv-render','st-s3'); wire('sv-render','st-pg');
-  wire('sv-ai','st-s3',{t:0.6});
-  wire('sv-ai','st-pg',{label:'자막·제목 저장',t:0.35});
-  // external (dashed)
-  wire('sv-auth','ex-google',{dash:true,label:'OAuth',t:0.5});
-  wire('sv-render','ex-youtube',{dash:true,label:'resumable 업로드·CC (스트리머 토큰)',t:0.55});
-  wire('sv-chat','ex-chzzk',{dash:true,label:'공식 API / 비공식 WS',t:0.55});
-  wire('sv-chat','ex-soop',{dash:true,t:0.6});
-  // queue (dashed)
-  wire('sv-media','q',{dash:true,label:'방송 시작·종료 이벤트',t:0.45});
-  wire('q','sv-chat',{dash:true,label:'수집 트리거',t:0.5});
-  wire('sv-clip','q',{dash:true,label:'렌더·AI·업로드 잡',t:0.5});
-  wire('q','sv-render',{dash:true});
-  wire('q','sv-ai',{dash:true});
+  wire('sv-clip','st-pg');
+  wire('sv-clip','st-rd');
+  wire('sv-media','st-s3');
+  wire('sv-media','st-rd');
+  wire('sv-chat','st-pg');
+  wire('sv-chat','st-s3');
+  wire('sv-render','st-s3');
+  wire('sv-ai','st-s3');
+  // 큐 경유  (방송이벤트 1큐가 2소비자로 팬아웃)
+  wire('sv-media','q-evt');
+  wire('q-evt','sv-chat');
+  wire('q-evt','sv-clip');
+  wire('sv-clip','q-render');
+  wire('q-render','sv-render');
+  wire('sv-clip','q-ai');
+  wire('q-ai','sv-ai');
+  wire('sv-clip','q-upload');
+  wire('q-upload','sv-render');
+  // 워커 보고  (결과·상태는 Clip Service 경유로만 영속화 — 계약1·8)
+  wire('sv-render','sv-clip');
+  wire('sv-ai','sv-clip');
+  // 외부  (상단 진입 — 좌측 이웃 노드 관통 방지)
+  wire('sv-auth','ex-google',{v:true});
+  wire('sv-render','ex-youtube',{v:true});
+  wire('sv-chat','ex-chzzk',{gx:885, hw:320});
+  wire('sv-chat','ex-soop',{gx:910, hw:335});
+  flush();
 })();
 </script>
 </body>
