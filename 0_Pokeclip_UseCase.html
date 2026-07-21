@@ -2,270 +2,356 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Pokeclip · 유즈케이스 다이어그램</title>
+<title>Pokeclip · Use Case</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: 'Pretendard', 'Noto Sans KR', 'Noto Sans CJK KR', 'Apple SD Gothic Neo', sans-serif;
-    background:#f4f5f7; width:2700px; height:1425px; position:relative;
-    -webkit-font-smoothing: antialiased;
-  }
-  .page-title { position:absolute; left:34px; top:22px; }
-  .page-title h1 { font-size:18px; font-weight:800; color:#111827; }
-  .page-title p { font-size:11.5px; color:#6b7280; margin-top:5px; }
-  .frame {
-    position:absolute; left:22px; right:22px; top:74px; bottom:24px;
-    background:#ffffff; border:1px solid #e5e7eb; border-radius:18px;
-  }
-  .frame-label { position:absolute; left:28px; top:18px; font-size:14px; font-weight:800; color:#374151; }
+  body { font-family:'Pretendard','Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo',sans-serif;
+         background:#ffffff; width:2700px; height:1425px; position:relative; -webkit-font-smoothing:antialiased;
+         color:#111827; }
 
-  .group { position:absolute; border-radius:14px; padding:46px 30px 26px 30px; }
-  .group-chip {
-    position:absolute; top:-13px; left:22px; background:#fff; padding:3px 13px;
-    border-radius:8px; font-size:12px; font-weight:800; border:1.5px solid;
-  }
-  .uc-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px 20px; }
-  .uc {
-    background:#fff; height:58px; border-radius:50%; border:1.6px solid;
-    display:flex; align-items:center; justify-content:center; text-align:center;
-    font-size:12.5px; font-weight:600; color:#1f2937; padding:0 24px; line-height:1.3;
-    box-shadow:0 1px 2px rgba(0,0,0,0.05);
-  }
-  .uc .sub { font-weight:500; color:#6b7280; }
+  /* 상단 타이틀 — 검정 띠 + 굵은 흰 제목 + 얇은 밑줄 바 (EDGE 슬라이드 문법) */
+  .title-bar { position:absolute; left:34px; top:24px; height:66px; background:#111111;
+               display:flex; align-items:center; padding:0 26px 0 22px; }
+  .title-bar h1 { font-size:34px; font-weight:800; color:#ffffff; letter-spacing:-0.5px; }
+  .title-underline { position:absolute; left:34px; top:98px; width:398px; height:8px; background:#111111; }
+  .subtitle { position:absolute; left:36px; top:118px; font-size:14.5px; color:#111827; }
 
-  /* group colors */
-  .g-blue   { border:1.8px dashed #3b82f6; background:rgba(59,130,246,0.045); }
-  .g-blue .group-chip { color:#2563eb; border-color:#3b82f6; }
-  .g-blue .uc { border-color:#3b82f6; }
-  .g-green  { border:1.8px dashed #10b981; background:rgba(16,185,129,0.05); }
-  .g-green .group-chip { color:#059669; border-color:#10b981; }
-  .g-green .uc { border-color:#10b981; }
-  .g-orange { border:1.8px dashed #f59e0b; background:rgba(245,158,11,0.055); }
-  .g-orange .group-chip { color:#d97706; border-color:#f59e0b; }
-  .g-orange .uc { border-color:#f59e0b; }
-  .g-purple { border:1.8px dashed #8b5cf6; background:rgba(139,92,246,0.05); }
-  .g-purple .group-chip { color:#7c3aed; border-color:#8b5cf6; }
-  .g-purple .uc { border-color:#8b5cf6; }
-  .g-cyan   { border:1.8px dashed #06b6d4; background:rgba(6,182,212,0.05); }
-  .g-cyan .group-chip { color:#0891b2; border-color:#06b6d4; }
-  .g-cyan .uc { border-color:#06b6d4; }
-  .g-rose   { border:1.8px dashed #ec4899; background:rgba(236,72,153,0.045); }
-  .g-rose .group-chip { color:#db2777; border-color:#ec4899; }
-  .g-rose .uc { border-color:#ec4899; }
-  .g-red    { border:1.8px dashed #ef4444; background:rgba(239,68,68,0.05); }
-  .g-red .group-chip { color:#dc2626; border-color:#ef4444; }
-  .g-red .uc { border-color:#ef4444; }
+  /* 시스템 경계 — 점(dotted) 테두리 대형 둥근 박스 + 좌상단 라벨 */
+  .env { position:absolute; border:2px dotted #9ca3af; border-radius:16px; }
+  .env-label { position:absolute; left:18px; top:-11px; background:#ffffff; padding:0 8px;
+               font-size:13.5px; font-weight:700; color:#374151; }
 
-  .actor { position:absolute; width:110px; text-align:center; }
-  .actor .face {
-    width:68px; height:68px; border-radius:50%; margin:0 auto;
-    display:flex; align-items:center; justify-content:center; font-size:31px;
-    border:2px solid;
-  }
-  .actor .name { margin-top:9px; font-size:13.5px; font-weight:800; color:#111827; }
-  .actor .role { margin-top:3px; font-size:10.5px; color:#6b7280; line-height:1.35; }
-  .a-streamer .face { background:#eff6ff; border-color:#93c5fd; }
-  .a-editor .face   { background:#fdf2f8; border-color:#f9a8d4; }
-  .a-ops .face      { background:#fef2f2; border-color:#fca5a5; }
+  /* 역할 그룹 — 점선(dashed) 둥근 컨테이너 + 좌상단 라벨 칩 (노드보다 옅게) */
+  .grp { position:absolute; border:1.4px dashed #9ca3af; border-radius:14px; }
+  .grp-chip { position:absolute; top:-12px; left:20px; background:#ffffff; padding:2px 12px;
+              font-size:12px; font-weight:800; color:#374151; border:1.4px solid #9ca3af; border-radius:7px; }
+  .uc-grid { position:absolute; inset:42px 22px 18px 22px; display:grid;
+             grid-template-columns:1fr 1fr; grid-auto-rows:82px; align-content:start; gap:14px 46px; }
+
+  /* 유스케이스 노드 — 흰 채움 + 얇은 검정 테두리 + 둥근 모서리 (타원 없음) */
+  .node { background:#ffffff; border:1.3px solid #1f2937; border-radius:8px;
+          display:flex; flex-direction:column; align-items:center; justify-content:center;
+          text-align:center; padding:6px 10px; }
+  .node .nm { font-size:12.5px; font-weight:700; color:#111827; line-height:1.25; }
+  .node .desc { font-size:10px; font-weight:500; color:#6b7280; line-height:1.25; margin-top:2px; }
+  .node .badge { margin-top:5px; font-size:10px; font-weight:800; color:#374151;
+                 border:1px solid #9ca3af; border-radius:4px; padding:1px 6px; letter-spacing:0.3px; }
+  .node .stereo { margin-top:4px; font-size:9.5px; font-style:italic; color:#6b7280; }
+
+  /* 액터 — EDGE p.4식 스틱피겨(외곽선 사람 아이콘, 채움 없음) + 하단 라벨. 이모지 없음. */
+  .actor { position:absolute; width:66px; height:82px; }
+  .actor svg { display:block; margin:0 auto; }
+  .actor .nm { position:absolute; left:-32px; right:-32px; top:88px; text-align:center;
+               font-size:14px; font-weight:800; color:#111827; }
+  .actor .role { position:absolute; left:-46px; right:-46px; top:108px; text-align:center;
+                 font-size:10.5px; color:#6b7280; line-height:1.35; }
+
+  /* 범례 — 캔버스 하단 (경계 밖, 배선 영역과 분리) */
+  .legend { position:absolute; border:1px solid #e5e7eb; border-radius:12px; background:#ffffff;
+            padding:16px 22px; }
+  .legend h3 { font-size:12.5px; font-weight:800; color:#111827; margin-bottom:12px; }
+  .legend .rows { display:grid; grid-template-columns:1fr 1fr; gap:9px 40px; }
+  .legend .row { display:flex; align-items:center; gap:12px; }
+  .legend .sample { width:64px; flex:none; display:flex; align-items:center; justify-content:center; }
+  .legend .desc { font-size:11px; color:#374151; }
+  .lg-node { width:56px; height:24px; border:1.3px solid #1f2937; border-radius:6px; background:#fff; }
+  .lg-grp  { width:56px; height:24px; border:1.4px dashed #9ca3af; border-radius:6px; background:#fff; }
+  .lg-solid { width:56px; height:0; border-top:1.4px solid #1f2937; position:relative; }
+  .lg-solid:after { content:''; position:absolute; right:-1px; top:-4px; width:8px; height:8px;
+                    border-top:1.4px solid #1f2937; border-right:1.4px solid #1f2937; transform:rotate(45deg); }
+  .lg-dash { width:56px; height:0; border-top:1.4px dashed #1f2937; position:relative; }
+  .lg-dash:after { content:''; position:absolute; right:-1px; top:-4px; width:8px; height:8px;
+                   border-top:1.4px solid #1f2937; border-right:1.4px solid #1f2937; transform:rotate(45deg); }
 
   svg.wires { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
-
-  /* legend */
-  .legend {
-    position:absolute; background:#fff; border:1px solid #e5e7eb; border-radius:14px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:20px 26px;
-  }
-  .legend h3 { font-size:13px; font-weight:800; color:#111827; margin-bottom:14px; }
-  .legend .row { display:flex; align-items:center; gap:14px; margin-bottom:11px; }
-  .legend .row:last-child { margin-bottom:0; }
-  .legend .sample { width:150px; display:flex; align-items:center; justify-content:center; flex:none; }
-  .legend .desc { font-size:11.5px; color:#374151; }
-  .lg-actor { width:34px; height:34px; border-radius:50%; background:#eff6ff; border:1.6px solid #93c5fd; display:flex; align-items:center; justify-content:center; font-size:16px; }
-  .lg-uc { width:120px; height:30px; border-radius:50%; border:1.5px solid #6b7280; display:flex; align-items:center; justify-content:center; font-size:10.5px; font-weight:600; color:#374151; background:#fff; }
-  .lg-group { width:120px; height:30px; border-radius:8px; border:1.6px dashed #9ca3af; background:#f9fafb; }
-  .lg-line { width:120px; height:0; border-top:1.6px solid #9ca3af; }
-  .lg-dash { width:104px; height:0; border-top:1.6px dashed #6b7280; position:relative; }
-  .lg-dash:after { content:''; position:absolute; right:-2px; top:-5px; width:9px; height:9px; border-top:1.6px solid #6b7280; border-right:1.6px solid #6b7280; transform:rotate(45deg); }
 </style>
 </head>
 <body>
-  <div class="page-title">
-    <h1>Pokeclip · 유즈케이스 다이어그램 (2026.07)</h1>
-    <p>액터(스트리머 · 편집자 · 운영자) · 유즈케이스 · 관계 (include / extend)</p>
+  <div class="title-bar"><h1>Use Case Diagram</h1></div>
+  <div class="title-underline"></div>
+  <div class="subtitle">액터 3종(스트리머 · 편집자 · 운영자) ↔ 기능 영역별 유스케이스 ↔ 관계(«include» · «extend») — [기능 ID]는 9번 기능명세 매핑</div>
+
+  <!-- 시스템 경계 (점선 · 액터는 경계 밖) -->
+  <div class="env" id="env-sys" style="left:350px; top:170px; width:2100px; height:1230px;"><span class="env-label">PokeClip 시스템</span></div>
+
+  <!-- 액터 (경계 좌·우 밖) — EDGE p.4식 스틱피겨 -->
+  <div class="actor" id="ac-streamer" style="left:96px; top:352px;">
+    <svg viewBox="0 0 60 78" width="60" height="78" aria-hidden="true">
+      <g><circle cx="30" cy="16" r="12.5" fill="#ffffff" stroke="#1f2937" stroke-width="2.4"/>
+      <path d="M7 74 C7 50 19 40 30 40 C41 40 53 50 53 74" fill="#ffffff" stroke="#1f2937" stroke-width="2.4" stroke-linecap="round"/></g>
+    </svg>
+    <div class="nm">스트리머</div>
+    <div class="role">방송·핫키·템플릿<br>채널 연동·편집자 초대</div>
+  </div>
+  <div class="actor" id="ac-ops" style="left:96px; top:1198px;">
+    <svg viewBox="0 0 60 78" width="60" height="78" aria-hidden="true">
+      <g><circle cx="30" cy="16" r="12.5" fill="#ffffff" stroke="#1f2937" stroke-width="2.4"/>
+      <path d="M7 74 C7 50 19 40 30 40 C41 40 53 50 53 74" fill="#ffffff" stroke="#1f2937" stroke-width="2.4" stroke-linecap="round"/></g>
+    </svg>
+    <div class="nm">운영자</div>
+    <div class="role">계정·시스템 관리<br>(Pokeclip 팀)</div>
+  </div>
+  <div class="actor" id="ac-editor" style="left:2544px; top:600px;">
+    <svg viewBox="0 0 60 78" width="60" height="78" aria-hidden="true">
+      <g><circle cx="30" cy="16" r="12.5" fill="#ffffff" stroke="#1f2937" stroke-width="2.4"/>
+      <path d="M7 74 C7 50 19 40 30 40 C41 40 53 50 53 74" fill="#ffffff" stroke="#1f2937" stroke-width="2.4" stroke-linecap="round"/></g>
+    </svg>
+    <div class="nm">편집자</div>
+    <div class="role">초대받아 클립 제작<br>(권한별 업로드)</div>
   </div>
 
-  <div class="frame" id="frame">
-    <div class="frame-label">Pokeclip</div>
-
-    <!-- Actors -->
-    <div class="actor a-streamer" id="ac-streamer" style="left:18px; top:250px;">
-      <div class="face">🎤</div>
-      <div class="name">스트리머</div>
-      <div class="role">방송 · 핫키 · 템플릿<br>채널 연동 · 초대</div>
+  <!-- ── Col1 (스트리머·운영자 근접) ─────────────────────── -->
+  <!-- 방송 연동 · band1 -->
+  <div class="grp" id="grp-broadcast" style="left:380px; top:250px; width:560px; height:340px;">
+    <span class="grp-chip">방송 연동 · OBS 플러그인</span>
+    <div class="uc-grid">
+      <div class="node" id="uc-plugin-install"><div class="nm">플러그인 설치·서버 연결</div><span class="badge">A7</span></div>
+      <div class="node" id="uc-track-map"><div class="nm">오디오 트랙 매핑 확인·편집</div><span class="badge">A2·A3</span></div>
+      <div class="node" id="uc-simulcast"><div class="nm">동시 송출 시작·종료</div><span class="badge">A1</span></div>
+      <div class="node" id="uc-srt-stats"><div class="nm">송출 상태 확인 (SRT 통계)</div><span class="badge">A6</span></div>
+      <div class="node" id="uc-hotkey"><div class="nm">핫키 하이라이트 마킹</div><span class="badge">A4</span><span class="stereo">«extend»</span></div>
     </div>
-    <div class="actor a-editor" id="ac-editor" style="left:2528px; top:520px;">
-      <div class="face">🎬</div>
-      <div class="name">편집자</div>
-      <div class="role">초대받아 클립 제작<br>(권한별 업로드)</div>
-    </div>
-    <div class="actor a-ops" id="ac-ops" style="left:18px; top:985px;">
-      <div class="face">🛠️</div>
-      <div class="name">운영자</div>
-      <div class="role">계정 · 시스템 관리<br>(Pokeclip 팀)</div>
-    </div>
-
-    <!-- ① 방송 연동 -->
-    <div class="group g-blue" style="left:150px; top:58px; width:730px;">
-      <div class="group-chip">방송 연동 (OBS 플러그인)</div>
-      <div class="uc-grid">
-        <div class="uc" id="uc-plugin-install">플러그인 설치·서버 연결</div>
-        <div class="uc" id="uc-track-map">오디오 트랙 매핑 확인·편집</div>
-        <div class="uc" id="uc-simulcast">동시 송출 시작·종료</div>
-        <div class="uc" id="uc-srt-stats">송출 상태 확인 (SRT 통계)</div>
-        <div class="uc" id="uc-hotkey">핫키 하이라이트 마킹</div>
-      </div>
-    </div>
-
-    <!-- ② 라이브 뷰 -->
-    <div class="group g-green" style="left:945px; top:58px; width:730px;">
-      <div class="group-chip">라이브 뷰 (대시보드)</div>
-      <div class="uc-grid">
-        <div class="uc" id="uc-live-watch">라이브 저지연 시청</div>
-        <div class="uc" id="uc-dvr">되감기 시청 (DVR 1시간)</div>
-        <div class="uc" id="uc-jumpcard-list">점프카드 목록 확인</div>
-        <div class="uc" id="uc-jumpcard-seek">점프카드 시점 이동</div>
-        <div class="uc" id="uc-chat-chart">채팅량 차트 확인</div>
-        <div class="uc" id="uc-auto-highlight">하이라이트 자동 탐지<br><span class="sub">(채팅 분석)</span></div>
-      </div>
-    </div>
-
-    <!-- ③ 클립 제작 -->
-    <div class="group g-orange" style="left:1740px; top:58px; width:730px;">
-      <div class="group-chip">클립 제작 (에디터)</div>
-      <div class="uc-grid">
-        <div class="uc" id="uc-clip-range">구간 조정 (5초~3분)</div>
-        <div class="uc" id="uc-ratio">화면비율·크롭 선택 (5종)</div>
-        <div class="uc" id="uc-track-select">오디오 트랙 선택 (미리듣기)</div>
-        <div class="uc" id="uc-subtitle">AI 자막 생성 (Whisper)</div>
-        <div class="uc" id="uc-title">추천 제목 확인·수정</div>
-        <div class="uc" id="uc-clip-save">클립 저장 (레시피+렌더)</div>
-        <div class="uc" id="uc-reedit">클립 재편집</div>
-      </div>
-    </div>
-
-    <!-- ⑥ 계정·권한 -->
-    <div class="group g-rose" style="left:150px; top:520px; width:730px;">
-      <div class="group-chip">계정·권한</div>
-      <div class="uc-grid">
-        <div class="uc" id="uc-login">구글 로그인 (OAuth 단일)</div>
-        <div class="uc" id="uc-invite">편집자 초대 (링크)</div>
-        <div class="uc" id="uc-perm">편집자 권한 설정<br><span class="sub">(업로드·자동업로드 토글)</span></div>
-        <div class="uc" id="uc-approve">클립 승인 (스트리머)</div>
-        <div class="uc" id="uc-streamkey">스트림 키 관리</div>
-      </div>
-    </div>
-
-    <!-- ⑤ VOD -->
-    <div class="group g-cyan" style="left:945px; top:520px; width:730px;">
-      <div class="group-chip">VOD (다시보기)</div>
-      <div class="uc-grid">
-        <div class="uc" id="uc-vod-play">VOD 목록·재생</div>
-        <div class="uc" id="uc-vod-chapter">점프카드 챕터 탐색</div>
-        <div class="uc" id="uc-vod-clip">VOD에서 클립 제작</div>
-        <div class="uc" id="uc-vod-audio">오디오 트랙 전환 시청</div>
-      </div>
-    </div>
-
-    <!-- ④ 업로드·템플릿 -->
-    <div class="group g-purple" style="left:1740px; top:520px; width:730px;">
-      <div class="group-chip">업로드·템플릿 (유튜브)</div>
-      <div class="uc-grid">
-        <div class="uc" id="uc-yt-oauth">유튜브 채널 연동 (OAuth)</div>
-        <div class="uc" id="uc-upload">클립 업로드</div>
-        <div class="uc" id="uc-cc">CC 자막 등록</div>
-        <div class="uc" id="uc-template">템플릿 설정</div>
-        <div class="uc" id="uc-auto-upload">원클릭 자동 업로드</div>
-        <div class="uc" id="uc-upload-status">업로드 진행·결과 확인</div>
-      </div>
-    </div>
-
-    <!-- ⑦ 운영 -->
-    <div class="group g-red" style="left:150px; top:960px; width:730px;">
-      <div class="group-chip">운영 (운영자 전용)</div>
-      <div class="uc-grid">
-        <div class="uc" id="uc-ops-account">스트리머 계정 관리</div>
-        <div class="uc" id="uc-ops-monitor">시스템 모니터링<br><span class="sub">(인제스트·큐·스토리지)</span></div>
-        <div class="uc" id="uc-ops-incident">장애·업로드 실패 대응</div>
-        <div class="uc" id="uc-ops-stats">사용 현황 통계</div>
-      </div>
-    </div>
-
-    <!-- 범례 -->
-    <div class="legend" style="left:1740px; top:960px; width:730px;">
-      <h3>범례</h3>
-      <div class="row"><div class="sample"><div class="lg-actor">🎤</div></div><div class="desc">액터 (Actor) — 시스템을 사용하는 사람</div></div>
-      <div class="row"><div class="sample"><div class="lg-uc">유즈케이스</div></div><div class="desc">유즈케이스 — 시스템이 제공하는 기능</div></div>
-      <div class="row"><div class="sample"><div class="lg-group"></div></div><div class="desc">유즈케이스 그룹 — 기능 영역별 묶음</div></div>
-      <div class="row"><div class="sample"><div class="lg-line"></div></div><div class="desc">실선 — 액터-유즈케이스 연결</div></div>
-      <div class="row"><div class="sample"><div class="lg-dash"></div></div><div class="desc">«include» — A가 반드시 B를 포함</div></div>
-      <div class="row"><div class="sample"><div class="lg-dash"></div></div><div class="desc">«extend» — A가 B를 선택적으로 확장</div></div>
-    </div>
-
-    <svg class="wires" id="wires"></svg>
   </div>
 
+  <!-- 계정·권한 · band2 -->
+  <div class="grp" id="grp-account" style="left:380px; top:680px; width:560px; height:440px;">
+    <span class="grp-chip">계정·권한</span>
+    <div class="uc-grid">
+      <div class="node" id="uc-login"><div class="nm">구글 로그인 (OAuth 단일)</div><span class="badge">H1</span></div>
+      <div class="node" id="uc-invite"><div class="nm">편집자 초대 (링크)</div><span class="badge">H4</span></div>
+      <div class="node" id="uc-perm"><div class="nm">편집자 권한 설정</div><div class="desc">업로드·자동업로드 토글</div><span class="badge">H4</span></div>
+      <div class="node" id="uc-approve"><div class="nm">클립 승인 (스트리머)</div><span class="badge">H5</span></div>
+      <div class="node" id="uc-streamkey"><div class="nm">스트림 키 관리</div><div class="desc">발급=Auth · 검증=Media</div></div>
+    </div>
+  </div>
+
+  <!-- 운영 · band3 (col1) -->
+  <div class="grp" id="grp-ops" style="left:380px; top:1140px; width:560px; height:240px;">
+    <span class="grp-chip">운영 · 운영자 전용</span>
+    <div class="uc-grid">
+      <div class="node" id="uc-ops-account"><div class="nm">스트리머 계정 관리</div><span class="badge">I4</span></div>
+      <div class="node" id="uc-ops-monitor"><div class="nm">시스템 모니터링</div><div class="desc">인제스트·큐·스토리지</div><span class="badge">I3</span></div>
+      <div class="node" id="uc-ops-incident"><div class="nm">장애·업로드 실패 대응</div><span class="badge">I4</span></div>
+      <div class="node" id="uc-ops-stats"><div class="nm">사용 현황 통계</div><span class="badge">I3·I4</span></div>
+    </div>
+  </div>
+
+  <!-- ── Col2 (중앙) ─────────────────────────────────────── -->
+  <!-- 라이브 뷰 · band1 -->
+  <div class="grp" id="grp-live" style="left:1120px; top:250px; width:560px; height:340px;">
+    <span class="grp-chip">라이브 뷰 · 대시보드</span>
+    <div class="uc-grid">
+      <div class="node" id="uc-live-watch"><div class="nm">라이브 저지연 시청</div><span class="badge">D1·B3</span></div>
+      <div class="node" id="uc-dvr"><div class="nm">되감기 시청 (DVR 1시간)</div><span class="badge">B3·D1</span></div>
+      <div class="node" id="uc-jumpcard-list"><div class="nm">점프카드 목록 확인</div><span class="badge">D2</span><span class="stereo">«extend»</span></div>
+      <div class="node" id="uc-jumpcard-seek"><div class="nm">점프카드 시점 이동</div><span class="badge">D4</span></div>
+      <div class="node" id="uc-chat-chart"><div class="nm">채팅량 차트 확인</div><span class="badge">D3</span></div>
+      <div class="node" id="uc-auto-highlight"><div class="nm">하이라이트 자동 탐지</div><div class="desc">채팅 분석</div><span class="badge">C3</span><span class="stereo">«include»</span></div>
+    </div>
+  </div>
+
+  <!-- ── Col3 (편집자 근접) ───────────────────────────────── -->
+  <!-- VOD · band1 -->
+  <div class="grp" id="grp-vod" style="left:1860px; top:250px; width:560px; height:340px;">
+    <span class="grp-chip">VOD · 다시보기 (60일)</span>
+    <div class="uc-grid">
+      <div class="node" id="uc-vod-play"><div class="nm">VOD 목록·재생</div><span class="badge">B5·G1</span></div>
+      <div class="node" id="uc-vod-chapter"><div class="nm">점프카드 챕터 탐색</div><span class="badge">G1</span></div>
+      <div class="node" id="uc-vod-clip"><div class="nm">VOD에서 클립 제작</div><span class="badge">G2</span></div>
+      <div class="node" id="uc-vod-audio"><div class="nm">오디오 트랙 전환 시청</div><span class="badge">B3</span></div>
+    </div>
+  </div>
+
+  <!-- 클립 제작 · Col2 band2 -->
+  <div class="grp" id="grp-clip" style="left:1120px; top:680px; width:560px; height:440px;">
+    <span class="grp-chip">클립 제작 · 에디터</span>
+    <div class="uc-grid">
+      <div class="node" id="uc-clip-range"><div class="nm">구간 조정 (5초~3분)</div><span class="badge">E1</span><span class="stereo">«include»</span></div>
+      <div class="node" id="uc-ratio"><div class="nm">화면비율·크롭 선택 (5종)</div><span class="badge">E5</span></div>
+      <div class="node" id="uc-track-select"><div class="nm">오디오 트랙 선택·미리듣기</div><span class="badge">E2</span></div>
+      <div class="node" id="uc-subtitle"><div class="nm">AI 자막 생성 (Whisper)</div><span class="badge">E4</span><span class="stereo">«include»</span></div>
+      <div class="node" id="uc-title"><div class="nm">추천 제목 확인·수정</div><span class="badge">E7</span></div>
+      <div class="node" id="uc-clip-save"><div class="nm">클립 저장 (레시피+렌더)</div><span class="badge">E8·F1</span></div>
+      <div class="node" id="uc-reedit"><div class="nm">클립 재편집</div><span class="badge">E8</span></div>
+    </div>
+  </div>
+
+  <!-- 업로드·템플릿 · Col3 band2 -->
+  <div class="grp" id="grp-upload" style="left:1860px; top:680px; width:560px; height:440px;">
+    <span class="grp-chip">업로드·템플릿 · 유튜브</span>
+    <div class="uc-grid">
+      <div class="node" id="uc-yt-oauth"><div class="nm">유튜브 채널 연동 (OAuth)</div><span class="badge">H3</span></div>
+      <div class="node" id="uc-upload"><div class="nm">클립 업로드</div><span class="badge">F3</span><span class="stereo">«extend»</span></div>
+      <div class="node" id="uc-cc"><div class="nm">CC 자막 등록</div><span class="badge">F5</span></div>
+      <div class="node" id="uc-template"><div class="nm">템플릿 설정</div><span class="badge">F4</span><span class="stereo">«include»</span></div>
+      <div class="node" id="uc-auto-upload"><div class="nm">원클릭 자동 업로드</div><span class="badge">F4</span></div>
+      <div class="node" id="uc-upload-status"><div class="nm">업로드 진행·결과 확인</div><span class="badge">F2</span></div>
+    </div>
+  </div>
+
+  <!-- 범례 — 경계 내 band2 하단 클리어 존 (col2·col3) -->
+  <div class="legend" style="left:1180px; top:1176px; width:1200px;">
+    <h3>범례</h3>
+    <div class="rows">
+      <div class="row"><div class="sample"><svg viewBox="0 0 60 78" width="26" height="34"><g><circle cx="30" cy="16" r="12.5" fill="#fff" stroke="#1f2937" stroke-width="3"/><path d="M7 74 C7 50 19 40 30 40 C41 40 53 50 53 74" fill="#fff" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/></g></svg></div><div class="desc">액터 — 시스템을 사용하는 사람</div></div>
+      <div class="row"><div class="sample"><div class="lg-solid"></div></div><div class="desc">실선 화살표 — 액터↔유스케이스 연결</div></div>
+      <div class="row"><div class="sample"><div class="lg-node"></div></div><div class="desc">유스케이스 — 배지는 [기능 ID](9번 명세)</div></div>
+      <div class="row"><div class="sample"><div class="lg-dash"></div></div><div class="desc">점선 화살표 — «include»·«extend»(구분은 대상 노드 배지)</div></div>
+      <div class="row"><div class="sample"><div class="lg-grp"></div></div><div class="desc">역할 그룹 · 점선 대형 컨테이너 = 시스템 경계</div></div>
+      <div class="row"><div class="sample"><span style="font-style:italic;color:#6b7280;font-size:11px;">«include»</span></div><div class="desc">대상 노드 부제 = 관계 종류 표기</div></div>
+    </div>
+  </div>
+
+  <svg class="wires" id="wires"></svg>
 <script>
 (function(){
-  const frame = document.getElementById('frame');
   const svg = document.getElementById('wires');
-  const NS = 'http://www.w3.org/2000/svg';
-
-  // defs: arrow marker (open V)
-  const defs = document.createElementNS(NS,'defs');
-  defs.innerHTML = `
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M1,1 L9,5 L1,9" fill="none" stroke="#6b7280" stroke-width="1.5"/>
-    </marker>`;
-  svg.appendChild(defs);
-
-  function rectOf(id){
-    const el = document.getElementById(id);
-    const r = el.getBoundingClientRect();
-    const f = frame.getBoundingClientRect();
-    return { cx: r.left - f.left + r.width/2, cy: r.top - f.top + r.height/2, rx: r.width/2, ry: r.height/2 };
+  const NS='http://www.w3.org/2000/svg';
+  // 배선 = 직교 엘보. 실선(액터↔UC) / 점선(«include»·«extend») 두 종, 화살촉 공용.
+  svg.innerHTML = `<defs>
+    <marker id="ar" markerWidth="11" markerHeight="11" refX="8.4" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1,1 L8,4.5 L1,8" fill="none" stroke="#1f2937" stroke-width="1.3"/></marker>
+  </defs>`;
+  function R(id){ const el=document.getElementById(id); const b=el.getBoundingClientRect();
+    return {l:b.left,r:b.right,t:b.top,b:b.bottom,cx:b.left+b.width/2,cy:b.top+b.height/2,w:b.width,h:b.height}; }
+  const SIDE_PAD=12;
+  function clamp(v,lo,hi){ return lo>hi ? (lo+hi)/2 : Math.min(Math.max(v,lo),hi); }
+  function padT(N){ return N.t+SIDE_PAD; }
+  function padB(N){ return N.b-SIDE_PAD; }
+  function padL(N){ return N.l+SIDE_PAD; }
+  function padR(N){ return N.r-SIDE_PAD; }
+  // 장애물 회피 라우터 — 노드·액터 rect를 장애물로 등록하고, 노드 관통 0인 경로를 결정적으로 선택.
+  const OBST=[];
+  document.querySelectorAll('.node, .actor').forEach(function(el){
+    const b=el.getBoundingClientRect();
+    OBST.push({id:el.id||'', l:b.left-10, r:b.right+10, t:b.top-10, b:b.bottom+10});
+  });
+  function segCross(x1,y1,x2,y2,skipA,skipB){
+    let n=0;
+    const lo_x=Math.min(x1,x2), hi_x=Math.max(x1,x2), lo_y=Math.min(y1,y2), hi_y=Math.max(y1,y2);
+    for(const o of OBST){
+      if(o.id===skipA||o.id===skipB) continue;
+      if(hi_x<o.l||lo_x>o.r||hi_y<o.t||lo_y>o.b) continue;
+      n++;
+    }
+    return n;
   }
-  // point on ellipse rim toward (tx,ty)
-  function rim(e, tx, ty, pad){
-    const dx = tx - e.cx, dy = ty - e.cy;
-    const t = 1 / Math.sqrt((dx*dx)/(e.rx*e.rx) + (dy*dy)/(e.ry*e.ry));
-    const k = t * (1 + (pad||0));
-    return { x: e.cx + dx*k, y: e.cy + dy*k };
+  const USED_MX={}, USED_MY={}, USED_LANE={}, USED_GUT={};
+  function bkt(v,s){ return Math.round(v/s); }
+  // 클리어 거터 후보 중 '관통 0 且 최소 재사용'인 x를 고른다 — 같은 소스의 세로 세그먼트 겹침 방지.
+  // (선택만 하고 커밋 안 함 — 성공 경로에서 gutUse()로 커밋)
+  function pickGutter(cands, atY0, atY1, a, b){
+    let best=null, bestU=Infinity;
+    for(const g of cands){
+      if(segCross(g,Math.min(atY0,atY1),g,Math.max(atY0,atY1),a,b)>0) continue;
+      const u=USED_GUT[bkt(g,9)]||0;
+      if(u<bestU){ bestU=u; best=g; if(u===0) break; }
+    }
+    return best;
   }
-  function line(x1,y1,x2,y2,cls){
-    const l = document.createElementNS(NS,'line');
-    l.setAttribute('x1',x1); l.setAttribute('y1',y1);
-    l.setAttribute('x2',x2); l.setAttribute('y2',y2);
-    if(cls==='solid'){ l.setAttribute('stroke','#aab0b9'); l.setAttribute('stroke-width','1.1'); l.setAttribute('opacity','0.85'); }
-    else { l.setAttribute('stroke','#6b7280'); l.setAttribute('stroke-width','1.4'); l.setAttribute('stroke-dasharray','6 5'); l.setAttribute('marker-end','url(#arrow)'); }
+  function gutUse(g){ USED_GUT[bkt(g,9)]=(USED_GUT[bkt(g,9)]||0)+1; }
+  function pickAxis(cands, from, to, horiz, skipA, skipB, used){
+    let best=null, bestScore=Infinity, mid=cands[0];
+    for(const m of cands){
+      let cross;
+      if(horiz){
+        cross=segCross(from.x,from.y,m,from.y,skipA,skipB)
+             +segCross(m,from.y,m,to.y,skipA,skipB)
+             +segCross(m,to.y,to.x,to.y,skipA,skipB);
+      } else {
+        cross=segCross(from.x,from.y,from.x,m,skipA,skipB)
+             +segCross(from.x,m,to.x,m,skipA,skipB)
+             +segCross(to.x,m,to.x,to.y,skipA,skipB);
+      }
+      const reuse=used[bkt(m,20)]||0;
+      const score=cross*100000 + reuse*80 + Math.abs(m-mid)*0.12;
+      if(score<bestScore){ bestScore=score; best=m; }
+    }
+    used[bkt(best,20)]=(used[bkt(best,20)]||0)+1;
+    return best;
+  }
+  function candRange(a,b,step){
+    const lo=Math.min(a,b)+10, hi=Math.max(a,b)-10, midv=(a+b)/2, out=[midv];
+    for(let k=1;k<=8;k++){ out.push(midv+k*step, midv-k*step); }
+    out.push(lo+8, hi-8, lo+30, hi-30);
+    return out.filter(function(v){ return v>=lo&&v<=hi; });
+  }
+  function hvhCross(p1,p2,mx,a,b){
+    return segCross(p1.x,p1.y,mx,p1.y,a,b)+segCross(mx,p1.y,mx,p2.y,a,b)+segCross(mx,p2.y,p2.x,p2.y,a,b);
+  }
+  // 클리어-레인 라우트(5세그) — 3세그 엘보가 반드시 관통할 때: 소스 옆 거터에서 세로로 빠져
+  // '노드 없는 가로 레인'을 타고 건너간 뒤 대상 옆 거터에서 진입. 관통 0인 조합을 탐색.
+  function laneRoute(A,B,a,b,ay0,by0){
+    const right=B.cx>=A.cx, dir=right?1:-1;
+    const ax=right?A.r:A.l, bx=right?B.l:B.r;
+    const ay=(ay0!==undefined)?ay0:clamp(A.cy,padT(A),padB(A)), by=(by0!==undefined)?by0:clamp(B.cy,padT(B),padB(B));
+    const yMid=(ay+by)/2, span=Math.abs(bx-ax);
+    const g1=[], g2=[];
+    for(let d=24; d<span-16; d+=20){ g1.push(ax+dir*d); g2.push(bx-dir*d); }
+    const yc=[yMid];
+    for(let k=1;k<=150;k++){ yc.push(yMid+k*7, yMid-k*7); }
+    for(const y0 of yc){
+      const stag=[y0, y0+((USED_LANE[bkt(y0,14)]||0))*14, y0-((USED_LANE[bkt(y0,14)]||0))*14];
+      for(const laneY of stag){
+        if(segCross(ax,laneY,bx,laneY,a,b)>0) continue;
+        // 소스측 거터: 관통 0 且 최소 재사용으로 분산(같은 소스 세로 겹침 방지).
+        const g1clear=g1.filter(function(g){ return segCross(ax,ay,g,ay,a,b)===0; });
+        const gx1=pickGutter(g1clear, ay, laneY, a, b);
+        if(gx1===null) continue;
+        const g2clear=g2.filter(function(g){ return segCross(bx,by,g,by,a,b)===0; });
+        const gx2=pickGutter(g2clear, by, laneY, a, b);
+        if(gx2===null) continue;
+        USED_LANE[bkt(laneY,14)]=(USED_LANE[bkt(laneY,14)]||0)+1;
+        gutUse(gx1); gutUse(gx2);
+        return 'M '+ax+' '+ay+' L '+gx1+' '+ay+' L '+gx1+' '+laneY+' L '+gx2+' '+laneY+' L '+gx2+' '+by+' L '+bx+' '+by;
+      }
+    }
+    return null;
+  }
+  function draw(d,kind){
+    const l=document.createElementNS(NS,'path');
+    l.setAttribute('d',d); l.setAttribute('fill','none');
+    l.setAttribute('stroke','#1f2937'); l.setAttribute('stroke-width', kind==='dash'?'1.25':'1.2');
+    if(kind==='dash') l.setAttribute('stroke-dasharray','6 5');
+    l.setAttribute('marker-end','url(#ar)');
     svg.appendChild(l);
   }
-  function label(x,y,txt){
-    const t = document.createElementNS(NS,'text');
-    t.setAttribute('x',x); t.setAttribute('y',y);
-    t.setAttribute('text-anchor','middle');
-    t.setAttribute('style','font-size:11px; font-style:italic; fill:#4b5563; paint-order:stroke; stroke:#ffffff; stroke-width:5px; font-weight:600;');
-    t.textContent = txt;
-    svg.appendChild(t);
+  // 위치기반 라우팅: k번째 pair ↔ k번째 커넥터(선). 호출당 path 정확히 1개 → 쌍 수==선 수 자동 보존.
+  function route(a,b,kind,opts){
+    opts=opts||{};
+    const A=R(a), B=R(b);
+    const dx=B.cx-A.cx, dy=B.cy-A.cy;
+    const arr=opts.arr||0; // 도착 변 대칭 슬롯 오프셋
+    if(opts.gx!==undefined){
+      const gx=opts.gx, hw=(opts.hw===undefined?190:opts.hw);
+      const ay=clamp(A.cy,padT(A),padB(A)), bx=clamp(B.cx+arr,padL(B),padR(B));
+      draw('M '+A.r+' '+ay+' L '+gx+' '+ay+' L '+gx+' '+hw+' L '+bx+' '+hw+' L '+bx+' '+B.b, kind);
+      return;
+    }
+    if(!opts.v && (opts.h || Math.abs(dx)>=Math.abs(dy))){
+      // 액터 출구 y는 스프레드(opts.ey), 도착 y는 대상 변 중앙+슬롯(opts.arr)으로 배분.
+      const p1y=(opts.ey!==undefined)?opts.ey:clamp(B.cy,padT(A),padB(A));
+      const p1={x:dx>0?A.r:A.l, y:p1y};
+      const p2={x:dx>0?B.l:B.r, y:clamp(B.cy+arr,padT(B),padB(B))};
+      const mx=pickAxis(candRange(p1.x,p2.x,22), {x:p1.x,y:p1.y}, {x:p2.x,y:p2.y}, true, a, b, USED_MX);
+      if(hvhCross(p1,p2,mx,a,b)===0){
+        draw('M '+p1.x+' '+p1.y+' L '+mx+' '+p1.y+' L '+mx+' '+p2.y+' L '+p2.x+' '+p2.y, kind);
+      } else {
+        const lr=laneRoute(A,B,a,b,p1y,p2.y);
+        draw(lr || ('M '+p1.x+' '+p1.y+' L '+mx+' '+p1.y+' L '+mx+' '+p2.y+' L '+p2.x+' '+p2.y), kind);
+      }
+    } else {
+      const x1=clamp(B.cx,padL(A),padR(A));
+      const x2=clamp(B.cx+arr,padL(B),padR(B)); // 도착 x = 변 중앙 + 슬롯
+      const p1={x:x1, y:dy>0?A.b:A.t};
+      const p2={x:x2, y:dy>0?B.t:B.b};
+      const my=pickAxis(candRange(p1.y,p2.y,18), {x:p1.x,y:p1.y}, {x:p2.x,y:p2.y}, false, a, b, USED_MY);
+      draw('M '+p1.x+' '+p1.y+' L '+p1.x+' '+my+' L '+x2+' '+my+' L '+p2.x+' '+p2.y, kind);
+    }
   }
 
-  // actor face circle as source
-  function faceRect(actorId){
-    const el = document.querySelector('#'+actorId+' .face');
-    const r = el.getBoundingClientRect();
-    const f = frame.getBoundingClientRect();
-    return { cx: r.left - f.left + r.width/2, cy: r.top - f.top + r.height/2, rx: r.width/2, ry: r.height/2 };
-  }
-
+  // 연결 정의 — ["idA","idB"] 형태의 배열-쌍(파서 mode 0). solids 먼저 → dashes 나중(선언순서=그리기순서).
+  // 쌍 수 == 그려지는 선 수. script 내 그 외 2문자열 배열리터럴 없음(기능 ID·라벨은 노드 텍스트/배지).
   const solids = [
     ['ac-streamer','uc-plugin-install'], ['ac-streamer','uc-simulcast'], ['ac-streamer','uc-hotkey'],
     ['ac-streamer','uc-live-watch'], ['ac-streamer','uc-clip-range'], ['ac-streamer','uc-yt-oauth'],
@@ -275,27 +361,54 @@
     ['ac-ops','uc-ops-account'], ['ac-ops','uc-ops-monitor'], ['ac-ops','uc-ops-incident'], ['ac-ops','uc-ops-stats'],
   ];
   const dashes = [
-    ['uc-hotkey','uc-jumpcard-list','«extend»'],
-    ['uc-jumpcard-list','uc-auto-highlight','«include»'],
-    ['uc-title','uc-subtitle','«include»'],
-    ['uc-reedit','uc-clip-save','«extend»'],
-    ['uc-auto-upload','uc-template','«include»'],
-    ['uc-cc','uc-upload','«extend»'],
-    ['uc-approve','uc-upload','«extend»',0.28],
-    ['uc-vod-clip','uc-clip-range','«include»',0.42],
+    ['uc-jumpcard-list','uc-auto-highlight'],
+    ['uc-title','uc-subtitle'],
+    ['uc-auto-upload','uc-template'],
+    ['uc-vod-clip','uc-clip-range'],
+    ['uc-hotkey','uc-jumpcard-list'],
+    ['uc-approve','uc-upload'],
+    ['uc-cc','uc-upload'],
   ];
-
-  solids.forEach(([a,u])=>{
-    const A = faceRect(a), U = rectOf(u);
-    const p1 = rim(A, U.cx, U.cy, 0.06), p2 = rim(U, A.cx, A.cy, 0.04);
-    line(p1.x, p1.y, p2.x, p2.y, 'solid');
+  // 그리기 순서 = solids 먼저 → dashes 나중(파서 mode 0 보존). 각 원소 = 1 커넥터.
+  const all=[];
+  solids.forEach(function(p){ all.push({p:p, kind:'solid'}); });
+  dashes.forEach(function(p){ all.push({p:p, kind:'dash'}); });
+  // 같은 소스·같은 변에서 나가는 수평 라인들의 출구 y를 타깃 cy 순으로 분산 → 콜리니어 겹침 제거.
+  const grp={};
+  all.forEach(function(e,i){
+    const o=e.p[2]||{}; const A=R(e.p[0]), B=R(e.p[1]);
+    const horiz = !o.v && (o.h || Math.abs(B.cx-A.cx)>=Math.abs(B.cy-A.cy)) && o.gx===undefined;
+    if(horiz){ const side=(B.cx-A.cx)>=0?'R':'L'; const k=e.p[0]+side; (grp[k]=grp[k]||[]).push(i); }
   });
-  dashes.forEach(([a,b,txt,lt])=>{
-    const A = rectOf(a), B = rectOf(b);
-    const p1 = rim(A, B.cx, B.cy, 0.05), p2 = rim(B, A.cx, A.cy, 0.08);
-    line(p1.x, p1.y, p2.x, p2.y, 'dash');
-    const t = (lt === undefined) ? 0.5 : lt;
-    label(p1.x + (p2.x-p1.x)*t, p1.y + (p2.y-p1.y)*t - 7, txt);
+  Object.keys(grp).forEach(function(k){
+    const arr=grp[k];
+    if(arr.length<2) return;
+    arr.sort(function(i,j){ return R(all[i].p[1]).cy - R(all[j].p[1]).cy; });
+    const A=R(all[arr[0]].p[0]); const lo=A.t+13, hi=A.b-13;
+    arr.forEach(function(idx,n){ all[idx].ey = lo+(hi-lo)*(n/(arr.length-1)); });
+  });
+  // 도착 변별 대칭 슬롯 — 같은 변에 n개 진입 시 변 중앙 기준 분산(구석 진입 방지).
+  const agrp={};
+  all.forEach(function(e,i){
+    const o=e.p[2]||{}; const A=R(e.p[0]), B=R(e.p[1]);
+    const dx=B.cx-A.cx, dy=B.cy-A.cy;
+    let edge;
+    if(o.gx!==undefined) edge='B';
+    else if(!o.v && (o.h || Math.abs(dx)>=Math.abs(dy))) edge=(dx>0?'L':'R');
+    else edge=(dy>0?'T':'B');
+    (agrp[e.p[1]+edge]=agrp[e.p[1]+edge]||[]).push({i:i,edge:edge});
+  });
+  Object.keys(agrp).forEach(function(k){
+    const g=agrp[k], n=g.length, B=R(all[g[0].i].p[1]), edge=g[0].edge;
+    const edgeLen=(edge==='L'||edge==='R')?B.h:B.w;
+    const step=Math.min(24, edgeLen*0.6/Math.max(n,1));
+    g.forEach(function(o,idx){ all[o.i].arr=(idx-(n-1)/2)*step; });
+  });
+  all.forEach(function(e){
+    const o=Object.assign({}, e.p[2]||{});
+    if(e.ey!==undefined) o.ey=e.ey;
+    if(e.arr!==undefined) o.arr=e.arr;
+    route(e.p[0], e.p[1], e.kind, o);
   });
 })();
 </script>

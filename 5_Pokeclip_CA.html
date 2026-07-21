@@ -2,322 +2,632 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Pokeclip · CA</title>
+<title>Pokeclip · Cloud Architecture (Target Production)</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Pretendard','Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo',sans-serif;
-         background:#ffffff; width:2700px; height:1760px; position:relative; -webkit-font-smoothing:antialiased; }
-  .page-title { position:absolute; left:34px; top:20px; }
-  .page-title h1 { font-size:18px; font-weight:800; color:#111827; }
-  .page-title p { font-size:11.5px; color:#6b7280; margin-top:5px; }
+         background:#ffffff; width:3840px; height:2320px; position:relative; -webkit-font-smoothing:antialiased;
+         color:#0f172a; }
 
-  .note { position:absolute; background:#f0fdfa; border:2px solid #14b8a6; border-radius:14px; padding:14px 18px; }
-  .note h3 { font-size:12.5px; font-weight:800; color:#0f766e; margin-bottom:8px; }
-  .note p, .note li { font-size:10.5px; color:#134e4a; line-height:1.66; list-style:none; }
-  .note b { color:#0f766e; }
-  .wnote { background:#fff; border:1px solid #e5e7eb; }
-  .wnote h3 { color:#111827; } .wnote p, .wnote li { color:#4b5563; } .wnote b { color:#111827; }
+  .title-bar { position:absolute; left:40px; top:30px; height:70px; background:#111111;
+               display:flex; align-items:center; padding:0 30px 0 24px; }
+  .title-bar h1 { font-size:40px; font-weight:800; color:#fff; letter-spacing:-0.5px; }
+  .title-tag { margin-left:16px; font-size:16px; font-weight:700; color:#FF9900; letter-spacing:0.4px; }
+  .title-underline { position:absolute; left:40px; top:104px; width:760px; height:9px; background:#111111; }
+  .subtitle { position:absolute; left:42px; top:126px; font-size:15px; color:#334155; font-weight:600; }
 
-  .frame { position:absolute; border-radius:16px; }
-  .f-aws { border:2.5px solid #ec4899; background:rgba(236,72,153,0.028); }
-  .f-vpc { border:2px solid #8b5cf6; background:rgba(139,92,246,0.03); }
-  .f-az  { border:1.8px dashed #60a5fa; }
-  .f-pub { border:1.8px solid #22c55e; background:rgba(34,197,94,0.05); }
-  .f-app { border:1.8px solid #f43f5e; background:rgba(244,63,94,0.045); }
-  .f-dat { border:1.8px solid #eab308; background:rgba(234,179,8,0.06); }
-  .f-cicd{ border:1.8px dashed #f59e0b; background:rgba(245,158,11,0.05); }
-  .f-reg { border:1.8px dashed #9ca3af; background:#fafafa; }
-  .flabel { position:absolute; top:-13px; left:20px; background:#fff; padding:2px 12px; border-radius:8px;
-            font-size:12.5px; font-weight:800; }
-  .fl-aws { color:#be185d; border:1.5px solid #ec4899; }
-  .fl-vpc { color:#6d28d9; border:1.5px solid #8b5cf6; }
-  .fl-az  { color:#2563eb; border:1.5px dashed #60a5fa; }
-  .fl-pub { color:#15803d; border:1.5px solid #22c55e; }
-  .fl-app { color:#be123c; border:1.5px solid #f43f5e; }
-  .fl-dat { color:#a16207; border:1.5px solid #eab308; }
-  .fl-cicd{ color:#b45309; border:1.5px dashed #f59e0b; }
-  .fl-reg { color:#4b5563; border:1.5px dashed #9ca3af; }
+  /* 컨테이너 위계 (Region>VPC>AZ>Subnet) */
+  .frame { position:absolute; border-radius:14px; }
+  .f-cloud   { border:2.6px solid #232F3E; }
+  .f-cust    { border:2px dashed #94a3b8; background:rgba(15,23,42,0.012); }
+  .f-ext     { border:2px dashed #64748b; background:rgba(100,116,139,0.03); }
+  .f-cicd    { border:2px dashed #15803d; background:rgba(22,101,52,0.03); }
+  .f-managed { border:2px dashed #5A6B86; background:rgba(90,107,134,0.028); }
+  .f-vpc     { border:2.2px solid #8C4FFF; background:rgba(140,79,255,0.018); }
+  .f-az      { border:2px dashed #147EBA; background:rgba(20,126,186,0.02); }
+  .f-pub     { border:1.8px solid #1D8102; background:rgba(29,129,2,0.055); }
+  .f-app     { border:1.8px solid #00A4A6; background:rgba(0,164,166,0.05); }
+  .f-dat     { border:1.8px solid #3334B9; background:rgba(51,52,185,0.055); }
+  .f-ecs     { border:1.9px dashed #ED7100; background:rgba(237,113,0,0.035); }
+  .f-ops     { border:2px dashed #DD344C; background:rgba(221,52,76,0.03); }
+  .f-fut     { border:1.7px dashed #94a3b8; background:rgba(148,163,184,0.06); }
 
-  .svc { position:absolute; background:#fff; border:1.6px solid #d1d5db; border-radius:12px; padding:10px 12px;
-         box-shadow:0 1px 3px rgba(0,0,0,0.06); }
-  .svc .row { display:flex; align-items:center; gap:10px; }
-  .awsic { width:40px; height:40px; border-radius:9px; flex:none; display:flex; align-items:center; justify-content:center;
-           color:#fff; font-size:11px; font-weight:800; letter-spacing:0.3px; }
-  .ic-or { background:#ED7100; } .ic-gr { background:#7AA116; } .ic-bl { background:#3B48CC; }
-  .ic-pu { background:#8C4FFF; } .ic-pk { background:#E7157B; } .ic-dk { background:#1f2937; } .ic-cy { background:#0891b2; }
-  .svc h4 { font-size:12.5px; font-weight:800; color:#111827; }
-  .svc .sub { font-size:9.8px; color:#6b7280; margin-top:2px; line-height:1.45; }
-  .svc .list { margin-top:8px; border-top:1px dashed #e5e7eb; padding-top:7px; }
-  .svc .list li { list-style:none; font-size:10.2px; color:#374151; line-height:1.6; padding-left:9px; position:relative; }
-  .svc .list li:before { content:'·'; position:absolute; left:0; }
-  .badge { display:inline-block; font-size:9px; font-weight:800; padding:2px 8px; border-radius:999px; margin-left:6px; vertical-align:1px; }
-  .b-go { background:#ecfeff; color:#0e7490; border:1px solid #67e8f9; }
-  .b-spring { background:#f1f8e9; color:#3f6212; border:1px solid #aed581; }
-  .b-node { background:#fff7ed; color:#92400e; border:1px solid #fdba74; }
-  .b-py { background:#f5f3ff; color:#6d28d9; border:1px solid #c4b5fd; }
+  .flabel { position:absolute; top:-12px; left:16px; background:#fff; padding:2px 11px;
+            font-size:13px; font-weight:800; border-radius:6px; white-space:nowrap; }
+  .fl-cust{color:#475569;} .fl-ext{color:#475569;} .fl-cicd{color:#15803d;} .fl-managed{color:#42506b;}
+  .fl-vpc{color:#6d28d9;} .fl-az{color:#0e6aa0;} .fl-pub{color:#166534;} .fl-app{color:#0d7377;}
+  .fl-dat{color:#2f2fa2;} .fl-ecs{color:#c2410c;} .fl-ops{color:#be123c;} .fl-fut{color:#64748b;}
+  .flabel .badge{display:inline-block;color:#fff;font-size:10px;font-weight:800;border-radius:4px;
+                 padding:1px 6px;margin-right:7px;vertical-align:1px;}
+  .b-ecs{background:#ED7100;} .b-az{background:#147EBA;border-radius:999px!important;padding:1px 8px;}
+  .cloudlabel { position:absolute; left:-1px; top:-1px; background:#232F3E; color:#fff; font-size:15px;
+                font-weight:800; padding:8px 20px; border-radius:14px 0 12px 0; }
 
-  .client { position:absolute; background:#fff; border:1.8px solid; border-radius:12px; padding:10px 14px; }
-  .client h4 { font-size:12.5px; font-weight:800; }
-  .client p { font-size:10px; color:#6b7280; margin-top:3px; line-height:1.5; }
-  .c-web { border-color:#d97706; } .c-web h4 { color:#92400e; }
-  .c-obs { border-color:#3b82f6; } .c-obs h4 { color:#1d4ed8; }
+  /* AWS 아이콘 노드 — 브랜드색 둥근 사각 + 흰 선화 글리프 */
+  .aws { position:absolute; display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .aws .tile { width:52px; height:52px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+               box-shadow:0 1px 3px rgba(0,0,0,0.22); flex:none; }
+  .aws .lbl { margin-top:7px; font-size:13px; font-weight:750; color:#0f172a; line-height:1.25; }
+  .aws .sub { font-size:10px; font-weight:500; color:#64748b; line-height:1.3; margin-top:2px; }
+  .aws.mini .tile { width:42px; height:42px; border-radius:10px; }
+  .aws.mini .lbl { font-size:11px; margin-top:5px; }
+  .aws.mini .sub { font-size:9px; }
+  .aws.dashedbox { border:1.6px dashed #b6bcc7; border-radius:12px; padding:8px 6px 10px; background:rgba(148,163,184,0.05); }
+  .t-net{background:#8C4FFF;} .t-com{background:#ED7100;} .t-sto{background:#3F8624;} .t-db{background:#C925D1;}
+  .t-int{background:#E7157B;} .t-sec{background:#DD344C;} .t-mgmt{background:#B0084D;}
+  .t-obs{background:#1F2937;} .t-web{background:#087EA4;} .t-live{background:#0f172a;}
+  .t-google{background:#4285F4;} .t-youtube{background:#FF0000;} .t-chzzk{background:#00C880;}
+  .t-soop{background:#1359FF;} .t-discord{background:#5865F2;} .t-github{background:#24292F;} .t-gha{background:#2088FF;}
+  .stack{display:inline-block;font-size:9px;font-weight:800;padding:1px 6px;border-radius:999px;margin-top:3px;}
+  .s-spr{background:#f1f8e9;color:#3f6212;border:1px solid #aed581;}
+  .s-nod{background:#eefbf3;color:#15803d;border:1px solid #86efac;}
+  .s-py{background:#eef4ff;color:#1e40af;border:1px solid #93c5fd;}
 
-  .cdn { position:absolute; border-radius:12px; background:#fff; border:2px solid; padding:10px 14px; }
-  .cdn h4 { font-size:12px; font-weight:800; }
-  .cdn p { font-size:9.8px; color:#4b5563; margin-top:3px; line-height:1.5; }
-  .cdn-b { border-color:#ED7100; } .cdn-b h4 { color:#c2410c; }
+  /* Media Origin 내부 파이프라인 칩 */
+  .mediabox .chips{display:flex;flex-direction:column;align-items:stretch;margin-top:9px;width:222px;}
+  .mediabox .chip{position:relative;font-size:10px;font-weight:650;color:#7c3a06;background:#fff7ed;
+                  border:1px solid #fdba74;border-radius:7px;padding:3px 8px;margin-bottom:8px;text-align:center;}
+  .mediabox .chip:not(:last-child)::after{content:"";position:absolute;left:50%;bottom:-6px;
+                  border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #f59e0b;
+                  transform:translateX(-50%);}
+  .mediabox .pipehdr{font-size:9.5px;font-weight:700;color:#9a3412;margin-top:6px;letter-spacing:0.2px;}
 
-  .ext { position:absolute; background:#fff7ed; border:1.5px solid #fb923c; border-radius:10px; padding:8px 12px; }
-  .ext h4 { font-size:11px; font-weight:800; color:#c2410c; }
-  .ext p { font-size:9px; color:#9a3412; margin-top:2px; }
+  /* 채워진 실루엣 액터 */
+  .actor { position:absolute; display:flex; flex-direction:column; align-items:center; }
+  .actor .albl { font-size:14px; font-weight:750; color:#334155; margin-top:6px; }
+  .actor .arole { font-size:10px; color:#64748b; margin-top:1px; }
+
+  /* 범례 (CSS 라인 샘플 — svg 아님) */
+  .legend{position:absolute; border:1.6px solid #cbd5e1; border-radius:12px; background:#fff; padding:12px 18px;}
+  .legend .lgt{font-size:13px;font-weight:800;color:#0f172a;margin-bottom:8px;}
+  .legend .row{display:flex;align-items:center;font-size:12px;color:#334155;margin:4px 0;font-weight:600;}
+  .legend .ln{width:52px;height:0;margin-right:10px;flex:none;}
+  .l-solid{border-top:2px solid #1f2937;} .l-dash{border-top:2px dashed #1f2937;}
+  .l-thick{border-top:4px solid #1f2937;} .l-thin{border-top:1px solid #64748b;}
+  .l-ci{border-top:2.4px solid #15803d;}
+
+  .note{position:absolute; border:1.6px solid #cbd5e1; border-radius:12px; background:#f8fafc; padding:12px 16px;
+        font-size:11.5px; color:#334155; line-height:1.5;}
+  .note b{color:#0f172a;} .note .nt{font-size:12.5px;font-weight:800;color:#0f172a;display:block;margin-bottom:4px;}
+  .col4{column-count:4; column-gap:34px;}
+  .alarms{position:absolute;font-size:10.5px;color:#7f1d1d;line-height:1.5;font-weight:600;}
+  .alarms b{color:#be123c;}
+  .idem{position:absolute;font-size:10.5px;font-weight:650;color:#9d174d;line-height:1.4;max-width:300px;}
 
   svg.wires { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  #selftest{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;color:transparent;font-size:1px;}
 </style>
 </head>
 <body>
-  <div class="page-title">
-    <h1>Pokeclip · Cloud Architecture CA (2026.07) — AWS ap-northeast-2 · CDN: CloudFront</h1>
-    <p>논리(SysA) → 물리(CA) 배포도 · 실선 = 요청/스트림 · 점선 = 비동기·배포·외부 · MVP: Single VPC · Single AZ</p>
-  </div>
+  <div class="title-bar"><h1>Cloud Architecture</h1><span class="title-tag">Target Production · AWS</span></div>
+  <div class="title-underline"></div>
+  <div class="subtitle">PokeClip · AWS ap-northeast-2 (Seoul) · Multi-AZ 목표 아키텍처 · CloudFront 전용(ADR-015) · 자체 미디어 계층 직접 구현(ADR-003/013, MediaLive·MediaPackage·Transcribe 의도적 배제) · 저장 일원화(ADR-005)</div>
 
-  <!-- 논리→물리 매핑 -->
-  <div class="note" style="left:34px; top:84px; width:496px;">
-    <h3>논리(SysA) → 물리(CA) 매핑 요약</h3>
-    <li>· Auth·Clip·Render (Spring ×3) + Chat (Node) + AI (Python) → <b>ECS Fargate 서비스 5 (서비스별 독립 배포·오토스케일)</b></li>
-    <li>· Media Origin (Go) → <b>Media EC2 단독</b> — SRT(UDP) 직수신·LL-HLS 오리진</li>
-    <li>· PostgreSQL → <b>RDS Multi-AZ</b> · Redis → <b>ElastiCache primary+replica</b></li>
-    <li>· S3 → <b>Amazon S3</b> (세그먼트·VOD 60일·클립 영구·채팅 아카이브)</li>
-    <li>· 이벤트·잡 큐 → <b>SQS</b> (dev는 Redis Streams)</li>
-    <li>· CDN → <b>CloudFront 전용 (ADR-015)</b> — 라이브 LL-HLS·VOD·클립 단일 배포 · dev 스테이지 별도 운영</li>
-  </div>
-
-  <!-- 좌측: 클라이언트 & CDN -->
-  <div class="client c-web" id="cl-web" style="left:60px; top:370px; width:400px;">
-    <h4>스트리머·편집자 — 웹 대시보드</h4>
-    <p>React SPA · 라이브 뷰(LL-HLS)·에디터·VOD — HTTPS</p>
-  </div>
-  <div class="client c-obs" id="cl-obs" style="left:60px; top:470px; width:400px;">
-    <h4>OBS 플러그인 (스트리머 PC)</h4>
-    <p>C++ · 동시 송출 SRT+TS (영상+오디오 10트랙) · 컨트롤 채널 HTTPS</p>
-  </div>
-
-  <div class="svc" id="r53" style="left:60px; top:600px; width:400px;">
-    <div class="row"><div class="awsic ic-pu">R53</div><div><h4>Route 53</h4><div class="sub">DNS — app.pokeclip / media.pokeclip</div></div></div>
-  </div>
-
-  <div class="frame" style="left:40px; top:730px; width:452px; height:236px; border:1.8px dashed #0891b2; border-radius:14px;">
-    <div class="flabel" style="color:#0e7490; border:1.5px dashed #67e8f9;">CDN — CloudFront</div>
-  </div>
-  <div class="cdn cdn-b" id="cdn" style="left:62px; top:772px; width:408px;">
-    <h4>CloudFront (전용 · ADR-015)</h4>
-    <p>라이브 LL-HLS + VOD·클립 단일 배포 — 무료 티어 1TB/월 · 세그먼트 불변 장TTL · 매니페스트 초단위 TTL</p>
-  </div>
-  <div style="position:absolute; left:62px; top:886px; width:408px; font-size:9.8px; color:#4b5563; line-height:1.5;">
-    오리진: <b>라이브 LL-HLS = Media EC2</b> · <b>VOD·클립 = S3</b> — 시청 트래픽 전부 CDN 경유
-  </div>
-
-  <!-- AWS Cloud -->
-  <div class="frame f-aws" style="left:560px; top:150px; width:1560px; height:1440px;">
-    <div class="flabel fl-aws">☁️ AWS Cloud (ap-northeast-2)</div>
-  </div>
-  <div class="frame f-vpc" style="left:600px; top:230px; width:1480px; height:1030px;">
-    <div class="flabel fl-vpc">VPC · 10.0.0.0/16</div>
-  </div>
-  <div class="frame f-az" style="left:625px; top:285px; width:1430px; height:945px;">
-    <div class="flabel fl-az">Availability Zone · ap-northeast-2a</div>
-  </div>
-
-  <!-- Public Subnet -->
-  <div class="frame f-pub" style="left:655px; top:330px; width:430px; height:870px;">
-    <div class="flabel fl-pub">Public Subnet</div>
-  </div>
-  <div class="svc" id="igw" style="left:685px; top:375px; width:370px;">
-    <div class="row"><div class="awsic ic-pu">IGW</div><div><h4>Internet Gateway</h4></div></div>
-  </div>
-  <div class="svc" id="alb" style="left:685px; top:465px; width:370px;">
-    <div class="row"><div class="awsic ic-pu">ALB</div><div><h4>Application Load Balancer</h4><div class="sub">HTTPS → ECS 서비스 (API·SSE·대시보드)</div></div></div>
-  </div>
-  <div class="svc" id="media-ec2" style="left:685px; top:580px; width:370px;">
-    <div class="row"><div class="awsic ic-or">EC2</div><div><h4>Media EC2 <span class="badge b-go">Go ⭐</span></h4><div class="sub">c7g.large 급 · EIP · 100GB gp3</div></div></div>
-    <div class="list">
-      <li>SRT 수신 <b>UDP :9000</b> — UDP라 ALB 불가 → EIP 직수신 (보안그룹 제한)</li>
-      <li>TS 디먹스 · CMAF 세그먼트 · LL-HLS 서빙 (DVR 1h)</li>
-      <li>세그먼트 S3 실시간 적재(<b>배칭으로 PUT 절감</b>) · VOD 확정 · 방송 이벤트→SQS</li>
+  <!-- 범례 -->
+  <div class="legend" style="left:2560px; top:34px; width:560px;">
+    <div class="lgt">연결선 표기 규약</div>
+    <div style="display:flex;gap:40px;">
+      <div>
+        <div class="row"><span class="ln l-solid"></span>동기 · 실시간 스트림</div>
+        <div class="row"><span class="ln l-dash"></span>비동기 이벤트 · 잡 큐</div>
+        <div class="row"><span class="ln l-thick"></span>미디어 데이터 (SRT·CMAF·HLS)</div>
+      </div>
+      <div>
+        <div class="row"><span class="ln l-thin"></span>제어 · 메타데이터</div>
+        <div class="row"><span class="ln l-ci"></span>CI/CD · 배포</div>
+        <div class="row" style="color:#64748b;font-weight:600;">엣지 라벨 = 프로토콜/데이터 종류</div>
+      </div>
     </div>
   </div>
-  <div class="svc" id="nat" style="left:685px; top:800px; width:370px;">
-    <div class="row"><div class="awsic ic-pu">NAT</div><div><h4>NAT Gateway</h4><div class="sub">Private → 외부 API 아웃바운드</div></div></div>
+
+  <!-- ===== Customer Environment ===== -->
+  <div class="frame f-cust" style="left:150px; top:430px; width:430px; height:560px;">
+    <span class="flabel fl-cust">Customer Environment</span>
   </div>
-  <div style="position:absolute; left:685px; top:890px; width:370px; font-size:9.6px; color:#15803d; line-height:1.55;">
-    ※ Media EC2를 Public에 두는 이유: SRT(UDP)는 L7 LB를 못 타므로 EIP로 직수신. HLS 시청 경로는 CDN이 앞단을 막아줌.
+  <div class="actor" id="act-streamer" style="left:36px; top:470px;">
+    <svg width="52" height="58" viewBox="0 0 34 38"><g fill="#374151"><circle cx="17" cy="9" r="6.5"/><path d="M4 36c0-8 6-12 13-12s13 4 13 12z"/></g></svg>
+    <div class="albl">Streamer</div><div class="arole">스트리머</div>
+  </div>
+  <div class="actor" id="act-editor" style="left:44px; top:700px;">
+    <svg width="52" height="58" viewBox="0 0 34 38"><g fill="#475569"><circle cx="17" cy="9" r="6.5"/><path d="M4 36c0-8 6-12 13-12s13 4 13 12z"/></g></svg>
+    <div class="albl">Editor</div><div class="arole">편집자 · 시청자</div>
+  </div>
+  <div class="aws" id="obs-plugin" data-g="obs" data-t="obs" style="left:200px; top:490px; width:210px;">
+    <div class="lbl">C++ OBS Plugin</div><div class="sub">libobs · 인코더 공유 · 자동 재연결 · ~10 Audio Tracks</div>
+  </div>
+  <div class="aws" id="web-dash" data-g="web" data-t="web" style="left:210px; top:720px; width:190px;">
+    <div class="lbl">React Web Dashboard</div><div class="sub">라이브 뷰 · 클립 에디터 · VOD · 운영 콘솔</div>
+  </div>
+  <div class="frame f-cust" style="left:150px; top:1010px; width:430px; height:150px;">
+    <span class="flabel fl-cust">External Streaming Platforms · 본방</span>
+  </div>
+  <div class="aws mini" id="chzzk-live" data-g="platform" data-t="live" style="left:195px; top:1058px; width:150px;">
+    <div class="lbl">CHZZK 본방</div><div class="sub">라이브 송출</div>
+  </div>
+  <div class="aws mini" id="soop-live" data-g="platform" data-t="live" style="left:400px; top:1058px; width:150px;">
+    <div class="lbl">SOOP 본방</div><div class="sub">라이브 송출</div>
   </div>
 
-  <!-- App Private Subnet -->
-  <div class="frame f-app" style="left:1115px; top:330px; width:490px; height:870px;">
-    <div class="flabel fl-app">Private Subnet · App</div>
+  <!-- ===== Edge & Public Entry ===== -->
+  <div class="frame f-ext" style="left:610px; top:400px; width:210px; height:1010px;">
+    <span class="flabel fl-ext">Edge &amp; Public Entry</span>
   </div>
-  <div class="svc" id="core-ec2" style="left:1145px; top:380px; width:430px;">
-    <div class="row"><div class="awsic ic-or">ECS</div><div><h4>ECS Cluster · Fargate</h4><div class="sub">서비스 5 · 서비스별 독립 배포 · 태스크 자동 복구</div></div></div>
-    <div class="list">
-      <li>Auth·Account <span class="badge b-spring">Spring</span> — OAuth·권한·스트림 키</li>
-      <li>Clip Service <span class="badge b-spring">Spring</span> — 점프카드 SSE·레시피·승인</li>
-      <li>Render·Upload Worker <span class="badge b-spring">Spring</span> — FFmpeg·유튜브 · <b>큐 길이 오토스케일</b></li>
-      <li>Chat Collector <span class="badge b-node">Node</span> — 치지직·SOOP 수집·차트</li>
-      <li>AI Worker <span class="badge b-py">Python</span> — faster-whisper · <b>큐 길이 오토스케일 (min 0)</b></li>
+  <div class="aws mini" id="route53" data-g="dns" data-t="net" style="left:632px; top:450px; width:170px;">
+    <div class="lbl">Route 53</div><div class="sub">DNS · pokeclip.io</div>
+  </div>
+  <div class="aws mini" id="cloudfront" data-g="cdn" data-t="net" style="left:632px; top:600px; width:170px;">
+    <div class="lbl">CloudFront</div><div class="sub">라이브·VOD·클립 배포</div>
+  </div>
+  <div class="aws mini" id="waf" data-g="waf" data-t="sec" style="left:632px; top:760px; width:170px;">
+    <div class="lbl">AWS WAF</div><div class="sub">API 방어</div>
+  </div>
+  <div class="aws mini" id="igw" data-g="igw" data-t="net" style="left:632px; top:910px; width:170px;">
+    <div class="lbl">Internet Gateway</div>
+  </div>
+  <div class="aws mini" id="alb" data-g="alb" data-t="net" style="left:632px; top:1040px; width:170px;">
+    <div class="lbl">Application LB</div><div class="sub">HTTP/HTTPS · SRT 미처리</div>
+  </div>
+  <div class="aws mini" id="srt-eip" data-g="eip" data-t="net" style="left:628px; top:1220px; width:180px;">
+    <div class="lbl">SRT Entry · EIP</div><div class="sub">UDP 9000 (ALB 우회)</div>
+  </div>
+
+  <!-- ===== AWS Cloud ===== -->
+  <div class="frame f-cloud" style="left:860px; top:200px; width:2540px; height:1960px;">
+    <span class="cloudlabel">AWS Cloud · ap-northeast-2</span>
+  </div>
+
+  <!-- 상단 밴드: 리전 관리형 서비스 (VPC 외부) -->
+  <div class="frame f-managed" style="left:876px; top:250px; width:2478px; height:322px;">
+    <span class="flabel fl-managed">Regional Managed Services · VPC 외부</span>
+  </div>
+  <div class="frame f-fut" style="left:894px; top:296px; width:680px; height:258px;">
+    <span class="flabel fl-fut">Amazon S3 · 저장 일원화(ADR-005)</span>
+  </div>
+  <div class="aws mini" id="s3-seg" data-g="s3" data-t="sto" style="left:906px; top:360px; width:210px;">
+    <div class="lbl">CMAF Segments</div><div class="sub">DVR·VOD Manifest 공유 · VOD 60d lifecycle</div>
+  </div>
+  <div class="aws mini" id="s3-clip" data-g="s3" data-t="sto" style="left:1126px; top:360px; width:200px;">
+    <div class="lbl">Rendered Clips</div><div class="sub">Subtitle Files</div>
+  </div>
+  <div class="aws mini" id="s3-arch" data-g="s3" data-t="sto" style="left:1346px; top:360px; width:210px;">
+    <div class="lbl">Chat Raw Archive</div><div class="sub">AI Artifacts</div>
+  </div>
+  <div class="frame f-fut" style="left:1594px; top:296px; width:1150px; height:258px;">
+    <span class="flabel fl-fut">Amazon SQS · 잡/이벤트 큐 (+ 각 큐 DLQ)</span>
+  </div>
+  <div class="aws mini" id="q-bcast" data-g="sqs" data-t="int" style="left:1610px; top:360px; width:180px;">
+    <div class="lbl">Broadcast Event Q</div><div class="sub">생명주기 이벤트</div>
+  </div>
+  <div class="aws mini" id="q-render" data-g="sqs" data-t="int" style="left:1810px; top:360px; width:170px;">
+    <div class="lbl">Render Job Q</div>
+  </div>
+  <div class="aws mini" id="q-ai" data-g="sqs" data-t="int" style="left:2000px; top:360px; width:150px;">
+    <div class="lbl">AI Job Q</div>
+  </div>
+  <div class="aws mini" id="q-upload" data-g="sqs" data-t="int" style="left:2170px; top:360px; width:170px;">
+    <div class="lbl">Upload Job Q</div>
+  </div>
+  <div class="aws mini dashedbox" id="dlq" data-g="sqs" data-t="int" style="left:2360px; top:360px; width:180px;">
+    <div class="lbl">Dead Letter Q ×4</div><div class="sub">재전달 초과 격리</div>
+  </div>
+  <div class="idem" style="left:2560px; top:360px;">
+    멱등성: 워커는 <b>멱등성 키</b>로 중복 소비 방지 ·<br>SQS 재시도(visibility timeout) → 초과분 DLQ ·<br>실패율 알람은 CloudWatch가 감시
+  </div>
+  <div class="aws mini" id="ecr" data-g="ecr" data-t="com" style="left:3060px; top:360px; width:180px;">
+    <div class="lbl">Amazon ECR</div><div class="sub">컨테이너 이미지</div>
+  </div>
+
+  <!-- ===== VPC ===== -->
+  <div class="frame f-vpc" style="left:876px; top:600px; width:2478px; height:1330px;">
+    <span class="flabel fl-vpc">VPC · 10.0.0.0/16</span>
+  </div>
+
+  <!-- AZ-A -->
+  <div class="frame f-az" style="left:892px; top:648px; width:2446px; height:632px;">
+    <span class="flabel fl-az"><span class="badge b-az">AZ</span>Availability Zone A · ap-northeast-2a</span>
+  </div>
+  <div class="frame f-pub" style="left:906px; top:692px; width:440px; height:560px;">
+    <span class="flabel fl-pub">Public Subnet A</span>
+  </div>
+  <div class="aws mediabox" id="media-ec2" data-g="ec2" data-t="com" style="left:930px; top:756px; width:250px;">
+    <div class="lbl">Media Origin · EC2</div><div class="sub">Go 직접 구현(ADR-003) · Stateful UDP</div>
+    <div class="pipehdr">내부 파이프라인 (위 → 아래)</div>
+    <div class="chips">
+      <div class="chip">SRT Listener · UDP 9000</div>
+      <div class="chip">MPEG-TS Demuxer</div>
+      <div class="chip">Multi-Audio Track Mapper</div>
+      <div class="chip">CMAF Segmenter</div>
+      <div class="chip">LL-HLS Origin · DVR Rolling 1h</div>
+      <div class="chip">S3 Segment Uploader (배칭)</div>
+      <div class="chip">Broadcast Lifecycle Publisher</div>
     </div>
   </div>
-  <div style="position:absolute; left:1145px; top:700px; width:430px; font-size:9.6px; color:#be123c; line-height:1.55;">
-    ※ Fargate 채택 이유: stateless 서비스·잡 워커에 최적 — 독립 배포·오토스케일·자동 복구(HA). Media Origin은 스테이트풀 UDP 워크로드라 오케스트레이션에서 의도적으로 제외(EC2 단독).
+  <div class="aws mini" id="nat-a" data-g="nat" data-t="net" style="left:952px; top:1150px; width:200px;">
+    <div class="lbl">NAT Gateway A</div><div class="sub">Private 아웃바운드</div>
   </div>
-  <div class="svc" id="cw" style="left:1145px; top:800px; width:430px;">
-    <div class="row"><div class="awsic ic-pk">CW</div><div><h4>CloudWatch</h4><div class="sub">로그·메트릭 + <b>알람</b>(CPU·큐 적체·인제스트 다운→Discord) + <b>대시보드</b>(큐 길이·렌더 실패율)</div></div></div>
+  <div class="frame f-dat" style="left:1366px; top:692px; width:522px; height:340px;">
+    <span class="flabel fl-dat">Data Private Subnet A</span>
   </div>
-  <div class="svc" id="sm" style="left:1145px; top:890px; width:430px;">
-    <div class="row"><div class="awsic ic-pk">SM</div><div><h4>Secrets Manager</h4><div class="sub">DB·유튜브 토큰·스트림 키 시크릿</div></div></div>
+  <div class="aws" id="redis-a" data-g="cache" data-t="db" style="left:1392px; top:772px; width:220px;">
+    <div class="lbl">ElastiCache Redis</div><div class="sub">Primary · Session·SSE·라이브차트·SRT통계</div>
   </div>
-
-  <!-- Data Private Subnet -->
-  <div class="frame f-dat" style="left:1635px; top:330px; width:415px; height:870px;">
-    <div class="flabel fl-dat">Private Subnet · Data</div>
+  <div class="aws" id="rds-a" data-g="rds" data-t="db" style="left:1640px; top:772px; width:220px;">
+    <div class="lbl">RDS PostgreSQL</div><div class="sub">Primary · 메타·상태·S3 포인터만</div>
   </div>
-  <div class="svc" id="rds" style="left:1660px; top:380px; width:365px;">
-    <div class="row"><div class="awsic ic-bl">RDS</div><div><h4>RDS PostgreSQL</h4><div class="sub">prod: db.t4g.small <b>Multi-AZ — 스탠바이 자동 페일오버(1~2분)</b><br>dev: db.t4g.micro Single-AZ</div></div></div>
-    <div class="list"><li>계정·권한 · 레시피(JSONB) · 점프카드 · 클립·잡 상태</li></div>
+  <div class="frame f-app" style="left:1906px; top:692px; width:1420px; height:560px;">
+    <span class="flabel fl-app">App Private Subnet A</span>
   </div>
-  <div class="svc" id="redis" style="left:1660px; top:560px; width:365px;">
-    <div class="row"><div class="awsic ic-bl">EC</div><div><h4>ElastiCache Redis</h4><div class="sub">prod: <b>primary + replica (자동 승격)</b> · dev: micro 단일</div></div></div>
-    <div class="list"><li>세션 · 라이브 상태 · 채팅 집계 · SSE 팬아웃</li></div>
+  <div class="frame f-ecs" style="left:1924px; top:730px; width:1384px; height:504px;">
+    <span class="flabel fl-ecs"><span class="badge b-ecs">ECS</span>ECS Fargate Cluster · Multi-AZ · 서비스별 독립 배포</span>
   </div>
-  <div style="position:absolute; left:1660px; top:730px; width:365px; font-size:9.6px; color:#a16207; line-height:1.55;">
-    ※ DB 선정: 코어 데이터가 관계형 사슬(계정→권한→카드→레시피→클립)+승인 트랜잭션 → PostgreSQL. 반정형 레시피는 JSONB로 수용.
+  <div class="aws" id="svc-ai" data-g="ecs" data-t="com" style="left:1945px; top:812px; width:255px;">
+    <div class="lbl">AI Worker</div><div class="sub">faster-whisper · VAD 필터 · 선택 트랙 자막 · 추천 제목</div><span class="stack s-py">Python</span>
   </div>
-
-  <!-- Region services (VPC 밖) -->
-  <div class="frame f-reg" style="left:625px; top:1290px; width:1430px; height:270px;">
-    <div class="flabel fl-reg">리전 서비스 (VPC 외부 · 관리형)</div>
+  <div class="aws" id="svc-clip" data-g="ecs" data-t="com" style="left:2215px; top:812px; width:255px;">
+    <div class="lbl">Clip Service</div><div class="sub">방송세션 · 점프카드 · 레시피 · 승인 · SSE · 잡 발행</div><span class="stack s-spr">Spring</span>
   </div>
-  <div class="svc" id="s3" style="left:655px; top:1330px; width:480px;">
-    <div class="row"><div class="awsic ic-gr">S3</div><div><h4>Amazon S3</h4><div class="sub">세그먼트 한 벌 · VOD · 클립 · 채팅 아카이브</div></div></div>
-    <div class="list">
-      <li>수명주기: 핫 1h 롤링(오리진 캐시) · <b>VOD 60일 만료</b> · 클립 영구</li>
-      <li>12h 방송 ≈ 채널당 ~50GB → 스토리지 월 수백 원 수준</li>
-    </div>
+  <div class="aws" id="svc-render" data-g="ecs" data-t="com" style="left:2485px; top:812px; width:280px;">
+    <div class="lbl">Render · Upload Worker</div><div class="sub">구간디코드 · Multi-Audio Mix · BGM 제외 · 5비율 · 번인 · -14 LUFS · YouTube Resumable</div><span class="stack s-spr">Spring+FFmpeg</span>
   </div>
-  <div class="svc" id="sqs" style="left:1165px; top:1330px; width:400px;">
-    <div class="row"><div class="awsic ic-pk">SQS</div><div><h4>SQS</h4><div class="sub">방송 이벤트 · 렌더·AI·업로드 잡 (dev: Redis Streams)</div></div></div>
+  <div class="aws" id="svc-chat" data-g="ecs" data-t="com" style="left:2780px; top:812px; width:255px;">
+    <div class="lbl">Chat Collector</div><div class="sub">수집 · 시차보정 · 롤링베이스라인 · 하이라이트 스코어</div><span class="stack s-nod">Node.js</span>
   </div>
-  <div class="svc" id="ecr" style="left:1595px; top:1330px; width:430px;">
-    <div class="row"><div class="awsic ic-or">ECR</div><div><h4>ECR</h4><div class="sub">컨테이너 이미지 저장소 (CI/CD 연계)</div></div></div>
+  <div class="aws" id="svc-auth" data-g="ecs" data-t="com" style="left:3050px; top:812px; width:250px;">
+    <div class="lbl">Auth · Account</div><div class="sub">Google OAuth · 스트림키 · 편집자권한 · 채널연동</div><span class="stack s-spr">Spring</span>
   </div>
 
-  <!-- CI/CD -->
-  <div class="frame f-cicd" style="left:2160px; top:230px; width:500px; height:560px;">
-    <div class="flabel fl-cicd">CI/CD</div>
+  <!-- AZ-B -->
+  <div class="frame f-az" style="left:892px; top:1300px; width:2446px; height:600px;">
+    <span class="flabel fl-az"><span class="badge b-az">AZ</span>Availability Zone B · ap-northeast-2c</span>
   </div>
-  <div class="svc" id="gh" style="left:2190px; top:280px; width:440px;">
-    <div class="row"><div class="awsic ic-dk">GH</div><div><h4>GitHub (모노레포)</h4><div class="sub">plugin(C++) · media(Go) · core(Java) · chat(TS) · ai(Py) · web</div></div></div>
+  <div class="frame f-pub" style="left:906px; top:1344px; width:440px; height:520px;">
+    <span class="flabel fl-pub">Public Subnet B</span>
   </div>
-  <div class="svc" id="gha" style="left:2190px; top:390px; width:440px;">
-    <div class="row"><div class="awsic ic-dk">GA</div><div><h4>GitHub Actions</h4><div class="sub">빌드·테스트 → Docker 이미지 → ECR push</div></div></div>
+  <div class="aws mini" id="nat-b" data-g="nat" data-t="net" style="left:952px; top:1400px; width:200px;">
+    <div class="lbl">NAT Gateway B</div><div class="sub">비용 절충 시 AZ-A 공유 가능</div>
   </div>
-  <div class="svc" id="ssm" style="left:2190px; top:500px; width:440px;">
-    <div class="row"><div class="awsic ic-pk">CD</div><div><h4>배포</h4><div class="sub"><b>ECS 롤링 업데이트</b> (Core 5서비스) · SSM Run Command (Media EC2)</div></div></div>
+  <div class="aws mini dashedbox" id="media-b-future" data-g="ec2" data-t="com" style="left:936px; top:1580px; width:250px;">
+    <div class="lbl">SRT Dual Ingest · Standby</div><div class="sub">Future Expansion — MVP 미적용</div>
   </div>
-  <div style="position:absolute; left:2190px; top:600px; width:440px; font-size:10px; color:#92400e; line-height:1.7;">
-    · <b>main push → dev 스테이지 자동 배포</b><br>· <b>release tag → prod 수동 승인 배포</b><br>· 플러그인(C++)은 Actions에서 3-OS 빌드 → GitHub Release 배포 · 모노레포 경로 필터로 변경 서비스만 빌드
+  <div class="frame f-dat" style="left:1366px; top:1344px; width:522px; height:250px;">
+    <span class="flabel fl-dat">Data Private Subnet B</span>
   </div>
-
-  <!-- MediaLive 배제 주석 -->
-  <div class="note" style="left:2160px; top:830px; width:500px;">
-    <h3>AWS Media 서비스 의도적 배제</h3>
-    <p>MediaLive + MediaPackage + MediaConvert + Transcribe로 대체 가능한 계층이지만, <b>핵심 역량 증명을 위해 인제스트·세그먼터·LL-HLS/DVR·렌더·자막을 직접 구현</b>. 관리형은 비차별화 인프라(RDS·ElastiCache·S3·SQS·CDN·CW·SM)에만 사용. 시간당 과금(MediaLive)의 상시 방송 비용 문제도 회피.</p>
+  <div class="aws" id="redis-b" data-g="cache" data-t="db" style="left:1392px; top:1410px; width:220px;">
+    <div class="lbl">Redis Replica</div><div class="sub">자동 승격</div>
   </div>
-
-  <!-- 비용 주석 -->
-  <div class="note wnote" style="left:2160px; top:1010px; width:500px;">
-    <h3>비용 추정 (월 · 가정 명시)</h3>
-    <p>· 고정 인프라 ≈ <b>$370~430</b> — Media EC2 + Fargate 5서비스 + ALB + RDS Multi-AZ + ElastiCache 리플리카 + NAT + dev 스테이지<br>
-       · <b>파일럿(스트리머 2명·4h/일) ≈ $450</b> · <b>데모(5명·6h/일) ≈ $750</b> — 소마 지원금 범위<br>
-       · 비용은 <b>방송시간에 선형 비례</b>(지배 항목 = S3 적재·PUT·CDN 이그레스, 서버 아님) · 방송 1h ≈ 4.3GB 적재 · 시청 1인·1h ≈ 3.7GB 이그레스</p>
+  <div class="aws" id="rds-b" data-g="rds" data-t="db" style="left:1640px; top:1410px; width:220px;">
+    <div class="lbl">RDS Standby</div><div class="sub">Multi-AZ 자동 페일오버</div>
+  </div>
+  <div class="frame f-app" style="left:1906px; top:1344px; width:1420px; height:520px;">
+    <span class="flabel fl-app">App Private Subnet B</span>
+  </div>
+  <div class="aws" id="svc-b" data-g="ecs" data-t="com" style="left:2280px; top:1470px; width:600px;">
+    <div class="lbl">ECS Fargate Task Replicas</div><div class="sub">Auth · Clip · Chat · Render·Upload · AI — Multi-AZ 태스크 분산 (동일 이미지)</div>
   </div>
 
-  <!-- HA 주석 -->
-  <div class="note wnote" style="left:2160px; top:1210px; width:500px;">
-    <h3>가용성(HA) — 실적용 항목</h3>
-    <p>· <b>DB Multi-AZ 자동 페일오버</b> · <b>Redis 리플리카 자동 승격</b> · <b>ECS 태스크 자동 복구·워커 오토스케일</b> · CloudWatch 알람 체계<br>
-       · 인제스트(Media EC2) = 스테이트풀 → <b>피해 최소화</b>: 세그먼트 즉시 S3 적재 + 플러그인 자동 재연결<br>
-       · SRT 이중 경로 인제스트 = <b>향후 확장</b>으로 문서화</p>
+  <!-- 하단 밴드: 보안 · 운영 -->
+  <div class="frame f-ops" style="left:876px; top:1955px; width:2478px; height:180px;">
+    <span class="flabel fl-ops">Security &amp; Operations · 리전 전역</span>
+  </div>
+  <div class="aws mini" id="iam" data-g="iam" data-t="sec" style="left:900px; top:2000px; width:150px;">
+    <div class="lbl">IAM Roles</div><div class="sub">최소 권한</div>
+  </div>
+  <div class="aws mini" id="kms" data-g="kms" data-t="sec" style="left:1070px; top:2000px; width:150px;">
+    <div class="lbl">KMS</div><div class="sub">S3·RDS 암호화</div>
+  </div>
+  <div class="aws mini" id="secrets" data-g="secret" data-t="sec" style="left:1245px; top:2000px; width:190px;">
+    <div class="lbl">Secrets Manager</div><div class="sub">YouTube 토큰 원문</div>
+  </div>
+  <div class="aws mini" id="cloudwatch" data-g="cw" data-t="mgmt" style="left:1470px; top:2000px; width:230px;">
+    <div class="lbl">CloudWatch</div><div class="sub">Logs·Metrics·Alarm·Dashboard</div>
+  </div>
+  <div class="alarms" style="left:1730px; top:1995px;">
+    <b>알람</b>: Media Ingest Down · SRT Disconnect · SQS Queue Depth · Oldest Message Age ·<br>
+    Render Failure Rate · AI Job Failure · ECS CPU·Memory · RDS Connections · Redis Memory<br>
+    <b>망 격리</b>: Security Group(SRT SG는 스트리머 IP 제한) · Private Subnet DB 접근 · WAF · TLS 전 구간
   </div>
 
-  <!-- 외부 API -->
-  <div class="ext" id="ex-g" style="left:660px; top:1630px; width:230px;"><h4>Google OAuth</h4><p>로그인 · 채널 토큰</p></div>
-  <div class="ext" id="ex-yt" style="left:920px; top:1630px; width:250px;"><h4>YouTube Data API</h4><p>videos.insert · captions</p></div>
-  <div class="ext" id="ex-cz" style="left:1200px; top:1630px; width:240px;"><h4>CHZZK</h4><p>공식 Open API / 비공식 WS</p></div>
-  <div class="ext" id="ex-sp" style="left:1470px; top:1630px; width:170px;"><h4>SOOP</h4><p>채팅 WS</p></div>
+  <!-- ===== 외부 플랫폼 (AWS 외부) ===== -->
+  <div class="frame f-ext" style="left:3430px; top:640px; width:380px; height:900px;">
+    <span class="flabel fl-ext">External Platforms · AWS 외부</span>
+  </div>
+  <div class="aws mini" id="ext-google" data-g="google" data-t="google" style="left:3452px; top:698px; width:180px;">
+    <div class="lbl">Google OAuth</div>
+  </div>
+  <div class="aws mini" id="ext-youtube" data-g="youtube" data-t="youtube" style="left:3452px; top:838px; width:180px;">
+    <div class="lbl">YouTube Data API</div><div class="sub">Resumable Upload</div>
+  </div>
+  <div class="aws mini" id="ext-chzzk-api" data-g="chat" data-t="chzzk" style="left:3448px; top:1010px; width:210px;">
+    <div class="lbl">CHZZK API · Chat WS</div>
+  </div>
+  <div class="aws mini" id="ext-soop-api" data-g="chat" data-t="soop" style="left:3452px; top:1160px; width:200px;">
+    <div class="lbl">SOOP Chat WS</div>
+  </div>
+  <div class="aws mini" id="ext-discord" data-g="discord" data-t="discord" style="left:3452px; top:1330px; width:200px;">
+    <div class="lbl">Discord Webhook</div><div class="sub">알림</div>
+  </div>
 
-  <div class="note wnote" style="left:2160px; top:1420px; width:500px;">
-    <h3>Dev 스테이지 (환경 분리)</h3>
-    <p>· AWS에 <b>dev 스택 별도 운영</b>: dev ECS 서비스(최소 사이즈) · RDS micro · dev S3 버킷·SQS 큐<br>
-       · main push가 자동 배포되는 대상 — 통합 테스트를 실환경(SQS·S3)에서 수행<br>
-       · 개발 루프는 <b>로컬 docker-compose 병행</b> (PG·Redis·서비스 로컬 기동)</p>
+  <!-- ===== CI/CD ===== -->
+  <div class="frame f-cicd" style="left:3430px; top:230px; width:380px; height:398px;">
+    <span class="flabel fl-cicd">CI/CD · GitHub Monorepo</span>
+  </div>
+  <div class="aws mini" id="gh-repo" data-g="github" data-t="github" style="left:3452px; top:272px; width:180px;">
+    <div class="lbl">GitHub Monorepo</div><div class="sub">경로 필터</div>
+  </div>
+  <div class="aws mini" id="gh-actions" data-g="ghactions" data-t="gha" style="left:3452px; top:404px; width:200px;">
+    <div class="lbl">GitHub Actions</div><div class="sub">Test · Build</div>
+  </div>
+  <div class="aws mini" id="ssm" data-g="ssm" data-t="mgmt" style="left:3452px; top:536px; width:180px;">
+    <div class="lbl">SSM Run Command</div><div class="sub">Media 배포</div>
+  </div>
+
+  <!-- ===== 하단 주석 스트립 ===== -->
+  <div class="note col4" style="left:150px; top:2185px; width:3650px; height:120px;">
+    <div><span class="nt">MVP 차이 (dev 스테이지)</span>Media EC2 1대 · ECS 최소 태스크 · RDS dev Single-AZ · Redis 단일 · NAT 최소 · <b>SRT Dual Ingest 미적용</b>. 위 그림은 Target Production(Multi-AZ) 기준.</div>
+    <div><span class="nt">Future Expansion</span>SRT Dual Ingest(이중 인제스트) · 시청 저화질 렌디션 · 서비스 분리 배포 확대. 미채택 — 구현된 것처럼 그리지 않음.</div>
+    <div><span class="nt">저장 원칙 (불변식)</span>미디어 바이너리=<b>S3만</b>, PG=메타·상태·S3 포인터(ADR-005) · 채팅 원문=S3 아카이브(집계만 PG) · YouTube 토큰=Secrets Manager(DB엔 참조).</div>
+    <div><span class="nt">잡 소유 경계</span>Media Origin은 <b>생명주기 이벤트만</b> 발행 · 렌더·AI·업로드 잡 생성은 Clip Service 전담 · 워커는 결과를 <b>Clip Service API 경유</b> 반영(계약1·8, DB 직접 쓰기 금지).</div>
   </div>
 
   <svg class="wires" id="wires"></svg>
+  <div id="selftest"></div>
 <script>
 (function(){
-  const svg = document.getElementById('wires');
   const NS='http://www.w3.org/2000/svg';
-  svg.innerHTML = `<defs>
-    <marker id="ar" markerWidth="11" markerHeight="11" refX="8.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M1,1 L8,4.5 L1,8" fill="none" stroke="#6b7280" stroke-width="1.4"/></marker>
-    <marker id="ar2" markerWidth="11" markerHeight="11" refX="8.5" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M1,1 L8,4.5 L1,8" fill="none" stroke="#9ca3af" stroke-width="1.2"/></marker>
-  </defs>`;
+  // ── AWS 공식 아이콘 모사 글리프 (흰 선화, <g> 랩 — 직계 커넥터 오염 방지) ──
+  const G = {
+    dns:'<circle cx="17" cy="17" r="11"/><path d="M6 17h22M17 6c5 4 5 18 0 22M17 6c-5 4-5 18 0 22"/>',
+    cdn:'<circle cx="17" cy="17" r="10"/><path d="M7 17h20M17 7v20"/><circle cx="17" cy="7" r="1.8"/><circle cx="17" cy="27" r="1.8"/><circle cx="7" cy="17" r="1.8"/><circle cx="27" cy="17" r="1.8"/>',
+    waf:'<path d="M17 5l11 4v7c0 8-6 12-11 14-5-2-11-6-11-14V9z"/><path d="M12 17l4 4 7-8"/>',
+    igw:'<rect x="6" y="6" width="22" height="22" rx="5"/><path d="M12 13l-4 4 4 4M22 13l4 4-4 4M8 17h18"/>',
+    alb:'<circle cx="9" cy="17" r="3"/><path d="M12 17h6M18 11v12M18 11h5M18 17h5M18 23h5"/><circle cx="25" cy="11" r="2.4"/><circle cx="25" cy="17" r="2.4"/><circle cx="25" cy="23" r="2.4"/>',
+    eip:'<path d="M8 23a12 12 0 0 1 18 0M13 23a7 7 0 0 1 8 0"/><circle cx="17" cy="23" r="2.4"/><path d="M17 23V9"/>',
+    ec2:'<rect x="9" y="9" width="16" height="16" rx="2"/><rect x="13" y="13" width="8" height="8"/><path d="M13 5v4M21 5v4M13 25v4M21 25v4M5 13h4M5 21h4M25 13h4M25 21h4"/>',
+    ecs:'<path d="M17 5l11 6v12l-11 6-11-6V11z"/><path d="M17 17v12M17 17l11-6M17 17l-11-6"/>',
+    ecr:'<path d="M17 5l11 6v12l-11 6-11-6V11z"/><path d="M11 14l6 3 6-3M17 17v10"/>',
+    sqs:'<rect x="6" y="7" width="16" height="10" rx="2"/><rect x="12" y="16" width="16" height="10" rx="2"/><path d="M15 21h10M15 21l2-2M15 21l2 2"/>',
+    s3:'<path d="M8 11h18l-2 16a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2z"/><path d="M8 11c0-2 4-3 9-3s9 1 9 3"/>',
+    rds:'<path d="M8 9c0-2 4-4 9-4s9 2 9 4v16c0 2-4 4-9 4s-9-2-9-4z"/><path d="M8 9c0 2 4 4 9 4s9-2 9-4M8 17c0 2 4 4 9 4s9-2 9-4"/>',
+    cache:'<path d="M8 9c0-2 4-4 9-4s9 2 9 4v16c0 2-4 4-9 4s-9-2-9-4z"/><path d="M8 9c0 2 4 4 9 4s9-2 9-4"/><path d="M18 13l-5 6h4l-2 6" stroke-width="1.7"/>',
+    nat:'<rect x="6" y="6" width="22" height="22" rx="5"/><path d="M17 24V11M11 17l6-6 6 6"/>',
+    iam:'<circle cx="17" cy="12" r="5.5"/><path d="M7 28c1-6 5-9 10-9s9 3 10 9"/>',
+    kms:'<circle cx="12" cy="14" r="5.5"/><path d="M16 18l10 10M22 24l3-3M25 27l3-3"/>',
+    secret:'<rect x="9" y="15" width="16" height="13" rx="2.5"/><path d="M13 15v-3a4 4 0 0 1 8 0v3"/><circle cx="17" cy="21" r="1.7"/>',
+    cw:'<rect x="5" y="6" width="24" height="20" rx="3"/><path d="M9 20l4-5 3 3 4-7 3 5 4-2"/>',
+    obs:'<circle cx="17" cy="17" r="4"/><circle cx="17" cy="17" r="10"/><path d="M17 3v4M17 27v4M3 17h4M27 17h4"/>',
+    web:'<rect x="5" y="7" width="24" height="20" rx="2.5"/><path d="M5 13h24"/><circle cx="9" cy="10" r="1"/><circle cx="12.5" cy="10" r="1"/>',
+    platform:'<rect x="5" y="8" width="24" height="18" rx="3"/><path d="M14 13l7 4-7 4z"/>',
+    google:'<path d="M26 17a9 9 0 1 1-3-6.8"/><path d="M17 17h9v2.2"/>',
+    youtube:'<rect x="5" y="9" width="24" height="16" rx="4.5"/><path d="M15 13l7 4-7 4z"/>',
+    chat:'<path d="M7 8h20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H16l-6 5v-5H7a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z"/><path d="M11 13h12M11 17h8"/>',
+    discord:'<path d="M17 6a7 7 0 0 1 7 7c0 6 3 8 3 8H7s3-2 3-8a7 7 0 0 1 7-7z"/><path d="M14 25a3 3 0 0 0 6 0"/>',
+    github:'<circle cx="17" cy="9" r="3"/><circle cx="10" cy="25" r="3"/><circle cx="24" cy="25" r="3"/><path d="M17 12v3M17 15c0 5-4 7-7 7M17 15c0 5 4 7 7 7"/>',
+    ghactions:'<circle cx="17" cy="17" r="4"/><path d="M17 5v4M17 25v4M5 17h4M25 17h4M9 9l3 3M25 25l-3-3M25 9l-3 3M9 25l3-3"/>',
+    ssm:'<rect x="5" y="7" width="24" height="20" rx="3"/><path d="M10 14l4 3-4 3M16 21h7"/>'
+  };
+  // 아이콘 주입
+  document.querySelectorAll('.aws[data-g]').forEach(function(el){
+    const g=el.getAttribute('data-g'), t=el.getAttribute('data-t');
+    const tile=document.createElement('div'); tile.className='tile '+('t-'+t);
+    tile.innerHTML='<svg viewBox="0 0 34 34" width="30" height="30" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g>'+(G[g]||'')+'</g></svg>';
+    el.insertBefore(tile, el.firstChild);
+  });
+
+  // ── 2단계 flush 라우터 (기존 5_CA 재사용 + 스타일 opts 확장) ──
+  const svg = document.getElementById('wires');
+  svg.innerHTML = '<defs>'+
+    '<marker id="ar" markerWidth="12" markerHeight="12" refX="8.6" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L8.4,4.5 L1,8" fill="none" stroke="#1f2937" stroke-width="1.4"/></marker>'+
+    '<marker id="ar-ci" markerWidth="12" markerHeight="12" refX="8.6" refY="4.5" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L8.4,4.5 L1,8" fill="none" stroke="#15803d" stroke-width="1.4"/></marker>'+
+    '</defs>';
   function R(id){ const b=document.getElementById(id).getBoundingClientRect();
     return {l:b.left,r:b.right,t:b.top,b:b.bottom,cx:b.left+b.width/2,cy:b.top+b.height/2,w:b.width,h:b.height}; }
-  function edgePoint(A,tx,ty){ const dx=tx-A.cx,dy=ty-A.cy;
-    const sx=(A.w/2)/Math.abs(dx||1e-9), sy=(A.h/2)/Math.abs(dy||1e-9); const s=Math.min(sx,sy);
-    return {x:A.cx+dx*s,y:A.cy+dy*s}; }
-  function wire(a,b,opts){
+  const SIDE_PAD=12;
+  function clamp(v,lo,hi){ return lo>hi?(lo+hi)/2:Math.min(Math.max(v,lo),hi); }
+  function padT(N){return N.t+SIDE_PAD;} function padB(N){return N.b-SIDE_PAD;}
+  function padL(N){return N.l+SIDE_PAD;} function padR(N){return N.r-SIDE_PAD;}
+  const OBST=[];
+  document.querySelectorAll('.aws, .actor').forEach(function(el){
+    const b=el.getBoundingClientRect();
+    OBST.push({id:el.id||'', l:b.left-10, r:b.right+10, t:b.top-10, b:b.bottom+10});
+  });
+  function segCross(x1,y1,x2,y2,skipA,skipB){
+    let n=0; const lox=Math.min(x1,x2),hix=Math.max(x1,x2),loy=Math.min(y1,y2),hiy=Math.max(y1,y2);
+    for(const o of OBST){ if(o.id===skipA||o.id===skipB) continue;
+      if(hix<o.l||lox>o.r||hiy<o.t||loy>o.b) continue; n++; } return n;
+  }
+  const USED_MX={}, USED_MY={}, USED_LANE={};
+  function bkt(v,s){ return Math.round(v/s); }
+  function pickAxis(cands, from, to, horiz, skipA, skipB, used){
+    let best=null,bestScore=Infinity,mid=cands[0];
+    for(const m of cands){ let cross;
+      if(horiz){ cross=segCross(from.x,from.y,m,from.y,skipA,skipB)+segCross(m,from.y,m,to.y,skipA,skipB)+segCross(m,to.y,to.x,to.y,skipA,skipB); }
+      else { cross=segCross(from.x,from.y,from.x,m,skipA,skipB)+segCross(from.x,m,to.x,m,skipA,skipB)+segCross(to.x,m,to.x,to.y,skipA,skipB); }
+      const reuse=used[bkt(m,20)]||0; const score=cross*100000+reuse*80+Math.abs(m-mid)*0.12;
+      if(score<bestScore){ bestScore=score; best=m; } }
+    used[bkt(best,20)]=(used[bkt(best,20)]||0)+1; return best;
+  }
+  function candRange(a,b,step){
+    const lo=Math.min(a,b)+10,hi=Math.max(a,b)-10,midv=(a+b)/2,out=[midv];
+    for(let k=1;k<=10;k++){ out.push(midv+k*step,midv-k*step); }
+    out.push(lo+8,hi-8,lo+30,hi-30); return out.filter(function(v){return v>=lo&&v<=hi;});
+  }
+  function hvhCross(p1,p2,mx,a,b){ return segCross(p1.x,p1.y,mx,p1.y,a,b)+segCross(mx,p1.y,mx,p2.y,a,b)+segCross(mx,p2.y,p2.x,p2.y,a,b); }
+  function laneRoute(A,B,a,b,by){
+    const right=B.cx>=A.cx,dir=right?1:-1; const ax=right?A.r:A.l,bx=right?B.l:B.r;
+    const ay=clamp(A.cy,padT(A),padB(A)); const yMid=(ay+by)/2,span=Math.abs(bx-ax);
+    const g1=[],g2=[]; for(let d=24;d<span-16;d+=20){ g1.push(ax+dir*d); g2.push(bx-dir*d); }
+    const yc=[yMid]; for(let k=1;k<=210;k++){ yc.push(yMid+k*7,yMid-k*7); }
+    for(const y0 of yc){
+      const stag=[y0, y0+((USED_LANE[bkt(y0,12)]||0))*11, y0-((USED_LANE[bkt(y0,12)]||0))*11];
+      for(const laneY of stag){
+        if(segCross(ax,laneY,bx,laneY,a,b)>0) continue;
+        let gx1=null; for(const g of g1){ if(segCross(ax,ay,g,ay,a,b)>0) continue;
+          if(segCross(g,Math.min(ay,laneY),g,Math.max(ay,laneY),a,b)>0) continue; gx1=g; break; }
+        if(gx1===null) continue;
+        let gx2=null; for(const g of g2){ if(segCross(bx,by,g,by,a,b)>0) continue;
+          if(segCross(g,Math.min(by,laneY),g,Math.max(by,laneY),a,b)>0) continue; gx2=g; break; }
+        if(gx2===null) continue;
+        USED_LANE[bkt(laneY,12)]=(USED_LANE[bkt(laneY,12)]||0)+1;
+        return 'M '+ax+' '+ay+' L '+gx1+' '+ay+' L '+gx1+' '+laneY+' L '+gx2+' '+laneY+' L '+gx2+' '+by+' L '+bx+' '+by;
+      }
+    }
+    return null;
+  }
+  function draw(d,opts){
     opts=opts||{};
-    const A=R(a),B=R(b);
-    const p1=edgePoint(A,B.cx,B.cy), p2=edgePoint(B,A.cx,A.cy);
-    const l=document.createElementNS(NS,'line');
-    l.setAttribute('x1',p1.x);l.setAttribute('y1',p1.y);l.setAttribute('x2',p2.x);l.setAttribute('y2',p2.y);
-    if(opts.dash){ l.setAttribute('stroke','#6b7280');l.setAttribute('stroke-width','1.4');l.setAttribute('stroke-dasharray','6 5');l.setAttribute('marker-end','url(#ar)'); }
-    else { l.setAttribute('stroke','#9ca3af');l.setAttribute('stroke-width','1.4');l.setAttribute('marker-end','url(#ar2)'); }
+    const l=document.createElementNS(NS,'path');
+    l.setAttribute('d',d); l.setAttribute('fill','none');
+    const color=opts.ci?'#15803d':(opts.color||'#1f2937');
+    const w=opts.width||(opts.media?3.4:(opts.thin?1:1.5));
+    l.setAttribute('stroke',color); l.setAttribute('stroke-width',String(w));
+    if(opts.dash) l.setAttribute('stroke-dasharray',opts.media?'2 7':'7 6');
+    l.setAttribute('marker-end',opts.ci?'url(#ar-ci)':'url(#ar)');
     svg.appendChild(l);
     if(opts.label){
-      const t=(opts.t===undefined)?0.5:opts.t;
-      const el=document.createElementNS(NS,'text');
-      el.setAttribute('x',p1.x+(p2.x-p1.x)*t); el.setAttribute('y',p1.y+(p2.y-p1.y)*t-7);
-      el.setAttribute('text-anchor','middle');
-      el.setAttribute('style','font-size:10.5px;font-weight:700;fill:#374151;paint-order:stroke;stroke:#ffffff;stroke-width:5px;');
-      el.textContent=opts.label; svg.appendChild(el);
+      const len=l.getTotalLength(); const mp=l.getPointAtLength(len*(opts.lp||0.5));
+      const t=document.createElementNS(NS,'text');
+      t.setAttribute('x',mp.x+(opts.ldx||0)); t.setAttribute('y',mp.y-6+(opts.ldy||0));
+      t.setAttribute('text-anchor','middle');
+      t.setAttribute('style','font-size:12px;font-weight:700;fill:'+(opts.ci?'#15803d':'#334155')+';paint-order:stroke;stroke:#fff;stroke-width:5px;');
+      t.textContent=opts.label; svg.appendChild(t);
     }
   }
-  // 클라이언트 경로
-  wire('cl-web','r53',{t:0.5});
-  wire('cl-obs','media-ec2',{label:'SRT · UDP 9000 (CDN 미경유)',t:0.55});
-  wire('r53','cdn',{label:'시청 트래픽',t:0.45});
-  wire('r53','alb',{label:'API · HTTPS',t:0.72});
-  wire('cdn','media-ec2',{label:'라이브 LL-HLS 오리진',t:0.55});
-  wire('cdn','s3',{label:'VOD·클립 오리진',t:0.6});
-  // 내부
-  wire('alb','core-ec2',{t:0.5});
-  wire('media-ec2','s3',{label:'세그먼트 실시간 적재',t:0.55});
-  wire('media-ec2','sqs',{dash:true,label:'방송 이벤트',t:0.6});
-  wire('core-ec2','rds',{t:0.5});
-  wire('core-ec2','redis',{t:0.55});
-  wire('core-ec2','sqs',{dash:true,label:'잡 발행·소비',t:0.82});
-  wire('core-ec2','nat',{dash:true,t:0.4});
-  wire('nat','ex-g',{dash:true,label:'외부 API 아웃바운드',t:0.55});
-  // CI/CD
-  wire('gh','gha',{dash:true});
-  wire('gha','ecr',{dash:true,label:'이미지 push',t:0.5});
-  wire('gha','ssm',{dash:true});
-  wire('ssm','core-ec2',{dash:true,label:'dev 자동 · prod 수동 승인',t:0.26});
-  wire('ssm','media-ec2',{dash:true,t:0.35});
+  const WIRES=[];
+  function wire(a,b,opts){ WIRES.push([a,b,opts||{}]); }
+  function edgeOf(a,b,opts){
+    const A=R(a),B=R(b),dx=B.cx-A.cx,dy=B.cy-A.cy;
+    if(opts.lane!==undefined) return opts.lane>=B.cy?'B':'T';
+    if(!opts.v&&(opts.h||Math.abs(dx)>=Math.abs(dy))) return dx>0?'L':'R';
+    return dy>0?'T':'B';
+  }
+  function drawWire(a,b,opts,off){
+    const A=R(a),B=R(b),dx=B.cx-A.cx,dy=B.cy-A.cy;
+    // 명시적 수평 코리도어(lane) — 사이 노드가 많은 좌/우 도달을 클리어 레인으로 우회.
+    if(opts.lane!==undefined){
+      const ly=opts.lane, ax=clamp(A.cx,padL(A),padR(A)), bx=clamp(B.cx+off,padL(B),padR(B));
+      const ay=ly>=A.cy?A.b:A.t, by=ly>=B.cy?B.b:B.t;
+      draw('M '+ax+' '+ay+' L '+ax+' '+ly+' L '+bx+' '+ly+' L '+bx+' '+by,opts); return;
+    }
+    if(!opts.v&&(opts.h||Math.abs(dx)>=Math.abs(dy))){
+      const p1={x:dx>0?A.r:A.l,y:clamp(B.cy,padT(A),padB(A))};
+      const p2={x:dx>0?B.l:B.r,y:clamp(B.cy+off,padT(B),padB(B))};
+      const mx=pickAxis(candRange(p1.x,p2.x,22),{x:p1.x,y:p1.y},{x:p2.x,y:p2.y},true,a,b,USED_MX);
+      if(hvhCross(p1,p2,mx,a,b)===0){ draw('M '+p1.x+' '+p1.y+' L '+mx+' '+p1.y+' L '+mx+' '+p2.y+' L '+p2.x+' '+p2.y,opts); }
+      else { const lr=laneRoute(A,B,a,b,p2.y); draw(lr||('M '+p1.x+' '+p1.y+' L '+mx+' '+p1.y+' L '+mx+' '+p2.y+' L '+p2.x+' '+p2.y),opts); }
+    } else {
+      const x1=clamp(B.cx,padL(A),padR(A)), x2=clamp(B.cx+off,padL(B),padR(B));
+      const p1={x:x1,y:dy>0?A.b:A.t}, p2={x:x2,y:dy>0?B.t:B.b};
+      const my=pickAxis(candRange(p1.y,p2.y,18),{x:p1.x,y:p1.y},{x:p2.x,y:p2.y},false,a,b,USED_MY);
+      if(segCross(p1.x,p1.y,p1.x,my,a,b)+segCross(p1.x,my,x2,my,a,b)+segCross(x2,my,p2.x,p2.y,a,b)===0){
+        draw('M '+p1.x+' '+p1.y+' L '+p1.x+' '+my+' L '+x2+' '+my+' L '+p2.x+' '+p2.y,opts);
+      } else { const lr=laneRoute(A,B,a,b,p2.y); draw(lr||('M '+p1.x+' '+p1.y+' L '+p1.x+' '+my+' L '+x2+' '+my+' L '+p2.x+' '+p2.y),opts); }
+    }
+  }
+  function flush(){
+    const cnt={},meta=[];
+    WIRES.forEach(function(w){ const e=edgeOf(w[0],w[1],w[2]); const k=w[1]+e; meta.push({e:e,i:(cnt[k]||0)}); cnt[k]=(cnt[k]||0)+1; });
+    WIRES.forEach(function(w,idx){
+      const e=meta[idx].e,i=meta[idx].i,n=cnt[w[1]+e],B=R(w[1]);
+      const edgeLen=(e==='L'||e==='R')?B.h:B.w; const step=Math.min(26,edgeLen*0.6/Math.max(n,1));
+      const off=(i-(n-1)/2)*step; drawWire(w[0],w[1],w[2],off);
+    });
+  }
+
+  // ── 배선 (인라인 리터럴 · 뷰어 파서 관례 유지) ──
+  // Customer → Client
+  wire('act-streamer','obs-plugin',{h:true,thin:true,label:'제어'});
+  wire('act-editor','web-dash',{h:true,thin:true,label:'조작'});
+  // OBS 본방 송출 (Media Origin 경로와 분리)
+  wire('obs-plugin','chzzk-live',{v:true,media:true,label:'본방 송출',lp:0.82});
+  wire('obs-plugin','soop-live',{v:true,media:true});
+  // OBS → PokeClip Media Origin (SRT)
+  wire('obs-plugin','srt-eip',{media:true,label:'SRT+MPEG-TS · UDP 9000 · ~10 Audio'});
+  wire('srt-eip','media-ec2',{media:true,label:'SRT 수신'});
+  // Web 진입 (HTTP/HTTPS)
+  wire('web-dash','route53',{thin:true,label:'DNS'});
+  wire('route53','cloudfront',{label:'Web Player'});
+  wire('route53','waf',{label:'HTTPS API'});
+  wire('waf','alb',{label:'REST · SSE'});
+  wire('alb','svc-clip',{lane:1088,label:'REST · SSE'});
+  wire('alb','svc-auth',{lane:1100,label:'REST'});
+  wire('alb','svc-b',{lane:1076,thin:true,label:'Multi-AZ 분산'});
+  // CloudFront 오리진 분리 (라이브=Media / VOD·클립=S3)
+  wire('cloudfront','media-ec2',{media:true,label:'라이브 LL-HLS · 매니페스트 짧은 TTL'});
+  wire('cloudfront','s3-seg',{media:true,label:'VOD·클립 · 세그먼트 긴 TTL'});
+  // Media Origin 출력
+  wire('media-ec2','s3-seg',{media:true,label:'S3 PUT · CMAF Segment (배칭)'});
+  wire('media-ec2','q-bcast',{dash:true,label:'broadcast.started·ended'});
+  // 방송 이벤트 소비 (팬아웃)
+  wire('q-bcast','svc-chat',{v:true,dash:true,label:'수집 시작·종료'});
+  wire('q-bcast','svc-clip',{v:true,dash:true,label:'broadcasts 레코드'});
+  // Clip Service → 잡 큐 (생산자)
+  wire('svc-clip','q-render',{dash:true,label:'Render Job'});
+  wire('svc-clip','q-ai',{dash:true,label:'AI Job'});
+  wire('svc-clip','q-upload',{dash:true,label:'Upload Job'});
+  // 잡 큐 → 워커 (소비자)
+  wire('q-render','svc-render',{v:true,dash:true,label:'Render Job'});
+  wire('q-ai','svc-ai',{v:true,dash:true,label:'AI Job'});
+  wire('q-upload','svc-render',{v:true,dash:true,label:'Upload Job'});
+  wire('q-ai','dlq',{lane:530,dash:true,thin:true,label:'재전달 초과'});
+  // 워커 산출물 (S3=ADR-005 정당 / 상태·결과는 Clip 경유)
+  wire('svc-render','s3-clip',{v:true,media:true,label:'렌더 결과 PUT'});
+  wire('svc-ai','s3-arch',{v:true,label:'자막·Artifact PUT'});
+  wire('svc-render','svc-clip',{lane:955,dash:true,thin:true,label:'계약1 잡 상태·업로드 결과'});
+  wire('svc-ai','svc-clip',{lane:945,dash:true,thin:true,label:'계약8 AI결과 반영 API'});
+  // 서비스 → 데이터 (좌측 도달 — 하단 클리어 레인 경유)
+  wire('svc-clip','rds-a',{lane:1080,label:'PostgreSQL'});
+  wire('svc-auth','rds-a',{lane:1092,label:'PostgreSQL'});
+  wire('svc-clip','redis-a',{lane:1104,label:'SSE·라이브상태'});
+  wire('svc-auth','redis-a',{lane:1116,thin:true,label:'Session'});
+  wire('svc-chat','redis-a',{lane:1128,label:'채팅집계·PubSub'});
+  wire('svc-chat','rds-a',{lane:1140,thin:true,label:'chat_metrics'});
+  // HA 복제 (Multi-AZ)
+  wire('rds-a','rds-b',{thin:true,label:'Multi-AZ 동기 복제'});
+  wire('redis-a','redis-b',{thin:true,label:'복제'});
+  // NAT 아웃바운드 (Private → 외부)
+  wire('svc-render','nat-a',{thin:true,label:'아웃바운드'});
+  wire('nat-a','igw',{thin:true});
+  // 외부 플랫폼 (NAT 경유 — 오른쪽 논리 연결선은 대상·프로토콜 표기)
+  wire('ext-google','svc-auth',{dash:true,thin:true,label:'OAuth'});
+  wire('ext-chzzk-api','svc-chat',{lane:972,dash:true,label:'CHZZK Chat WS'});
+  wire('ext-soop-api','svc-chat',{lane:1130,dash:true,label:'SOOP Chat WS'});
+  wire('svc-render','ext-youtube',{lane:988,label:'YouTube Resumable Upload'});
+  wire('cloudwatch','ext-discord',{dash:true,thin:true,label:'Discord Alert'});
+  // 관측 (Logs·Metrics)
+  wire('media-ec2','cloudwatch',{thin:true,label:'SRT 통계·Metrics'});
+  wire('svc-clip','cloudwatch',{thin:true,label:'Logs·Metrics'});
+  // CI/CD (별도 색)
+  wire('gh-repo','gh-actions',{ci:true,label:'push'});
+  wire('gh-actions','ecr',{ci:true,label:'Build → ECR'});
+  wire('ecr','svc-clip',{v:true,ci:true,label:'ECS Rolling Deploy'});
+  wire('gh-actions','ssm',{ci:true,label:'Artifact'});
+  wire('ssm','media-ec2',{ci:true,label:'SSM Run Command'});
+  flush();
+
+  // ── 내장 셀프테스트 (관통·커넥터 수) ──
+  function parsePts(d){
+    const nums=(d.match(/-?\d+(\.\d+)?/g)||[]).map(Number); const p=[];
+    for(let i=0;i+1<nums.length;i+=2) p.push({x:nums[i],y:nums[i+1]}); return p;
+  }
+  function segRect(x1,y1,x2,y2,r){
+    const lox=Math.min(x1,x2),hix=Math.max(x1,x2),loy=Math.min(y1,y2),hiy=Math.max(y1,y2);
+    return !(hix<r.l||lox>r.r||hiy<r.t||loy>r.b);
+  }
+  const nodes=[];
+  document.querySelectorAll('.aws, .actor').forEach(function(el){
+    const b=el.getBoundingClientRect(); nodes.push({id:el.id,l:b.left+3,r:b.right-3,t:b.top+3,b:b.bottom-3});
+  });
+  let conn=0; document.querySelectorAll('svg').forEach(function(s){ conn+=s.querySelectorAll(':scope > path, :scope > line, :scope > polyline').length; });
+  const paths=svg.querySelectorAll(':scope > path'); let cross=0; const hits=[];
+  paths.forEach(function(p,i){
+    const w=WIRES[i]||[]; const a=w[0],bb=w[1]; const pts=parsePts(p.getAttribute('d'));
+    for(let s=0;s+1<pts.length;s++){
+      for(const nd of nodes){ if(nd.id===a||nd.id===bb) continue;
+        if(segRect(pts[s].x,pts[s].y,pts[s+1].x,pts[s+1].y,nd)){ cross++; hits.push(a+'>'+bb+'|'+nd.id); } }
+    }
+  });
+  const div=document.getElementById('selftest');
+  div.textContent='CROSS='+cross+' CONN='+conn+' WIRES='+WIRES.length+(cross?(' HITS='+hits.slice(0,30).join(';')):'')+(conn===WIRES.length?' CONN_OK':' CONN_BAD');
 })();
 </script>
 </body>

@@ -5,216 +5,187 @@
 <title>Pokeclip · IA</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family:'Pretendard','Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo',sans-serif;
-    background:#ffffff; width:2280px; position:relative;
-    -webkit-font-smoothing:antialiased;
-  }
-  .page-title { position:absolute; left:40px; top:26px; }
-  .page-title h1 { font-size:18px; font-weight:800; color:#111827; }
-  .page-title p { font-size:11.5px; color:#6b7280; margin-top:5px; }
+  body { font-family:'Pretendard','Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo',sans-serif;
+         background:#ffffff; width:2280px; position:relative; -webkit-font-smoothing:antialiased; color:#111111; }
 
-  .chips { position:absolute; left:40px; top:92px; display:flex; gap:10px; }
-  .chip { font-size:12px; font-weight:700; padding:7px 14px; border-radius:8px; background:#fff; border:1.7px solid; }
-  .chip.c-str { color:#1d4ed8; border-color:#3b82f6; }
-  .chip.c-ed  { color:#be185d; border-color:#ec4899; }
-  .chip.c-op  { color:#b91c1c; border-color:#ef4444; }
-  .chips-note { position:absolute; left:40px; top:136px; font-size:10.5px; color:#6b7280; width:420px; line-height:1.5; }
+  /* 상단 타이틀 — 검정 띠 + 굵은 흰 제목 + 얇은 밑줄 바 (EDGE 슬라이드 문법, 3_SA에서 이식) */
+  .title-bar { position:absolute; left:34px; top:24px; height:66px; background:#111111;
+               display:flex; align-items:center; padding:0 26px 0 22px; }
+  .title-bar h1 { font-size:34px; font-weight:800; color:#ffffff; letter-spacing:-0.5px; }
+  .title-underline { position:absolute; left:34px; top:98px; width:452px; height:8px; background:#111111; }
+  .subtitle { position:absolute; left:36px; top:118px; font-size:14.5px; color:#111827; }
 
-  .node { position:absolute; background:#fff; border-radius:9px; display:flex; align-items:center; justify-content:center;
-          text-align:center; font-size:12.5px; font-weight:600; color:#1f2937; padding:9px 16px; line-height:1.35;
-          transform:translateY(-50%); box-shadow:0 1px 2px rgba(0,0,0,0.04); }
-  .node .sub { font-weight:500; color:#6b7280; font-size:11px; }
-  .root { border:2px solid #111827; font-weight:800; font-size:14px; }
-  .cat  { border:2.2px solid #0d9488; color:#0f766e; font-weight:800; font-size:13.5px; }
-  .cat-blue { border:2.2px solid #3b82f6; color:#1d4ed8; }
-  .cat-red  { border:2.2px solid #ef4444; color:#b91c1c; }
-  .nd   { border:1.4px solid #4b5563; }
-  .hl   { border:1.7px solid #14b8a6; color:#0f766e; }
-  .rose { border:1.6px solid #ec4899; color:#be185d; }
-  .red  { border:1.4px solid #ef4444; color:#b91c1c; }
-  .blue { border:1.4px solid #3b82f6; color:#1d4ed8; }
-  .star:after { content:'⭐'; position:absolute; right:-27px; top:50%; transform:translateY(-50%); font-size:14px; }
+  /* 노드 — EDGE 정보구조: 아주 작은 흰 사각 + 얇은 검정 테두리 + 검정 텍스트. 색·그룹박스 없음(순수 모노크롬). */
+  .node { position:absolute; background:#ffffff; border:1px solid #111111; border-radius:2px;
+          display:flex; align-items:center; justify-content:center; text-align:center;
+          font-size:10.5px; font-weight:500; color:#111111; line-height:1.24; padding:4px 7px;
+          transform:translateY(-50%); }
+  .node b { font-weight:700; }
+  .node.root { border-width:1.6px; font-weight:800; font-size:12.5px; }
+  .node.cat  { border-width:1.4px; font-weight:700; font-size:11px; }
 
   svg.wires { position:absolute; left:0; top:0; pointer-events:none; }
-
-  .legend { position:absolute; left:40px; top:560px; width:400px; background:#fff; border:1px solid #e5e7eb;
-            border-radius:14px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:20px 24px; }
-  .legend h3 { font-size:13px; font-weight:800; color:#111827; margin-bottom:13px; }
-  .legend .row { display:flex; align-items:center; gap:12px; margin-bottom:9px; }
-  .legend .s { width:150px; flex:none; display:flex; justify-content:center; }
-  .legend .s > div { font-size:10.5px; font-weight:700; padding:5px 10px; border-radius:7px; background:#fff; }
-  .legend .d { font-size:11.5px; color:#374151; }
-
-  .notes { position:absolute; left:40px; top:948px; width:400px; background:#f9fafb; border:1px solid #e5e7eb;
-           border-radius:14px; padding:18px 22px; }
-  .notes h3 { font-size:12.5px; font-weight:800; color:#111827; margin-bottom:10px; }
-  .notes p { font-size:11px; color:#4b5563; line-height:1.6; margin-bottom:7px; }
-  .notes b { color:#111827; }
 </style>
 </head>
 <body>
-  <div class="page-title">
-    <h1>Pokeclip · IA (정보 구조) (2026.07)</h1>
-    <p>웹 대시보드 + OBS 플러그인 화면 트리 · 로그인 → 메인 → 기능 영역별 화면</p>
-  </div>
-
-  <div class="chips">
-    <div class="chip c-str">스트리머</div>
-    <div class="chip c-ed">편집자</div>
-    <div class="chip c-op">운영자</div>
-  </div>
-
-  <div class="legend">
-    <h3>범례</h3>
-    <div class="row"><div class="s"><div style="border:2.2px solid #0d9488; color:#0f766e;">핵심 카테고리</div></div><div class="d">대시보드 핵심 기능 영역</div></div>
-    <div class="row"><div class="s"><div style="border:2.2px solid #3b82f6; color:#1d4ed8;">플러그인 영역</div></div><div class="d">OBS 플러그인(클라이언트) 화면</div></div>
-    <div class="row"><div class="s"><div style="border:1.4px solid #4b5563; color:#1f2937;">일반 화면·기능</div></div><div class="d">하위 화면 / 기능</div></div>
-    <div class="row"><div class="s"><div style="border:1.7px solid #14b8a6; color:#0f766e;">강조 기능</div></div><div class="d">DVR·AI·채팅 분석 등 차별화 지점</div></div>
-    <div class="row"><div class="s"><div style="border:1.6px solid #ec4899; color:#be185d;">스트리머 전용</div></div><div class="d">권한 관리·템플릿·승인 등</div></div>
-    <div class="row"><div class="s"><div style="border:1.4px solid #ef4444; color:#b91c1c;">운영자 전용</div></div><div class="d">운영 콘솔 (Pokeclip 팀)</div></div>
-    <div class="row"><div class="s"><div>⭐</div></div><div class="d">차별화·자동화 포인트</div></div>
-  </div>
-
-  <div class="notes">
-    <h3>정책 노트</h3>
-    <p>· 대부분의 대시보드 화면은 <b>스트리머·편집자 공용</b>이며, 편집자는 부여받은 권한(업로드·자동업로드)에 따라 동작이 달라짐. 붉은 계열은 전용 화면.</p>
-    <p>· <b>승인 대기함</b>은 스트리머에겐 승인·반려 화면, 편집자에겐 '내 요청 목록'으로 동일 화면이 역할별로 표시됨.</p>
-    <p>· <b>유튜브 업로드는 항상 스트리머의 채널 토큰</b>으로 실행됨 — 편집자는 채널 연동 불필요, 구글 로그인만 하면 됨.</p>
-    <p>· <b>VOD 보관 60일</b>(치지직 프로 등급 기준) · 방송 종료 시 자동 생성(게시 선택 없음) · 클립·레시피는 영구, 재렌더는 60일 내 가능.</p>
-    <p>· 핫키의 키 바인딩은 OBS 단축키 시스템을 사용하므로 <b>플러그인 영역</b>에 위치.</p>
-  </div>
+  <div class="title-bar"><h1>Information Architecture</h1></div>
+  <div class="title-underline"></div>
+  <div class="subtitle">로그인 → 메인 대시보드 → 좌·우 기능 영역 · 웹 대시보드 + OBS 플러그인 화면 트리 (기능 ID A1~I7 · 문서 9·10 근거)</div>
 
   <svg class="wires" id="wires"></svg>
   <div id="nodes"></div>
 
 <script>
 (function(){
-  const tree = [
-    {t:'OBS 플러그인 (클라이언트)', cls:'cat-blue', ch:[
-      {t:'서버 연결 설정 (스트림 키)', cls:'blue'},
-      {t:'오디오 트랙 매핑 (소스 자동 탐지)', cls:'blue', ch:[
-        {t:'트랙 선택·라벨 (최대 10트랙)', cls:'blue'},
-      ]},
-      {t:'핫키 설정 (하이라이트 마킹)', cls:'blue'},
-      {t:'송출 상태 (SRT RTT·손실·재전송)', cls:'blue'},
-    ]},
-    {t:'온보딩 (최초 1회)', cls:'cat', ch:[
-      {t:'플러그인 다운로드·설치 안내', cls:'nd'},
-      {t:'방송 플랫폼 채널 등록 (치지직·SOOP)', cls:'nd'},
-      {t:'유튜브 채널 연동 (Google OAuth)', cls:'nd star'},
-      {t:'연결 테스트 (송출 체크리스트)', cls:'nd'},
-    ]},
-    {t:'라이브 뷰 (핵심)', cls:'cat', ch:[
-      {t:'DVR 플레이어 (저지연 + 1시간 되감기)', cls:'hl'},
-      {t:'점프카드 스트립', cls:'nd', ch:[
-        {t:'자동 하이라이트 카드 (채팅 차트 분석)', cls:'hl star'},
-        {t:'핫키 카드 · 만료 표시', cls:'nd'},
-      ]},
-      {t:'채팅량 차트 패널 (플랫폼별 시차 보정)', cls:'hl'},
-      {t:'송출 상태 위젯', cls:'nd'},
-    ]},
-    {t:'클립 에디터 (핵심)', cls:'cat', ch:[
-      {t:'구간 타임라인 (5초~3분)', cls:'nd'},
-      {t:'화면비율·크롭 (5종)', cls:'nd'},
-      {t:'오디오 트랙 패널', cls:'nd', ch:[
-        {t:'웨이브폼 · 무음 트랙 자동 숨김', cls:'hl'},
-        {t:'트랙 미리듣기 (솔로)', cls:'nd'},
-      ]},
-      {t:'AI 자막 생성 (Whisper · 선택 트랙)', cls:'hl star', ch:[
-        {t:'추천 제목 생성 (자막 기반)', cls:'hl'},
-      ]},
-      {t:'저장·내보내기 (레시피)', cls:'nd', ch:[
-        {t:'업로드 / 승인 요청 (권한별)', cls:'nd'},
-      ]},
-    ]},
-    {t:'클립 보관함', cls:'cat', ch:[
-      {t:'클립 목록 (렌더 중·대기·완료)', cls:'nd'},
-      {t:'승인 대기함 (승인·반려)', cls:'rose star'},
-      {t:'재편집 (레시피 열기·재렌더)', cls:'nd'},
-      {t:'업로드 결과 (유튜브 링크·재시도)', cls:'nd'},
-    ]},
-    {t:'VOD (다시보기 · 60일 보관)', cls:'cat', ch:[
-      {t:'VOD 목록 (남은 보관일 표시)', cls:'nd'},
-      {t:'VOD 플레이어', cls:'nd', ch:[
-        {t:'점프카드 챕터 탐색', cls:'hl'},
-        {t:'오디오 트랙 전환 시청', cls:'hl'},
-      ]},
-      {t:'VOD에서 클립 만들기 (에디터 재사용)', cls:'nd'},
-    ]},
-    {t:'템플릿·설정', cls:'cat', ch:[
-      {t:'템플릿 (비율·자막·자막트랙·프리롤·공개범위)', cls:'rose star'},
-      {t:'편집자 관리 (초대 · 권한: 업로드/자동업로드)', cls:'rose'},
-      {t:'연동 관리 (유튜브·치지직·SOOP)', cls:'nd'},
-      {t:'계정 (구글 로그인·탈퇴)', cls:'nd'},
-    ]},
-    {t:'운영 콘솔 (운영자 전용)', cls:'cat-red', ch:[
-      {t:'스트리머 계정 관리', cls:'red'},
-      {t:'시스템 모니터링 (인제스트·큐·스토리지)', cls:'red'},
-      {t:'장애·업로드 실패 대응', cls:'red'},
-      {t:'사용 현황 통계', cls:'red'},
-    ]},
+  // EDGE p.1 정보구조 트리: 루트(메인) 최상단 중앙 → 좌/우 밴드로 대분기 → 밴드별 L→R 열 스택.
+  // 배선은 기하 파서(diagramGraph.ts mode 1) 대응 — 각 선의 양 끝점이 대상 노드 테두리 위에 놓인다.
+  // 끝점 좌표는 노드 모델 좌표(left=x, center=y via translateY, width=w)에서 계산 → 렌더 경계와 일치.
+  // 파서 오탐 방지: id 문자열 쌍 호출·id 문자열 2원소 배열리터럴은 쓰지 않는다. 좌표(숫자)만으로 배선한다.
+
+  const LX = [210, 470, 780], LW = [185, 225, 205];   // 좌측 밴드 열 x / 폭 (head·child·grandchild)
+  const RX = [1300, 1560, 1870], RW = [185, 225, 200]; // 우측 밴드 열 x / 폭
+  const ROWH = 48, CATGAP = 24, TOPY = 300;
+  const BUSY = 230, LEFT_SPINE = LX[0] - 30, RIGHT_SPINE = RX[0] - 30;
+
+  function n(t, ch){ return { t:t, ch:ch||null }; }
+  const leftTree = [
+    n('OBS 플러그인 (클라이언트)', [
+      n('서버 연결·스트림 키 [A1]'),
+      n('오디오 트랙 매핑·자동탐지 [A2]', [ n('트랙 선택·라벨 (~10트랙) [A3]') ]),
+      n('핫키 마킹 [A4]'),
+      n('송출 상태 (RTT·손실) [A6]'),
+    ]),
+    n('온보딩 (최초 1회)', [
+      n('플러그인 다운로드·설치 [A7]'),
+      n('방송 채널 등록 (치지직·SOOP) [H2]'),
+      n('유튜브 채널 연동 (OAuth) [H3]'),
+      n('연결 테스트 (송출 체크) [A1]'),
+    ]),
+    n('라이브 뷰 (핵심)', [
+      n('DVR 플레이어 (저지연·1h) [D1]'),
+      n('점프카드 스트립 [D2]', [
+        n('자동 하이라이트 카드 [C3]'),
+        n('핫키 카드 [A4]'),
+        n('만료 배지 (1h) [D2]'),
+        n('카드→에디터 진입 [D4]'),
+      ]),
+      n('채팅량 차트 (시차 보정) [D3]'),
+      n('송출 상태 위젯 [A6]'),
+    ]),
+    n('클립 에디터 (핵심)', [
+      n('구간 타임라인 (5초~3분) [E1]'),
+      n('화면비율·크롭 (5종) [E5]'),
+      n('오디오 트랙 패널 [E2]', [
+        n('무음 트랙 자동 숨김 [E2]'),
+        n('트랙 미리듣기·솔로 [E2]'),
+        n('트랙별 볼륨 [E2]'),
+      ]),
+      n('AI 자막 생성 (Whisper) [E4]', [ n('추천 제목 생성 [E7]') ]),
+      n('저장·내보내기 (레시피) [E8]', [ n('업로드·승인 요청 [F3]') ]),
+    ]),
+  ];
+  const rightTree = [
+    n('클립 보관함', [
+      n('클립 목록 (렌더·대기·완료) [E8]', [ n('상태 필터 (clips.status) [F2]') ]),
+      n('승인 대기함 (승인·반려) [H5]'),
+      n('재편집 (레시피·재렌더) [E8]'),
+      n('업로드 결과 (링크·재시도) [F3]'),
+    ]),
+    n('VOD (다시보기·60일)', [
+      n('VOD 목록 (남은 보관일) [B5]'),
+      n('VOD 플레이어 [G1]', [
+        n('점프카드 챕터 탐색 [G1]'),
+        n('오디오 트랙 전환 [B3]'),
+      ]),
+      n('VOD에서 클립 만들기 [G2]'),
+    ]),
+    n('템플릿·설정', [
+      n('템플릿 (비율·자막·프리롤) [F4]'),
+      n('편집자 관리 (초대·권한) [H4]'),
+      n('연동 관리 (유튜브·플랫폼) [H3]'),
+      n('계정 (구글 로그인·탈퇴) [H1]'),
+    ]),
+    n('운영 콘솔 (운영자)', [
+      n('스트리머 계정 관리 [I4]'),
+      n('시스템 모니터링 (큐·인제스트) [I3]'),
+      n('장애·업로드 실패 대응 [I4]'),
+      n('사용 현황 통계 [I4]'),
+    ]),
   ];
 
-  const DX = {1:560, 2:1100, 3:1690};
-  const DW = {1:410, 2:490, 3:500};
-  const rowH = 62, catGap = 34;
-  let Y = 190;
-
-  function layout(n, d){
-    n.d = d;
-    if(n.ch){
-      n.ch.forEach(c=>layout(c, d+1));
-      n.y = (n.ch[0].y + n.ch[n.ch.length-1].y) / 2;
+  // ---- 레이아웃: 리프는 세로 스택, 내부 노드는 자식 중앙, x는 밴드 열 ----
+  let Y = TOPY;
+  function layout(node, depth, XS, WS){
+    node.x = XS[depth]; node.w = WS[depth]; node.depth = depth;
+    if(node.ch && node.ch.length){
+      node.ch.forEach(function(c){ layout(c, depth + 1, XS, WS); });
+      node.y = (node.ch[0].y + node.ch[node.ch.length - 1].y) / 2;
     } else {
-      n.y = Y; Y += rowH;
+      node.y = Y; Y += ROWH;
     }
-    n.x = DX[d]; n.w = DW[d];
   }
-  tree.forEach(c=>{ layout(c,1); Y += catGap; });
+  Y = TOPY; leftTree.forEach(function(c){ layout(c, 0, LX, LW); Y += CATGAP; });
+  const leftEnd = Y;
+  Y = TOPY; rightTree.forEach(function(c){ layout(c, 0, RX, RW); Y += CATGAP; });
+  const rightEnd = Y;
+  const H = Math.round(Math.max(leftEnd, rightEnd) + 90);
 
-  const catYs = tree.map(c=>c.y);
-  const root = { t:'메인 대시보드', cls:'root', x:170, w:250, y:262 };
-  const login = { t:'로그인 (구글 OAuth 단일)', cls:'root', x:170, w:250, y:155 };
+  const root  = { t:'메인 대시보드',           x:1035, w:210, y:150, h:46, cls:'root' };
+  const login = { t:'로그인 (Google OAuth)',   x:1055, w:170, y:64,  h:40, cls:'root' };
 
+  // ---- 노드 렌더 ----
   const box = document.getElementById('nodes');
-  const all = [];
-  function renderNode(n){
+  function fidHtml(t){ return t.replace(/\[([A-Z0-9·/~]+)\]/g, '<b>[$1]</b>'); }
+  function renderNode(node, cls){
     const div = document.createElement('div');
-    div.className = 'node ' + (n.cls||'nd');
-    div.style.left = n.x+'px'; div.style.top = n.y+'px'; div.style.width = n.w+'px';
-    div.innerHTML = n.t;
+    div.className = 'node ' + (cls || (node.depth === 0 ? 'cat' : 'nd'));
+    div.style.left = node.x + 'px';
+    div.style.top = node.y + 'px';
+    div.style.width = node.w + 'px';
+    if(node.h) div.style.height = node.h + 'px';
+    div.innerHTML = fidHtml(node.t);
     box.appendChild(div);
-    all.push(n);
-    (n.ch||[]).forEach(renderNode);
+    (node.ch || []).forEach(function(c){ renderNode(c); });
   }
-  renderNode(login); renderNode(root);
-  tree.forEach(renderNode);
+  renderNode(login, 'root'); renderNode(root, 'root');
+  leftTree.forEach(function(c){ renderNode(c); });
+  rightTree.forEach(function(c){ renderNode(c); });
 
-  // wires
+  // ---- 배선(직교 엘보) ----
   const svg = document.getElementById('wires');
   const NS = 'http://www.w3.org/2000/svg';
-  const H = Y + 120;
   svg.setAttribute('width', 2280); svg.setAttribute('height', H);
   document.body.style.height = H + 'px';
-  svg.innerHTML = `<defs><marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
-    <path d="M1,1 L8,4 L1,7" fill="none" stroke="#6b7280" stroke-width="1.3"/></marker></defs>`;
-
-  function wire(x1,y1,x2,y2){
-    const l = document.createElementNS(NS,'line');
-    l.setAttribute('x1',x1); l.setAttribute('y1',y1); l.setAttribute('x2',x2); l.setAttribute('y2',y2);
-    l.setAttribute('stroke','#9ca3af'); l.setAttribute('stroke-width','1.2'); l.setAttribute('marker-end','url(#ar)');
-    svg.appendChild(l);
+  svg.innerHTML = '<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3.6" orient="auto" markerUnits="userSpaceOnUse">'
+    + '<path d="M1,1 L7,3.6 L1,6.2" fill="none" stroke="#111111" stroke-width="1.15"/></marker></defs>';
+  function drawPath(pts){
+    let d = 'M ' + pts[0].x + ' ' + pts[0].y;
+    for(let i = 1; i < pts.length; i += 1){ d += ' L ' + pts[i].x + ' ' + pts[i].y; }
+    const p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', d); p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', '#111111'); p.setAttribute('stroke-width', '1');
+    p.setAttribute('marker-end', 'url(#ar)');
+    svg.appendChild(p);
   }
-  // login -> main (vertical)
-  wire(login.x + login.w/2, login.y + 24, root.x + root.w/2, root.y - 26);
-  // main -> categories
-  tree.forEach(c=> wire(root.x + root.w, root.y, c.x - 6, c.y));
-  // parent -> children
-  function wireChildren(n){
-    (n.ch||[]).forEach(c=>{ wire(n.x + n.w, n.y, c.x - 6, c.y); wireChildren(c); });
+  // login -> root (세로)
+  drawPath([ {x:login.x + login.w/2, y:login.y + login.h/2}, {x:root.x + root.w/2, y:root.y - root.h/2} ]);
+  // root -> 각 카테고리 head (좌/우 스파인 경유)
+  const rb = { x:root.x + root.w/2, y:root.y + root.h/2 };
+  leftTree.forEach(function(c){
+    drawPath([ rb, {x:rb.x, y:BUSY}, {x:LEFT_SPINE, y:BUSY}, {x:LEFT_SPINE, y:c.y}, {x:c.x, y:c.y} ]);
+  });
+  rightTree.forEach(function(c){
+    drawPath([ rb, {x:rb.x, y:BUSY}, {x:RIGHT_SPINE, y:BUSY}, {x:RIGHT_SPINE, y:c.y}, {x:c.x, y:c.y} ]);
+  });
+  // parent -> child (밴드 내 거터 엘보)
+  function wireChildren(node){
+    (node.ch || []).forEach(function(c){
+      const midX = (node.x + node.w + c.x) / 2;
+      drawPath([ {x:node.x + node.w, y:node.y}, {x:midX, y:node.y}, {x:midX, y:c.y}, {x:c.x, y:c.y} ]);
+      wireChildren(c);
+    });
   }
-  tree.forEach(wireChildren);
+  leftTree.forEach(wireChildren); rightTree.forEach(wireChildren);
 })();
 </script>
 </body>

@@ -13,7 +13,7 @@ OBS 플러그인이 본방(치지직/SOOP)과 병행으로 멀티오디오(~10�
 | 2 | 유저 저니 | [PNG](2_Pokeclip_UserJourney.png) · [HTML](2_Pokeclip_UserJourney.html) |
 | 3 | SA (서비스 아키텍처) | [PNG](3_Pokeclip_SA.png) · [HTML](3_Pokeclip_SA.html) |
 | 4 | SysA (시스템 아키텍처) | [PNG](4_Pokeclip_SysA.png) · [HTML](4_Pokeclip_SysA.html) |
-| 5 | CA (클라우드 아키텍처, AWS) | [PNG](5_Pokeclip_CA.png) · [HTML](5_Pokeclip_CA.html) |
+| 5 | CA (클라우드 아키텍처, AWS · Target Production) | [PNG](5_Pokeclip_CA.png) · [HTML](5_Pokeclip_CA.html) · [설계 노트](5_Pokeclip_CA.md) |
 | 6 | 설계 결정 인덱스 (ADR 현황판) | [6_Pokeclip_설계결정.md](6_Pokeclip_설계결정.md) |
 | 7 | 기획서 (사업 — 소마 심사용) | 작성 예정 |
 | 8 | 하이라이트 탐지 연구 노트 (팀 실측) | [8_Pokeclip_하이라이트연구노트.md](8_Pokeclip_하이라이트연구노트.md) |
