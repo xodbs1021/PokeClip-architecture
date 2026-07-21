@@ -52,13 +52,14 @@ const GRID_MIN_LEAF_AREA = 9000
 
 const ENHANCE_CSS = `
   .pk-node { transition: opacity .3s ease, transform .45s cubic-bezier(.34, 1.56, .64, 1), box-shadow .35s ease; }
-  svg line, svg path, svg polyline { transition: stroke .3s ease, stroke-width .45s cubic-bezier(.34, 1.56, .64, 1), opacity .3s ease; }
+  svg line, svg path, svg polyline { transition: stroke .3s ease, stroke-width .45s cubic-bezier(.34, 1.56, .64, 1), opacity .3s ease, filter .45s cubic-bezier(.34, 1.56, .64, 1); }
   svg text { transition: font-size .45s cubic-bezier(.34, 1.56, .64, 1), fill .3s ease, opacity .3s ease; }
   .pk-dim { opacity: .16 !important; }
   .pk-edge-dim { opacity: .09 !important; }
   .pk-focus { z-index: 60 !important; box-shadow: 0 14px 34px rgba(0,0,0,.22), 0 0 0 2.5px #e5484d !important; }
   .pk-linked { z-index: 50 !important; box-shadow: 0 10px 26px rgba(0,0,0,.16), 0 0 0 2px #1c1917 !important; }
-  .pk-edge-hot { stroke: #e5484d !important; stroke-width: 3px !important; opacity: 1 !important; }
+  .pk-edge-hot { stroke: #e5484d !important; stroke-width: 4.2px !important; opacity: 1 !important;
+                 filter: drop-shadow(0 3px 5px rgba(229,72,77,.45)); }
   .pk-label-hot { fill: #b3261e !important; opacity: 1 !important; font-size: 14.5px !important; font-weight: 800 !important; }
 `
 
@@ -282,7 +283,7 @@ function collectSvgs(edges: DiagramEdge[]): SVGElement[] {
   )
 }
 
-const HOT_MARKER_SCALE = 1.35
+const HOT_MARKER_SCALE = 1.9
 
 /** 선의 marker-end 화살촉을 복제해 빨간색·확대판 마커 id를 만든다 (문서당 1회 생성). */
 function hotMarkerFor(line: SVGElement): string | null {
