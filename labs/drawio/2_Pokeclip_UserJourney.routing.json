@@ -1,0 +1,470 @@
+{
+  "schemaVersion": 1,
+  "engineVersion": "userjourney-v1",
+  "contractHash": "8745ffaed446e56a00c273916ab9175c76b3e22ac38fb78053d1b0412237dceb",
+  "sourceSha256": "6480544c85a4c98a19bb02b79c774ac23b2183a4dc2ec28c961de705322d0c9f",
+  "generatedSha256": "3f8dffde0bb3c6a189b1bf35115d9dcdc48c20531121ef94aaba6ffc3160eda9",
+  "score": {
+    "tuple": [
+      0,
+      3,
+      3,
+      3,
+      0,
+      0,
+      1,
+      2,
+      738
+    ],
+    "canonicalTieKey": "route-edge--transition--relation--01|route-edge--transition--relation--02|route-edge--transition--relation--03|route-edge--transition--relation--04|route-edge--transition--relation--05",
+    "edgeCountOverProfileBendTarget": 0,
+    "maxSemanticEdgeBendCount": 3,
+    "totalSemanticEdgeBendCount": 3,
+    "physicalTotalBendCount": 3,
+    "maxPortDirectionPenalty": 0,
+    "totalPortDirectionPenalty": 0,
+    "maxDetourRatio": 1,
+    "totalDetourRatio": 2,
+    "totalManhattanLength": 738
+  },
+  "semantic": {
+    "vertexCount": 9,
+    "edgeCount": 2,
+    "vertexIds": [
+      "uj-approve",
+      "uj-auto-upload",
+      "uj-editor",
+      "uj-hotkey",
+      "uj-live-wait",
+      "uj-obs-start",
+      "uj-reject-recover",
+      "uj-template-ready",
+      "uj-upload-recover"
+    ],
+    "edges": [
+      {
+        "id": "edge-uj-editor-to-uj-approve",
+        "sourceId": "uj-editor",
+        "targetId": "uj-approve",
+        "relationKind": "transition",
+        "bundleFamilyKey": "transition:approval"
+      },
+      {
+        "id": "edge-uj-hotkey-to-uj-editor",
+        "sourceId": "uj-hotkey",
+        "targetId": "uj-editor",
+        "relationKind": "transition",
+        "bundleFamilyKey": "transition:jumpcard"
+      }
+    ]
+  },
+  "decorations": {
+    "count": 8,
+    "ids": [
+      "an-footer",
+      "an-strip",
+      "an-title",
+      "ov-lane-broadcast",
+      "ov-lane-clip",
+      "ov-phase-after",
+      "ov-phase-before",
+      "ov-phase-during"
+    ]
+  },
+  "routing": {
+    "junctionCount": 3,
+    "physicalEdgeCount": 5,
+    "junctions": [
+      {
+        "id": "route-junction--001",
+        "x": 1817,
+        "y": 452,
+        "group": "transition",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--002",
+        "x": 2205,
+        "y": 452,
+        "group": "transition",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--003",
+        "x": 1817,
+        "y": 600,
+        "group": "transition",
+        "role": "bend-or-intersection"
+      }
+    ],
+    "physicalEdges": [
+      {
+        "id": "route-edge--transition--relation--01",
+        "sourceId": "uj-hotkey",
+        "targetId": "uj-editor",
+        "group": "transition",
+        "route": "transition-lane",
+        "role": "relation",
+        "router": "deterministic-userjourney-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uj-hotkey-to-uj-editor"
+        ],
+        "expectedStart": {
+          "x": 1345,
+          "y": 390
+        },
+        "expectedEnd": {
+          "x": 1345,
+          "y": 500
+        },
+        "relationKind": "transition",
+        "bundleFamilyKey": "transition:jumpcard",
+        "bundleId": "bundle-215656ca88ad31277e55d89686d283136873d3ee2c1fe67a161e33597b73a60f",
+        "styleClass": "dashed/open",
+        "shareClass": "solo",
+        "directionClass": "forward",
+        "arrowMode": "exclusive",
+        "resourceIds": [
+          "arrow:edge-uj-hotkey-to-uj-editor",
+          "port:uj-editor:top:bundle-215656ca88ad31277e55d89686d283136873d3ee2c1fe67a161e33597b73a60f",
+          "port:uj-hotkey:bottom:bundle-215656ca88ad31277e55d89686d283136873d3ee2c1fe67a161e33597b73a60f",
+          "trunk:bundle-215656ca88ad31277e55d89686d283136873d3ee2c1fe67a161e33597b73a60f"
+        ],
+        "sourceTerminal": true,
+        "targetTerminal": true,
+        "sourceSide": "bottom",
+        "targetSide": "top",
+        "points": [
+          {
+            "x": 1345,
+            "y": 390
+          },
+          {
+            "x": 1345,
+            "y": 500
+          }
+        ],
+        "length": 110
+      },
+      {
+        "id": "route-edge--transition--relation--02",
+        "sourceId": "route-junction--001",
+        "targetId": "route-junction--002",
+        "group": "transition",
+        "route": "transition-lane",
+        "role": "relation",
+        "router": "deterministic-userjourney-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uj-editor-to-uj-approve"
+        ],
+        "expectedStart": {
+          "x": 1817,
+          "y": 452
+        },
+        "expectedEnd": {
+          "x": 2205,
+          "y": 452
+        },
+        "relationKind": "transition",
+        "bundleFamilyKey": "transition:approval",
+        "bundleId": "bundle-647af0212e10a69417427ac4220916fea3dbeff0e2da11b5659d4b210262a7ce",
+        "styleClass": "dashed/open",
+        "shareClass": "solo",
+        "directionClass": "forward",
+        "arrowMode": "exclusive",
+        "resourceIds": [
+          "trunk:bundle-647af0212e10a69417427ac4220916fea3dbeff0e2da11b5659d4b210262a7ce"
+        ],
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1817,
+            "y": 452
+          },
+          {
+            "x": 2205,
+            "y": 452
+          }
+        ],
+        "length": 388
+      },
+      {
+        "id": "route-edge--transition--relation--03",
+        "sourceId": "route-junction--002",
+        "targetId": "uj-approve",
+        "group": "transition",
+        "route": "transition-lane",
+        "role": "relation",
+        "router": "deterministic-userjourney-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uj-editor-to-uj-approve"
+        ],
+        "expectedStart": {
+          "x": 2205,
+          "y": 452
+        },
+        "expectedEnd": {
+          "x": 2205,
+          "y": 390
+        },
+        "relationKind": "transition",
+        "bundleFamilyKey": "transition:approval",
+        "bundleId": "bundle-647af0212e10a69417427ac4220916fea3dbeff0e2da11b5659d4b210262a7ce",
+        "styleClass": "dashed/open",
+        "shareClass": "solo",
+        "directionClass": "forward",
+        "arrowMode": "exclusive",
+        "resourceIds": [
+          "arrow:edge-uj-editor-to-uj-approve",
+          "port:uj-approve:bottom:bundle-647af0212e10a69417427ac4220916fea3dbeff0e2da11b5659d4b210262a7ce",
+          "trunk:bundle-647af0212e10a69417427ac4220916fea3dbeff0e2da11b5659d4b210262a7ce"
+        ],
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "bottom",
+        "points": [
+          {
+            "x": 2205,
+            "y": 452
+          },
+          {
+            "x": 2205,
+            "y": 390
+          }
+        ],
+        "length": 62
+      },
+      {
+        "id": "route-edge--transition--relation--04",
+        "sourceId": "uj-editor",
+        "targetId": "route-junction--003",
+        "group": "transition",
+        "route": "transition-lane",
+        "role": "relation",
+        "router": "deterministic-userjourney-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uj-editor-to-uj-approve"
+        ],
+        "expectedStart": {
+          "x": 1787,
+          "y": 600
+        },
+        "expectedEnd": {
+          "x": 1817,
+          "y": 600
+        },
+        "relationKind": "transition",
+        "bundleFamilyKey": "transition:approval",
+        "bundleId": "bundle-647af0212e10a69417427ac4220916fea3dbeff0e2da11b5659d4b210262a7ce",
+        "styleClass": "dashed/open",
+        "shareClass": "solo",
+        "directionClass": "forward",
+        "arrowMode": "exclusive",
+        "resourceIds": [
+          "port:uj-editor:right:bundle-647af0212e10a69417427ac4220916fea3dbeff0e2da11b5659d4b210262a7ce",
+          "trunk:bundle-647af0212e10a69417427ac4220916fea3dbeff0e2da11b5659d4b210262a7ce"
+        ],
+        "sourceTerminal": true,
+        "targetTerminal": false,
+        "sourceSide": "right",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1787,
+            "y": 600
+          },
+          {
+            "x": 1817,
+            "y": 600
+          }
+        ],
+        "length": 30
+      },
+      {
+        "id": "route-edge--transition--relation--05",
+        "sourceId": "route-junction--003",
+        "targetId": "route-junction--001",
+        "group": "transition",
+        "route": "transition-lane",
+        "role": "relation",
+        "router": "deterministic-userjourney-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uj-editor-to-uj-approve"
+        ],
+        "expectedStart": {
+          "x": 1817,
+          "y": 600
+        },
+        "expectedEnd": {
+          "x": 1817,
+          "y": 452
+        },
+        "relationKind": "transition",
+        "bundleFamilyKey": "transition:approval",
+        "bundleId": "bundle-647af0212e10a69417427ac4220916fea3dbeff0e2da11b5659d4b210262a7ce",
+        "styleClass": "dashed/open",
+        "shareClass": "solo",
+        "directionClass": "forward",
+        "arrowMode": "exclusive",
+        "resourceIds": [
+          "trunk:bundle-647af0212e10a69417427ac4220916fea3dbeff0e2da11b5659d4b210262a7ce"
+        ],
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1817,
+            "y": 600
+          },
+          {
+            "x": 1817,
+            "y": 452
+          }
+        ],
+        "length": 148
+      }
+    ],
+    "semanticToPhysical": {
+      "edge-uj-editor-to-uj-approve": [
+        "route-edge--transition--relation--04",
+        "route-edge--transition--relation--05",
+        "route-edge--transition--relation--02",
+        "route-edge--transition--relation--03"
+      ],
+      "edge-uj-hotkey-to-uj-editor": [
+        "route-edge--transition--relation--01"
+      ]
+    },
+    "bundles": [
+      {
+        "id": "bundle-215656ca88ad31277e55d89686d283136873d3ee2c1fe67a161e33597b73a60f",
+        "bundleFamilyKey": "transition:jumpcard",
+        "relationKind": "transition",
+        "styleClass": "dashed/open",
+        "shareClass": "solo",
+        "directionClass": "forward",
+        "arrowMode": "exclusive",
+        "semanticRefs": [
+          "edge-uj-hotkey-to-uj-editor"
+        ]
+      },
+      {
+        "id": "bundle-647af0212e10a69417427ac4220916fea3dbeff0e2da11b5659d4b210262a7ce",
+        "bundleFamilyKey": "transition:approval",
+        "relationKind": "transition",
+        "styleClass": "dashed/open",
+        "shareClass": "solo",
+        "directionClass": "forward",
+        "arrowMode": "exclusive",
+        "semanticRefs": [
+          "edge-uj-editor-to-uj-approve"
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "semanticContract": {
+      "pass": true,
+      "errors": [],
+      "vertexCount": 9,
+      "edgeCount": 2,
+      "relationKinds": {
+        "transition": 2
+      }
+    },
+    "modelResult": {
+      "pass": true,
+      "errors": []
+    },
+    "paths": {
+      "pass": true,
+      "errors": []
+    },
+    "physicalRelationKinds": {
+      "pass": true,
+      "count": 0,
+      "violations": []
+    },
+    "endpoints": {
+      "pass": true,
+      "maximumErrorPx": 0,
+      "violations": []
+    },
+    "orthogonal": {
+      "pass": true,
+      "violations": []
+    },
+    "nodeClearance": {
+      "pass": true,
+      "violations": []
+    },
+    "edgeCrossing": {
+      "pass": true,
+      "count": 0,
+      "allowlist": [],
+      "violations": []
+    },
+    "overlap": {
+      "pass": true,
+      "count": 0,
+      "allowlist": [],
+      "violations": []
+    },
+    "junctionTopology": {
+      "pass": true,
+      "violations": []
+    },
+    "layout": {
+      "pass": true,
+      "violations": []
+    },
+    "decorationPartition": {
+      "pass": true,
+      "errors": [],
+      "count": 8
+    },
+    "annotationBand": {
+      "pass": true,
+      "violations": [],
+      "band": {
+        "top": 240,
+        "bottom": 940
+      }
+    },
+    "labelClearance": {
+      "status": "deferred-to-browser"
+    },
+    "metrics": {
+      "endpointMaximumErrorPx": 0,
+      "nonCentralPortCount": 0,
+      "directionViolationCount": 0,
+      "terminalReentryCount": 0,
+      "nodePenetrationCount": 0,
+      "crossingCount": 0,
+      "overlapCount": 0,
+      "degree4XCount": 0,
+      "microSegmentCount": 0,
+      "totalSemanticBendCount": 3,
+      "maxSemanticBendCount": 3,
+      "physicalTotalBendCount": 3,
+      "maxDetourRatio": 1,
+      "labelUnavailableCount": 0,
+      "labelOutsideCount": 0
+    },
+    "directions": {
+      "pass": true,
+      "violations": []
+    }
+  }
+}

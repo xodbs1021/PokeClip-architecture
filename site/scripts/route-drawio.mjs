@@ -15,6 +15,7 @@ const CORE_FILE = join(MCP_DIR, 'vendor', 'libavoid', 'libavoid-routing.js')
 const WASM_FILE = join(MCP_DIR, 'vendor', 'libavoid', 'libavoid.wasm')
 const IA_WORKER = join(SITE_DIR, 'scripts', 'drawio-routing', 'ia-worker.mjs')
 const USECASE_WORKER = join(SITE_DIR, 'scripts', 'drawio-routing', 'usecase-worker.mjs')
+const USERJOURNEY_WORKER = join(SITE_DIR, 'scripts', 'drawio-routing', 'userjourney-worker.mjs')
 const FALLBACK_WARNING = '[libavoid] routing core CDN/cache unavailable (POKECLIP_VENDORED_CORE_ONLY); using the vendored copy'
 const TOOL_TIMEOUT_MS = 30_000
 const EXIT_TIMEOUT_MS = 2_000
@@ -292,6 +293,31 @@ function runUseCaseAttempt(sourceXml) {
   })
 }
 
+function runUserJourneyAttempt(sourceXml) {
+  return new Promise((resolvePromise, rejectPromise) => {
+    const child = spawn(process.execPath, [USERJOURNEY_WORKER], { cwd: SITE_DIR, stdio: ['pipe', 'pipe', 'pipe'] })
+    let stdout = ''
+    let stderr = ''
+    child.stdout.setEncoding('utf8')
+    child.stderr.setEncoding('utf8')
+    child.stdout.on('data', (chunk) => { stdout += chunk })
+    child.stderr.on('data', (chunk) => { stderr += chunk })
+    child.once('error', rejectPromise)
+    child.once('exit', (code) => {
+      if (code !== 0) {
+        rejectPromise(new Error(`deterministic User Journey worker 실패(${code}): ${stderr.trim()}`))
+        return
+      }
+      try {
+        resolvePromise(JSON.parse(stdout))
+      } catch (error) {
+        rejectPromise(new Error(`deterministic User Journey worker JSON 오류: ${error instanceof Error ? error.message : String(error)}`))
+      }
+    })
+    child.stdin.end(sourceXml)
+  })
+}
+
 function number(value) {
   const parsed = Number(value)
   return Number.isFinite(parsed) ? parsed : 0
@@ -518,10 +544,11 @@ async function main() {
   const sourceXml = await readFile(sourcePath, 'utf8')
   const isFullIa = basename(sourcePath) === '1_Pokeclip_IA.source.drawio'
   const isFullUseCase = basename(sourcePath) === '0_Pokeclip_UseCase.source.drawio'
+  const isFullUserJourney = basename(sourcePath) === '2_Pokeclip_UserJourney.source.drawio'
   let result
-  if (isFullIa || isFullUseCase) {
-    const runAttempt = isFullUseCase ? runUseCaseAttempt : runIaAttempt
-    const profile = isFullUseCase ? 'deterministic-usecase' : 'deterministic-tree'
+  if (isFullIa || isFullUseCase || isFullUserJourney) {
+    const runAttempt = isFullUserJourney ? runUserJourneyAttempt : isFullUseCase ? runUseCaseAttempt : runIaAttempt
+    const profile = isFullUserJourney ? 'deterministic-userjourney' : isFullUseCase ? 'deterministic-usecase' : 'deterministic-tree'
     const [first, second] = await Promise.all([runAttempt(sourceXml), runAttempt(sourceXml)])
     if (first.normalizedSource !== second.normalizedSource || first.xml !== second.xml
       || JSON.stringify(first.manifest) !== JSON.stringify(second.manifest)) {
@@ -534,7 +561,7 @@ async function main() {
   const manifestText = `${JSON.stringify(result.manifest, null, 2)}\n`
   const routingManifestPath = manifestPath(generatedPath)
   if (mode === '--write') {
-    if ((isFullIa || isFullUseCase) && sourceXml !== result.normalizedSource) await atomicWrite(sourcePath, result.normalizedSource)
+    if ((isFullIa || isFullUseCase || isFullUserJourney) && sourceXml !== result.normalizedSource) await atomicWrite(sourcePath, result.normalizedSource)
     await atomicWrite(generatedPath, result.xml)
     await atomicWrite(routingManifestPath, manifestText)
     console.log(`routed ${basename(sourcePath)} → ${basename(generatedPath)}`)
@@ -544,8 +571,8 @@ async function main() {
     readFile(generatedPath, 'utf8'),
     readFile(routingManifestPath, 'utf8'),
   ])
-  if ((isFullIa || isFullUseCase) && sourceXml !== result.normalizedSource) {
-    fail(`source XML이 canonical ${isFullUseCase ? 'Use Case' : 'IA'} layout과 다릅니다.`)
+  if ((isFullIa || isFullUseCase || isFullUserJourney) && sourceXml !== result.normalizedSource) {
+    fail(`source XML이 canonical ${isFullUserJourney ? 'User Journey' : isFullUseCase ? 'Use Case' : 'IA'} layout과 다릅니다.`)
   }
   if (committedXml !== result.xml) fail('generated XML이 독립 재생성 결과와 다릅니다.')
   if (committedManifest !== manifestText) fail('routing manifest가 독립 재생성 결과와 다릅니다.')

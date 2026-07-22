@@ -8,6 +8,7 @@ import type {
 import { inspectSemanticLabelEnvelopes } from './semanticLabelEnvelope'
 import semanticContractJson from '../../../shared/ia-semantic-contract.json?raw'
 import useCaseContractJson from '../../../shared/usecase-semantic-contract.json?raw'
+import userJourneyContractJson from '../../../shared/userjourney-semantic-contract.json?raw'
 
 export interface DrawioDiagnostic {
   readonly id: string
@@ -35,6 +36,17 @@ const USE_CASE_CONTRACT = JSON.parse(useCaseContractJson) as {
   readonly useCases: readonly { readonly id: string; readonly groupId: string }[]
   readonly decorations: readonly { readonly id: string; readonly decorationKind: 'system' | 'group' }[]
   readonly edges: readonly UseCaseContractEdge[]
+}
+
+const USER_JOURNEY_CONTRACT = JSON.parse(userJourneyContractJson) as {
+  readonly nodeIds: readonly string[]
+  readonly decorationIds: readonly string[]
+  readonly edges: readonly {
+    readonly id: string
+    readonly sourceId: string
+    readonly targetId: string
+    readonly relationKind: 'transition'
+  }[]
 }
 
 function interactiveVertexCount(scene: DrawioScene) {
@@ -933,6 +945,71 @@ export function runFullUseCaseDiagnostics(
     {
       id: 'usecase-label-containment', label: 'Pretendard label 측정·노드/actor 시각 배치', pass: labels.pass,
       detail: `font face ${fontFaceCount} · measured ${labels.measured}/41 · node inside ${labels.nodeInside}/${labels.nodeExpected} · actor convention ${labels.actorConvention}/${labels.actorExpected} · unavailable ${labels.unavailable.length} · outside ${labels.outside.length}${labels.outside.length > 0 ? ` (${labels.outside.join(', ')})` : ''}`,
+    },
+  ]
+}
+
+export function runFullUserJourneyDiagnostics(
+  scene: DrawioScene,
+  snapshot: DrawioGeometrySnapshot,
+  fontFaceCount: number,
+): readonly DrawioDiagnostic[] {
+  const integrity = snapshotTopologyIntegrity(scene, snapshot)
+  const endpoint = endpointError(snapshot)
+  const diagonals = nonOrthogonalSegments(snapshot)
+  const nodeClearance = routeNodeClearance(snapshot)
+  const intersections = routeIntersections(snapshot)
+  const bentPhysicalEdges = snapshot.edges.filter(({ points }) => points.length !== 2).map(({ id }) => id)
+  const expectedNodeIds = [...USER_JOURNEY_CONTRACT.nodeIds].sort()
+  const semanticVertexIds = snapshot.vertices
+    .filter(({ pokeKind }) => pokeKind === 'semantic')
+    .map(({ id }) => id)
+    .sort()
+  const semanticPass = JSON.stringify(semanticVertexIds) === JSON.stringify(expectedNodeIds)
+    && sameIds([...scene.topology.vertexIds], new Set(expectedNodeIds))
+    && scene.topology.edgeIds.size === USER_JOURNEY_CONTRACT.edges.length
+  const decorationIds = snapshot.vertices
+    .filter(({ pokeKind }) => pokeKind === 'decoration')
+    .map(({ id }) => id)
+    .sort()
+  const decorationPass = JSON.stringify(decorationIds) === JSON.stringify([...USER_JOURNEY_CONTRACT.decorationIds].sort())
+  return [
+    {
+      id: 'userjourney-semantic-contract', label: '9 journey card · 2 transition exact set',
+      pass: integrity.pass && semanticPass,
+      detail: `semantic vertex ${semanticVertexIds.length}/9 · semantic edge ${scene.topology.edgeIds.size}/2 · ${integrity.detail}`,
+    },
+    {
+      id: 'userjourney-decoration-partition', label: 'overlay·annotation 비-obstacle 장식 분리',
+      pass: decorationPass, detail: `decoration ${decorationIds.length}/8`,
+    },
+    {
+      id: 'userjourney-endpoints', label: '전이 엣지 중앙 포트', pass: integrity.pass && endpoint <= EPSILON,
+      detail: `최대 오차 ${Number.isFinite(endpoint) ? endpoint.toFixed(2) : '∞'}px`,
+    },
+    {
+      id: 'userjourney-orthogonal', label: '모든 segment 직교', pass: diagonals.length === 0,
+      detail: `비직교 ${diagonals.length}개`,
+    },
+    {
+      id: 'userjourney-node-clearance', label: '경유 카드 clearance', pass: nodeClearance.length === 0,
+      detail: `침범 ${nodeClearance.length}개${nodeClearance.length ? ` (${nodeClearance.slice(0, 4).join(', ')})` : ''}`,
+    },
+    {
+      id: 'userjourney-edge-crossing', label: '전이 엣지 교차 없음', pass: intersections.crossings.length === 0,
+      detail: `교차 ${intersections.crossings.length}개`,
+    },
+    {
+      id: 'userjourney-overlap', label: '중복·근접 평행선 없음', pass: intersections.overlaps.length === 0,
+      detail: `위반 ${intersections.overlaps.length}개`,
+    },
+    {
+      id: 'userjourney-physical-bend', label: '물리 segment별 bend 0', pass: bentPhysicalEdges.length === 0,
+      detail: `초과 ${bentPhysicalEdges.length}개`,
+    },
+    {
+      id: 'userjourney-label', label: 'Pretendard label 로드', pass: fontFaceCount > 0,
+      detail: `font face ${fontFaceCount}`,
     },
   ]
 }

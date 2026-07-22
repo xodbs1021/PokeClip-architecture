@@ -13,6 +13,9 @@ const DrawioIaLabPage = lazy(() =>
 const DrawioUseCaseLabPage = lazy(() =>
   import('./pages/labs/DrawioUseCaseLabPage').then(({ DrawioUseCaseLabPage: Page }) => ({ default: Page })),
 )
+const DrawioUserJourneyLabPage = lazy(() =>
+  import('./pages/labs/DrawioUserJourneyLabPage').then(({ DrawioUserJourneyLabPage: Page }) => ({ default: Page })),
+)
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -48,6 +51,14 @@ function App() {
             element={
               <Suspense fallback={<p className="page">draw.io XML lab 로딩 중…</p>}>
                 <DrawioIaLabPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/labs/drawio/2"
+            element={
+              <Suspense fallback={<p className="page">draw.io XML lab 로딩 중…</p>}>
+                <DrawioUserJourneyLabPage />
               </Suspense>
             }
           />

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent } from 'react'
 import { useElementWidth } from '../../hooks/useElementWidth'
-import { runFullIaDiagnostics, runFullUseCaseDiagnostics, runRoutingDiagnostics, runSmokeDiagnostics, type DrawioDiagnostic } from '../../lib/drawio/drawioDiagnostics'
+import { runFullIaDiagnostics, runFullUseCaseDiagnostics, runFullUserJourneyDiagnostics, runRoutingDiagnostics, runSmokeDiagnostics, type DrawioDiagnostic } from '../../lib/drawio/drawioDiagnostics'
 import { mountDrawioScene, type DrawioScene } from '../../lib/drawio/mountDrawioScene'
 import './drawio-lab.css'
 
@@ -134,11 +134,14 @@ export function DrawioLabViewer({ sourceXml, sourceName, diagnostics }: DrawioLa
         const isRoutingFixture = nextScene.topology.vertexIds.has('routing-focus')
         const isFullIa = nextScene.topology.vertexIds.has('ia-dashboard')
         const isFullUseCase = nextScene.topology.vertexIds.has('ac-streamer')
+        const isFullUserJourney = nextScene.topology.vertexIds.has('uj-hotkey')
         let fontFaceCount = 0
-        if (isRoutingFixture || isFullIa || isFullUseCase) {
-          const label = isFullUseCase
-            ? '스트리머 · 방송 시작부터 유튜브 업로드까지'
-            : isFullIa ? '제품 영역 · Windows OBS 플러그인 (스트리머)' : '방송 채널과 업로드 권한을 한 화면에서 관리'
+        if (isRoutingFixture || isFullIa || isFullUseCase || isFullUserJourney) {
+          const label = isFullUserJourney
+            ? '점프카드 뜨는 즉시 클립 제작 — 방송 전에'
+            : isFullUseCase
+              ? '스트리머 · 방송 시작부터 유튜브 업로드까지'
+              : isFullIa ? '제품 영역 · Windows OBS 플러그인 (스트리머)' : '방송 채널과 업로드 권한을 한 화면에서 관리'
           await document.fonts.ready
           fontFaceCount = (await document.fonts.load('12px "Pretendard Variable"', label)).length
         }
@@ -147,6 +150,7 @@ export function DrawioLabViewer({ sourceXml, sourceName, diagnostics }: DrawioLa
         const snapshot = await nextScene.refreshAndCollectGeometry(controller.signal)
         const nextResults = isFullUseCase
           ? runFullUseCaseDiagnostics(nextScene, snapshot, fontFaceCount)
+          : isFullUserJourney ? runFullUserJourneyDiagnostics(nextScene, snapshot, fontFaceCount)
           : isFullIa ? runFullIaDiagnostics(nextScene, snapshot, fontFaceCount)
           : isRoutingFixture
             ? runRoutingDiagnostics(nextScene, snapshot, fontFaceCount)

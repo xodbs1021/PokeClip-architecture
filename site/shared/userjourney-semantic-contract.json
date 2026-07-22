@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "nodeIds": [
+    "uj-obs-start",
+    "uj-hotkey",
+    "uj-approve",
+    "uj-live-wait",
+    "uj-editor",
+    "uj-reject-recover",
+    "uj-template-ready",
+    "uj-auto-upload",
+    "uj-upload-recover"
+  ],
+  "overlayIds": [
+    "ov-lane-broadcast",
+    "ov-lane-clip",
+    "ov-phase-before",
+    "ov-phase-during",
+    "ov-phase-after"
+  ],
+  "annotationIds": [
+    "an-title",
+    "an-strip",
+    "an-footer"
+  ],
+  "decorationIds": [
+    "ov-lane-broadcast",
+    "ov-lane-clip",
+    "ov-phase-before",
+    "ov-phase-during",
+    "ov-phase-after",
+    "an-title",
+    "an-strip",
+    "an-footer"
+  ],
+  "nodes": [
+    { "id": "uj-obs-start", "laneId": "broadcast", "phaseId": "before", "subRow": "", "sourceHtmlId": "", "label": "OBS 켜고 방송 시작 — 준비 끝", "x": 68, "y": 240, "w": 764, "h": 150 },
+    { "id": "uj-hotkey", "laneId": "broadcast", "phaseId": "during", "subRow": "", "sourceHtmlId": "c-hotkey", "label": "게임에만 집중, 명장면엔 핫키만 탁", "x": 903, "y": 240, "w": 884, "h": 150 },
+    { "id": "uj-approve", "laneId": "broadcast", "phaseId": "after", "subRow": "", "sourceHtmlId": "c-approve", "label": "승인 대기함 확인 → 승인·반려, 결과 확인", "x": 1858, "y": 240, "w": 694, "h": 150 },
+    { "id": "uj-live-wait", "laneId": "clip", "phaseId": "before", "subRow": "editor", "sourceHtmlId": "", "label": "라이브 뷰 접속 · 대기", "x": 68, "y": 500, "w": 764, "h": 200 },
+    { "id": "uj-editor", "laneId": "clip", "phaseId": "during", "subRow": "editor", "sourceHtmlId": "c-editor", "label": "점프카드 뜨는 즉시 클립 제작 — 방송 전에", "x": 903, "y": 500, "w": 884, "h": 200 },
+    { "id": "uj-reject-recover", "laneId": "clip", "phaseId": "after", "subRow": "editor", "sourceHtmlId": "", "label": "반려 복구 · VOD로 추가 클립", "x": 1858, "y": 500, "w": 694, "h": 200 },
+    { "id": "uj-template-ready", "laneId": "clip", "phaseId": "before", "subRow": "auto", "sourceHtmlId": "", "label": "템플릿이 준비된 상태", "x": 68, "y": 780, "w": 764, "h": 160 },
+    { "id": "uj-auto-upload", "laneId": "clip", "phaseId": "during", "subRow": "auto", "sourceHtmlId": "c-auto", "label": "점프카드에서 원클릭 자동 업로드", "x": 903, "y": 780, "w": 884, "h": 160 },
+    { "id": "uj-upload-recover", "laneId": "clip", "phaseId": "after", "subRow": "auto", "sourceHtmlId": "", "label": "업로드 복구 · VOD 자동 생성", "x": 1858, "y": 780, "w": 694, "h": 160 }
+  ],
+  "overlays": [
+    { "id": "ov-lane-broadcast", "containerKind": "overlay", "axis": "lane", "order": 0, "label": "방송 레인 · 스트리머는 방송에만 집중", "x": 40, "y": 175, "w": 2540, "h": 255 },
+    { "id": "ov-lane-clip", "containerKind": "overlay", "axis": "lane", "order": 1, "label": "클립 제작 레인 · 편집자 또는 자동화 (고용 무관)", "x": 40, "y": 445, "w": 2540, "h": 555 },
+    { "id": "ov-phase-before", "containerKind": "overlay", "axis": "phase", "order": 0, "label": "1. 방송 전 · Before", "x": 40, "y": 175, "w": 820, "h": 825 },
+    { "id": "ov-phase-during", "containerKind": "overlay", "axis": "phase", "order": 1, "label": "2. 방송 중 · During", "x": 875, "y": 175, "w": 940, "h": 825 },
+    { "id": "ov-phase-after", "containerKind": "overlay", "axis": "phase", "order": 2, "label": "3. 방송 후 · After", "x": 1830, "y": 175, "w": 750, "h": 825 }
+  ],
+  "annotations": [
+    { "id": "an-title", "containerKind": "annotation", "label": "PokeClip User Journey · 방송 시작부터 유튜브 게시까지", "x": 40, "y": 40, "w": 2540, "h": 90 },
+    { "id": "an-strip", "containerKind": "annotation", "label": "클립 파이프라인 (시간 목표) · 하이라이트→카드 3초 내 · 렌더 수십 초", "x": 40, "y": 1030, "w": 2540, "h": 168 },
+    { "id": "an-footer", "containerKind": "annotation", "label": "사용자 관점 보조자료 · 시스템 관점은 3 SA · 4 SysA · 5 CA", "x": 40, "y": 1226, "w": 2540, "h": 118 }
+  ],
+  "edges": [
+    { "id": "edge-uj-hotkey-to-uj-editor", "sourceId": "uj-hotkey", "targetId": "uj-editor", "relationKind": "transition", "bundleFamilyKey": "transition:jumpcard", "styleClass": "dashed/open", "shareClass": "solo", "directionClass": "forward", "arrowMode": "exclusive" },
+    { "id": "edge-uj-editor-to-uj-approve", "sourceId": "uj-editor", "targetId": "uj-approve", "relationKind": "transition", "bundleFamilyKey": "transition:approval", "styleClass": "dashed/open", "shareClass": "solo", "directionClass": "forward", "arrowMode": "exclusive" }
+  ]
+}
