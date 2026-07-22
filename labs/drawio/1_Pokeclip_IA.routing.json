@@ -1,0 +1,4491 @@
+{
+  "schemaVersion": 2,
+  "policy": {
+    "profile": "pokeclip-ia-tree-v1",
+    "EPS": 1,
+    "GRID": 4,
+    "MIN_GUTTER": 64,
+    "MIN_ROW_GAP": 12,
+    "PREFERRED_ROW_GAP": 16,
+    "NODE_CLEARANCE": 12,
+    "MIN_LEAD": 16,
+    "PREFERRED_LEAD": 24,
+    "MIN_ARROW_RUN": 16,
+    "LANE_GAP": 16,
+    "MIN_MEANINGFUL_SEGMENT": 16
+  },
+  "generator": {
+    "name": "deterministic-tree-v1",
+    "browserRuntime": "@maxgraph/core@0.24.0",
+    "laneSolver": {
+      "package": "@drawio/mcp@1.5.0",
+      "scope": "generation-only",
+      "usedForIaTree": false
+    }
+  },
+  "sourceSha256": "a6f16f400274be8eb5437400eceb31b0f246faf9531e89ba7cb4c66a49218fe9",
+  "generatedSha256": "315d8f6a4b2012777ee5c59730ff188d957838086182a3598ad29cef76fe6d17",
+  "independentAttempts": 2,
+  "deterministicExactMatch": true,
+  "warnings": [],
+  "semantic": {
+    "vertexCount": 71,
+    "edgeCount": 70,
+    "vertexIds": [
+      "ia-clip-editor",
+      "ia-clip-editor-action-e1",
+      "ia-clip-editor-action-e2",
+      "ia-clip-editor-action-e4",
+      "ia-clip-editor-action-e5",
+      "ia-clip-editor-action-e7",
+      "ia-clip-editor-action-e8-f1-f2",
+      "ia-clip-editor-action-f3-h5",
+      "ia-clip-editor-page-e1-e8",
+      "ia-clip-library",
+      "ia-clip-library-action-e8",
+      "ia-clip-library-action-f2",
+      "ia-clip-library-action-f2-2",
+      "ia-clip-library-action-f3",
+      "ia-clip-library-action-h5",
+      "ia-clip-library-action-h5-2",
+      "ia-clip-library-page-e8-f2",
+      "ia-clip-library-page-f2-f3",
+      "ia-clip-library-page-h5",
+      "ia-dashboard",
+      "ia-live",
+      "ia-live-action-a6",
+      "ia-live-action-c3-a4-d2",
+      "ia-live-action-d1",
+      "ia-live-action-d2",
+      "ia-live-action-d3",
+      "ia-live-action-d4",
+      "ia-live-page-d1-d4",
+      "ia-login",
+      "ia-obs",
+      "ia-obs-action-a1-a5",
+      "ia-obs-action-a2-a3",
+      "ia-obs-action-a4",
+      "ia-obs-action-a6",
+      "ia-obs-action-a7",
+      "ia-obs-page-a1-a5",
+      "ia-obs-page-a2-a3",
+      "ia-obs-page-a4",
+      "ia-obs-page-a6",
+      "ia-obs-page-a7",
+      "ia-onboarding",
+      "ia-onboarding-action-a1-a3",
+      "ia-onboarding-action-a7",
+      "ia-onboarding-action-h2",
+      "ia-onboarding-action-h3",
+      "ia-onboarding-page-a1-a3",
+      "ia-onboarding-page-a7",
+      "ia-onboarding-page-h2",
+      "ia-onboarding-page-h3",
+      "ia-operations",
+      "ia-operations-action-i3",
+      "ia-operations-action-i4",
+      "ia-operations-action-i4-2",
+      "ia-operations-page-i3",
+      "ia-operations-page-i4",
+      "ia-settings",
+      "ia-settings-action-f4",
+      "ia-settings-action-h1",
+      "ia-settings-action-h2-h3",
+      "ia-settings-action-h4",
+      "ia-settings-page-f4",
+      "ia-settings-page-h1",
+      "ia-settings-page-h2-h3",
+      "ia-settings-page-h4",
+      "ia-vod",
+      "ia-vod-action-b3",
+      "ia-vod-action-b5",
+      "ia-vod-action-g1",
+      "ia-vod-action-g2",
+      "ia-vod-page-b5",
+      "ia-vod-page-g1-g2"
+    ],
+    "edges": [
+      {
+        "id": "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e1",
+        "sourceId": "ia-clip-editor-page-e1-e8",
+        "targetId": "ia-clip-editor-action-e1"
+      },
+      {
+        "id": "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e2",
+        "sourceId": "ia-clip-editor-page-e1-e8",
+        "targetId": "ia-clip-editor-action-e2"
+      },
+      {
+        "id": "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e4",
+        "sourceId": "ia-clip-editor-page-e1-e8",
+        "targetId": "ia-clip-editor-action-e4"
+      },
+      {
+        "id": "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e5",
+        "sourceId": "ia-clip-editor-page-e1-e8",
+        "targetId": "ia-clip-editor-action-e5"
+      },
+      {
+        "id": "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e7",
+        "sourceId": "ia-clip-editor-page-e1-e8",
+        "targetId": "ia-clip-editor-action-e7"
+      },
+      {
+        "id": "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e8-f1-f2",
+        "sourceId": "ia-clip-editor-page-e1-e8",
+        "targetId": "ia-clip-editor-action-e8-f1-f2"
+      },
+      {
+        "id": "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-f3-h5",
+        "sourceId": "ia-clip-editor-page-e1-e8",
+        "targetId": "ia-clip-editor-action-f3-h5"
+      },
+      {
+        "id": "edge-ia-clip-editor-to-ia-clip-editor-page-e1-e8",
+        "sourceId": "ia-clip-editor",
+        "targetId": "ia-clip-editor-page-e1-e8"
+      },
+      {
+        "id": "edge-ia-clip-library-page-e8-f2-to-ia-clip-library-action-e8",
+        "sourceId": "ia-clip-library-page-e8-f2",
+        "targetId": "ia-clip-library-action-e8"
+      },
+      {
+        "id": "edge-ia-clip-library-page-e8-f2-to-ia-clip-library-action-f2",
+        "sourceId": "ia-clip-library-page-e8-f2",
+        "targetId": "ia-clip-library-action-f2"
+      },
+      {
+        "id": "edge-ia-clip-library-page-f2-f3-to-ia-clip-library-action-f2-2",
+        "sourceId": "ia-clip-library-page-f2-f3",
+        "targetId": "ia-clip-library-action-f2-2"
+      },
+      {
+        "id": "edge-ia-clip-library-page-f2-f3-to-ia-clip-library-action-f3",
+        "sourceId": "ia-clip-library-page-f2-f3",
+        "targetId": "ia-clip-library-action-f3"
+      },
+      {
+        "id": "edge-ia-clip-library-page-h5-to-ia-clip-library-action-h5",
+        "sourceId": "ia-clip-library-page-h5",
+        "targetId": "ia-clip-library-action-h5"
+      },
+      {
+        "id": "edge-ia-clip-library-page-h5-to-ia-clip-library-action-h5-2",
+        "sourceId": "ia-clip-library-page-h5",
+        "targetId": "ia-clip-library-action-h5-2"
+      },
+      {
+        "id": "edge-ia-clip-library-to-ia-clip-library-page-e8-f2",
+        "sourceId": "ia-clip-library",
+        "targetId": "ia-clip-library-page-e8-f2"
+      },
+      {
+        "id": "edge-ia-clip-library-to-ia-clip-library-page-f2-f3",
+        "sourceId": "ia-clip-library",
+        "targetId": "ia-clip-library-page-f2-f3"
+      },
+      {
+        "id": "edge-ia-clip-library-to-ia-clip-library-page-h5",
+        "sourceId": "ia-clip-library",
+        "targetId": "ia-clip-library-page-h5"
+      },
+      {
+        "id": "edge-ia-dashboard-to-ia-clip-editor",
+        "sourceId": "ia-dashboard",
+        "targetId": "ia-clip-editor"
+      },
+      {
+        "id": "edge-ia-dashboard-to-ia-clip-library",
+        "sourceId": "ia-dashboard",
+        "targetId": "ia-clip-library"
+      },
+      {
+        "id": "edge-ia-dashboard-to-ia-live",
+        "sourceId": "ia-dashboard",
+        "targetId": "ia-live"
+      },
+      {
+        "id": "edge-ia-dashboard-to-ia-obs",
+        "sourceId": "ia-dashboard",
+        "targetId": "ia-obs"
+      },
+      {
+        "id": "edge-ia-dashboard-to-ia-onboarding",
+        "sourceId": "ia-dashboard",
+        "targetId": "ia-onboarding"
+      },
+      {
+        "id": "edge-ia-dashboard-to-ia-operations",
+        "sourceId": "ia-dashboard",
+        "targetId": "ia-operations"
+      },
+      {
+        "id": "edge-ia-dashboard-to-ia-settings",
+        "sourceId": "ia-dashboard",
+        "targetId": "ia-settings"
+      },
+      {
+        "id": "edge-ia-dashboard-to-ia-vod",
+        "sourceId": "ia-dashboard",
+        "targetId": "ia-vod"
+      },
+      {
+        "id": "edge-ia-live-page-d1-d4-to-ia-live-action-a6",
+        "sourceId": "ia-live-page-d1-d4",
+        "targetId": "ia-live-action-a6"
+      },
+      {
+        "id": "edge-ia-live-page-d1-d4-to-ia-live-action-c3-a4-d2",
+        "sourceId": "ia-live-page-d1-d4",
+        "targetId": "ia-live-action-c3-a4-d2"
+      },
+      {
+        "id": "edge-ia-live-page-d1-d4-to-ia-live-action-d1",
+        "sourceId": "ia-live-page-d1-d4",
+        "targetId": "ia-live-action-d1"
+      },
+      {
+        "id": "edge-ia-live-page-d1-d4-to-ia-live-action-d2",
+        "sourceId": "ia-live-page-d1-d4",
+        "targetId": "ia-live-action-d2"
+      },
+      {
+        "id": "edge-ia-live-page-d1-d4-to-ia-live-action-d3",
+        "sourceId": "ia-live-page-d1-d4",
+        "targetId": "ia-live-action-d3"
+      },
+      {
+        "id": "edge-ia-live-page-d1-d4-to-ia-live-action-d4",
+        "sourceId": "ia-live-page-d1-d4",
+        "targetId": "ia-live-action-d4"
+      },
+      {
+        "id": "edge-ia-live-to-ia-live-page-d1-d4",
+        "sourceId": "ia-live",
+        "targetId": "ia-live-page-d1-d4"
+      },
+      {
+        "id": "edge-ia-login-to-ia-dashboard",
+        "sourceId": "ia-login",
+        "targetId": "ia-dashboard"
+      },
+      {
+        "id": "edge-ia-obs-page-a1-a5-to-ia-obs-action-a1-a5",
+        "sourceId": "ia-obs-page-a1-a5",
+        "targetId": "ia-obs-action-a1-a5"
+      },
+      {
+        "id": "edge-ia-obs-page-a2-a3-to-ia-obs-action-a2-a3",
+        "sourceId": "ia-obs-page-a2-a3",
+        "targetId": "ia-obs-action-a2-a3"
+      },
+      {
+        "id": "edge-ia-obs-page-a4-to-ia-obs-action-a4",
+        "sourceId": "ia-obs-page-a4",
+        "targetId": "ia-obs-action-a4"
+      },
+      {
+        "id": "edge-ia-obs-page-a6-to-ia-obs-action-a6",
+        "sourceId": "ia-obs-page-a6",
+        "targetId": "ia-obs-action-a6"
+      },
+      {
+        "id": "edge-ia-obs-page-a7-to-ia-obs-action-a7",
+        "sourceId": "ia-obs-page-a7",
+        "targetId": "ia-obs-action-a7"
+      },
+      {
+        "id": "edge-ia-obs-to-ia-obs-page-a1-a5",
+        "sourceId": "ia-obs",
+        "targetId": "ia-obs-page-a1-a5"
+      },
+      {
+        "id": "edge-ia-obs-to-ia-obs-page-a2-a3",
+        "sourceId": "ia-obs",
+        "targetId": "ia-obs-page-a2-a3"
+      },
+      {
+        "id": "edge-ia-obs-to-ia-obs-page-a4",
+        "sourceId": "ia-obs",
+        "targetId": "ia-obs-page-a4"
+      },
+      {
+        "id": "edge-ia-obs-to-ia-obs-page-a6",
+        "sourceId": "ia-obs",
+        "targetId": "ia-obs-page-a6"
+      },
+      {
+        "id": "edge-ia-obs-to-ia-obs-page-a7",
+        "sourceId": "ia-obs",
+        "targetId": "ia-obs-page-a7"
+      },
+      {
+        "id": "edge-ia-onboarding-page-a1-a3-to-ia-onboarding-action-a1-a3",
+        "sourceId": "ia-onboarding-page-a1-a3",
+        "targetId": "ia-onboarding-action-a1-a3"
+      },
+      {
+        "id": "edge-ia-onboarding-page-a7-to-ia-onboarding-action-a7",
+        "sourceId": "ia-onboarding-page-a7",
+        "targetId": "ia-onboarding-action-a7"
+      },
+      {
+        "id": "edge-ia-onboarding-page-h2-to-ia-onboarding-action-h2",
+        "sourceId": "ia-onboarding-page-h2",
+        "targetId": "ia-onboarding-action-h2"
+      },
+      {
+        "id": "edge-ia-onboarding-page-h3-to-ia-onboarding-action-h3",
+        "sourceId": "ia-onboarding-page-h3",
+        "targetId": "ia-onboarding-action-h3"
+      },
+      {
+        "id": "edge-ia-onboarding-to-ia-onboarding-page-a1-a3",
+        "sourceId": "ia-onboarding",
+        "targetId": "ia-onboarding-page-a1-a3"
+      },
+      {
+        "id": "edge-ia-onboarding-to-ia-onboarding-page-a7",
+        "sourceId": "ia-onboarding",
+        "targetId": "ia-onboarding-page-a7"
+      },
+      {
+        "id": "edge-ia-onboarding-to-ia-onboarding-page-h2",
+        "sourceId": "ia-onboarding",
+        "targetId": "ia-onboarding-page-h2"
+      },
+      {
+        "id": "edge-ia-onboarding-to-ia-onboarding-page-h3",
+        "sourceId": "ia-onboarding",
+        "targetId": "ia-onboarding-page-h3"
+      },
+      {
+        "id": "edge-ia-operations-page-i3-to-ia-operations-action-i3",
+        "sourceId": "ia-operations-page-i3",
+        "targetId": "ia-operations-action-i3"
+      },
+      {
+        "id": "edge-ia-operations-page-i4-to-ia-operations-action-i4",
+        "sourceId": "ia-operations-page-i4",
+        "targetId": "ia-operations-action-i4"
+      },
+      {
+        "id": "edge-ia-operations-page-i4-to-ia-operations-action-i4-2",
+        "sourceId": "ia-operations-page-i4",
+        "targetId": "ia-operations-action-i4-2"
+      },
+      {
+        "id": "edge-ia-operations-to-ia-operations-page-i3",
+        "sourceId": "ia-operations",
+        "targetId": "ia-operations-page-i3"
+      },
+      {
+        "id": "edge-ia-operations-to-ia-operations-page-i4",
+        "sourceId": "ia-operations",
+        "targetId": "ia-operations-page-i4"
+      },
+      {
+        "id": "edge-ia-settings-page-f4-to-ia-settings-action-f4",
+        "sourceId": "ia-settings-page-f4",
+        "targetId": "ia-settings-action-f4"
+      },
+      {
+        "id": "edge-ia-settings-page-h1-to-ia-settings-action-h1",
+        "sourceId": "ia-settings-page-h1",
+        "targetId": "ia-settings-action-h1"
+      },
+      {
+        "id": "edge-ia-settings-page-h2-h3-to-ia-settings-action-h2-h3",
+        "sourceId": "ia-settings-page-h2-h3",
+        "targetId": "ia-settings-action-h2-h3"
+      },
+      {
+        "id": "edge-ia-settings-page-h4-to-ia-settings-action-h4",
+        "sourceId": "ia-settings-page-h4",
+        "targetId": "ia-settings-action-h4"
+      },
+      {
+        "id": "edge-ia-settings-to-ia-settings-page-f4",
+        "sourceId": "ia-settings",
+        "targetId": "ia-settings-page-f4"
+      },
+      {
+        "id": "edge-ia-settings-to-ia-settings-page-h1",
+        "sourceId": "ia-settings",
+        "targetId": "ia-settings-page-h1"
+      },
+      {
+        "id": "edge-ia-settings-to-ia-settings-page-h2-h3",
+        "sourceId": "ia-settings",
+        "targetId": "ia-settings-page-h2-h3"
+      },
+      {
+        "id": "edge-ia-settings-to-ia-settings-page-h4",
+        "sourceId": "ia-settings",
+        "targetId": "ia-settings-page-h4"
+      },
+      {
+        "id": "edge-ia-vod-page-b5-to-ia-vod-action-b5",
+        "sourceId": "ia-vod-page-b5",
+        "targetId": "ia-vod-action-b5"
+      },
+      {
+        "id": "edge-ia-vod-page-g1-g2-to-ia-vod-action-b3",
+        "sourceId": "ia-vod-page-g1-g2",
+        "targetId": "ia-vod-action-b3"
+      },
+      {
+        "id": "edge-ia-vod-page-g1-g2-to-ia-vod-action-g1",
+        "sourceId": "ia-vod-page-g1-g2",
+        "targetId": "ia-vod-action-g1"
+      },
+      {
+        "id": "edge-ia-vod-page-g1-g2-to-ia-vod-action-g2",
+        "sourceId": "ia-vod-page-g1-g2",
+        "targetId": "ia-vod-action-g2"
+      },
+      {
+        "id": "edge-ia-vod-to-ia-vod-page-b5",
+        "sourceId": "ia-vod",
+        "targetId": "ia-vod-page-b5"
+      },
+      {
+        "id": "edge-ia-vod-to-ia-vod-page-g1-g2",
+        "sourceId": "ia-vod",
+        "targetId": "ia-vod-page-g1-g2"
+      }
+    ]
+  },
+  "routing": {
+    "junctionCount": 57,
+    "physicalEdgeCount": 127,
+    "junctions": [
+      {
+        "id": "route-junction--root-products--01",
+        "x": 1140,
+        "y": 396,
+        "group": "root-products",
+        "role": "row"
+      },
+      {
+        "id": "route-junction--root-products--02",
+        "x": 1140,
+        "y": 636,
+        "group": "root-products",
+        "role": "row"
+      },
+      {
+        "id": "route-junction--root-products--03",
+        "x": 1140,
+        "y": 900,
+        "group": "root-products",
+        "role": "row"
+      },
+      {
+        "id": "route-junction--root-products--04",
+        "x": 1140,
+        "y": 1236,
+        "group": "root-products",
+        "role": "row"
+      },
+      {
+        "id": "route-junction--obs--01",
+        "x": 714,
+        "y": 300,
+        "group": "obs",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--obs--02",
+        "x": 714,
+        "y": 348,
+        "group": "obs",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--obs--03",
+        "x": 714,
+        "y": 396,
+        "group": "obs",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--obs--04",
+        "x": 714,
+        "y": 444,
+        "group": "obs",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--obs--05",
+        "x": 714,
+        "y": 492,
+        "group": "obs",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--onboarding--01",
+        "x": 714,
+        "y": 564,
+        "group": "onboarding",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--onboarding--02",
+        "x": 714,
+        "y": 612,
+        "group": "onboarding",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--onboarding--03",
+        "x": 714,
+        "y": 636,
+        "group": "onboarding",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--onboarding--04",
+        "x": 714,
+        "y": 660,
+        "group": "onboarding",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--onboarding--05",
+        "x": 714,
+        "y": 708,
+        "group": "onboarding",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--live-page-d1-d4--01",
+        "x": 390,
+        "y": 780,
+        "group": "live-page-d1-d4",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--live-page-d1-d4--02",
+        "x": 390,
+        "y": 828,
+        "group": "live-page-d1-d4",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--live-page-d1-d4--03",
+        "x": 390,
+        "y": 876,
+        "group": "live-page-d1-d4",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--live-page-d1-d4--04",
+        "x": 390,
+        "y": 900,
+        "group": "live-page-d1-d4",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--live-page-d1-d4--05",
+        "x": 390,
+        "y": 924,
+        "group": "live-page-d1-d4",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--live-page-d1-d4--06",
+        "x": 390,
+        "y": 972,
+        "group": "live-page-d1-d4",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--live-page-d1-d4--07",
+        "x": 390,
+        "y": 1020,
+        "group": "live-page-d1-d4",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-editor-page-e1-e8--01",
+        "x": 390,
+        "y": 1092,
+        "group": "clip-editor-page-e1-e8",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-editor-page-e1-e8--02",
+        "x": 390,
+        "y": 1140,
+        "group": "clip-editor-page-e1-e8",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-editor-page-e1-e8--03",
+        "x": 390,
+        "y": 1188,
+        "group": "clip-editor-page-e1-e8",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-editor-page-e1-e8--04",
+        "x": 390,
+        "y": 1236,
+        "group": "clip-editor-page-e1-e8",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--clip-editor-page-e1-e8--05",
+        "x": 390,
+        "y": 1284,
+        "group": "clip-editor-page-e1-e8",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-editor-page-e1-e8--06",
+        "x": 390,
+        "y": 1332,
+        "group": "clip-editor-page-e1-e8",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-editor-page-e1-e8--07",
+        "x": 390,
+        "y": 1380,
+        "group": "clip-editor-page-e1-e8",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-library--01",
+        "x": 1566,
+        "y": 300,
+        "group": "clip-library",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-library--02",
+        "x": 1566,
+        "y": 396,
+        "group": "clip-library",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--clip-library--03",
+        "x": 1566,
+        "y": 492,
+        "group": "clip-library",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-library-page-e8-f2--01",
+        "x": 1890,
+        "y": 276,
+        "group": "clip-library-page-e8-f2",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-library-page-e8-f2--02",
+        "x": 1890,
+        "y": 300,
+        "group": "clip-library-page-e8-f2",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--clip-library-page-e8-f2--03",
+        "x": 1890,
+        "y": 324,
+        "group": "clip-library-page-e8-f2",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-library-page-h5--01",
+        "x": 1890,
+        "y": 372,
+        "group": "clip-library-page-h5",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-library-page-h5--02",
+        "x": 1890,
+        "y": 396,
+        "group": "clip-library-page-h5",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--clip-library-page-h5--03",
+        "x": 1890,
+        "y": 420,
+        "group": "clip-library-page-h5",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-library-page-f2-f3--01",
+        "x": 1890,
+        "y": 468,
+        "group": "clip-library-page-f2-f3",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--clip-library-page-f2-f3--02",
+        "x": 1890,
+        "y": 492,
+        "group": "clip-library-page-f2-f3",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--clip-library-page-f2-f3--03",
+        "x": 1890,
+        "y": 516,
+        "group": "clip-library-page-f2-f3",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--vod--01",
+        "x": 1566,
+        "y": 588,
+        "group": "vod",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--vod--02",
+        "x": 1566,
+        "y": 636,
+        "group": "vod",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--vod--03",
+        "x": 1566,
+        "y": 684,
+        "group": "vod",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--vod-page-g1-g2--01",
+        "x": 1890,
+        "y": 636,
+        "group": "vod-page-g1-g2",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--vod-page-g1-g2--02",
+        "x": 1890,
+        "y": 684,
+        "group": "vod-page-g1-g2",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--vod-page-g1-g2--03",
+        "x": 1890,
+        "y": 732,
+        "group": "vod-page-g1-g2",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--settings--01",
+        "x": 1566,
+        "y": 828,
+        "group": "settings",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--settings--02",
+        "x": 1566,
+        "y": 876,
+        "group": "settings",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--settings--03",
+        "x": 1566,
+        "y": 900,
+        "group": "settings",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--settings--04",
+        "x": 1566,
+        "y": 924,
+        "group": "settings",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--settings--05",
+        "x": 1566,
+        "y": 972,
+        "group": "settings",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--operations--01",
+        "x": 1566,
+        "y": 1200,
+        "group": "operations",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--operations--02",
+        "x": 1566,
+        "y": 1236,
+        "group": "operations",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--operations--03",
+        "x": 1566,
+        "y": 1272,
+        "group": "operations",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--operations-page-i4--01",
+        "x": 1890,
+        "y": 1248,
+        "group": "operations-page-i4",
+        "role": "branch"
+      },
+      {
+        "id": "route-junction--operations-page-i4--02",
+        "x": 1890,
+        "y": 1272,
+        "group": "operations-page-i4",
+        "role": "stem"
+      },
+      {
+        "id": "route-junction--operations-page-i4--03",
+        "x": 1890,
+        "y": 1296,
+        "group": "operations-page-i4",
+        "role": "branch"
+      }
+    ],
+    "physicalEdges": [
+      {
+        "id": "route-edge--login--branch--01",
+        "sourceId": "ia-login",
+        "targetId": "ia-dashboard",
+        "group": "login",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-login-to-ia-dashboard"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 84
+          },
+          {
+            "x": 1140,
+            "y": 127
+          }
+        ],
+        "length": 43
+      },
+      {
+        "id": "route-edge--root-products--stem--01",
+        "sourceId": "ia-dashboard",
+        "targetId": "route-junction--root-products--01",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-clip-editor",
+          "edge-ia-dashboard-to-ia-clip-library",
+          "edge-ia-dashboard-to-ia-live",
+          "edge-ia-dashboard-to-ia-obs",
+          "edge-ia-dashboard-to-ia-onboarding",
+          "edge-ia-dashboard-to-ia-operations",
+          "edge-ia-dashboard-to-ia-settings",
+          "edge-ia-dashboard-to-ia-vod"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 173
+          },
+          {
+            "x": 1140,
+            "y": 396
+          }
+        ],
+        "length": 223
+      },
+      {
+        "id": "route-edge--root-products--rail--01",
+        "sourceId": "route-junction--root-products--01",
+        "targetId": "route-junction--root-products--02",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-clip-editor",
+          "edge-ia-dashboard-to-ia-live",
+          "edge-ia-dashboard-to-ia-onboarding",
+          "edge-ia-dashboard-to-ia-operations",
+          "edge-ia-dashboard-to-ia-settings",
+          "edge-ia-dashboard-to-ia-vod"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 396
+          },
+          {
+            "x": 1140,
+            "y": 636
+          }
+        ],
+        "length": 240
+      },
+      {
+        "id": "route-edge--root-products--rail--02",
+        "sourceId": "route-junction--root-products--02",
+        "targetId": "route-junction--root-products--03",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-clip-editor",
+          "edge-ia-dashboard-to-ia-live",
+          "edge-ia-dashboard-to-ia-operations",
+          "edge-ia-dashboard-to-ia-settings"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 636
+          },
+          {
+            "x": 1140,
+            "y": 900
+          }
+        ],
+        "length": 264
+      },
+      {
+        "id": "route-edge--root-products--rail--03",
+        "sourceId": "route-junction--root-products--03",
+        "targetId": "route-junction--root-products--04",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-clip-editor",
+          "edge-ia-dashboard-to-ia-operations"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 900
+          },
+          {
+            "x": 1140,
+            "y": 1236
+          }
+        ],
+        "length": 336
+      },
+      {
+        "id": "route-edge--root-products--branch--01",
+        "sourceId": "route-junction--root-products--01",
+        "targetId": "ia-obs",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-obs"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 396
+          },
+          {
+            "x": 971,
+            "y": 396
+          }
+        ],
+        "length": 169
+      },
+      {
+        "id": "route-edge--root-products--branch--02",
+        "sourceId": "route-junction--root-products--01",
+        "targetId": "ia-clip-library",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-clip-library"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 396
+          },
+          {
+            "x": 1309,
+            "y": 396
+          }
+        ],
+        "length": 169
+      },
+      {
+        "id": "route-edge--root-products--branch--03",
+        "sourceId": "route-junction--root-products--02",
+        "targetId": "ia-onboarding",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-onboarding"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 636
+          },
+          {
+            "x": 971,
+            "y": 636
+          }
+        ],
+        "length": 169
+      },
+      {
+        "id": "route-edge--root-products--branch--04",
+        "sourceId": "route-junction--root-products--02",
+        "targetId": "ia-vod",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-vod"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 636
+          },
+          {
+            "x": 1309,
+            "y": 636
+          }
+        ],
+        "length": 169
+      },
+      {
+        "id": "route-edge--root-products--branch--05",
+        "sourceId": "route-junction--root-products--03",
+        "targetId": "ia-live",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-live"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 900
+          },
+          {
+            "x": 971,
+            "y": 900
+          }
+        ],
+        "length": 169
+      },
+      {
+        "id": "route-edge--root-products--branch--06",
+        "sourceId": "route-junction--root-products--03",
+        "targetId": "ia-settings",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-settings"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 900
+          },
+          {
+            "x": 1309,
+            "y": 900
+          }
+        ],
+        "length": 169
+      },
+      {
+        "id": "route-edge--root-products--branch--07",
+        "sourceId": "route-junction--root-products--04",
+        "targetId": "ia-clip-editor",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-clip-editor"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 1236
+          },
+          {
+            "x": 971,
+            "y": 1236
+          }
+        ],
+        "length": 169
+      },
+      {
+        "id": "route-edge--root-products--branch--08",
+        "sourceId": "route-junction--root-products--04",
+        "targetId": "ia-operations",
+        "group": "root-products",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-dashboard-to-ia-operations"
+        ],
+        "points": [
+          {
+            "x": 1140,
+            "y": 1236
+          },
+          {
+            "x": 1309,
+            "y": 1236
+          }
+        ],
+        "length": 169
+      },
+      {
+        "id": "route-edge--obs--stem--01",
+        "sourceId": "ia-obs",
+        "targetId": "route-junction--obs--03",
+        "group": "obs",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-to-ia-obs-page-a1-a5",
+          "edge-ia-obs-to-ia-obs-page-a2-a3",
+          "edge-ia-obs-to-ia-obs-page-a4",
+          "edge-ia-obs-to-ia-obs-page-a6",
+          "edge-ia-obs-to-ia-obs-page-a7"
+        ],
+        "points": [
+          {
+            "x": 746,
+            "y": 396
+          },
+          {
+            "x": 714,
+            "y": 396
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--obs--rail--01",
+        "sourceId": "route-junction--obs--01",
+        "targetId": "route-junction--obs--02",
+        "group": "obs",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-to-ia-obs-page-a1-a5"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 300
+          },
+          {
+            "x": 714,
+            "y": 348
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--obs--rail--02",
+        "sourceId": "route-junction--obs--02",
+        "targetId": "route-junction--obs--03",
+        "group": "obs",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-to-ia-obs-page-a1-a5",
+          "edge-ia-obs-to-ia-obs-page-a2-a3"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 348
+          },
+          {
+            "x": 714,
+            "y": 396
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--obs--rail--03",
+        "sourceId": "route-junction--obs--03",
+        "targetId": "route-junction--obs--04",
+        "group": "obs",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-to-ia-obs-page-a6",
+          "edge-ia-obs-to-ia-obs-page-a7"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 396
+          },
+          {
+            "x": 714,
+            "y": 444
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--obs--rail--04",
+        "sourceId": "route-junction--obs--04",
+        "targetId": "route-junction--obs--05",
+        "group": "obs",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-to-ia-obs-page-a7"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 444
+          },
+          {
+            "x": 714,
+            "y": 492
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--obs--branch--01",
+        "sourceId": "route-junction--obs--01",
+        "targetId": "ia-obs-page-a1-a5",
+        "group": "obs",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-to-ia-obs-page-a1-a5"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 300
+          },
+          {
+            "x": 682,
+            "y": 300
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--obs--branch--02",
+        "sourceId": "route-junction--obs--02",
+        "targetId": "ia-obs-page-a2-a3",
+        "group": "obs",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-to-ia-obs-page-a2-a3"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 348
+          },
+          {
+            "x": 682,
+            "y": 348
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--obs--branch--03",
+        "sourceId": "route-junction--obs--03",
+        "targetId": "ia-obs-page-a4",
+        "group": "obs",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-to-ia-obs-page-a4"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 396
+          },
+          {
+            "x": 682,
+            "y": 396
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--obs--branch--04",
+        "sourceId": "route-junction--obs--04",
+        "targetId": "ia-obs-page-a6",
+        "group": "obs",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-to-ia-obs-page-a6"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 444
+          },
+          {
+            "x": 682,
+            "y": 444
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--obs--branch--05",
+        "sourceId": "route-junction--obs--05",
+        "targetId": "ia-obs-page-a7",
+        "group": "obs",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-to-ia-obs-page-a7"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 492
+          },
+          {
+            "x": 682,
+            "y": 492
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--obs-page-a1-a5--branch--01",
+        "sourceId": "ia-obs-page-a1-a5",
+        "targetId": "ia-obs-action-a1-a5",
+        "group": "obs-page-a1-a5",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-page-a1-a5-to-ia-obs-action-a1-a5"
+        ],
+        "points": [
+          {
+            "x": 422,
+            "y": 300
+          },
+          {
+            "x": 358,
+            "y": 300
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--obs-page-a2-a3--branch--01",
+        "sourceId": "ia-obs-page-a2-a3",
+        "targetId": "ia-obs-action-a2-a3",
+        "group": "obs-page-a2-a3",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-page-a2-a3-to-ia-obs-action-a2-a3"
+        ],
+        "points": [
+          {
+            "x": 422,
+            "y": 348
+          },
+          {
+            "x": 358,
+            "y": 348
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--obs-page-a4--branch--01",
+        "sourceId": "ia-obs-page-a4",
+        "targetId": "ia-obs-action-a4",
+        "group": "obs-page-a4",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-page-a4-to-ia-obs-action-a4"
+        ],
+        "points": [
+          {
+            "x": 422,
+            "y": 396
+          },
+          {
+            "x": 358,
+            "y": 396
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--obs-page-a6--branch--01",
+        "sourceId": "ia-obs-page-a6",
+        "targetId": "ia-obs-action-a6",
+        "group": "obs-page-a6",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-page-a6-to-ia-obs-action-a6"
+        ],
+        "points": [
+          {
+            "x": 422,
+            "y": 444
+          },
+          {
+            "x": 358,
+            "y": 444
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--obs-page-a7--branch--01",
+        "sourceId": "ia-obs-page-a7",
+        "targetId": "ia-obs-action-a7",
+        "group": "obs-page-a7",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-obs-page-a7-to-ia-obs-action-a7"
+        ],
+        "points": [
+          {
+            "x": 422,
+            "y": 492
+          },
+          {
+            "x": 358,
+            "y": 492
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--onboarding--stem--01",
+        "sourceId": "ia-onboarding",
+        "targetId": "route-junction--onboarding--03",
+        "group": "onboarding",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-to-ia-onboarding-page-a1-a3",
+          "edge-ia-onboarding-to-ia-onboarding-page-a7",
+          "edge-ia-onboarding-to-ia-onboarding-page-h2",
+          "edge-ia-onboarding-to-ia-onboarding-page-h3"
+        ],
+        "points": [
+          {
+            "x": 746,
+            "y": 636
+          },
+          {
+            "x": 714,
+            "y": 636
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--onboarding--rail--01",
+        "sourceId": "route-junction--onboarding--01",
+        "targetId": "route-junction--onboarding--02",
+        "group": "onboarding",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-to-ia-onboarding-page-a7"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 564
+          },
+          {
+            "x": 714,
+            "y": 612
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--onboarding--rail--02",
+        "sourceId": "route-junction--onboarding--02",
+        "targetId": "route-junction--onboarding--03",
+        "group": "onboarding",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-to-ia-onboarding-page-a7",
+          "edge-ia-onboarding-to-ia-onboarding-page-h2"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 612
+          },
+          {
+            "x": 714,
+            "y": 636
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--onboarding--rail--03",
+        "sourceId": "route-junction--onboarding--03",
+        "targetId": "route-junction--onboarding--04",
+        "group": "onboarding",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-to-ia-onboarding-page-a1-a3",
+          "edge-ia-onboarding-to-ia-onboarding-page-h3"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 636
+          },
+          {
+            "x": 714,
+            "y": 660
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--onboarding--rail--04",
+        "sourceId": "route-junction--onboarding--04",
+        "targetId": "route-junction--onboarding--05",
+        "group": "onboarding",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-to-ia-onboarding-page-a1-a3"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 660
+          },
+          {
+            "x": 714,
+            "y": 708
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--onboarding--branch--01",
+        "sourceId": "route-junction--onboarding--01",
+        "targetId": "ia-onboarding-page-a7",
+        "group": "onboarding",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-to-ia-onboarding-page-a7"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 564
+          },
+          {
+            "x": 682,
+            "y": 564
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--onboarding--branch--02",
+        "sourceId": "route-junction--onboarding--02",
+        "targetId": "ia-onboarding-page-h2",
+        "group": "onboarding",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-to-ia-onboarding-page-h2"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 612
+          },
+          {
+            "x": 682,
+            "y": 612
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--onboarding--branch--03",
+        "sourceId": "route-junction--onboarding--04",
+        "targetId": "ia-onboarding-page-h3",
+        "group": "onboarding",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-to-ia-onboarding-page-h3"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 660
+          },
+          {
+            "x": 682,
+            "y": 660
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--onboarding--branch--04",
+        "sourceId": "route-junction--onboarding--05",
+        "targetId": "ia-onboarding-page-a1-a3",
+        "group": "onboarding",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-to-ia-onboarding-page-a1-a3"
+        ],
+        "points": [
+          {
+            "x": 714,
+            "y": 708
+          },
+          {
+            "x": 682,
+            "y": 708
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--onboarding-page-a7--branch--01",
+        "sourceId": "ia-onboarding-page-a7",
+        "targetId": "ia-onboarding-action-a7",
+        "group": "onboarding-page-a7",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-page-a7-to-ia-onboarding-action-a7"
+        ],
+        "points": [
+          {
+            "x": 422,
+            "y": 564
+          },
+          {
+            "x": 358,
+            "y": 564
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--onboarding-page-h2--branch--01",
+        "sourceId": "ia-onboarding-page-h2",
+        "targetId": "ia-onboarding-action-h2",
+        "group": "onboarding-page-h2",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-page-h2-to-ia-onboarding-action-h2"
+        ],
+        "points": [
+          {
+            "x": 422,
+            "y": 612
+          },
+          {
+            "x": 358,
+            "y": 612
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--onboarding-page-h3--branch--01",
+        "sourceId": "ia-onboarding-page-h3",
+        "targetId": "ia-onboarding-action-h3",
+        "group": "onboarding-page-h3",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-page-h3-to-ia-onboarding-action-h3"
+        ],
+        "points": [
+          {
+            "x": 422,
+            "y": 660
+          },
+          {
+            "x": 358,
+            "y": 660
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--onboarding-page-a1-a3--branch--01",
+        "sourceId": "ia-onboarding-page-a1-a3",
+        "targetId": "ia-onboarding-action-a1-a3",
+        "group": "onboarding-page-a1-a3",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-onboarding-page-a1-a3-to-ia-onboarding-action-a1-a3"
+        ],
+        "points": [
+          {
+            "x": 422,
+            "y": 708
+          },
+          {
+            "x": 358,
+            "y": 708
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--live--branch--01",
+        "sourceId": "ia-live",
+        "targetId": "ia-live-page-d1-d4",
+        "group": "live",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-to-ia-live-page-d1-d4"
+        ],
+        "points": [
+          {
+            "x": 746,
+            "y": 900
+          },
+          {
+            "x": 682,
+            "y": 900
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--stem--01",
+        "sourceId": "ia-live-page-d1-d4",
+        "targetId": "route-junction--live-page-d1-d4--04",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-a6",
+          "edge-ia-live-page-d1-d4-to-ia-live-action-c3-a4-d2",
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d1",
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d2",
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d3",
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d4"
+        ],
+        "points": [
+          {
+            "x": 422,
+            "y": 900
+          },
+          {
+            "x": 390,
+            "y": 900
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--rail--01",
+        "sourceId": "route-junction--live-page-d1-d4--01",
+        "targetId": "route-junction--live-page-d1-d4--02",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d1"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 780
+          },
+          {
+            "x": 390,
+            "y": 828
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--rail--02",
+        "sourceId": "route-junction--live-page-d1-d4--02",
+        "targetId": "route-junction--live-page-d1-d4--03",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-c3-a4-d2",
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d1"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 828
+          },
+          {
+            "x": 390,
+            "y": 876
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--rail--03",
+        "sourceId": "route-junction--live-page-d1-d4--03",
+        "targetId": "route-junction--live-page-d1-d4--04",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-c3-a4-d2",
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d1",
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d2"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 876
+          },
+          {
+            "x": 390,
+            "y": 900
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--rail--04",
+        "sourceId": "route-junction--live-page-d1-d4--04",
+        "targetId": "route-junction--live-page-d1-d4--05",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-a6",
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d3",
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d4"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 900
+          },
+          {
+            "x": 390,
+            "y": 924
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--rail--05",
+        "sourceId": "route-junction--live-page-d1-d4--05",
+        "targetId": "route-junction--live-page-d1-d4--06",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-a6",
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d3"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 924
+          },
+          {
+            "x": 390,
+            "y": 972
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--rail--06",
+        "sourceId": "route-junction--live-page-d1-d4--06",
+        "targetId": "route-junction--live-page-d1-d4--07",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-a6"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 972
+          },
+          {
+            "x": 390,
+            "y": 1020
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--branch--01",
+        "sourceId": "route-junction--live-page-d1-d4--01",
+        "targetId": "ia-live-action-d1",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d1"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 780
+          },
+          {
+            "x": 358,
+            "y": 780
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--branch--02",
+        "sourceId": "route-junction--live-page-d1-d4--02",
+        "targetId": "ia-live-action-c3-a4-d2",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-c3-a4-d2"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 828
+          },
+          {
+            "x": 358,
+            "y": 828
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--branch--03",
+        "sourceId": "route-junction--live-page-d1-d4--03",
+        "targetId": "ia-live-action-d2",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d2"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 876
+          },
+          {
+            "x": 358,
+            "y": 876
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--branch--04",
+        "sourceId": "route-junction--live-page-d1-d4--05",
+        "targetId": "ia-live-action-d4",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d4"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 924
+          },
+          {
+            "x": 358,
+            "y": 924
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--branch--05",
+        "sourceId": "route-junction--live-page-d1-d4--06",
+        "targetId": "ia-live-action-d3",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-d3"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 972
+          },
+          {
+            "x": 358,
+            "y": 972
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--live-page-d1-d4--branch--06",
+        "sourceId": "route-junction--live-page-d1-d4--07",
+        "targetId": "ia-live-action-a6",
+        "group": "live-page-d1-d4",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-live-page-d1-d4-to-ia-live-action-a6"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1020
+          },
+          {
+            "x": 358,
+            "y": 1020
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-editor--branch--01",
+        "sourceId": "ia-clip-editor",
+        "targetId": "ia-clip-editor-page-e1-e8",
+        "group": "clip-editor",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-to-ia-clip-editor-page-e1-e8"
+        ],
+        "points": [
+          {
+            "x": 746,
+            "y": 1236
+          },
+          {
+            "x": 682,
+            "y": 1236
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--stem--01",
+        "sourceId": "ia-clip-editor-page-e1-e8",
+        "targetId": "route-junction--clip-editor-page-e1-e8--04",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e1",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e2",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e4",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e5",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e7",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e8-f1-f2",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-f3-h5"
+        ],
+        "points": [
+          {
+            "x": 422,
+            "y": 1236
+          },
+          {
+            "x": 390,
+            "y": 1236
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--rail--01",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--01",
+        "targetId": "route-junction--clip-editor-page-e1-e8--02",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e1"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1092
+          },
+          {
+            "x": 390,
+            "y": 1140
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--rail--02",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--02",
+        "targetId": "route-junction--clip-editor-page-e1-e8--03",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e1",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e5"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1140
+          },
+          {
+            "x": 390,
+            "y": 1188
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--rail--03",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--03",
+        "targetId": "route-junction--clip-editor-page-e1-e8--04",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e1",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e2",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e5"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1188
+          },
+          {
+            "x": 390,
+            "y": 1236
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--rail--04",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--04",
+        "targetId": "route-junction--clip-editor-page-e1-e8--05",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e7",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e8-f1-f2",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-f3-h5"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1236
+          },
+          {
+            "x": 390,
+            "y": 1284
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--rail--05",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--05",
+        "targetId": "route-junction--clip-editor-page-e1-e8--06",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e8-f1-f2",
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-f3-h5"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1284
+          },
+          {
+            "x": 390,
+            "y": 1332
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--rail--06",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--06",
+        "targetId": "route-junction--clip-editor-page-e1-e8--07",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-f3-h5"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1332
+          },
+          {
+            "x": 390,
+            "y": 1380
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--branch--01",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--01",
+        "targetId": "ia-clip-editor-action-e1",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e1"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1092
+          },
+          {
+            "x": 358,
+            "y": 1092
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--branch--02",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--02",
+        "targetId": "ia-clip-editor-action-e5",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e5"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1140
+          },
+          {
+            "x": 358,
+            "y": 1140
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--branch--03",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--03",
+        "targetId": "ia-clip-editor-action-e2",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e2"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1188
+          },
+          {
+            "x": 358,
+            "y": 1188
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--branch--04",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--04",
+        "targetId": "ia-clip-editor-action-e4",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e4"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1236
+          },
+          {
+            "x": 358,
+            "y": 1236
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--branch--05",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--05",
+        "targetId": "ia-clip-editor-action-e7",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e7"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1284
+          },
+          {
+            "x": 358,
+            "y": 1284
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--branch--06",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--06",
+        "targetId": "ia-clip-editor-action-e8-f1-f2",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e8-f1-f2"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1332
+          },
+          {
+            "x": 358,
+            "y": 1332
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-editor-page-e1-e8--branch--07",
+        "sourceId": "route-junction--clip-editor-page-e1-e8--07",
+        "targetId": "ia-clip-editor-action-f3-h5",
+        "group": "clip-editor-page-e1-e8",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-f3-h5"
+        ],
+        "points": [
+          {
+            "x": 390,
+            "y": 1380
+          },
+          {
+            "x": 358,
+            "y": 1380
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library--stem--01",
+        "sourceId": "ia-clip-library",
+        "targetId": "route-junction--clip-library--02",
+        "group": "clip-library",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-to-ia-clip-library-page-e8-f2",
+          "edge-ia-clip-library-to-ia-clip-library-page-f2-f3",
+          "edge-ia-clip-library-to-ia-clip-library-page-h5"
+        ],
+        "points": [
+          {
+            "x": 1534,
+            "y": 396
+          },
+          {
+            "x": 1566,
+            "y": 396
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library--rail--01",
+        "sourceId": "route-junction--clip-library--01",
+        "targetId": "route-junction--clip-library--02",
+        "group": "clip-library",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-to-ia-clip-library-page-e8-f2"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 300
+          },
+          {
+            "x": 1566,
+            "y": 396
+          }
+        ],
+        "length": 96
+      },
+      {
+        "id": "route-edge--clip-library--rail--02",
+        "sourceId": "route-junction--clip-library--02",
+        "targetId": "route-junction--clip-library--03",
+        "group": "clip-library",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-to-ia-clip-library-page-f2-f3"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 396
+          },
+          {
+            "x": 1566,
+            "y": 492
+          }
+        ],
+        "length": 96
+      },
+      {
+        "id": "route-edge--clip-library--branch--01",
+        "sourceId": "route-junction--clip-library--01",
+        "targetId": "ia-clip-library-page-e8-f2",
+        "group": "clip-library",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-to-ia-clip-library-page-e8-f2"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 300
+          },
+          {
+            "x": 1598,
+            "y": 300
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library--branch--02",
+        "sourceId": "route-junction--clip-library--02",
+        "targetId": "ia-clip-library-page-h5",
+        "group": "clip-library",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-to-ia-clip-library-page-h5"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 396
+          },
+          {
+            "x": 1598,
+            "y": 396
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library--branch--03",
+        "sourceId": "route-junction--clip-library--03",
+        "targetId": "ia-clip-library-page-f2-f3",
+        "group": "clip-library",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-to-ia-clip-library-page-f2-f3"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 492
+          },
+          {
+            "x": 1598,
+            "y": 492
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library-page-e8-f2--stem--01",
+        "sourceId": "ia-clip-library-page-e8-f2",
+        "targetId": "route-junction--clip-library-page-e8-f2--02",
+        "group": "clip-library-page-e8-f2",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-e8-f2-to-ia-clip-library-action-e8",
+          "edge-ia-clip-library-page-e8-f2-to-ia-clip-library-action-f2"
+        ],
+        "points": [
+          {
+            "x": 1858,
+            "y": 300
+          },
+          {
+            "x": 1890,
+            "y": 300
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library-page-e8-f2--rail--01",
+        "sourceId": "route-junction--clip-library-page-e8-f2--01",
+        "targetId": "route-junction--clip-library-page-e8-f2--02",
+        "group": "clip-library-page-e8-f2",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-e8-f2-to-ia-clip-library-action-f2"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 276
+          },
+          {
+            "x": 1890,
+            "y": 300
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--clip-library-page-e8-f2--rail--02",
+        "sourceId": "route-junction--clip-library-page-e8-f2--02",
+        "targetId": "route-junction--clip-library-page-e8-f2--03",
+        "group": "clip-library-page-e8-f2",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-e8-f2-to-ia-clip-library-action-e8"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 300
+          },
+          {
+            "x": 1890,
+            "y": 324
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--clip-library-page-e8-f2--branch--01",
+        "sourceId": "route-junction--clip-library-page-e8-f2--01",
+        "targetId": "ia-clip-library-action-f2",
+        "group": "clip-library-page-e8-f2",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-e8-f2-to-ia-clip-library-action-f2"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 276
+          },
+          {
+            "x": 1922,
+            "y": 276
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library-page-e8-f2--branch--02",
+        "sourceId": "route-junction--clip-library-page-e8-f2--03",
+        "targetId": "ia-clip-library-action-e8",
+        "group": "clip-library-page-e8-f2",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-e8-f2-to-ia-clip-library-action-e8"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 324
+          },
+          {
+            "x": 1922,
+            "y": 324
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library-page-h5--stem--01",
+        "sourceId": "ia-clip-library-page-h5",
+        "targetId": "route-junction--clip-library-page-h5--02",
+        "group": "clip-library-page-h5",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-h5-to-ia-clip-library-action-h5",
+          "edge-ia-clip-library-page-h5-to-ia-clip-library-action-h5-2"
+        ],
+        "points": [
+          {
+            "x": 1858,
+            "y": 396
+          },
+          {
+            "x": 1890,
+            "y": 396
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library-page-h5--rail--01",
+        "sourceId": "route-junction--clip-library-page-h5--01",
+        "targetId": "route-junction--clip-library-page-h5--02",
+        "group": "clip-library-page-h5",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-h5-to-ia-clip-library-action-h5"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 372
+          },
+          {
+            "x": 1890,
+            "y": 396
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--clip-library-page-h5--rail--02",
+        "sourceId": "route-junction--clip-library-page-h5--02",
+        "targetId": "route-junction--clip-library-page-h5--03",
+        "group": "clip-library-page-h5",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-h5-to-ia-clip-library-action-h5-2"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 396
+          },
+          {
+            "x": 1890,
+            "y": 420
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--clip-library-page-h5--branch--01",
+        "sourceId": "route-junction--clip-library-page-h5--01",
+        "targetId": "ia-clip-library-action-h5",
+        "group": "clip-library-page-h5",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-h5-to-ia-clip-library-action-h5"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 372
+          },
+          {
+            "x": 1922,
+            "y": 372
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library-page-h5--branch--02",
+        "sourceId": "route-junction--clip-library-page-h5--03",
+        "targetId": "ia-clip-library-action-h5-2",
+        "group": "clip-library-page-h5",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-h5-to-ia-clip-library-action-h5-2"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 420
+          },
+          {
+            "x": 1922,
+            "y": 420
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library-page-f2-f3--stem--01",
+        "sourceId": "ia-clip-library-page-f2-f3",
+        "targetId": "route-junction--clip-library-page-f2-f3--02",
+        "group": "clip-library-page-f2-f3",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-f2-f3-to-ia-clip-library-action-f2-2",
+          "edge-ia-clip-library-page-f2-f3-to-ia-clip-library-action-f3"
+        ],
+        "points": [
+          {
+            "x": 1858,
+            "y": 492
+          },
+          {
+            "x": 1890,
+            "y": 492
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library-page-f2-f3--rail--01",
+        "sourceId": "route-junction--clip-library-page-f2-f3--01",
+        "targetId": "route-junction--clip-library-page-f2-f3--02",
+        "group": "clip-library-page-f2-f3",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-f2-f3-to-ia-clip-library-action-f3"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 468
+          },
+          {
+            "x": 1890,
+            "y": 492
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--clip-library-page-f2-f3--rail--02",
+        "sourceId": "route-junction--clip-library-page-f2-f3--02",
+        "targetId": "route-junction--clip-library-page-f2-f3--03",
+        "group": "clip-library-page-f2-f3",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-f2-f3-to-ia-clip-library-action-f2-2"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 492
+          },
+          {
+            "x": 1890,
+            "y": 516
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--clip-library-page-f2-f3--branch--01",
+        "sourceId": "route-junction--clip-library-page-f2-f3--01",
+        "targetId": "ia-clip-library-action-f3",
+        "group": "clip-library-page-f2-f3",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-f2-f3-to-ia-clip-library-action-f3"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 468
+          },
+          {
+            "x": 1922,
+            "y": 468
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--clip-library-page-f2-f3--branch--02",
+        "sourceId": "route-junction--clip-library-page-f2-f3--03",
+        "targetId": "ia-clip-library-action-f2-2",
+        "group": "clip-library-page-f2-f3",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-clip-library-page-f2-f3-to-ia-clip-library-action-f2-2"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 516
+          },
+          {
+            "x": 1922,
+            "y": 516
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--vod--stem--01",
+        "sourceId": "ia-vod",
+        "targetId": "route-junction--vod--02",
+        "group": "vod",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-to-ia-vod-page-b5",
+          "edge-ia-vod-to-ia-vod-page-g1-g2"
+        ],
+        "points": [
+          {
+            "x": 1534,
+            "y": 636
+          },
+          {
+            "x": 1566,
+            "y": 636
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--vod--rail--01",
+        "sourceId": "route-junction--vod--01",
+        "targetId": "route-junction--vod--02",
+        "group": "vod",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-to-ia-vod-page-b5"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 588
+          },
+          {
+            "x": 1566,
+            "y": 636
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--vod--rail--02",
+        "sourceId": "route-junction--vod--02",
+        "targetId": "route-junction--vod--03",
+        "group": "vod",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-to-ia-vod-page-g1-g2"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 636
+          },
+          {
+            "x": 1566,
+            "y": 684
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--vod--branch--01",
+        "sourceId": "route-junction--vod--01",
+        "targetId": "ia-vod-page-b5",
+        "group": "vod",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-to-ia-vod-page-b5"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 588
+          },
+          {
+            "x": 1598,
+            "y": 588
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--vod--branch--02",
+        "sourceId": "route-junction--vod--03",
+        "targetId": "ia-vod-page-g1-g2",
+        "group": "vod",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-to-ia-vod-page-g1-g2"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 684
+          },
+          {
+            "x": 1598,
+            "y": 684
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--vod-page-b5--branch--01",
+        "sourceId": "ia-vod-page-b5",
+        "targetId": "ia-vod-action-b5",
+        "group": "vod-page-b5",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-page-b5-to-ia-vod-action-b5"
+        ],
+        "points": [
+          {
+            "x": 1858,
+            "y": 588
+          },
+          {
+            "x": 1922,
+            "y": 588
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--vod-page-g1-g2--stem--01",
+        "sourceId": "ia-vod-page-g1-g2",
+        "targetId": "route-junction--vod-page-g1-g2--02",
+        "group": "vod-page-g1-g2",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-page-g1-g2-to-ia-vod-action-b3",
+          "edge-ia-vod-page-g1-g2-to-ia-vod-action-g1",
+          "edge-ia-vod-page-g1-g2-to-ia-vod-action-g2"
+        ],
+        "points": [
+          {
+            "x": 1858,
+            "y": 684
+          },
+          {
+            "x": 1890,
+            "y": 684
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--vod-page-g1-g2--rail--01",
+        "sourceId": "route-junction--vod-page-g1-g2--01",
+        "targetId": "route-junction--vod-page-g1-g2--02",
+        "group": "vod-page-g1-g2",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-page-g1-g2-to-ia-vod-action-g1"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 636
+          },
+          {
+            "x": 1890,
+            "y": 684
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--vod-page-g1-g2--rail--02",
+        "sourceId": "route-junction--vod-page-g1-g2--02",
+        "targetId": "route-junction--vod-page-g1-g2--03",
+        "group": "vod-page-g1-g2",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-page-g1-g2-to-ia-vod-action-g2"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 684
+          },
+          {
+            "x": 1890,
+            "y": 732
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--vod-page-g1-g2--branch--01",
+        "sourceId": "route-junction--vod-page-g1-g2--01",
+        "targetId": "ia-vod-action-g1",
+        "group": "vod-page-g1-g2",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-page-g1-g2-to-ia-vod-action-g1"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 636
+          },
+          {
+            "x": 1922,
+            "y": 636
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--vod-page-g1-g2--branch--02",
+        "sourceId": "route-junction--vod-page-g1-g2--02",
+        "targetId": "ia-vod-action-b3",
+        "group": "vod-page-g1-g2",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-page-g1-g2-to-ia-vod-action-b3"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 684
+          },
+          {
+            "x": 1922,
+            "y": 684
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--vod-page-g1-g2--branch--03",
+        "sourceId": "route-junction--vod-page-g1-g2--03",
+        "targetId": "ia-vod-action-g2",
+        "group": "vod-page-g1-g2",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-vod-page-g1-g2-to-ia-vod-action-g2"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 732
+          },
+          {
+            "x": 1922,
+            "y": 732
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--settings--stem--01",
+        "sourceId": "ia-settings",
+        "targetId": "route-junction--settings--03",
+        "group": "settings",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-to-ia-settings-page-f4",
+          "edge-ia-settings-to-ia-settings-page-h1",
+          "edge-ia-settings-to-ia-settings-page-h2-h3",
+          "edge-ia-settings-to-ia-settings-page-h4"
+        ],
+        "points": [
+          {
+            "x": 1534,
+            "y": 900
+          },
+          {
+            "x": 1566,
+            "y": 900
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--settings--rail--01",
+        "sourceId": "route-junction--settings--01",
+        "targetId": "route-junction--settings--02",
+        "group": "settings",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-to-ia-settings-page-f4"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 828
+          },
+          {
+            "x": 1566,
+            "y": 876
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--settings--rail--02",
+        "sourceId": "route-junction--settings--02",
+        "targetId": "route-junction--settings--03",
+        "group": "settings",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-to-ia-settings-page-f4",
+          "edge-ia-settings-to-ia-settings-page-h4"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 876
+          },
+          {
+            "x": 1566,
+            "y": 900
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--settings--rail--03",
+        "sourceId": "route-junction--settings--03",
+        "targetId": "route-junction--settings--04",
+        "group": "settings",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-to-ia-settings-page-h1",
+          "edge-ia-settings-to-ia-settings-page-h2-h3"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 900
+          },
+          {
+            "x": 1566,
+            "y": 924
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--settings--rail--04",
+        "sourceId": "route-junction--settings--04",
+        "targetId": "route-junction--settings--05",
+        "group": "settings",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-to-ia-settings-page-h1"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 924
+          },
+          {
+            "x": 1566,
+            "y": 972
+          }
+        ],
+        "length": 48
+      },
+      {
+        "id": "route-edge--settings--branch--01",
+        "sourceId": "route-junction--settings--01",
+        "targetId": "ia-settings-page-f4",
+        "group": "settings",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-to-ia-settings-page-f4"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 828
+          },
+          {
+            "x": 1598,
+            "y": 828
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--settings--branch--02",
+        "sourceId": "route-junction--settings--02",
+        "targetId": "ia-settings-page-h4",
+        "group": "settings",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-to-ia-settings-page-h4"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 876
+          },
+          {
+            "x": 1598,
+            "y": 876
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--settings--branch--03",
+        "sourceId": "route-junction--settings--04",
+        "targetId": "ia-settings-page-h2-h3",
+        "group": "settings",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-to-ia-settings-page-h2-h3"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 924
+          },
+          {
+            "x": 1598,
+            "y": 924
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--settings--branch--04",
+        "sourceId": "route-junction--settings--05",
+        "targetId": "ia-settings-page-h1",
+        "group": "settings",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-to-ia-settings-page-h1"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 972
+          },
+          {
+            "x": 1598,
+            "y": 972
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--settings-page-f4--branch--01",
+        "sourceId": "ia-settings-page-f4",
+        "targetId": "ia-settings-action-f4",
+        "group": "settings-page-f4",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-page-f4-to-ia-settings-action-f4"
+        ],
+        "points": [
+          {
+            "x": 1858,
+            "y": 828
+          },
+          {
+            "x": 1922,
+            "y": 828
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--settings-page-h4--branch--01",
+        "sourceId": "ia-settings-page-h4",
+        "targetId": "ia-settings-action-h4",
+        "group": "settings-page-h4",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-page-h4-to-ia-settings-action-h4"
+        ],
+        "points": [
+          {
+            "x": 1858,
+            "y": 876
+          },
+          {
+            "x": 1922,
+            "y": 876
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--settings-page-h2-h3--branch--01",
+        "sourceId": "ia-settings-page-h2-h3",
+        "targetId": "ia-settings-action-h2-h3",
+        "group": "settings-page-h2-h3",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-page-h2-h3-to-ia-settings-action-h2-h3"
+        ],
+        "points": [
+          {
+            "x": 1858,
+            "y": 924
+          },
+          {
+            "x": 1922,
+            "y": 924
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--settings-page-h1--branch--01",
+        "sourceId": "ia-settings-page-h1",
+        "targetId": "ia-settings-action-h1",
+        "group": "settings-page-h1",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-settings-page-h1-to-ia-settings-action-h1"
+        ],
+        "points": [
+          {
+            "x": 1858,
+            "y": 972
+          },
+          {
+            "x": 1922,
+            "y": 972
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--operations--stem--01",
+        "sourceId": "ia-operations",
+        "targetId": "route-junction--operations--02",
+        "group": "operations",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-operations-to-ia-operations-page-i3",
+          "edge-ia-operations-to-ia-operations-page-i4"
+        ],
+        "points": [
+          {
+            "x": 1534,
+            "y": 1236
+          },
+          {
+            "x": 1566,
+            "y": 1236
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--operations--rail--01",
+        "sourceId": "route-junction--operations--01",
+        "targetId": "route-junction--operations--02",
+        "group": "operations",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-operations-to-ia-operations-page-i3"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 1200
+          },
+          {
+            "x": 1566,
+            "y": 1236
+          }
+        ],
+        "length": 36
+      },
+      {
+        "id": "route-edge--operations--rail--02",
+        "sourceId": "route-junction--operations--02",
+        "targetId": "route-junction--operations--03",
+        "group": "operations",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-operations-to-ia-operations-page-i4"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 1236
+          },
+          {
+            "x": 1566,
+            "y": 1272
+          }
+        ],
+        "length": 36
+      },
+      {
+        "id": "route-edge--operations--branch--01",
+        "sourceId": "route-junction--operations--01",
+        "targetId": "ia-operations-page-i3",
+        "group": "operations",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-operations-to-ia-operations-page-i3"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 1200
+          },
+          {
+            "x": 1598,
+            "y": 1200
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--operations--branch--02",
+        "sourceId": "route-junction--operations--03",
+        "targetId": "ia-operations-page-i4",
+        "group": "operations",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-operations-to-ia-operations-page-i4"
+        ],
+        "points": [
+          {
+            "x": 1566,
+            "y": 1272
+          },
+          {
+            "x": 1598,
+            "y": 1272
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--operations-page-i3--branch--01",
+        "sourceId": "ia-operations-page-i3",
+        "targetId": "ia-operations-action-i3",
+        "group": "operations-page-i3",
+        "route": "direct",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-operations-page-i3-to-ia-operations-action-i3"
+        ],
+        "points": [
+          {
+            "x": 1858,
+            "y": 1200
+          },
+          {
+            "x": 1922,
+            "y": 1200
+          }
+        ],
+        "length": 64
+      },
+      {
+        "id": "route-edge--operations-page-i4--stem--01",
+        "sourceId": "ia-operations-page-i4",
+        "targetId": "route-junction--operations-page-i4--02",
+        "group": "operations-page-i4",
+        "route": "trunk",
+        "role": "stem",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-operations-page-i4-to-ia-operations-action-i4",
+          "edge-ia-operations-page-i4-to-ia-operations-action-i4-2"
+        ],
+        "points": [
+          {
+            "x": 1858,
+            "y": 1272
+          },
+          {
+            "x": 1890,
+            "y": 1272
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--operations-page-i4--rail--01",
+        "sourceId": "route-junction--operations-page-i4--01",
+        "targetId": "route-junction--operations-page-i4--02",
+        "group": "operations-page-i4",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-operations-page-i4-to-ia-operations-action-i4"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 1248
+          },
+          {
+            "x": 1890,
+            "y": 1272
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--operations-page-i4--rail--02",
+        "sourceId": "route-junction--operations-page-i4--02",
+        "targetId": "route-junction--operations-page-i4--03",
+        "group": "operations-page-i4",
+        "route": "trunk",
+        "role": "rail",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-operations-page-i4-to-ia-operations-action-i4-2"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 1272
+          },
+          {
+            "x": 1890,
+            "y": 1296
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--operations-page-i4--branch--01",
+        "sourceId": "route-junction--operations-page-i4--01",
+        "targetId": "ia-operations-action-i4",
+        "group": "operations-page-i4",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-operations-page-i4-to-ia-operations-action-i4"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 1248
+          },
+          {
+            "x": 1922,
+            "y": 1248
+          }
+        ],
+        "length": 32
+      },
+      {
+        "id": "route-edge--operations-page-i4--branch--02",
+        "sourceId": "route-junction--operations-page-i4--03",
+        "targetId": "ia-operations-action-i4-2",
+        "group": "operations-page-i4",
+        "route": "trunk",
+        "role": "branch",
+        "router": "deterministic-tree-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ia-operations-page-i4-to-ia-operations-action-i4-2"
+        ],
+        "points": [
+          {
+            "x": 1890,
+            "y": 1296
+          },
+          {
+            "x": 1922,
+            "y": 1296
+          }
+        ],
+        "length": 32
+      }
+    ],
+    "semanticToPhysical": {
+      "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e1": [
+        "route-edge--clip-editor-page-e1-e8--stem--01",
+        "route-edge--clip-editor-page-e1-e8--rail--03",
+        "route-edge--clip-editor-page-e1-e8--rail--02",
+        "route-edge--clip-editor-page-e1-e8--rail--01",
+        "route-edge--clip-editor-page-e1-e8--branch--01"
+      ],
+      "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e2": [
+        "route-edge--clip-editor-page-e1-e8--stem--01",
+        "route-edge--clip-editor-page-e1-e8--rail--03",
+        "route-edge--clip-editor-page-e1-e8--branch--03"
+      ],
+      "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e4": [
+        "route-edge--clip-editor-page-e1-e8--stem--01",
+        "route-edge--clip-editor-page-e1-e8--branch--04"
+      ],
+      "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e5": [
+        "route-edge--clip-editor-page-e1-e8--stem--01",
+        "route-edge--clip-editor-page-e1-e8--rail--03",
+        "route-edge--clip-editor-page-e1-e8--rail--02",
+        "route-edge--clip-editor-page-e1-e8--branch--02"
+      ],
+      "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e7": [
+        "route-edge--clip-editor-page-e1-e8--stem--01",
+        "route-edge--clip-editor-page-e1-e8--rail--04",
+        "route-edge--clip-editor-page-e1-e8--branch--05"
+      ],
+      "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-e8-f1-f2": [
+        "route-edge--clip-editor-page-e1-e8--stem--01",
+        "route-edge--clip-editor-page-e1-e8--rail--04",
+        "route-edge--clip-editor-page-e1-e8--rail--05",
+        "route-edge--clip-editor-page-e1-e8--branch--06"
+      ],
+      "edge-ia-clip-editor-page-e1-e8-to-ia-clip-editor-action-f3-h5": [
+        "route-edge--clip-editor-page-e1-e8--stem--01",
+        "route-edge--clip-editor-page-e1-e8--rail--04",
+        "route-edge--clip-editor-page-e1-e8--rail--05",
+        "route-edge--clip-editor-page-e1-e8--rail--06",
+        "route-edge--clip-editor-page-e1-e8--branch--07"
+      ],
+      "edge-ia-clip-editor-to-ia-clip-editor-page-e1-e8": [
+        "route-edge--clip-editor--branch--01"
+      ],
+      "edge-ia-clip-library-page-e8-f2-to-ia-clip-library-action-e8": [
+        "route-edge--clip-library-page-e8-f2--stem--01",
+        "route-edge--clip-library-page-e8-f2--rail--02",
+        "route-edge--clip-library-page-e8-f2--branch--02"
+      ],
+      "edge-ia-clip-library-page-e8-f2-to-ia-clip-library-action-f2": [
+        "route-edge--clip-library-page-e8-f2--stem--01",
+        "route-edge--clip-library-page-e8-f2--rail--01",
+        "route-edge--clip-library-page-e8-f2--branch--01"
+      ],
+      "edge-ia-clip-library-page-f2-f3-to-ia-clip-library-action-f2-2": [
+        "route-edge--clip-library-page-f2-f3--stem--01",
+        "route-edge--clip-library-page-f2-f3--rail--02",
+        "route-edge--clip-library-page-f2-f3--branch--02"
+      ],
+      "edge-ia-clip-library-page-f2-f3-to-ia-clip-library-action-f3": [
+        "route-edge--clip-library-page-f2-f3--stem--01",
+        "route-edge--clip-library-page-f2-f3--rail--01",
+        "route-edge--clip-library-page-f2-f3--branch--01"
+      ],
+      "edge-ia-clip-library-page-h5-to-ia-clip-library-action-h5": [
+        "route-edge--clip-library-page-h5--stem--01",
+        "route-edge--clip-library-page-h5--rail--01",
+        "route-edge--clip-library-page-h5--branch--01"
+      ],
+      "edge-ia-clip-library-page-h5-to-ia-clip-library-action-h5-2": [
+        "route-edge--clip-library-page-h5--stem--01",
+        "route-edge--clip-library-page-h5--rail--02",
+        "route-edge--clip-library-page-h5--branch--02"
+      ],
+      "edge-ia-clip-library-to-ia-clip-library-page-e8-f2": [
+        "route-edge--clip-library--stem--01",
+        "route-edge--clip-library--rail--01",
+        "route-edge--clip-library--branch--01"
+      ],
+      "edge-ia-clip-library-to-ia-clip-library-page-f2-f3": [
+        "route-edge--clip-library--stem--01",
+        "route-edge--clip-library--rail--02",
+        "route-edge--clip-library--branch--03"
+      ],
+      "edge-ia-clip-library-to-ia-clip-library-page-h5": [
+        "route-edge--clip-library--stem--01",
+        "route-edge--clip-library--branch--02"
+      ],
+      "edge-ia-dashboard-to-ia-clip-editor": [
+        "route-edge--root-products--stem--01",
+        "route-edge--root-products--rail--01",
+        "route-edge--root-products--rail--02",
+        "route-edge--root-products--rail--03",
+        "route-edge--root-products--branch--07"
+      ],
+      "edge-ia-dashboard-to-ia-clip-library": [
+        "route-edge--root-products--stem--01",
+        "route-edge--root-products--branch--02"
+      ],
+      "edge-ia-dashboard-to-ia-live": [
+        "route-edge--root-products--stem--01",
+        "route-edge--root-products--rail--01",
+        "route-edge--root-products--rail--02",
+        "route-edge--root-products--branch--05"
+      ],
+      "edge-ia-dashboard-to-ia-obs": [
+        "route-edge--root-products--stem--01",
+        "route-edge--root-products--branch--01"
+      ],
+      "edge-ia-dashboard-to-ia-onboarding": [
+        "route-edge--root-products--stem--01",
+        "route-edge--root-products--rail--01",
+        "route-edge--root-products--branch--03"
+      ],
+      "edge-ia-dashboard-to-ia-operations": [
+        "route-edge--root-products--stem--01",
+        "route-edge--root-products--rail--01",
+        "route-edge--root-products--rail--02",
+        "route-edge--root-products--rail--03",
+        "route-edge--root-products--branch--08"
+      ],
+      "edge-ia-dashboard-to-ia-settings": [
+        "route-edge--root-products--stem--01",
+        "route-edge--root-products--rail--01",
+        "route-edge--root-products--rail--02",
+        "route-edge--root-products--branch--06"
+      ],
+      "edge-ia-dashboard-to-ia-vod": [
+        "route-edge--root-products--stem--01",
+        "route-edge--root-products--rail--01",
+        "route-edge--root-products--branch--04"
+      ],
+      "edge-ia-live-page-d1-d4-to-ia-live-action-a6": [
+        "route-edge--live-page-d1-d4--stem--01",
+        "route-edge--live-page-d1-d4--rail--04",
+        "route-edge--live-page-d1-d4--rail--05",
+        "route-edge--live-page-d1-d4--rail--06",
+        "route-edge--live-page-d1-d4--branch--06"
+      ],
+      "edge-ia-live-page-d1-d4-to-ia-live-action-c3-a4-d2": [
+        "route-edge--live-page-d1-d4--stem--01",
+        "route-edge--live-page-d1-d4--rail--03",
+        "route-edge--live-page-d1-d4--rail--02",
+        "route-edge--live-page-d1-d4--branch--02"
+      ],
+      "edge-ia-live-page-d1-d4-to-ia-live-action-d1": [
+        "route-edge--live-page-d1-d4--stem--01",
+        "route-edge--live-page-d1-d4--rail--03",
+        "route-edge--live-page-d1-d4--rail--02",
+        "route-edge--live-page-d1-d4--rail--01",
+        "route-edge--live-page-d1-d4--branch--01"
+      ],
+      "edge-ia-live-page-d1-d4-to-ia-live-action-d2": [
+        "route-edge--live-page-d1-d4--stem--01",
+        "route-edge--live-page-d1-d4--rail--03",
+        "route-edge--live-page-d1-d4--branch--03"
+      ],
+      "edge-ia-live-page-d1-d4-to-ia-live-action-d3": [
+        "route-edge--live-page-d1-d4--stem--01",
+        "route-edge--live-page-d1-d4--rail--04",
+        "route-edge--live-page-d1-d4--rail--05",
+        "route-edge--live-page-d1-d4--branch--05"
+      ],
+      "edge-ia-live-page-d1-d4-to-ia-live-action-d4": [
+        "route-edge--live-page-d1-d4--stem--01",
+        "route-edge--live-page-d1-d4--rail--04",
+        "route-edge--live-page-d1-d4--branch--04"
+      ],
+      "edge-ia-live-to-ia-live-page-d1-d4": [
+        "route-edge--live--branch--01"
+      ],
+      "edge-ia-login-to-ia-dashboard": [
+        "route-edge--login--branch--01"
+      ],
+      "edge-ia-obs-page-a1-a5-to-ia-obs-action-a1-a5": [
+        "route-edge--obs-page-a1-a5--branch--01"
+      ],
+      "edge-ia-obs-page-a2-a3-to-ia-obs-action-a2-a3": [
+        "route-edge--obs-page-a2-a3--branch--01"
+      ],
+      "edge-ia-obs-page-a4-to-ia-obs-action-a4": [
+        "route-edge--obs-page-a4--branch--01"
+      ],
+      "edge-ia-obs-page-a6-to-ia-obs-action-a6": [
+        "route-edge--obs-page-a6--branch--01"
+      ],
+      "edge-ia-obs-page-a7-to-ia-obs-action-a7": [
+        "route-edge--obs-page-a7--branch--01"
+      ],
+      "edge-ia-obs-to-ia-obs-page-a1-a5": [
+        "route-edge--obs--stem--01",
+        "route-edge--obs--rail--02",
+        "route-edge--obs--rail--01",
+        "route-edge--obs--branch--01"
+      ],
+      "edge-ia-obs-to-ia-obs-page-a2-a3": [
+        "route-edge--obs--stem--01",
+        "route-edge--obs--rail--02",
+        "route-edge--obs--branch--02"
+      ],
+      "edge-ia-obs-to-ia-obs-page-a4": [
+        "route-edge--obs--stem--01",
+        "route-edge--obs--branch--03"
+      ],
+      "edge-ia-obs-to-ia-obs-page-a6": [
+        "route-edge--obs--stem--01",
+        "route-edge--obs--rail--03",
+        "route-edge--obs--branch--04"
+      ],
+      "edge-ia-obs-to-ia-obs-page-a7": [
+        "route-edge--obs--stem--01",
+        "route-edge--obs--rail--03",
+        "route-edge--obs--rail--04",
+        "route-edge--obs--branch--05"
+      ],
+      "edge-ia-onboarding-page-a1-a3-to-ia-onboarding-action-a1-a3": [
+        "route-edge--onboarding-page-a1-a3--branch--01"
+      ],
+      "edge-ia-onboarding-page-a7-to-ia-onboarding-action-a7": [
+        "route-edge--onboarding-page-a7--branch--01"
+      ],
+      "edge-ia-onboarding-page-h2-to-ia-onboarding-action-h2": [
+        "route-edge--onboarding-page-h2--branch--01"
+      ],
+      "edge-ia-onboarding-page-h3-to-ia-onboarding-action-h3": [
+        "route-edge--onboarding-page-h3--branch--01"
+      ],
+      "edge-ia-onboarding-to-ia-onboarding-page-a1-a3": [
+        "route-edge--onboarding--stem--01",
+        "route-edge--onboarding--rail--03",
+        "route-edge--onboarding--rail--04",
+        "route-edge--onboarding--branch--04"
+      ],
+      "edge-ia-onboarding-to-ia-onboarding-page-a7": [
+        "route-edge--onboarding--stem--01",
+        "route-edge--onboarding--rail--02",
+        "route-edge--onboarding--rail--01",
+        "route-edge--onboarding--branch--01"
+      ],
+      "edge-ia-onboarding-to-ia-onboarding-page-h2": [
+        "route-edge--onboarding--stem--01",
+        "route-edge--onboarding--rail--02",
+        "route-edge--onboarding--branch--02"
+      ],
+      "edge-ia-onboarding-to-ia-onboarding-page-h3": [
+        "route-edge--onboarding--stem--01",
+        "route-edge--onboarding--rail--03",
+        "route-edge--onboarding--branch--03"
+      ],
+      "edge-ia-operations-page-i3-to-ia-operations-action-i3": [
+        "route-edge--operations-page-i3--branch--01"
+      ],
+      "edge-ia-operations-page-i4-to-ia-operations-action-i4": [
+        "route-edge--operations-page-i4--stem--01",
+        "route-edge--operations-page-i4--rail--01",
+        "route-edge--operations-page-i4--branch--01"
+      ],
+      "edge-ia-operations-page-i4-to-ia-operations-action-i4-2": [
+        "route-edge--operations-page-i4--stem--01",
+        "route-edge--operations-page-i4--rail--02",
+        "route-edge--operations-page-i4--branch--02"
+      ],
+      "edge-ia-operations-to-ia-operations-page-i3": [
+        "route-edge--operations--stem--01",
+        "route-edge--operations--rail--01",
+        "route-edge--operations--branch--01"
+      ],
+      "edge-ia-operations-to-ia-operations-page-i4": [
+        "route-edge--operations--stem--01",
+        "route-edge--operations--rail--02",
+        "route-edge--operations--branch--02"
+      ],
+      "edge-ia-settings-page-f4-to-ia-settings-action-f4": [
+        "route-edge--settings-page-f4--branch--01"
+      ],
+      "edge-ia-settings-page-h1-to-ia-settings-action-h1": [
+        "route-edge--settings-page-h1--branch--01"
+      ],
+      "edge-ia-settings-page-h2-h3-to-ia-settings-action-h2-h3": [
+        "route-edge--settings-page-h2-h3--branch--01"
+      ],
+      "edge-ia-settings-page-h4-to-ia-settings-action-h4": [
+        "route-edge--settings-page-h4--branch--01"
+      ],
+      "edge-ia-settings-to-ia-settings-page-f4": [
+        "route-edge--settings--stem--01",
+        "route-edge--settings--rail--02",
+        "route-edge--settings--rail--01",
+        "route-edge--settings--branch--01"
+      ],
+      "edge-ia-settings-to-ia-settings-page-h1": [
+        "route-edge--settings--stem--01",
+        "route-edge--settings--rail--03",
+        "route-edge--settings--rail--04",
+        "route-edge--settings--branch--04"
+      ],
+      "edge-ia-settings-to-ia-settings-page-h2-h3": [
+        "route-edge--settings--stem--01",
+        "route-edge--settings--rail--03",
+        "route-edge--settings--branch--03"
+      ],
+      "edge-ia-settings-to-ia-settings-page-h4": [
+        "route-edge--settings--stem--01",
+        "route-edge--settings--rail--02",
+        "route-edge--settings--branch--02"
+      ],
+      "edge-ia-vod-page-b5-to-ia-vod-action-b5": [
+        "route-edge--vod-page-b5--branch--01"
+      ],
+      "edge-ia-vod-page-g1-g2-to-ia-vod-action-b3": [
+        "route-edge--vod-page-g1-g2--stem--01",
+        "route-edge--vod-page-g1-g2--branch--02"
+      ],
+      "edge-ia-vod-page-g1-g2-to-ia-vod-action-g1": [
+        "route-edge--vod-page-g1-g2--stem--01",
+        "route-edge--vod-page-g1-g2--rail--01",
+        "route-edge--vod-page-g1-g2--branch--01"
+      ],
+      "edge-ia-vod-page-g1-g2-to-ia-vod-action-g2": [
+        "route-edge--vod-page-g1-g2--stem--01",
+        "route-edge--vod-page-g1-g2--rail--02",
+        "route-edge--vod-page-g1-g2--branch--03"
+      ],
+      "edge-ia-vod-to-ia-vod-page-b5": [
+        "route-edge--vod--stem--01",
+        "route-edge--vod--rail--01",
+        "route-edge--vod--branch--01"
+      ],
+      "edge-ia-vod-to-ia-vod-page-g1-g2": [
+        "route-edge--vod--stem--01",
+        "route-edge--vod--rail--02",
+        "route-edge--vod--branch--02"
+      ]
+    }
+  },
+  "layout": {
+    "columns": {
+      "left": {
+        "action": {
+          "x": 103,
+          "width": 255
+        },
+        "page": {
+          "x": 422,
+          "width": 260
+        },
+        "category": {
+          "x": 746,
+          "width": 225
+        }
+      },
+      "dashboard": {
+        "x": 1035,
+        "width": 210,
+        "center": 1140
+      },
+      "right": {
+        "category": {
+          "x": 1309,
+          "width": 225
+        },
+        "page": {
+          "x": 1598,
+          "width": 260
+        },
+        "action": {
+          "x": 1922,
+          "width": 255
+        }
+      }
+    },
+    "pairedProductRowCenters": [
+      396,
+      636,
+      900,
+      1236
+    ],
+    "layoutShifts": [
+      {
+        "subtree": "obs",
+        "deltaY": 0
+      },
+      {
+        "subtree": "onboarding",
+        "deltaY": 0
+      },
+      {
+        "subtree": "live",
+        "deltaY": 0
+      },
+      {
+        "subtree": "clip-editor",
+        "deltaY": 0
+      },
+      {
+        "subtree": "clip-library",
+        "deltaY": 0
+      },
+      {
+        "subtree": "vod",
+        "deltaY": 0
+      },
+      {
+        "subtree": "settings",
+        "deltaY": 0
+      },
+      {
+        "subtree": "operations",
+        "deltaY": 0
+      }
+    ]
+  },
+  "validation": {
+    "endpoints": {
+      "pass": true,
+      "maximumErrorPx": 0
+    },
+    "orthogonal": {
+      "pass": true,
+      "violations": []
+    },
+    "nodeClearance": {
+      "pass": true,
+      "violations": []
+    },
+    "edgeCrossing": {
+      "pass": true,
+      "violations": []
+    },
+    "overlap": {
+      "pass": true,
+      "violations": []
+    },
+    "shortSegment": {
+      "pass": true,
+      "violations": []
+    },
+    "bendBudget": {
+      "pass": true,
+      "violations": []
+    },
+    "trunk": {
+      "pass": true,
+      "mappingErrors": [],
+      "refErrors": []
+    },
+    "layout": {
+      "pass": true,
+      "gutters": [
+        64,
+        64,
+        64,
+        64,
+        64,
+        64
+      ],
+      "rowErrors": []
+    },
+    "symmetry": {
+      "pass": true,
+      "rootBranchLengths": [
+        169,
+        169,
+        169,
+        169,
+        169,
+        169,
+        169,
+        169
+      ],
+      "dashboardCenter": 1140,
+      "columns": {
+        "left": {
+          "action": {
+            "x": 103,
+            "width": 255
+          },
+          "page": {
+            "x": 422,
+            "width": 260
+          },
+          "category": {
+            "x": 746,
+            "width": 225
+          }
+        },
+        "dashboard": {
+          "x": 1035,
+          "width": 210,
+          "center": 1140
+        },
+        "right": {
+          "category": {
+            "x": 1309,
+            "width": 225
+          },
+          "page": {
+            "x": 1598,
+            "width": 260
+          },
+          "action": {
+            "x": 1922,
+            "width": 255
+          }
+        }
+      }
+    },
+    "labelClearance": {
+      "pass": true,
+      "deferredToBrowser": true
+    }
+  }
+}

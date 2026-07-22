@@ -6,12 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "drawio:route": "node scripts/route-drawio.mjs",
+    "test:drawio": "node --test test/*.test.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "predev": "node scripts/sync-diagrams.mjs",
     "prebuild": "node scripts/sync-diagrams.mjs"
   },
   "dependencies": {
+    "@maxgraph/core": "0.24.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-markdown": "^10.1.0",
@@ -20,6 +23,7 @@
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
+    "@drawio/mcp": "1.5.0",
     "@types/node": "^24.13.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",

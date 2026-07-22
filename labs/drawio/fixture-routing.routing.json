@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "generator": {
+    "packageName": "@drawio/mcp",
+    "packageVersion": "1.5.0",
+    "lockIntegrity": "sha512-eGmAXaI0wqfYlCxYUAocveSEmkEc0ITt5McB9G727XCIMzLWVj1vVEC7tNnUFlJU0nQsHdOaX3bFVWBslMS+1A==",
+    "packageTreeSha256": "86afc33d399fef8c0b6110e83e3570177295abd78b9570342e5ce81a8f542e78",
+    "routingCoreSha256": "8ab8f74dee5b448f5ebadb570efed8319e1a8748747dbd6edb0dd1465af9f81c",
+    "routingWasmSha256": "65deb7172894049eb554cf6e02c520274ac117a1992d3d16a3f346c09ceb41e5"
+  },
+  "sourceSha256": "c5aa2ca818d47b23d82e5e794da8f52a383a60282cb9c3b4ba9f3e33e4f40300",
+  "generatedSha256": "8486205a52c863892f9c8ac2faf75a1ea7b9f9185e65445091efe3ca0f2fbede",
+  "independentAttempts": 2,
+  "deterministicExactMatch": true,
+  "warnings": [
+    "[libavoid] routing core CDN/cache unavailable (POKECLIP_VENDORED_CORE_ONLY); using the vendored copy",
+    "Warning: skipping checkpoint for connector 10 at (260, 156).",
+    "Warning: skipping checkpoint for connector 10 at (340, 216)."
+  ],
+  "stderrLines": [
+    "Draw.io MCP server running on stdio",
+    "[libavoid] routing core CDN/cache unavailable (POKECLIP_VENDORED_CORE_ONLY); using the vendored copy",
+    "Warning: skipping checkpoint for connector 10 at (260, 156).",
+    "Warning: skipping checkpoint for connector 10 at (340, 216)."
+  ],
+  "postconditions": {
+    "outputDiffersFromInput": true,
+    "sourceWaypointCount": 0,
+    "targetObstacleEdgeCheck": "pass",
+    "allEdgesLibavoidRouting": true,
+    "criticalFieldsPreserved": true,
+    "staticRouteValidation": {
+      "method": "source endpoint → ordered waypoints → target endpoint",
+      "checkedEdges": [
+        "routing-edge-focus-top",
+        "routing-edge-vertical",
+        "routing-edge-to-child"
+      ],
+      "deferredToBrowser": [
+        "routing-edge-focus-bottom",
+        "routing-edge-top-hop"
+      ]
+    },
+    "renderedGeometryValidation": "deferredToBrowser",
+    "nonOrthogonalSegments": [],
+    "leafCrossings": [],
+    "edgeRoutes": {
+      "routing-edge-focus-top": {
+        "waypointCount": 2,
+        "orderedWaypoints": [
+          {
+            "x": 300,
+            "y": 156
+          },
+          {
+            "x": 300,
+            "y": 96
+          }
+        ],
+        "staticValidation": "endpoint-through-ordered-waypoints",
+        "provenance": "official @drawio/mcp@1.5.0 routing=libavoid"
+      },
+      "routing-edge-focus-bottom": {
+        "waypointCount": 0,
+        "orderedWaypoints": [],
+        "staticValidation": "deferredToBrowser",
+        "provenance": "official @drawio/mcp@1.5.0 routing=libavoid"
+      },
+      "routing-edge-top-hop": {
+        "waypointCount": 0,
+        "orderedWaypoints": [],
+        "staticValidation": "deferredToBrowser",
+        "provenance": "official @drawio/mcp@1.5.0 routing=libavoid"
+      },
+      "routing-edge-vertical": {
+        "waypointCount": 2,
+        "orderedWaypoints": [
+          {
+            "x": 150,
+            "y": 456
+          },
+          {
+            "x": 190,
+            "y": 456
+          }
+        ],
+        "staticValidation": "endpoint-through-ordered-waypoints",
+        "provenance": "official @drawio/mcp@1.5.0 routing=libavoid"
+      },
+      "routing-edge-to-child": {
+        "waypointCount": 2,
+        "orderedWaypoints": [
+          {
+            "x": 728,
+            "y": 216
+          },
+          {
+            "x": 728,
+            "y": 376
+          }
+        ],
+        "staticValidation": "endpoint-through-ordered-waypoints",
+        "provenance": "official @drawio/mcp@1.5.0 routing=libavoid"
+      }
+    }
+  }
+}

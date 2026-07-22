@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { SiteFooter, SiteHeader } from './components/layout/SiteHeader'
 import { DOCS } from './lib/content'
@@ -6,6 +6,13 @@ import { AdrDetailPage, AdrIndexPage } from './pages/AdrPage'
 import { DiagramsPage } from './pages/DiagramsPage'
 import { DocPage } from './pages/DocPage'
 import { OverviewPage } from './pages/OverviewPage'
+
+const DrawioIaLabPage = lazy(() =>
+  import('./pages/labs/DrawioIaLabPage').then(({ DrawioIaLabPage: Page }) => ({ default: Page })),
+)
+const DrawioUseCaseLabPage = lazy(() =>
+  import('./pages/labs/DrawioUseCaseLabPage').then(({ DrawioUseCaseLabPage: Page }) => ({ default: Page })),
+)
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -28,6 +35,22 @@ function App() {
           <Route path="/" element={<OverviewPage />} />
           <Route path="/diagrams" element={<Navigate to="/diagrams/0" replace />} />
           <Route path="/diagrams/:num" element={<DiagramsPage />} />
+          <Route
+            path="/labs/drawio/0"
+            element={
+              <Suspense fallback={<p className="page">draw.io XML lab 로딩 중…</p>}>
+                <DrawioUseCaseLabPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/labs/drawio/1"
+            element={
+              <Suspense fallback={<p className="page">draw.io XML lab 로딩 중…</p>}>
+                <DrawioIaLabPage />
+              </Suspense>
+            }
+          />
           <Route
             path="/spec"
             element={
@@ -56,7 +79,7 @@ function App() {
               <DocPage
                 eyebrow="Doc 10 · Data Flow"
                 title="데이터 플로우"
-                lede="Media Origin → SQS → ECS → PostgreSQL — 이벤트·잡 큐 흐름과 대시보드 역산 스키마 초안."
+                lede="Media Origin → SNS/SQS → ECS → S3·PostgreSQL — 방송 이벤트, 잡 수명주기, 실시간 API 계약."
                 markdown={DOCS.dataflow}
               />
             }
@@ -67,7 +90,7 @@ function App() {
               <DocPage
                 eyebrow="Doc 11 · Team Roles"
                 title="역할 분담"
-                lede="3인 분담 — 서비스 단위 오너십, 인터페이스 계약 8종, 조정 카드·폴백 기준."
+                lede="3인 분담 — 서비스 단위 오너십, 인터페이스 계약 9종, 조정 카드·폴백 기준."
                 markdown={DOCS.roles}
               />
             }

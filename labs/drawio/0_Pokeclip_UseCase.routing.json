@@ -1,0 +1,4863 @@
+{
+  "schemaVersion": 3,
+  "policy": {
+    "profile": "pokeclip-usecase-actor-spine-v1",
+    "EPS": 1,
+    "GRID": 2,
+    "NODE_CLEARANCE": 4,
+    "LANE_GAP": 8,
+    "expectedCrossings": [],
+    "expectedOverlaps": []
+  },
+  "generator": {
+    "name": "deterministic-usecase-v1",
+    "browserRuntime": "@maxgraph/core@0.24.0",
+    "externalRouter": false
+  },
+  "sourceSha256": "4e6475253e4e3b3e104311c5672686a8307d440905e87e530d31de0fcac4df68",
+  "generatedSha256": "6070b38dc699dd6941e417292a4521612f98a2cdc7c22876b5839ad798176c51",
+  "independentAttempts": 2,
+  "deterministicExactMatch": true,
+  "semantic": {
+    "vertexCount": 41,
+    "edgeCount": 26,
+    "vertexIds": [
+      "ac-editor",
+      "ac-ops",
+      "ac-streamer",
+      "uc-approve",
+      "uc-auto-highlight",
+      "uc-auto-reconnect",
+      "uc-auto-upload",
+      "uc-cc",
+      "uc-chat-chart",
+      "uc-clip-range",
+      "uc-clip-save",
+      "uc-dvr",
+      "uc-hotkey",
+      "uc-invite",
+      "uc-jumpcard-list",
+      "uc-jumpcard-seek",
+      "uc-live-watch",
+      "uc-login",
+      "uc-ops-account",
+      "uc-ops-incident",
+      "uc-ops-monitor",
+      "uc-ops-stats",
+      "uc-perm",
+      "uc-plugin-install",
+      "uc-ratio",
+      "uc-reedit",
+      "uc-simulcast",
+      "uc-srt-stats",
+      "uc-streamkey",
+      "uc-subtitle",
+      "uc-template",
+      "uc-title",
+      "uc-track-map",
+      "uc-track-select",
+      "uc-upload",
+      "uc-upload-status",
+      "uc-vod-audio",
+      "uc-vod-chapter",
+      "uc-vod-clip",
+      "uc-vod-play",
+      "uc-yt-oauth"
+    ],
+    "edges": [
+      {
+        "id": "edge-ac-editor-to-uc-auto-upload",
+        "sourceId": "ac-editor",
+        "targetId": "uc-auto-upload",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-editor-to-uc-clip-range",
+        "sourceId": "ac-editor",
+        "targetId": "uc-clip-range",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-editor-to-uc-jumpcard-list",
+        "sourceId": "ac-editor",
+        "targetId": "uc-jumpcard-list",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-editor-to-uc-live-watch",
+        "sourceId": "ac-editor",
+        "targetId": "uc-live-watch",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-editor-to-uc-upload",
+        "sourceId": "ac-editor",
+        "targetId": "uc-upload",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-editor-to-uc-vod-clip",
+        "sourceId": "ac-editor",
+        "targetId": "uc-vod-clip",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-ops-to-uc-ops-account",
+        "sourceId": "ac-ops",
+        "targetId": "uc-ops-account",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-ops-to-uc-ops-incident",
+        "sourceId": "ac-ops",
+        "targetId": "uc-ops-incident",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-ops-to-uc-ops-monitor",
+        "sourceId": "ac-ops",
+        "targetId": "uc-ops-monitor",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-ops-to-uc-ops-stats",
+        "sourceId": "ac-ops",
+        "targetId": "uc-ops-stats",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-streamer-to-uc-approve",
+        "sourceId": "ac-streamer",
+        "targetId": "uc-approve",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-streamer-to-uc-auto-reconnect",
+        "sourceId": "ac-streamer",
+        "targetId": "uc-auto-reconnect",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-streamer-to-uc-clip-range",
+        "sourceId": "ac-streamer",
+        "targetId": "uc-clip-range",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-streamer-to-uc-hotkey",
+        "sourceId": "ac-streamer",
+        "targetId": "uc-hotkey",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-streamer-to-uc-invite",
+        "sourceId": "ac-streamer",
+        "targetId": "uc-invite",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-streamer-to-uc-live-watch",
+        "sourceId": "ac-streamer",
+        "targetId": "uc-live-watch",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-streamer-to-uc-plugin-install",
+        "sourceId": "ac-streamer",
+        "targetId": "uc-plugin-install",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-streamer-to-uc-simulcast",
+        "sourceId": "ac-streamer",
+        "targetId": "uc-simulcast",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-ac-streamer-to-uc-yt-oauth",
+        "sourceId": "ac-streamer",
+        "targetId": "uc-yt-oauth",
+        "relationKind": "actor"
+      },
+      {
+        "id": "edge-uc-approve-to-uc-upload",
+        "sourceId": "uc-approve",
+        "targetId": "uc-upload",
+        "relationKind": "feature"
+      },
+      {
+        "id": "edge-uc-auto-highlight-to-uc-jumpcard-list",
+        "sourceId": "uc-auto-highlight",
+        "targetId": "uc-jumpcard-list",
+        "relationKind": "feature"
+      },
+      {
+        "id": "edge-uc-hotkey-to-uc-jumpcard-list",
+        "sourceId": "uc-hotkey",
+        "targetId": "uc-jumpcard-list",
+        "relationKind": "feature"
+      },
+      {
+        "id": "edge-uc-subtitle-to-uc-title",
+        "sourceId": "uc-subtitle",
+        "targetId": "uc-title",
+        "relationKind": "feature"
+      },
+      {
+        "id": "edge-uc-template-to-uc-auto-upload",
+        "sourceId": "uc-template",
+        "targetId": "uc-auto-upload",
+        "relationKind": "feature"
+      },
+      {
+        "id": "edge-uc-upload-to-uc-cc",
+        "sourceId": "uc-upload",
+        "targetId": "uc-cc",
+        "relationKind": "feature"
+      },
+      {
+        "id": "edge-uc-vod-clip-to-uc-clip-range",
+        "sourceId": "uc-vod-clip",
+        "targetId": "uc-clip-range",
+        "relationKind": "feature"
+      }
+    ]
+  },
+  "decorations": {
+    "count": 8,
+    "ids": [
+      "env-sys",
+      "grp-account",
+      "grp-broadcast",
+      "grp-clip",
+      "grp-live",
+      "grp-ops",
+      "grp-upload",
+      "grp-vod"
+    ]
+  },
+  "routing": {
+    "junctionCount": 70,
+    "physicalEdgeCount": 98,
+    "junctions": [
+      {
+        "id": "route-junction--001",
+        "x": 1410,
+        "y": 180,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--002",
+        "x": 2480,
+        "y": 180,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--003",
+        "x": 2140,
+        "y": 190,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--004",
+        "x": 2480,
+        "y": 190,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--005",
+        "x": 280,
+        "y": 200,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--006",
+        "x": 1100,
+        "y": 200,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--007",
+        "x": 280,
+        "y": 220,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--008",
+        "x": 360,
+        "y": 220,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--009",
+        "x": 960,
+        "y": 220,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--010",
+        "x": 360,
+        "y": 333,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--011",
+        "x": 1100,
+        "y": 333,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--012",
+        "x": 1410,
+        "y": 333,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--013",
+        "x": 1080,
+        "y": 381,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--014",
+        "x": 1259.5,
+        "y": 381,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--015",
+        "x": 280,
+        "y": 412,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--016",
+        "x": 360,
+        "y": 429,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--017",
+        "x": 1410,
+        "y": 429,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--018",
+        "x": 1830,
+        "y": 429,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--019",
+        "x": 2140,
+        "y": 429,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--020",
+        "x": 360,
+        "y": 525,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--021",
+        "x": 960,
+        "y": 525,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--022",
+        "x": 519.5,
+        "y": 590,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--023",
+        "x": 1080,
+        "y": 590,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--024",
+        "x": 1540.5,
+        "y": 590,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--025",
+        "x": 280,
+        "y": 620,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--026",
+        "x": 1100,
+        "y": 620,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--027",
+        "x": 1259.5,
+        "y": 620,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--028",
+        "x": 1830,
+        "y": 620,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--029",
+        "x": 280,
+        "y": 640,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--030",
+        "x": 960,
+        "y": 640,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--031",
+        "x": 1410,
+        "y": 650,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--032",
+        "x": 2124,
+        "y": 650,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--033",
+        "x": 2440,
+        "y": 650,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--034",
+        "x": 2480,
+        "y": 650,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--035",
+        "x": 2480,
+        "y": 660,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--036",
+        "x": 960,
+        "y": 763,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--037",
+        "x": 1100,
+        "y": 763,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--038",
+        "x": 1410,
+        "y": 763,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--039",
+        "x": 1800,
+        "y": 763,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--040",
+        "x": 2135,
+        "y": 763,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--041",
+        "x": 2440,
+        "y": 763,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--042",
+        "x": 2490,
+        "y": 763,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--043",
+        "x": 280,
+        "y": 810,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--044",
+        "x": 960,
+        "y": 810,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--045",
+        "x": 1800,
+        "y": 810,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--046",
+        "x": 1870,
+        "y": 810,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--047",
+        "x": 2124,
+        "y": 810,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--048",
+        "x": 960,
+        "y": 859,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--049",
+        "x": 980,
+        "y": 859,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--050",
+        "x": 1400,
+        "y": 859,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--051",
+        "x": 2135,
+        "y": 859,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--052",
+        "x": 2420,
+        "y": 859,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--053",
+        "x": 1870,
+        "y": 907,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--054",
+        "x": 2148,
+        "y": 907,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--055",
+        "x": 1400,
+        "y": 955,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--056",
+        "x": 1810,
+        "y": 955,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--057",
+        "x": 1810,
+        "y": 1080,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--058",
+        "x": 1999.5,
+        "y": 1080,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--059",
+        "x": 2148,
+        "y": 1080,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--060",
+        "x": 2420,
+        "y": 1080,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--061",
+        "x": 980,
+        "y": 1170,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--062",
+        "x": 2490,
+        "y": 1170,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--063",
+        "x": 360,
+        "y": 1223,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--064",
+        "x": 960,
+        "y": 1223,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--065",
+        "x": 250,
+        "y": 1258,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--066",
+        "x": 360,
+        "y": 1319,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--067",
+        "x": 960,
+        "y": 1319,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--068",
+        "x": 250,
+        "y": 1400,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--069",
+        "x": 360,
+        "y": 1400,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      },
+      {
+        "id": "route-junction--070",
+        "x": 960,
+        "y": 1400,
+        "group": "usecase",
+        "role": "bend-or-intersection"
+      }
+    ],
+    "physicalEdges": [
+      {
+        "id": "route-edge--editor--stem--01",
+        "sourceId": "ac-editor",
+        "targetId": "route-junction--035",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "stem",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-auto-upload",
+          "edge-ac-editor-to-uc-clip-range",
+          "edge-ac-editor-to-uc-jumpcard-list",
+          "edge-ac-editor-to-uc-live-watch",
+          "edge-ac-editor-to-uc-upload",
+          "edge-ac-editor-to-uc-vod-clip"
+        ],
+        "expectedStart": {
+          "x": 2538,
+          "y": 660
+        },
+        "expectedEnd": {
+          "x": 2480,
+          "y": 660
+        },
+        "relationKind": "actor",
+        "sourceTerminal": true,
+        "targetTerminal": false,
+        "sourceSide": "left",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2538,
+            "y": 660
+          },
+          {
+            "x": 2480,
+            "y": 660
+          }
+        ],
+        "length": 58
+      },
+      {
+        "id": "route-edge--editor--spine--01",
+        "sourceId": "route-junction--004",
+        "targetId": "route-junction--002",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "spine",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-jumpcard-list",
+          "edge-ac-editor-to-uc-live-watch"
+        ],
+        "expectedStart": {
+          "x": 2480,
+          "y": 190
+        },
+        "expectedEnd": {
+          "x": 2480,
+          "y": 180
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2480,
+            "y": 190
+          },
+          {
+            "x": 2480,
+            "y": 180
+          }
+        ],
+        "length": 10
+      },
+      {
+        "id": "route-edge--editor--spine--02",
+        "sourceId": "route-junction--034",
+        "targetId": "route-junction--004",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "spine",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-jumpcard-list",
+          "edge-ac-editor-to-uc-live-watch",
+          "edge-ac-editor-to-uc-vod-clip"
+        ],
+        "expectedStart": {
+          "x": 2480,
+          "y": 650
+        },
+        "expectedEnd": {
+          "x": 2480,
+          "y": 190
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2480,
+            "y": 650
+          },
+          {
+            "x": 2480,
+            "y": 190
+          }
+        ],
+        "length": 460
+      },
+      {
+        "id": "route-edge--editor--spine--03",
+        "sourceId": "route-junction--035",
+        "targetId": "route-junction--034",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "spine",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-auto-upload",
+          "edge-ac-editor-to-uc-clip-range",
+          "edge-ac-editor-to-uc-jumpcard-list",
+          "edge-ac-editor-to-uc-live-watch",
+          "edge-ac-editor-to-uc-upload",
+          "edge-ac-editor-to-uc-vod-clip"
+        ],
+        "expectedStart": {
+          "x": 2480,
+          "y": 660
+        },
+        "expectedEnd": {
+          "x": 2480,
+          "y": 650
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2480,
+            "y": 660
+          },
+          {
+            "x": 2480,
+            "y": 650
+          }
+        ],
+        "length": 10
+      },
+      {
+        "id": "route-edge--editor--entry--01",
+        "sourceId": "route-junction--002",
+        "targetId": "route-junction--001",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-jumpcard-list",
+          "edge-ac-editor-to-uc-live-watch"
+        ],
+        "expectedStart": {
+          "x": 2480,
+          "y": 180
+        },
+        "expectedEnd": {
+          "x": 1410,
+          "y": 180
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2480,
+            "y": 180
+          },
+          {
+            "x": 1410,
+            "y": 180
+          }
+        ],
+        "length": 1070
+      },
+      {
+        "id": "route-edge--editor--entry--02",
+        "sourceId": "route-junction--004",
+        "targetId": "route-junction--003",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-vod-clip"
+        ],
+        "expectedStart": {
+          "x": 2480,
+          "y": 190
+        },
+        "expectedEnd": {
+          "x": 2140,
+          "y": 190
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2480,
+            "y": 190
+          },
+          {
+            "x": 2140,
+            "y": 190
+          }
+        ],
+        "length": 340
+      },
+      {
+        "id": "route-edge--editor--entry--03",
+        "sourceId": "route-junction--032",
+        "targetId": "route-junction--031",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-clip-range"
+        ],
+        "expectedStart": {
+          "x": 2124,
+          "y": 650
+        },
+        "expectedEnd": {
+          "x": 1410,
+          "y": 650
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2124,
+            "y": 650
+          },
+          {
+            "x": 1410,
+            "y": 650
+          }
+        ],
+        "length": 714
+      },
+      {
+        "id": "route-edge--editor--entry--04",
+        "sourceId": "route-junction--033",
+        "targetId": "route-junction--032",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-auto-upload",
+          "edge-ac-editor-to-uc-clip-range"
+        ],
+        "expectedStart": {
+          "x": 2440,
+          "y": 650
+        },
+        "expectedEnd": {
+          "x": 2124,
+          "y": 650
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2440,
+            "y": 650
+          },
+          {
+            "x": 2124,
+            "y": 650
+          }
+        ],
+        "length": 316
+      },
+      {
+        "id": "route-edge--editor--entry--05",
+        "sourceId": "route-junction--034",
+        "targetId": "route-junction--033",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-auto-upload",
+          "edge-ac-editor-to-uc-clip-range",
+          "edge-ac-editor-to-uc-upload"
+        ],
+        "expectedStart": {
+          "x": 2480,
+          "y": 650
+        },
+        "expectedEnd": {
+          "x": 2440,
+          "y": 650
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2480,
+            "y": 650
+          },
+          {
+            "x": 2440,
+            "y": 650
+          }
+        ],
+        "length": 40
+      },
+      {
+        "id": "route-edge--editor--entry--06",
+        "sourceId": "route-junction--047",
+        "targetId": "route-junction--046",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 2124,
+          "y": 810
+        },
+        "expectedEnd": {
+          "x": 1870,
+          "y": 810
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2124,
+            "y": 810
+          },
+          {
+            "x": 1870,
+            "y": 810
+          }
+        ],
+        "length": 254
+      },
+      {
+        "id": "route-edge--editor--entry--07",
+        "sourceId": "route-junction--053",
+        "targetId": "route-junction--054",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 1870,
+          "y": 907
+        },
+        "expectedEnd": {
+          "x": 2148,
+          "y": 907
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1870,
+            "y": 907
+          },
+          {
+            "x": 2148,
+            "y": 907
+          }
+        ],
+        "length": 278
+      },
+      {
+        "id": "route-edge--editor--entry--08",
+        "sourceId": "route-junction--059",
+        "targetId": "route-junction--058",
+        "group": "editor",
+        "route": "feature-lane",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-auto-upload",
+          "edge-uc-template-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 2148,
+          "y": 1080
+        },
+        "expectedEnd": {
+          "x": 1999.5,
+          "y": 1080
+        },
+        "relationKind": "mixed",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2148,
+            "y": 1080
+          },
+          {
+            "x": 1999.5,
+            "y": 1080
+          }
+        ],
+        "length": 148.5
+      },
+      {
+        "id": "route-edge--editor--rail--01",
+        "sourceId": "route-junction--001",
+        "targetId": "route-junction--012",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-jumpcard-list",
+          "edge-ac-editor-to-uc-live-watch"
+        ],
+        "expectedStart": {
+          "x": 1410,
+          "y": 180
+        },
+        "expectedEnd": {
+          "x": 1410,
+          "y": 333
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1410,
+            "y": 180
+          },
+          {
+            "x": 1410,
+            "y": 333
+          }
+        ],
+        "length": 153
+      },
+      {
+        "id": "route-edge--editor--rail--02",
+        "sourceId": "route-junction--003",
+        "targetId": "route-junction--019",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-vod-clip"
+        ],
+        "expectedStart": {
+          "x": 2140,
+          "y": 190
+        },
+        "expectedEnd": {
+          "x": 2140,
+          "y": 429
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2140,
+            "y": 190
+          },
+          {
+            "x": 2140,
+            "y": 429
+          }
+        ],
+        "length": 239
+      },
+      {
+        "id": "route-edge--editor--rail--03",
+        "sourceId": "route-junction--012",
+        "targetId": "route-junction--017",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-jumpcard-list"
+        ],
+        "expectedStart": {
+          "x": 1410,
+          "y": 333
+        },
+        "expectedEnd": {
+          "x": 1410,
+          "y": 429
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1410,
+            "y": 333
+          },
+          {
+            "x": 1410,
+            "y": 429
+          }
+        ],
+        "length": 96
+      },
+      {
+        "id": "route-edge--editor--rail--04",
+        "sourceId": "route-junction--031",
+        "targetId": "route-junction--038",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-clip-range"
+        ],
+        "expectedStart": {
+          "x": 1410,
+          "y": 650
+        },
+        "expectedEnd": {
+          "x": 1410,
+          "y": 763
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1410,
+            "y": 650
+          },
+          {
+            "x": 1410,
+            "y": 763
+          }
+        ],
+        "length": 113
+      },
+      {
+        "id": "route-edge--editor--rail--05",
+        "sourceId": "route-junction--032",
+        "targetId": "route-junction--047",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 2124,
+          "y": 650
+        },
+        "expectedEnd": {
+          "x": 2124,
+          "y": 810
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2124,
+            "y": 650
+          },
+          {
+            "x": 2124,
+            "y": 810
+          }
+        ],
+        "length": 160
+      },
+      {
+        "id": "route-edge--editor--rail--06",
+        "sourceId": "route-junction--033",
+        "targetId": "route-junction--041",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-upload"
+        ],
+        "expectedStart": {
+          "x": 2440,
+          "y": 650
+        },
+        "expectedEnd": {
+          "x": 2440,
+          "y": 763
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2440,
+            "y": 650
+          },
+          {
+            "x": 2440,
+            "y": 763
+          }
+        ],
+        "length": 113
+      },
+      {
+        "id": "route-edge--editor--rail--07",
+        "sourceId": "route-junction--046",
+        "targetId": "route-junction--053",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 1870,
+          "y": 810
+        },
+        "expectedEnd": {
+          "x": 1870,
+          "y": 907
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1870,
+            "y": 810
+          },
+          {
+            "x": 1870,
+            "y": 907
+          }
+        ],
+        "length": 97
+      },
+      {
+        "id": "route-edge--editor--rail--08",
+        "sourceId": "route-junction--054",
+        "targetId": "route-junction--059",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 2148,
+          "y": 907
+        },
+        "expectedEnd": {
+          "x": 2148,
+          "y": 1080
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2148,
+            "y": 907
+          },
+          {
+            "x": 2148,
+            "y": 1080
+          }
+        ],
+        "length": 173
+      },
+      {
+        "id": "route-edge--editor--branch--01",
+        "sourceId": "route-junction--012",
+        "targetId": "uc-live-watch",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-live-watch"
+        ],
+        "expectedStart": {
+          "x": 1410,
+          "y": 333
+        },
+        "expectedEnd": {
+          "x": 1377,
+          "y": 333
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 1410,
+            "y": 333
+          },
+          {
+            "x": 1377,
+            "y": 333
+          }
+        ],
+        "length": 33
+      },
+      {
+        "id": "route-edge--editor--branch--02",
+        "sourceId": "route-junction--017",
+        "targetId": "uc-jumpcard-list",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-jumpcard-list"
+        ],
+        "expectedStart": {
+          "x": 1410,
+          "y": 429
+        },
+        "expectedEnd": {
+          "x": 1377,
+          "y": 429
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 1410,
+            "y": 429
+          },
+          {
+            "x": 1377,
+            "y": 429
+          }
+        ],
+        "length": 33
+      },
+      {
+        "id": "route-edge--editor--branch--03",
+        "sourceId": "route-junction--019",
+        "targetId": "uc-vod-clip",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-vod-clip"
+        ],
+        "expectedStart": {
+          "x": 2140,
+          "y": 429
+        },
+        "expectedEnd": {
+          "x": 2117,
+          "y": 429
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 2140,
+            "y": 429
+          },
+          {
+            "x": 2117,
+            "y": 429
+          }
+        ],
+        "length": 23
+      },
+      {
+        "id": "route-edge--editor--branch--04",
+        "sourceId": "route-junction--038",
+        "targetId": "uc-clip-range",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-clip-range"
+        ],
+        "expectedStart": {
+          "x": 1410,
+          "y": 763
+        },
+        "expectedEnd": {
+          "x": 1377,
+          "y": 763
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 1410,
+            "y": 763
+          },
+          {
+            "x": 1377,
+            "y": 763
+          }
+        ],
+        "length": 33
+      },
+      {
+        "id": "route-edge--editor--branch--05",
+        "sourceId": "route-junction--041",
+        "targetId": "uc-upload",
+        "group": "editor",
+        "route": "feature-lane",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-upload",
+          "edge-uc-approve-to-uc-upload"
+        ],
+        "expectedStart": {
+          "x": 2440,
+          "y": 763
+        },
+        "expectedEnd": {
+          "x": 2398,
+          "y": 763
+        },
+        "relationKind": "mixed",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 2440,
+            "y": 763
+          },
+          {
+            "x": 2398,
+            "y": 763
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--editor--branch--06",
+        "sourceId": "route-junction--058",
+        "targetId": "uc-auto-upload",
+        "group": "editor",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-editor-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 1999.5,
+          "y": 1080
+        },
+        "expectedEnd": {
+          "x": 1999.5,
+          "y": 996
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "bottom",
+        "points": [
+          {
+            "x": 1999.5,
+            "y": 1080
+          },
+          {
+            "x": 1999.5,
+            "y": 996
+          }
+        ],
+        "length": 84
+      },
+      {
+        "id": "route-edge--feature--relation--01",
+        "sourceId": "route-junction--013",
+        "targetId": "route-junction--014",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-auto-highlight-to-uc-jumpcard-list",
+          "edge-uc-hotkey-to-uc-jumpcard-list"
+        ],
+        "expectedStart": {
+          "x": 1080,
+          "y": 381
+        },
+        "expectedEnd": {
+          "x": 1259.5,
+          "y": 381
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1080,
+            "y": 381
+          },
+          {
+            "x": 1259.5,
+            "y": 381
+          }
+        ],
+        "length": 179.5
+      },
+      {
+        "id": "route-edge--feature--relation--02",
+        "sourceId": "route-junction--014",
+        "targetId": "uc-jumpcard-list",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-auto-highlight-to-uc-jumpcard-list",
+          "edge-uc-hotkey-to-uc-jumpcard-list"
+        ],
+        "expectedStart": {
+          "x": 1259.5,
+          "y": 381
+        },
+        "expectedEnd": {
+          "x": 1259.5,
+          "y": 388
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "top",
+        "points": [
+          {
+            "x": 1259.5,
+            "y": 381
+          },
+          {
+            "x": 1259.5,
+            "y": 388
+          }
+        ],
+        "length": 7
+      },
+      {
+        "id": "route-edge--feature--relation--03",
+        "sourceId": "route-junction--018",
+        "targetId": "route-junction--028",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-vod-clip-to-uc-clip-range"
+        ],
+        "expectedStart": {
+          "x": 1830,
+          "y": 429
+        },
+        "expectedEnd": {
+          "x": 1830,
+          "y": 620
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1830,
+            "y": 429
+          },
+          {
+            "x": 1830,
+            "y": 620
+          }
+        ],
+        "length": 191
+      },
+      {
+        "id": "route-edge--feature--relation--04",
+        "sourceId": "uc-vod-clip",
+        "targetId": "route-junction--018",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-vod-clip-to-uc-clip-range"
+        ],
+        "expectedStart": {
+          "x": 1882,
+          "y": 429
+        },
+        "expectedEnd": {
+          "x": 1830,
+          "y": 429
+        },
+        "relationKind": "feature",
+        "sourceTerminal": true,
+        "targetTerminal": false,
+        "sourceSide": "left",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1882,
+            "y": 429
+          },
+          {
+            "x": 1830,
+            "y": 429
+          }
+        ],
+        "length": 52
+      },
+      {
+        "id": "route-edge--feature--relation--05",
+        "sourceId": "uc-hotkey",
+        "targetId": "route-junction--022",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-hotkey-to-uc-jumpcard-list"
+        ],
+        "expectedStart": {
+          "x": 519.5,
+          "y": 566
+        },
+        "expectedEnd": {
+          "x": 519.5,
+          "y": 590
+        },
+        "relationKind": "feature",
+        "sourceTerminal": true,
+        "targetTerminal": false,
+        "sourceSide": "bottom",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 519.5,
+            "y": 566
+          },
+          {
+            "x": 519.5,
+            "y": 590
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--feature--relation--06",
+        "sourceId": "uc-auto-highlight",
+        "targetId": "route-junction--024",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-auto-highlight-to-uc-jumpcard-list"
+        ],
+        "expectedStart": {
+          "x": 1540.5,
+          "y": 566
+        },
+        "expectedEnd": {
+          "x": 1540.5,
+          "y": 590
+        },
+        "relationKind": "feature",
+        "sourceTerminal": true,
+        "targetTerminal": false,
+        "sourceSide": "bottom",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1540.5,
+            "y": 566
+          },
+          {
+            "x": 1540.5,
+            "y": 590
+          }
+        ],
+        "length": 24
+      },
+      {
+        "id": "route-edge--feature--relation--07",
+        "sourceId": "route-junction--022",
+        "targetId": "route-junction--023",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-hotkey-to-uc-jumpcard-list"
+        ],
+        "expectedStart": {
+          "x": 519.5,
+          "y": 590
+        },
+        "expectedEnd": {
+          "x": 1080,
+          "y": 590
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 519.5,
+            "y": 590
+          },
+          {
+            "x": 1080,
+            "y": 590
+          }
+        ],
+        "length": 560.5
+      },
+      {
+        "id": "route-edge--feature--relation--08",
+        "sourceId": "route-junction--023",
+        "targetId": "route-junction--013",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-auto-highlight-to-uc-jumpcard-list",
+          "edge-uc-hotkey-to-uc-jumpcard-list"
+        ],
+        "expectedStart": {
+          "x": 1080,
+          "y": 590
+        },
+        "expectedEnd": {
+          "x": 1080,
+          "y": 381
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1080,
+            "y": 590
+          },
+          {
+            "x": 1080,
+            "y": 381
+          }
+        ],
+        "length": 209
+      },
+      {
+        "id": "route-edge--feature--relation--09",
+        "sourceId": "route-junction--024",
+        "targetId": "route-junction--023",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-auto-highlight-to-uc-jumpcard-list"
+        ],
+        "expectedStart": {
+          "x": 1540.5,
+          "y": 590
+        },
+        "expectedEnd": {
+          "x": 1080,
+          "y": 590
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1540.5,
+            "y": 590
+          },
+          {
+            "x": 1080,
+            "y": 590
+          }
+        ],
+        "length": 460.5
+      },
+      {
+        "id": "route-edge--feature--relation--10",
+        "sourceId": "route-junction--027",
+        "targetId": "uc-clip-range",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-vod-clip-to-uc-clip-range"
+        ],
+        "expectedStart": {
+          "x": 1259.5,
+          "y": 620
+        },
+        "expectedEnd": {
+          "x": 1259.5,
+          "y": 722
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "top",
+        "points": [
+          {
+            "x": 1259.5,
+            "y": 620
+          },
+          {
+            "x": 1259.5,
+            "y": 722
+          }
+        ],
+        "length": 102
+      },
+      {
+        "id": "route-edge--feature--relation--11",
+        "sourceId": "route-junction--028",
+        "targetId": "route-junction--027",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-vod-clip-to-uc-clip-range"
+        ],
+        "expectedStart": {
+          "x": 1830,
+          "y": 620
+        },
+        "expectedEnd": {
+          "x": 1259.5,
+          "y": 620
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1830,
+            "y": 620
+          },
+          {
+            "x": 1259.5,
+            "y": 620
+          }
+        ],
+        "length": 570.5
+      },
+      {
+        "id": "route-edge--feature--relation--12",
+        "sourceId": "route-junction--040",
+        "targetId": "route-junction--051",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-upload-to-uc-cc"
+        ],
+        "expectedStart": {
+          "x": 2135,
+          "y": 763
+        },
+        "expectedEnd": {
+          "x": 2135,
+          "y": 859
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2135,
+            "y": 763
+          },
+          {
+            "x": 2135,
+            "y": 859
+          }
+        ],
+        "length": 96
+      },
+      {
+        "id": "route-edge--feature--relation--13",
+        "sourceId": "uc-upload",
+        "targetId": "route-junction--040",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-upload-to-uc-cc"
+        ],
+        "expectedStart": {
+          "x": 2163,
+          "y": 763
+        },
+        "expectedEnd": {
+          "x": 2135,
+          "y": 763
+        },
+        "relationKind": "feature",
+        "sourceTerminal": true,
+        "targetTerminal": false,
+        "sourceSide": "left",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2163,
+            "y": 763
+          },
+          {
+            "x": 2135,
+            "y": 763
+          }
+        ],
+        "length": 28
+      },
+      {
+        "id": "route-edge--feature--relation--14",
+        "sourceId": "route-junction--042",
+        "targetId": "route-junction--041",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-approve-to-uc-upload"
+        ],
+        "expectedStart": {
+          "x": 2490,
+          "y": 763
+        },
+        "expectedEnd": {
+          "x": 2440,
+          "y": 763
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2490,
+            "y": 763
+          },
+          {
+            "x": 2440,
+            "y": 763
+          }
+        ],
+        "length": 50
+      },
+      {
+        "id": "route-edge--feature--relation--15",
+        "sourceId": "route-junction--048",
+        "targetId": "route-junction--049",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-approve-to-uc-upload"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 859
+        },
+        "expectedEnd": {
+          "x": 980,
+          "y": 859
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 960,
+            "y": 859
+          },
+          {
+            "x": 980,
+            "y": 859
+          }
+        ],
+        "length": 20
+      },
+      {
+        "id": "route-edge--feature--relation--16",
+        "sourceId": "route-junction--049",
+        "targetId": "route-junction--061",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-approve-to-uc-upload"
+        ],
+        "expectedStart": {
+          "x": 980,
+          "y": 859
+        },
+        "expectedEnd": {
+          "x": 980,
+          "y": 1170
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 980,
+            "y": 859
+          },
+          {
+            "x": 980,
+            "y": 1170
+          }
+        ],
+        "length": 311
+      },
+      {
+        "id": "route-edge--feature--relation--17",
+        "sourceId": "route-junction--050",
+        "targetId": "route-junction--055",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-subtitle-to-uc-title"
+        ],
+        "expectedStart": {
+          "x": 1400,
+          "y": 859
+        },
+        "expectedEnd": {
+          "x": 1400,
+          "y": 955
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1400,
+            "y": 859
+          },
+          {
+            "x": 1400,
+            "y": 955
+          }
+        ],
+        "length": 96
+      },
+      {
+        "id": "route-edge--feature--relation--18",
+        "sourceId": "uc-subtitle",
+        "targetId": "route-junction--050",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-subtitle-to-uc-title"
+        ],
+        "expectedStart": {
+          "x": 1423,
+          "y": 859
+        },
+        "expectedEnd": {
+          "x": 1400,
+          "y": 859
+        },
+        "relationKind": "feature",
+        "sourceTerminal": true,
+        "targetTerminal": false,
+        "sourceSide": "left",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1423,
+            "y": 859
+          },
+          {
+            "x": 1400,
+            "y": 859
+          }
+        ],
+        "length": 23
+      },
+      {
+        "id": "route-edge--feature--relation--19",
+        "sourceId": "route-junction--051",
+        "targetId": "uc-cc",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-upload-to-uc-cc"
+        ],
+        "expectedStart": {
+          "x": 2135,
+          "y": 859
+        },
+        "expectedEnd": {
+          "x": 2117,
+          "y": 859
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 2135,
+            "y": 859
+          },
+          {
+            "x": 2117,
+            "y": 859
+          }
+        ],
+        "length": 18
+      },
+      {
+        "id": "route-edge--feature--relation--20",
+        "sourceId": "uc-template",
+        "targetId": "route-junction--052",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-template-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 2398,
+          "y": 859
+        },
+        "expectedEnd": {
+          "x": 2420,
+          "y": 859
+        },
+        "relationKind": "feature",
+        "sourceTerminal": true,
+        "targetTerminal": false,
+        "sourceSide": "right",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2398,
+            "y": 859
+          },
+          {
+            "x": 2420,
+            "y": 859
+          }
+        ],
+        "length": 22
+      },
+      {
+        "id": "route-edge--feature--relation--21",
+        "sourceId": "route-junction--052",
+        "targetId": "route-junction--060",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-template-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 2420,
+          "y": 859
+        },
+        "expectedEnd": {
+          "x": 2420,
+          "y": 1080
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2420,
+            "y": 859
+          },
+          {
+            "x": 2420,
+            "y": 1080
+          }
+        ],
+        "length": 221
+      },
+      {
+        "id": "route-edge--feature--relation--22",
+        "sourceId": "route-junction--055",
+        "targetId": "uc-title",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-subtitle-to-uc-title"
+        ],
+        "expectedStart": {
+          "x": 1400,
+          "y": 955
+        },
+        "expectedEnd": {
+          "x": 1377,
+          "y": 955
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 1400,
+            "y": 955
+          },
+          {
+            "x": 1377,
+            "y": 955
+          }
+        ],
+        "length": 23
+      },
+      {
+        "id": "route-edge--feature--relation--23",
+        "sourceId": "route-junction--056",
+        "targetId": "uc-auto-upload",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-template-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 1810,
+          "y": 955
+        },
+        "expectedEnd": {
+          "x": 1882,
+          "y": 955
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "left",
+        "points": [
+          {
+            "x": 1810,
+            "y": 955
+          },
+          {
+            "x": 1882,
+            "y": 955
+          }
+        ],
+        "length": 72
+      },
+      {
+        "id": "route-edge--feature--relation--24",
+        "sourceId": "route-junction--057",
+        "targetId": "route-junction--056",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-template-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 1810,
+          "y": 1080
+        },
+        "expectedEnd": {
+          "x": 1810,
+          "y": 955
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1810,
+            "y": 1080
+          },
+          {
+            "x": 1810,
+            "y": 955
+          }
+        ],
+        "length": 125
+      },
+      {
+        "id": "route-edge--feature--relation--25",
+        "sourceId": "route-junction--058",
+        "targetId": "route-junction--057",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-template-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 1999.5,
+          "y": 1080
+        },
+        "expectedEnd": {
+          "x": 1810,
+          "y": 1080
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1999.5,
+            "y": 1080
+          },
+          {
+            "x": 1810,
+            "y": 1080
+          }
+        ],
+        "length": 189.5
+      },
+      {
+        "id": "route-edge--feature--relation--26",
+        "sourceId": "route-junction--060",
+        "targetId": "route-junction--059",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-template-to-uc-auto-upload"
+        ],
+        "expectedStart": {
+          "x": 2420,
+          "y": 1080
+        },
+        "expectedEnd": {
+          "x": 2148,
+          "y": 1080
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2420,
+            "y": 1080
+          },
+          {
+            "x": 2148,
+            "y": 1080
+          }
+        ],
+        "length": 272
+      },
+      {
+        "id": "route-edge--feature--relation--27",
+        "sourceId": "route-junction--061",
+        "targetId": "route-junction--062",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-approve-to-uc-upload"
+        ],
+        "expectedStart": {
+          "x": 980,
+          "y": 1170
+        },
+        "expectedEnd": {
+          "x": 2490,
+          "y": 1170
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 980,
+            "y": 1170
+          },
+          {
+            "x": 2490,
+            "y": 1170
+          }
+        ],
+        "length": 1510
+      },
+      {
+        "id": "route-edge--feature--relation--28",
+        "sourceId": "route-junction--062",
+        "targetId": "route-junction--042",
+        "group": "feature",
+        "route": "feature-lane",
+        "role": "relation",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-uc-approve-to-uc-upload"
+        ],
+        "expectedStart": {
+          "x": 2490,
+          "y": 1170
+        },
+        "expectedEnd": {
+          "x": 2490,
+          "y": 763
+        },
+        "relationKind": "feature",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 2490,
+            "y": 1170
+          },
+          {
+            "x": 2490,
+            "y": 763
+          }
+        ],
+        "length": 407
+      },
+      {
+        "id": "route-edge--ops--stem--01",
+        "sourceId": "ac-ops",
+        "targetId": "route-junction--065",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "stem",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-account",
+          "edge-ac-ops-to-uc-ops-incident",
+          "edge-ac-ops-to-uc-ops-monitor",
+          "edge-ac-ops-to-uc-ops-stats"
+        ],
+        "expectedStart": {
+          "x": 162,
+          "y": 1258
+        },
+        "expectedEnd": {
+          "x": 250,
+          "y": 1258
+        },
+        "relationKind": "actor",
+        "sourceTerminal": true,
+        "targetTerminal": false,
+        "sourceSide": "right",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 162,
+            "y": 1258
+          },
+          {
+            "x": 250,
+            "y": 1258
+          }
+        ],
+        "length": 88
+      },
+      {
+        "id": "route-edge--ops--spine--01",
+        "sourceId": "route-junction--065",
+        "targetId": "route-junction--068",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "spine",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-account",
+          "edge-ac-ops-to-uc-ops-incident",
+          "edge-ac-ops-to-uc-ops-monitor",
+          "edge-ac-ops-to-uc-ops-stats"
+        ],
+        "expectedStart": {
+          "x": 250,
+          "y": 1258
+        },
+        "expectedEnd": {
+          "x": 250,
+          "y": 1400
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 250,
+            "y": 1258
+          },
+          {
+            "x": 250,
+            "y": 1400
+          }
+        ],
+        "length": 142
+      },
+      {
+        "id": "route-edge--ops--entry--01",
+        "sourceId": "route-junction--068",
+        "targetId": "route-junction--069",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-account",
+          "edge-ac-ops-to-uc-ops-incident",
+          "edge-ac-ops-to-uc-ops-monitor",
+          "edge-ac-ops-to-uc-ops-stats"
+        ],
+        "expectedStart": {
+          "x": 250,
+          "y": 1400
+        },
+        "expectedEnd": {
+          "x": 360,
+          "y": 1400
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 250,
+            "y": 1400
+          },
+          {
+            "x": 360,
+            "y": 1400
+          }
+        ],
+        "length": 110
+      },
+      {
+        "id": "route-edge--ops--entry--02",
+        "sourceId": "route-junction--069",
+        "targetId": "route-junction--070",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-monitor",
+          "edge-ac-ops-to-uc-ops-stats"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 1400
+        },
+        "expectedEnd": {
+          "x": 960,
+          "y": 1400
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 360,
+            "y": 1400
+          },
+          {
+            "x": 960,
+            "y": 1400
+          }
+        ],
+        "length": 600
+      },
+      {
+        "id": "route-edge--ops--rail--01",
+        "sourceId": "route-junction--066",
+        "targetId": "route-junction--063",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-account"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 1319
+        },
+        "expectedEnd": {
+          "x": 360,
+          "y": 1223
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 360,
+            "y": 1319
+          },
+          {
+            "x": 360,
+            "y": 1223
+          }
+        ],
+        "length": 96
+      },
+      {
+        "id": "route-edge--ops--rail--02",
+        "sourceId": "route-junction--067",
+        "targetId": "route-junction--064",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-monitor"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 1319
+        },
+        "expectedEnd": {
+          "x": 960,
+          "y": 1223
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 960,
+            "y": 1319
+          },
+          {
+            "x": 960,
+            "y": 1223
+          }
+        ],
+        "length": 96
+      },
+      {
+        "id": "route-edge--ops--rail--03",
+        "sourceId": "route-junction--069",
+        "targetId": "route-junction--066",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-account",
+          "edge-ac-ops-to-uc-ops-incident"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 1400
+        },
+        "expectedEnd": {
+          "x": 360,
+          "y": 1319
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 360,
+            "y": 1400
+          },
+          {
+            "x": 360,
+            "y": 1319
+          }
+        ],
+        "length": 81
+      },
+      {
+        "id": "route-edge--ops--rail--04",
+        "sourceId": "route-junction--070",
+        "targetId": "route-junction--067",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-monitor",
+          "edge-ac-ops-to-uc-ops-stats"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 1400
+        },
+        "expectedEnd": {
+          "x": 960,
+          "y": 1319
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 960,
+            "y": 1400
+          },
+          {
+            "x": 960,
+            "y": 1319
+          }
+        ],
+        "length": 81
+      },
+      {
+        "id": "route-edge--ops--branch--01",
+        "sourceId": "route-junction--063",
+        "targetId": "uc-ops-account",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-account"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 1223
+        },
+        "expectedEnd": {
+          "x": 402,
+          "y": 1223
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "left",
+        "points": [
+          {
+            "x": 360,
+            "y": 1223
+          },
+          {
+            "x": 402,
+            "y": 1223
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--ops--branch--02",
+        "sourceId": "route-junction--064",
+        "targetId": "uc-ops-monitor",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-monitor"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 1223
+        },
+        "expectedEnd": {
+          "x": 918,
+          "y": 1223
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 960,
+            "y": 1223
+          },
+          {
+            "x": 918,
+            "y": 1223
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--ops--branch--03",
+        "sourceId": "route-junction--066",
+        "targetId": "uc-ops-incident",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-incident"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 1319
+        },
+        "expectedEnd": {
+          "x": 402,
+          "y": 1319
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "left",
+        "points": [
+          {
+            "x": 360,
+            "y": 1319
+          },
+          {
+            "x": 402,
+            "y": 1319
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--ops--branch--04",
+        "sourceId": "route-junction--067",
+        "targetId": "uc-ops-stats",
+        "group": "ops",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-ops-to-uc-ops-stats"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 1319
+        },
+        "expectedEnd": {
+          "x": 918,
+          "y": 1319
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 960,
+            "y": 1319
+          },
+          {
+            "x": 918,
+            "y": 1319
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--streamer--stem--01",
+        "sourceId": "ac-streamer",
+        "targetId": "route-junction--015",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "stem",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-approve",
+          "edge-ac-streamer-to-uc-auto-reconnect",
+          "edge-ac-streamer-to-uc-clip-range",
+          "edge-ac-streamer-to-uc-hotkey",
+          "edge-ac-streamer-to-uc-invite",
+          "edge-ac-streamer-to-uc-live-watch",
+          "edge-ac-streamer-to-uc-plugin-install",
+          "edge-ac-streamer-to-uc-simulcast",
+          "edge-ac-streamer-to-uc-yt-oauth"
+        ],
+        "expectedStart": {
+          "x": 162,
+          "y": 412
+        },
+        "expectedEnd": {
+          "x": 280,
+          "y": 412
+        },
+        "relationKind": "actor",
+        "sourceTerminal": true,
+        "targetTerminal": false,
+        "sourceSide": "right",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 162,
+            "y": 412
+          },
+          {
+            "x": 280,
+            "y": 412
+          }
+        ],
+        "length": 118
+      },
+      {
+        "id": "route-edge--streamer--spine--01",
+        "sourceId": "route-junction--007",
+        "targetId": "route-junction--005",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "spine",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-live-watch"
+        ],
+        "expectedStart": {
+          "x": 280,
+          "y": 220
+        },
+        "expectedEnd": {
+          "x": 280,
+          "y": 200
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 280,
+            "y": 220
+          },
+          {
+            "x": 280,
+            "y": 200
+          }
+        ],
+        "length": 20
+      },
+      {
+        "id": "route-edge--streamer--spine--02",
+        "sourceId": "route-junction--015",
+        "targetId": "route-junction--007",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "spine",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-auto-reconnect",
+          "edge-ac-streamer-to-uc-hotkey",
+          "edge-ac-streamer-to-uc-live-watch",
+          "edge-ac-streamer-to-uc-plugin-install",
+          "edge-ac-streamer-to-uc-simulcast"
+        ],
+        "expectedStart": {
+          "x": 280,
+          "y": 412
+        },
+        "expectedEnd": {
+          "x": 280,
+          "y": 220
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 280,
+            "y": 412
+          },
+          {
+            "x": 280,
+            "y": 220
+          }
+        ],
+        "length": 192
+      },
+      {
+        "id": "route-edge--streamer--spine--03",
+        "sourceId": "route-junction--015",
+        "targetId": "route-junction--025",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "spine",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-approve",
+          "edge-ac-streamer-to-uc-clip-range",
+          "edge-ac-streamer-to-uc-invite",
+          "edge-ac-streamer-to-uc-yt-oauth"
+        ],
+        "expectedStart": {
+          "x": 280,
+          "y": 412
+        },
+        "expectedEnd": {
+          "x": 280,
+          "y": 620
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 280,
+            "y": 412
+          },
+          {
+            "x": 280,
+            "y": 620
+          }
+        ],
+        "length": 208
+      },
+      {
+        "id": "route-edge--streamer--spine--04",
+        "sourceId": "route-junction--025",
+        "targetId": "route-junction--029",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "spine",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-approve",
+          "edge-ac-streamer-to-uc-invite",
+          "edge-ac-streamer-to-uc-yt-oauth"
+        ],
+        "expectedStart": {
+          "x": 280,
+          "y": 620
+        },
+        "expectedEnd": {
+          "x": 280,
+          "y": 640
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 280,
+            "y": 620
+          },
+          {
+            "x": 280,
+            "y": 640
+          }
+        ],
+        "length": 20
+      },
+      {
+        "id": "route-edge--streamer--spine--05",
+        "sourceId": "route-junction--029",
+        "targetId": "route-junction--043",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "spine",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-yt-oauth"
+        ],
+        "expectedStart": {
+          "x": 280,
+          "y": 640
+        },
+        "expectedEnd": {
+          "x": 280,
+          "y": 810
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 280,
+            "y": 640
+          },
+          {
+            "x": 280,
+            "y": 810
+          }
+        ],
+        "length": 170
+      },
+      {
+        "id": "route-edge--streamer--entry--01",
+        "sourceId": "route-junction--005",
+        "targetId": "route-junction--006",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-live-watch"
+        ],
+        "expectedStart": {
+          "x": 280,
+          "y": 200
+        },
+        "expectedEnd": {
+          "x": 1100,
+          "y": 200
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 280,
+            "y": 200
+          },
+          {
+            "x": 1100,
+            "y": 200
+          }
+        ],
+        "length": 820
+      },
+      {
+        "id": "route-edge--streamer--entry--02",
+        "sourceId": "route-junction--007",
+        "targetId": "route-junction--008",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-auto-reconnect",
+          "edge-ac-streamer-to-uc-hotkey",
+          "edge-ac-streamer-to-uc-plugin-install",
+          "edge-ac-streamer-to-uc-simulcast"
+        ],
+        "expectedStart": {
+          "x": 280,
+          "y": 220
+        },
+        "expectedEnd": {
+          "x": 360,
+          "y": 220
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 280,
+            "y": 220
+          },
+          {
+            "x": 360,
+            "y": 220
+          }
+        ],
+        "length": 80
+      },
+      {
+        "id": "route-edge--streamer--entry--03",
+        "sourceId": "route-junction--008",
+        "targetId": "route-junction--009",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-auto-reconnect"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 220
+        },
+        "expectedEnd": {
+          "x": 960,
+          "y": 220
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 360,
+            "y": 220
+          },
+          {
+            "x": 960,
+            "y": 220
+          }
+        ],
+        "length": 600
+      },
+      {
+        "id": "route-edge--streamer--entry--04",
+        "sourceId": "route-junction--025",
+        "targetId": "route-junction--026",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-clip-range"
+        ],
+        "expectedStart": {
+          "x": 280,
+          "y": 620
+        },
+        "expectedEnd": {
+          "x": 1100,
+          "y": 620
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 280,
+            "y": 620
+          },
+          {
+            "x": 1100,
+            "y": 620
+          }
+        ],
+        "length": 820
+      },
+      {
+        "id": "route-edge--streamer--entry--05",
+        "sourceId": "route-junction--029",
+        "targetId": "route-junction--030",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-approve",
+          "edge-ac-streamer-to-uc-invite"
+        ],
+        "expectedStart": {
+          "x": 280,
+          "y": 640
+        },
+        "expectedEnd": {
+          "x": 960,
+          "y": 640
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 280,
+            "y": 640
+          },
+          {
+            "x": 960,
+            "y": 640
+          }
+        ],
+        "length": 680
+      },
+      {
+        "id": "route-edge--streamer--entry--06",
+        "sourceId": "route-junction--043",
+        "targetId": "route-junction--044",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-yt-oauth"
+        ],
+        "expectedStart": {
+          "x": 280,
+          "y": 810
+        },
+        "expectedEnd": {
+          "x": 960,
+          "y": 810
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 280,
+            "y": 810
+          },
+          {
+            "x": 960,
+            "y": 810
+          }
+        ],
+        "length": 680
+      },
+      {
+        "id": "route-edge--streamer--entry--07",
+        "sourceId": "route-junction--044",
+        "targetId": "route-junction--045",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "entry",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-yt-oauth"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 810
+        },
+        "expectedEnd": {
+          "x": 1800,
+          "y": 810
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 960,
+            "y": 810
+          },
+          {
+            "x": 1800,
+            "y": 810
+          }
+        ],
+        "length": 840
+      },
+      {
+        "id": "route-edge--streamer--rail--01",
+        "sourceId": "route-junction--006",
+        "targetId": "route-junction--011",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-live-watch"
+        ],
+        "expectedStart": {
+          "x": 1100,
+          "y": 200
+        },
+        "expectedEnd": {
+          "x": 1100,
+          "y": 333
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1100,
+            "y": 200
+          },
+          {
+            "x": 1100,
+            "y": 333
+          }
+        ],
+        "length": 133
+      },
+      {
+        "id": "route-edge--streamer--rail--02",
+        "sourceId": "route-junction--008",
+        "targetId": "route-junction--010",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-hotkey",
+          "edge-ac-streamer-to-uc-plugin-install",
+          "edge-ac-streamer-to-uc-simulcast"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 220
+        },
+        "expectedEnd": {
+          "x": 360,
+          "y": 333
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 360,
+            "y": 220
+          },
+          {
+            "x": 360,
+            "y": 333
+          }
+        ],
+        "length": 113
+      },
+      {
+        "id": "route-edge--streamer--rail--03",
+        "sourceId": "route-junction--009",
+        "targetId": "route-junction--021",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-auto-reconnect"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 220
+        },
+        "expectedEnd": {
+          "x": 960,
+          "y": 525
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 960,
+            "y": 220
+          },
+          {
+            "x": 960,
+            "y": 525
+          }
+        ],
+        "length": 305
+      },
+      {
+        "id": "route-edge--streamer--rail--04",
+        "sourceId": "route-junction--010",
+        "targetId": "route-junction--016",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-hotkey",
+          "edge-ac-streamer-to-uc-simulcast"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 333
+        },
+        "expectedEnd": {
+          "x": 360,
+          "y": 429
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 360,
+            "y": 333
+          },
+          {
+            "x": 360,
+            "y": 429
+          }
+        ],
+        "length": 96
+      },
+      {
+        "id": "route-edge--streamer--rail--05",
+        "sourceId": "route-junction--016",
+        "targetId": "route-junction--020",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-hotkey"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 429
+        },
+        "expectedEnd": {
+          "x": 360,
+          "y": 525
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 360,
+            "y": 429
+          },
+          {
+            "x": 360,
+            "y": 525
+          }
+        ],
+        "length": 96
+      },
+      {
+        "id": "route-edge--streamer--rail--06",
+        "sourceId": "route-junction--026",
+        "targetId": "route-junction--037",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-clip-range"
+        ],
+        "expectedStart": {
+          "x": 1100,
+          "y": 620
+        },
+        "expectedEnd": {
+          "x": 1100,
+          "y": 763
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1100,
+            "y": 620
+          },
+          {
+            "x": 1100,
+            "y": 763
+          }
+        ],
+        "length": 143
+      },
+      {
+        "id": "route-edge--streamer--rail--07",
+        "sourceId": "route-junction--030",
+        "targetId": "route-junction--036",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-approve",
+          "edge-ac-streamer-to-uc-invite"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 640
+        },
+        "expectedEnd": {
+          "x": 960,
+          "y": 763
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 960,
+            "y": 640
+          },
+          {
+            "x": 960,
+            "y": 763
+          }
+        ],
+        "length": 123
+      },
+      {
+        "id": "route-edge--streamer--rail--08",
+        "sourceId": "route-junction--036",
+        "targetId": "route-junction--044",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-approve"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 763
+        },
+        "expectedEnd": {
+          "x": 960,
+          "y": 810
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 960,
+            "y": 763
+          },
+          {
+            "x": 960,
+            "y": 810
+          }
+        ],
+        "length": 47
+      },
+      {
+        "id": "route-edge--streamer--rail--09",
+        "sourceId": "route-junction--044",
+        "targetId": "route-junction--048",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-approve"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 810
+        },
+        "expectedEnd": {
+          "x": 960,
+          "y": 859
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 960,
+            "y": 810
+          },
+          {
+            "x": 960,
+            "y": 859
+          }
+        ],
+        "length": 49
+      },
+      {
+        "id": "route-edge--streamer--rail--10",
+        "sourceId": "route-junction--045",
+        "targetId": "route-junction--039",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "rail",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-yt-oauth"
+        ],
+        "expectedStart": {
+          "x": 1800,
+          "y": 810
+        },
+        "expectedEnd": {
+          "x": 1800,
+          "y": 763
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": false,
+        "sourceSide": "center",
+        "targetSide": "center",
+        "points": [
+          {
+            "x": 1800,
+            "y": 810
+          },
+          {
+            "x": 1800,
+            "y": 763
+          }
+        ],
+        "length": 47
+      },
+      {
+        "id": "route-edge--streamer--branch--01",
+        "sourceId": "route-junction--010",
+        "targetId": "uc-plugin-install",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-plugin-install"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 333
+        },
+        "expectedEnd": {
+          "x": 402,
+          "y": 333
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "left",
+        "points": [
+          {
+            "x": 360,
+            "y": 333
+          },
+          {
+            "x": 402,
+            "y": 333
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--streamer--branch--02",
+        "sourceId": "route-junction--011",
+        "targetId": "uc-live-watch",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-live-watch"
+        ],
+        "expectedStart": {
+          "x": 1100,
+          "y": 333
+        },
+        "expectedEnd": {
+          "x": 1142,
+          "y": 333
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "left",
+        "points": [
+          {
+            "x": 1100,
+            "y": 333
+          },
+          {
+            "x": 1142,
+            "y": 333
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--streamer--branch--03",
+        "sourceId": "route-junction--016",
+        "targetId": "uc-simulcast",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-simulcast"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 429
+        },
+        "expectedEnd": {
+          "x": 402,
+          "y": 429
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "left",
+        "points": [
+          {
+            "x": 360,
+            "y": 429
+          },
+          {
+            "x": 402,
+            "y": 429
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--streamer--branch--04",
+        "sourceId": "route-junction--020",
+        "targetId": "uc-hotkey",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-hotkey"
+        ],
+        "expectedStart": {
+          "x": 360,
+          "y": 525
+        },
+        "expectedEnd": {
+          "x": 402,
+          "y": 525
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "left",
+        "points": [
+          {
+            "x": 360,
+            "y": 525
+          },
+          {
+            "x": 402,
+            "y": 525
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--streamer--branch--05",
+        "sourceId": "route-junction--021",
+        "targetId": "uc-auto-reconnect",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-auto-reconnect"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 525
+        },
+        "expectedEnd": {
+          "x": 918,
+          "y": 525
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 960,
+            "y": 525
+          },
+          {
+            "x": 918,
+            "y": 525
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--streamer--branch--06",
+        "sourceId": "route-junction--036",
+        "targetId": "uc-invite",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-invite"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 763
+        },
+        "expectedEnd": {
+          "x": 918,
+          "y": 763
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 960,
+            "y": 763
+          },
+          {
+            "x": 918,
+            "y": 763
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--streamer--branch--07",
+        "sourceId": "route-junction--037",
+        "targetId": "uc-clip-range",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-clip-range"
+        ],
+        "expectedStart": {
+          "x": 1100,
+          "y": 763
+        },
+        "expectedEnd": {
+          "x": 1142,
+          "y": 763
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "left",
+        "points": [
+          {
+            "x": 1100,
+            "y": 763
+          },
+          {
+            "x": 1142,
+            "y": 763
+          }
+        ],
+        "length": 42
+      },
+      {
+        "id": "route-edge--streamer--branch--08",
+        "sourceId": "route-junction--039",
+        "targetId": "uc-yt-oauth",
+        "group": "streamer",
+        "route": "actor-spine",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-yt-oauth"
+        ],
+        "expectedStart": {
+          "x": 1800,
+          "y": 763
+        },
+        "expectedEnd": {
+          "x": 1882,
+          "y": 763
+        },
+        "relationKind": "actor",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "left",
+        "points": [
+          {
+            "x": 1800,
+            "y": 763
+          },
+          {
+            "x": 1882,
+            "y": 763
+          }
+        ],
+        "length": 82
+      },
+      {
+        "id": "route-edge--streamer--branch--09",
+        "sourceId": "route-junction--048",
+        "targetId": "uc-approve",
+        "group": "streamer",
+        "route": "feature-lane",
+        "role": "branch",
+        "router": "deterministic-usecase-v1",
+        "orderedWaypoints": [],
+        "semanticRefs": [
+          "edge-ac-streamer-to-uc-approve",
+          "edge-uc-approve-to-uc-upload"
+        ],
+        "expectedStart": {
+          "x": 960,
+          "y": 859
+        },
+        "expectedEnd": {
+          "x": 918,
+          "y": 859
+        },
+        "relationKind": "mixed",
+        "sourceTerminal": false,
+        "targetTerminal": true,
+        "sourceSide": "center",
+        "targetSide": "right",
+        "points": [
+          {
+            "x": 960,
+            "y": 859
+          },
+          {
+            "x": 918,
+            "y": 859
+          }
+        ],
+        "length": 42
+      }
+    ],
+    "semanticToPhysical": {
+      "edge-ac-editor-to-uc-auto-upload": [
+        "route-edge--editor--stem--01",
+        "route-edge--editor--spine--03",
+        "route-edge--editor--entry--05",
+        "route-edge--editor--entry--04",
+        "route-edge--editor--rail--05",
+        "route-edge--editor--entry--06",
+        "route-edge--editor--rail--07",
+        "route-edge--editor--entry--07",
+        "route-edge--editor--rail--08",
+        "route-edge--editor--entry--08",
+        "route-edge--editor--branch--06"
+      ],
+      "edge-ac-editor-to-uc-clip-range": [
+        "route-edge--editor--stem--01",
+        "route-edge--editor--spine--03",
+        "route-edge--editor--entry--05",
+        "route-edge--editor--entry--04",
+        "route-edge--editor--entry--03",
+        "route-edge--editor--rail--04",
+        "route-edge--editor--branch--04"
+      ],
+      "edge-ac-editor-to-uc-jumpcard-list": [
+        "route-edge--editor--stem--01",
+        "route-edge--editor--spine--03",
+        "route-edge--editor--spine--02",
+        "route-edge--editor--spine--01",
+        "route-edge--editor--entry--01",
+        "route-edge--editor--rail--01",
+        "route-edge--editor--rail--03",
+        "route-edge--editor--branch--02"
+      ],
+      "edge-ac-editor-to-uc-live-watch": [
+        "route-edge--editor--stem--01",
+        "route-edge--editor--spine--03",
+        "route-edge--editor--spine--02",
+        "route-edge--editor--spine--01",
+        "route-edge--editor--entry--01",
+        "route-edge--editor--rail--01",
+        "route-edge--editor--branch--01"
+      ],
+      "edge-ac-editor-to-uc-upload": [
+        "route-edge--editor--stem--01",
+        "route-edge--editor--spine--03",
+        "route-edge--editor--entry--05",
+        "route-edge--editor--rail--06",
+        "route-edge--editor--branch--05"
+      ],
+      "edge-ac-editor-to-uc-vod-clip": [
+        "route-edge--editor--stem--01",
+        "route-edge--editor--spine--03",
+        "route-edge--editor--spine--02",
+        "route-edge--editor--entry--02",
+        "route-edge--editor--rail--02",
+        "route-edge--editor--branch--03"
+      ],
+      "edge-ac-ops-to-uc-ops-account": [
+        "route-edge--ops--stem--01",
+        "route-edge--ops--spine--01",
+        "route-edge--ops--entry--01",
+        "route-edge--ops--rail--03",
+        "route-edge--ops--rail--01",
+        "route-edge--ops--branch--01"
+      ],
+      "edge-ac-ops-to-uc-ops-incident": [
+        "route-edge--ops--stem--01",
+        "route-edge--ops--spine--01",
+        "route-edge--ops--entry--01",
+        "route-edge--ops--rail--03",
+        "route-edge--ops--branch--03"
+      ],
+      "edge-ac-ops-to-uc-ops-monitor": [
+        "route-edge--ops--stem--01",
+        "route-edge--ops--spine--01",
+        "route-edge--ops--entry--01",
+        "route-edge--ops--entry--02",
+        "route-edge--ops--rail--04",
+        "route-edge--ops--rail--02",
+        "route-edge--ops--branch--02"
+      ],
+      "edge-ac-ops-to-uc-ops-stats": [
+        "route-edge--ops--stem--01",
+        "route-edge--ops--spine--01",
+        "route-edge--ops--entry--01",
+        "route-edge--ops--entry--02",
+        "route-edge--ops--rail--04",
+        "route-edge--ops--branch--04"
+      ],
+      "edge-ac-streamer-to-uc-approve": [
+        "route-edge--streamer--stem--01",
+        "route-edge--streamer--spine--03",
+        "route-edge--streamer--spine--04",
+        "route-edge--streamer--entry--05",
+        "route-edge--streamer--rail--07",
+        "route-edge--streamer--rail--08",
+        "route-edge--streamer--rail--09",
+        "route-edge--streamer--branch--09"
+      ],
+      "edge-ac-streamer-to-uc-auto-reconnect": [
+        "route-edge--streamer--stem--01",
+        "route-edge--streamer--spine--02",
+        "route-edge--streamer--entry--02",
+        "route-edge--streamer--entry--03",
+        "route-edge--streamer--rail--03",
+        "route-edge--streamer--branch--05"
+      ],
+      "edge-ac-streamer-to-uc-clip-range": [
+        "route-edge--streamer--stem--01",
+        "route-edge--streamer--spine--03",
+        "route-edge--streamer--entry--04",
+        "route-edge--streamer--rail--06",
+        "route-edge--streamer--branch--07"
+      ],
+      "edge-ac-streamer-to-uc-hotkey": [
+        "route-edge--streamer--stem--01",
+        "route-edge--streamer--spine--02",
+        "route-edge--streamer--entry--02",
+        "route-edge--streamer--rail--02",
+        "route-edge--streamer--rail--04",
+        "route-edge--streamer--rail--05",
+        "route-edge--streamer--branch--04"
+      ],
+      "edge-ac-streamer-to-uc-invite": [
+        "route-edge--streamer--stem--01",
+        "route-edge--streamer--spine--03",
+        "route-edge--streamer--spine--04",
+        "route-edge--streamer--entry--05",
+        "route-edge--streamer--rail--07",
+        "route-edge--streamer--branch--06"
+      ],
+      "edge-ac-streamer-to-uc-live-watch": [
+        "route-edge--streamer--stem--01",
+        "route-edge--streamer--spine--02",
+        "route-edge--streamer--spine--01",
+        "route-edge--streamer--entry--01",
+        "route-edge--streamer--rail--01",
+        "route-edge--streamer--branch--02"
+      ],
+      "edge-ac-streamer-to-uc-plugin-install": [
+        "route-edge--streamer--stem--01",
+        "route-edge--streamer--spine--02",
+        "route-edge--streamer--entry--02",
+        "route-edge--streamer--rail--02",
+        "route-edge--streamer--branch--01"
+      ],
+      "edge-ac-streamer-to-uc-simulcast": [
+        "route-edge--streamer--stem--01",
+        "route-edge--streamer--spine--02",
+        "route-edge--streamer--entry--02",
+        "route-edge--streamer--rail--02",
+        "route-edge--streamer--rail--04",
+        "route-edge--streamer--branch--03"
+      ],
+      "edge-ac-streamer-to-uc-yt-oauth": [
+        "route-edge--streamer--stem--01",
+        "route-edge--streamer--spine--03",
+        "route-edge--streamer--spine--04",
+        "route-edge--streamer--spine--05",
+        "route-edge--streamer--entry--06",
+        "route-edge--streamer--entry--07",
+        "route-edge--streamer--rail--10",
+        "route-edge--streamer--branch--08"
+      ],
+      "edge-uc-approve-to-uc-upload": [
+        "route-edge--streamer--branch--09",
+        "route-edge--feature--relation--15",
+        "route-edge--feature--relation--16",
+        "route-edge--feature--relation--27",
+        "route-edge--feature--relation--28",
+        "route-edge--feature--relation--14",
+        "route-edge--editor--branch--05"
+      ],
+      "edge-uc-auto-highlight-to-uc-jumpcard-list": [
+        "route-edge--feature--relation--06",
+        "route-edge--feature--relation--09",
+        "route-edge--feature--relation--08",
+        "route-edge--feature--relation--01",
+        "route-edge--feature--relation--02"
+      ],
+      "edge-uc-hotkey-to-uc-jumpcard-list": [
+        "route-edge--feature--relation--05",
+        "route-edge--feature--relation--07",
+        "route-edge--feature--relation--08",
+        "route-edge--feature--relation--01",
+        "route-edge--feature--relation--02"
+      ],
+      "edge-uc-subtitle-to-uc-title": [
+        "route-edge--feature--relation--18",
+        "route-edge--feature--relation--17",
+        "route-edge--feature--relation--22"
+      ],
+      "edge-uc-template-to-uc-auto-upload": [
+        "route-edge--feature--relation--20",
+        "route-edge--feature--relation--21",
+        "route-edge--feature--relation--26",
+        "route-edge--editor--entry--08",
+        "route-edge--feature--relation--25",
+        "route-edge--feature--relation--24",
+        "route-edge--feature--relation--23"
+      ],
+      "edge-uc-upload-to-uc-cc": [
+        "route-edge--feature--relation--13",
+        "route-edge--feature--relation--12",
+        "route-edge--feature--relation--19"
+      ],
+      "edge-uc-vod-clip-to-uc-clip-range": [
+        "route-edge--feature--relation--04",
+        "route-edge--feature--relation--03",
+        "route-edge--feature--relation--11",
+        "route-edge--feature--relation--10"
+      ]
+    },
+    "actorSpines": {
+      "ac-streamer": {
+        "stemId": "route-edge--streamer--stem--01",
+        "spineIds": [
+          "route-edge--streamer--spine--01",
+          "route-edge--streamer--spine--02",
+          "route-edge--streamer--spine--03",
+          "route-edge--streamer--spine--04",
+          "route-edge--streamer--spine--05"
+        ],
+        "semanticEdgeIds": [
+          "edge-ac-streamer-to-uc-approve",
+          "edge-ac-streamer-to-uc-auto-reconnect",
+          "edge-ac-streamer-to-uc-clip-range",
+          "edge-ac-streamer-to-uc-hotkey",
+          "edge-ac-streamer-to-uc-invite",
+          "edge-ac-streamer-to-uc-live-watch",
+          "edge-ac-streamer-to-uc-plugin-install",
+          "edge-ac-streamer-to-uc-simulcast",
+          "edge-ac-streamer-to-uc-yt-oauth"
+        ]
+      },
+      "ac-editor": {
+        "stemId": "route-edge--editor--stem--01",
+        "spineIds": [
+          "route-edge--editor--spine--01",
+          "route-edge--editor--spine--02",
+          "route-edge--editor--spine--03"
+        ],
+        "semanticEdgeIds": [
+          "edge-ac-editor-to-uc-auto-upload",
+          "edge-ac-editor-to-uc-clip-range",
+          "edge-ac-editor-to-uc-jumpcard-list",
+          "edge-ac-editor-to-uc-live-watch",
+          "edge-ac-editor-to-uc-upload",
+          "edge-ac-editor-to-uc-vod-clip"
+        ]
+      },
+      "ac-ops": {
+        "stemId": "route-edge--ops--stem--01",
+        "spineIds": [
+          "route-edge--ops--spine--01"
+        ],
+        "semanticEdgeIds": [
+          "edge-ac-ops-to-uc-ops-account",
+          "edge-ac-ops-to-uc-ops-incident",
+          "edge-ac-ops-to-uc-ops-monitor",
+          "edge-ac-ops-to-uc-ops-stats"
+        ]
+      }
+    }
+  },
+  "layout": {
+    "groupGrid": {
+      "env-sys": {
+        "x": 350,
+        "y": 170,
+        "width": 2100,
+        "height": 1230
+      },
+      "grp-broadcast": {
+        "x": 380,
+        "y": 250,
+        "width": 560,
+        "height": 340,
+        "column": 0,
+        "row": 0
+      },
+      "grp-account": {
+        "x": 380,
+        "y": 680,
+        "width": 560,
+        "height": 440,
+        "column": 0,
+        "row": 1
+      },
+      "grp-ops": {
+        "x": 380,
+        "y": 1140,
+        "width": 560,
+        "height": 240,
+        "column": 0,
+        "row": 2
+      },
+      "grp-live": {
+        "x": 1120,
+        "y": 250,
+        "width": 560,
+        "height": 340,
+        "column": 1,
+        "row": 0
+      },
+      "grp-vod": {
+        "x": 1860,
+        "y": 250,
+        "width": 560,
+        "height": 340,
+        "column": 2,
+        "row": 0
+      },
+      "grp-clip": {
+        "x": 1120,
+        "y": 680,
+        "width": 560,
+        "height": 440,
+        "column": 1,
+        "row": 1
+      },
+      "grp-upload": {
+        "x": 1860,
+        "y": 680,
+        "width": 560,
+        "height": 440,
+        "column": 2,
+        "row": 1
+      }
+    },
+    "node": {
+      "insetX": 22,
+      "insetY": 42,
+      "width": 235,
+      "height": 82,
+      "columnGap": 46,
+      "rowGap": 14
+    },
+    "actors": {
+      "ac-streamer": {
+        "x": 96,
+        "y": 352,
+        "width": 66,
+        "height": 120
+      },
+      "ac-editor": {
+        "x": 2538,
+        "y": 600,
+        "width": 66,
+        "height": 120
+      },
+      "ac-ops": {
+        "x": 96,
+        "y": 1198,
+        "width": 66,
+        "height": 120
+      }
+    },
+    "columns": [
+      380,
+      1120,
+      1860
+    ],
+    "rows": [
+      250,
+      680,
+      1140
+    ]
+  },
+  "validation": {
+    "semanticContract": {
+      "pass": true,
+      "errors": [],
+      "vertexCount": 41,
+      "edgeCount": 26,
+      "relationKinds": {
+        "actor": 19,
+        "feature": 7
+      }
+    },
+    "modelResult": {
+      "pass": true,
+      "errors": []
+    },
+    "paths": {
+      "pass": true,
+      "errors": []
+    },
+    "endpoints": {
+      "pass": true,
+      "maximumErrorPx": 0,
+      "violations": []
+    },
+    "orthogonal": {
+      "pass": true,
+      "violations": []
+    },
+    "nodeClearance": {
+      "pass": true,
+      "violations": []
+    },
+    "edgeCrossing": {
+      "pass": true,
+      "count": 0,
+      "allowlist": [],
+      "violations": []
+    },
+    "overlap": {
+      "pass": true,
+      "count": 0,
+      "allowlist": [],
+      "violations": []
+    },
+    "layout": {
+      "pass": true,
+      "violations": [],
+      "columns": [
+        380,
+        1120,
+        1860
+      ]
+    },
+    "actorSpines": {
+      "pass": true,
+      "errors": [],
+      "stemIds": [
+        "route-edge--editor--stem--01",
+        "route-edge--ops--stem--01",
+        "route-edge--streamer--stem--01"
+      ]
+    },
+    "decorationPartition": {
+      "pass": true,
+      "errors": [],
+      "count": 8
+    },
+    "labelClearance": {
+      "status": "deferred-to-browser"
+    }
+  }
+}

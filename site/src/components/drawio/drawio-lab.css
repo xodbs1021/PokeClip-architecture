@@ -1,0 +1,175 @@
+.drawio-lab-viewer {
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 18px 48px color-mix(in oklab, var(--ink) 9%, transparent);
+}
+
+.drawio-lab-toolbar,
+.drawio-lab-toolbar p,
+.drawio-zoom-controls {
+  display: flex;
+  align-items: center;
+}
+
+.drawio-lab-toolbar {
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.drawio-lab-toolbar p {
+  gap: 0.75rem;
+}
+
+.drawio-lab-toolbar span {
+  color: var(--ink-faint);
+  font-size: var(--text-sm);
+}
+
+.drawio-zoom-controls {
+  gap: 0.25rem;
+  padding: 0.2rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.drawio-zoom-controls button {
+  min-width: 3.2rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.drawio-zoom-controls button.active {
+  color: var(--surface);
+  background: var(--ink);
+}
+
+.drawio-lab-stage {
+  min-height: 260px;
+  overflow: auto;
+  padding: 1rem;
+  background-color: #f8fafc;
+  background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.drawio-lab-canvas {
+  position: relative;
+  min-width: 1px;
+  min-height: 1px;
+  margin: 0 auto;
+}
+
+.drawio-lab-mount,
+.drawio-lab-graph-host {
+  width: 100%;
+  height: 100%;
+}
+
+.drawio-lab-canvas .drawio-lab-svg {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+}
+
+.drawio-lab-svg [data-cell-id] {
+  transition: opacity 180ms ease, filter 180ms ease;
+}
+
+.drawio-lab-svg [data-cell-kind='vertex'] {
+  cursor: pointer;
+}
+
+.drawio-lab-svg [data-cell-interactive='true']:focus-visible {
+  outline: none;
+  filter: drop-shadow(0 0 4px color-mix(in oklab, var(--accent) 80%, white));
+}
+
+.drawio-lab-svg [data-cell-id].is-dimmed {
+  opacity: 0.16;
+}
+
+.drawio-lab-svg [data-cell-kind='vertex'].is-focus {
+  filter: drop-shadow(0 8px 8px color-mix(in oklab, var(--accent) 34%, transparent));
+}
+
+.drawio-lab-svg [data-cell-kind='vertex'].is-adjacent {
+  filter: drop-shadow(0 5px 6px color-mix(in oklab, #2563eb 25%, transparent));
+}
+
+.drawio-lab-svg [data-cell-kind='edge'].is-incident {
+  filter: drop-shadow(0 0 4px color-mix(in oklab, var(--accent) 70%, transparent));
+}
+
+.drawio-lab-hint,
+.drawio-lab-error {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+.drawio-lab-error {
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+}
+
+.drawio-diagnostics {
+  padding: 0.8rem 1rem 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.drawio-diagnostics summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.drawio-diagnostics ul {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  list-style: none;
+}
+
+.drawio-diagnostics li {
+  display: grid;
+  grid-template-columns: 3.4rem minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.55rem 0.7rem;
+  border-radius: 8px;
+  background: var(--neutral-soft);
+  font-size: var(--text-sm);
+}
+
+.drawio-diagnostics li[data-status='pass'] strong { color: #15803d; }
+.drawio-diagnostics li[data-status='fail'] strong { color: #b91c1c; }
+.drawio-diagnostics li span { color: var(--ink-faint); }
+
+.drawio-lab-license {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  color: var(--ink-faint);
+  font-size: var(--text-sm);
+}
+
+.drawio-lab-license a {
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (max-width: 680px) {
+  .drawio-lab-toolbar { align-items: stretch; flex-direction: column; }
+  .drawio-zoom-controls { align-self: flex-start; }
+  .drawio-diagnostics li { grid-template-columns: 3.4rem 1fr; }
+  .drawio-diagnostics li span { grid-column: 2; }
+}
