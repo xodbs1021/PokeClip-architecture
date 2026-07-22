@@ -22,6 +22,9 @@ export const USERJOURNEY_POLICY = Object.freeze({
   expectedOverlaps: Object.freeze([]),
   EDGE_Y_BAND: Object.freeze({ top: 240, bottom: 940 }),
   ANNOTATION_BAND: Object.freeze({ titleMaxBottom: 130, stripMinTop: 1017, footerMinTop: 1226 }),
+  // annotation은 caption 바(라벨만 담는 자식 없는 컨테이너)다. 자식 0인데 높이가
+  // 라벨 몇 줄(lineHeight × maxEmptyLines)을 넘으면 "과대 빈 박스"로 FAIL(조건 §12.4).
+  ANNOTATION_ENVELOPE: Object.freeze({ lineHeight: 24, maxEmptyLines: 4 }),
 })
 
 const JOURNEY_CARD_STYLE = Object.freeze({
@@ -33,6 +36,13 @@ const OVERLAY_STYLE = Object.freeze({
   rounded: '1', whiteSpace: 'wrap', html: '0', dashed: '1', strokeColor: '#c7cdd6', fillColor: 'none',
   fontColor: '#6b7280', align: 'left', verticalAlign: 'top', spacing: '12',
   pokeKind: 'decoration', pokeContainerKind: 'overlay',
+})
+
+// overlay 라벨은 축별 비충돌 anchor를 갖는다(조건 §12.1): lane은 좌상단, phase는 상단 중앙.
+// 겹치는 lane×phase가 같은 코너에 라벨을 두지 않아 y175 좌상단 충돌을 없앤다.
+const OVERLAY_LABEL_ANCHOR = Object.freeze({
+  lane: Object.freeze({ align: 'left' }),
+  phase: Object.freeze({ align: 'center' }),
 })
 
 const ANNOTATION_STYLE = Object.freeze({
@@ -127,7 +137,7 @@ function normalizeJourneyCard(cell, node) {
 
 function normalizeOverlay(cell, overlay) {
   setGeometry(cell, overlay)
-  setCellStyle(cell, { ...OVERLAY_STYLE, pokeAxis: overlay.axis, pokeOrder: String(overlay.order) })
+  setCellStyle(cell, { ...OVERLAY_STYLE, ...OVERLAY_LABEL_ANCHOR[overlay.axis], pokeAxis: overlay.axis, pokeOrder: String(overlay.order) })
 }
 
 function normalizeAnnotation(cell, annotation) {

@@ -331,3 +331,46 @@ test('T1 canonical annotations clear the edge y-band', async () => {
   assert.equal(validation.annotationBand.pass, true)
   assert.deepEqual(validation.annotationBand.violations, [])
 })
+
+// ── §12.1: overlay 라벨은 축별 비충돌 anchor (lane=좌상단 · phase=상단 중앙) ──
+test('overlay labels use axis-specific non-colliding anchors', async () => {
+  const contract = JSON.parse(await readFile(contractPath, 'utf8'))
+  const { model } = normalizeUserJourneySource(await sourceModel())
+  const byId = new Map(model.cells.map((cell) => [cell.id, cell]))
+  for (const overlay of contract.overlays) {
+    const cell = byId.get(overlay.id)
+    assert.equal(cell.style.align, overlay.axis === 'phase' ? 'center' : 'left', `${overlay.id} align`)
+    assert.equal(cell.style.verticalAlign, 'top', `${overlay.id} verticalAlign`)
+  }
+  const laneAligns = new Set(model.cells.filter((cell) => cell.style.pokeAxis === 'lane').map((cell) => cell.style.align))
+  const phaseAligns = new Set(model.cells.filter((cell) => cell.style.pokeAxis === 'phase').map((cell) => cell.style.align))
+  assert.deepEqual([...laneAligns], ['left'], 'lane labels share the left anchor')
+  assert.deepEqual([...phaseAligns], ['center'], 'phase labels share the center anchor')
+})
+
+// ── §12.4/§12.5: 자식 없는 annotation이 라벨 대비 과대하면 annotationEnvelope 단독 FAIL ──
+test('annotationEnvelope fails a childless oversized annotation alone', async () => {
+  const routed = await routedUserJourney()
+  const strip = routed.model.cells.find(({ id }) => id === 'an-strip')
+  strip.geometry.attributes.height = '300'
+  let error
+  try {
+    validatePhysicalUserJourney(routed.model, routed)
+  } catch (thrown) {
+    error = thrown
+  }
+  assert.ok(error, 'validation must fail')
+  assert.match(error.message, /annotationEnvelope/)
+  const failed = Object.entries(error.validation)
+    .filter(([, value]) => Object.hasOwn(value, 'pass') && value.pass === false)
+    .map(([key]) => key)
+  assert.deepEqual(failed, ['annotationEnvelope'], 'annotationEnvelope is the only failing check')
+})
+
+test('annotationEnvelope passes when canonical annotations are content-justified', async () => {
+  const routed = await routedUserJourney()
+  const { validation } = validatePhysicalUserJourney(routed.model, routed)
+  assert.ok(validation.annotationEnvelope, 'annotationEnvelope check exists')
+  assert.equal(validation.annotationEnvelope.pass, true)
+  assert.deepEqual(validation.annotationEnvelope.violations, [])
+})

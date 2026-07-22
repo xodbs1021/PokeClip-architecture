@@ -53,8 +53,8 @@
   ],
   "annotations": [
     { "id": "an-title", "containerKind": "annotation", "label": "PokeClip User Journey · 방송 시작부터 유튜브 게시까지", "x": 40, "y": 40, "w": 2540, "h": 90 },
-    { "id": "an-strip", "containerKind": "annotation", "label": "클립 파이프라인 (시간 목표) · 하이라이트→카드 3초 내 · 렌더 수십 초", "x": 40, "y": 1030, "w": 2540, "h": 168 },
-    { "id": "an-footer", "containerKind": "annotation", "label": "사용자 관점 보조자료 · 시스템 관점은 3 SA · 4 SysA · 5 CA", "x": 40, "y": 1226, "w": 2540, "h": 118 }
+    { "id": "an-strip", "containerKind": "annotation", "label": "클립 파이프라인 (시간 목표) · 하이라이트→카드 3초 내 · 렌더 수십 초", "x": 40, "y": 1030, "w": 2540, "h": 48 },
+    { "id": "an-footer", "containerKind": "annotation", "label": "사용자 관점 보조자료 · 시스템 관점은 3 SA · 4 SysA · 5 CA", "x": 40, "y": 1226, "w": 2540, "h": 48 }
   ],
   "edges": [
     { "id": "edge-uj-hotkey-to-uj-editor", "sourceId": "uj-hotkey", "targetId": "uj-editor", "relationKind": "transition", "bundleFamilyKey": "transition:jumpcard", "styleClass": "dashed/open", "shareClass": "solo", "directionClass": "forward", "arrowMode": "exclusive" },

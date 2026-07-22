@@ -103,6 +103,25 @@ function inspectAnnotationBand(model) {
   return { pass: violations.length === 0, violations, band }
 }
 
+// 조건 §12.4: annotation은 caption 컨테이너다. 자식 셀이 없는데(내용=라벨 1줄) 높이가
+// 라벨 여러 줄(maxEmptyHeight)을 넘으면 "과대 빈 박스"로 FAIL — content-justified 불변식.
+function inspectAnnotationEnvelope(model) {
+  const envelope = USERJOURNEY_POLICY.ANNOTATION_ENVELOPE
+  const maxEmptyHeight = envelope.lineHeight * envelope.maxEmptyLines
+  const byId = cellMap(model)
+  const childCounts = new Map()
+  for (const cell of model.cells) {
+    const parent = cell.attributes.parent
+    if (parent) childCounts.set(parent, (childCounts.get(parent) ?? 0) + 1)
+  }
+  const violations = []
+  for (const id of USERJOURNEY_SEMANTIC_CONTRACT.annotationIds) {
+    const height = boundsOf(byId.get(id)).height
+    if ((childCounts.get(id) ?? 0) === 0 && height > maxEmptyHeight + EPS) violations.push(`${id}:${height}`)
+  }
+  return { pass: violations.length === 0, violations, maxEmptyHeight }
+}
+
 function inspectModelResult(model, result) {
   const errors = []
   const byId = cellMap(model)
@@ -529,6 +548,7 @@ export function validatePhysicalUserJourney(model, result) {
     layout: inspectLayout(model),
     decorationPartition: inspectDecorationPartition(model, result),
     annotationBand: inspectAnnotationBand(model),
+    annotationEnvelope: inspectAnnotationEnvelope(model),
     labelClearance: { status: 'deferred-to-browser' },
   }
   const directions = inspectDirections(segments)

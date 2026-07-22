@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "engineVersion": "userjourney-v1",
-  "contractHash": "8745ffaed446e56a00c273916ab9175c76b3e22ac38fb78053d1b0412237dceb",
-  "sourceSha256": "6480544c85a4c98a19bb02b79c774ac23b2183a4dc2ec28c961de705322d0c9f",
-  "generatedSha256": "3f8dffde0bb3c6a189b1bf35115d9dcdc48c20531121ef94aaba6ffc3160eda9",
+  "contractHash": "64922f959092bc0434a2819bda2eae7c5feb55f1f13d2d13cad8abf4270e7185",
+  "sourceSha256": "32d2474f36a2c0c0a0fc588924a88772eb4822d2aa53ad1511dbd220bfebf607",
+  "generatedSha256": "0464d832b42492ff844852c2c507d8d5be9132dea9cf09913735d75828f8b6f7",
   "score": {
     "tuple": [
       0,
@@ -441,6 +441,11 @@
         "top": 240,
         "bottom": 940
       }
+    },
+    "annotationEnvelope": {
+      "pass": true,
+      "violations": [],
+      "maxEmptyHeight": 96
     },
     "labelClearance": {
       "status": "deferred-to-browser"

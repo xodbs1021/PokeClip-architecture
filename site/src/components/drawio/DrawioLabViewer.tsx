@@ -222,7 +222,8 @@ export function DrawioLabViewer({ sourceXml, sourceName, diagnostics }: DrawioLa
       </div>
       <p className="drawio-lab-hint">노드를 클릭하거나 Enter/Space로 선택하세요. 같은 노드·배경·Escape로 해제됩니다.</p>
       <p className="sr-only" aria-live="polite">{selectedMessage(scene, selectedId)}</p>
-      {diagnostics && (
+      {/* fail-fast 진단 패널은 개발/로컬 검수용 — 프로덕션 빌드에서는 미표시(§12.6). */}
+      {import.meta.env.DEV && diagnostics && (
         <details
           className="drawio-diagnostics"
           data-diagnostics-state={visibleRun.status}
