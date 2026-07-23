@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom'
 import { DiagramViewer } from '../components/diagram/DiagramViewer'
+import { DrawioDiagram, hasDrawioDiagram } from '../components/diagram/DrawioDiagram'
 import { MarkdownArticle } from '../components/markdown/MarkdownArticle'
 import { usePageTitle } from '../hooks/usePageTitle'
 import { DIAGRAMS, diagramDoc } from '../lib/content'
@@ -14,6 +15,7 @@ export function DiagramsPage() {
   const isDocView = searchParams.get('view') === 'doc'
   const doc = diagramDoc(diagram.num)
   const viewSuffix = isDocView ? '?view=doc' : ''
+  const isDrawio = hasDrawioDiagram(diagram.num)
 
   return (
     <div className="page">
@@ -21,8 +23,9 @@ export function DiagramsPage() {
         <p className="eyebrow">Diagrams 0–5</p>
         <h1>아키텍처 다이어그램</h1>
         <p className="lede">
-          self-contained HTML이 원본이다 — 다이어그램 보기는 화면 폭에 맞춰 자동 축소, 문서 보기는 같은 내용을
-          반응형 텍스트로 보여준다.
+          {isDrawio
+            ? 'draw.io/maxGraph 렌더가 최신본이다 — 이전 HTML 버전은 아래 아카이브 링크로 열 수 있고, 문서 보기는 같은 내용을 반응형 텍스트로 보여준다.'
+            : 'self-contained HTML이 원본이다 — 다이어그램 보기는 화면 폭에 맞춰 자동 축소, 문서 보기는 같은 내용을 반응형 텍스트로 보여준다.'}
         </p>
       </header>
       <div className="diagram-controls">
@@ -65,6 +68,15 @@ export function DiagramsPage() {
         <article aria-label={`${diagram.title} 문서 보기`}>
           <MarkdownArticle markdown={doc} />
         </article>
+      ) : isDrawio ? (
+        <>
+          <DrawioDiagram num={diagram.num} title={diagram.title} />
+          <p className="diagram-archive-link">
+            <a href={`/diagrams/${diagram.file}`} target="_blank" rel="noreferrer">
+              이전 버전(HTML) 아카이브 ↗
+            </a>
+          </p>
+        </>
       ) : (
         <DiagramViewer diagram={diagram} />
       )}

@@ -226,3 +226,23 @@
 .diagram-stage {
   touch-action: pan-x pan-y;
 }
+
+/* 승격된 draw.io 다이어그램 하단의 이전 HTML 버전 아카이브 링크 */
+.diagram-archive-link {
+  margin: 0.9rem 0 0;
+  font-size: 0.82rem;
+  text-align: right;
+  color: var(--ink-soft);
+}
+
+.diagram-archive-link a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--line);
+  padding-bottom: 1px;
+}
+
+.diagram-archive-link a:hover {
+  color: var(--accent-deep);
+  border-bottom-color: var(--accent-deep);
+}
