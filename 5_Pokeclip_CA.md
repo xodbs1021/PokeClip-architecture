@@ -17,7 +17,7 @@ README · 3_SA · 4_SysA · 5_CA · 6_설계결정 · 9_기능명세서 · 10_�
 
 - **자체 미디어 계층 유지(ADR-003/013)** — MediaLive/MediaPackage/MediaConvert/Transcribe로 대체하지 않음. Media EC2 내부에 SRT Listener→MPEG-TS Demuxer→Multi-Audio Track Mapper→CMAF Segmenter→LL-HLS Origin·DVR→S3 Segment Uploader→Broadcast Lifecycle Publisher를 명시. 부제에 "의도적 배제" 문구.
 - **진입 분리** — HTTP/HTTPS(Route53→CloudFront/WAF→ALB→ECS)와 SRT UDP(OBS→SRT Entry EIP→Media EC2, UDP 9000)를 완전히 분리. ALB는 SRT를 처리하지 않음을 구조·라벨로 명시("HTTP/HTTPS · SRT 미처리").
-- **OBS 이중 송출** — OBS→본방 플랫폼(CHZZK/SOOP 본방, 굵은 미디어선 "본방 송출")과 OBS→PokeClip Media Origin(SRT+MPEG-TS·UDP 9000·~10 Audio)을 별도 경로로.
+- **OBS 이중 송출** — OBS→본방 플랫폼(CHZZK/SOOP 본방, 굵은 미디어선 "본방 송출")과 OBS→PokeClip Media Origin(SRT+MPEG-TS·UDP 9000·6 Audio)을 별도 경로로.
 - **SQS 분해** — 단일 박스 대신 방송이벤트·렌더·AI·업로드 4큐 + 각 큐 DLQ(대표 격리 엣지 + "각 큐 DLQ" 표기). 생산자·소비자 화살표: Media→방송Q, 방송Q→Chat·Clip(팬아웃), Clip→렌더/AI/업로드Q, 렌더/업로드Q→Render·Upload Worker, AIQ→AI Worker. 멱등성 키·재시도·DLQ 주석.
 - **VPC 서브넷 순서 = Public(Media)|Data|App** — 레퍼런스(Public|App|Data)와 달리 App을 우측(외부 플랫폼 열 인접)에 배치해 외부 API 연결선을 짧게 유지하고, 서비스→데이터(좌측) 접근은 하단 클리어 레인으로 우회(노드 관통 0 유지 목적).
 - **선 스타일 규약** — 실선=동기/실시간 스트림, 점선=비동기 이벤트/잡 큐, 굵은선=미디어(SRT·CMAF·HLS), 얇은선=제어/메타, 초록=CI/CD. 범례 박스로 명시. 모든 주요 연결에 프로토콜/데이터 종류 라벨.

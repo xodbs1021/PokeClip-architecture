@@ -133,7 +133,7 @@
     <div class="albl">Editor</div><div class="arole">편집자 · 시청자</div>
   </div>
   <div class="aws" id="obs-plugin" data-g="obs" data-t="obs" style="left:200px; top:490px; width:210px;">
-    <div class="lbl">C++ OBS Plugin</div><div class="sub">libobs · 인코더 공유 · 자동 재연결 · ~10 Audio Tracks</div>
+    <div class="lbl">C++ OBS Plugin</div><div class="sub">libobs · 인코더 공유 · 자동 재연결 · 6 Audio Tracks</div>
   </div>
   <div class="aws" id="web-dash" data-g="web" data-t="web" style="left:210px; top:720px; width:190px;">
     <div class="lbl">React Web Dashboard</div><div class="sub">라이브 뷰 · 클립 에디터 · VOD · 운영 콘솔</div>
@@ -541,7 +541,7 @@
   wire('obs-plugin','chzzk-live',{v:true,media:true,label:'본방 송출',lp:0.82});
   wire('obs-plugin','soop-live',{v:true,media:true});
   // OBS → PokeClip Media Origin (SRT)
-  wire('obs-plugin','srt-eip',{media:true,label:'SRT+MPEG-TS · UDP 9000 · ~10 Audio'});
+  wire('obs-plugin','srt-eip',{media:true,label:'SRT+MPEG-TS · UDP 9000 · 6 Audio'});
   wire('srt-eip','media-ec2',{media:true,label:'SRT 수신'});
   // Web 진입 (HTTP/HTTPS)
   wire('web-dash','route53',{thin:true,label:'DNS'});
