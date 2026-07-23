@@ -2,7 +2,7 @@
 
 **이 문서의 목적**: 이벤트·잡 큐를 중심으로 한 백엔드 데이터 흐름을 4단계(① Media EC2→SQS ② SQS→ECS ③ ECS→PostgreSQL ④ 테이블 설계)로 정리한다. 스키마는 대시보드 화면에서 역산한 **구현 착수용 초안**이며, 확정 시 ADR로 승격한다.
 
-**같이 볼 문서**: [3_SA](3_Pokeclip_SA.html) · [4_SysA](4_Pokeclip_SysA.html) · [5_CA](5_Pokeclip_CA.html) · [ADR-005 저장 일원화](adr/ADR-005_저장일원화.md) · [ADR-006 PostgreSQL](adr/ADR-006_DB_PostgreSQL.md) · [ADR-014 비용 모델](adr/ADR-014_비용모델.md)
+**같이 볼 문서**: [3_SA](3_Pokeclip_SA.html) · [4_SysA](4_Pokeclip_SysA.html) · [5_CA](5_Pokeclip_CA.html) · [ADR-005 저장 일원화](adr/ADR-005_저장일원화.md) · [ADR-006 PostgreSQL](adr/ADR-006_DB_PostgreSQL.md) · [ADR-014 비용 모델](adr/ADR-014_비용모델.md) · [ADR-016 이벤트 전달 보증](adr/ADR-016_방송이벤트전달보증.md)
 
 ---
 
@@ -10,12 +10,14 @@
 
 **원칙**: Media Origin은 "일을 시키는" 쪽이 아니라 **"사실을 알리는" 쪽**이다. 스테이트풀한 인제스트 노드는 최대한 단순해야 하므로(CA의 HA 원칙 — 피해 최소화), 무거운 작업 지시는 하지 않고 방송 생명주기 이벤트만 발행한다.
 
-| 메시지 | 페이로드 (예) | 왜 필요한가 |
-|---|---|---|
-| `broadcast.started` | streamId, streamerId, startedAt, 트랙 매니페스트(오디오 트랙 수·라벨) | 파이프라인 전체의 시동키 — 채팅 수집 시작 트리거, 라이브 상태 등록, 대시보드 "방송 중" 전환 |
-| `broadcast.ended` | streamId, endedAt, 최종 세그먼트 범위 | 채팅 수집 종료, VOD 확정 처리(매니페스트는 Media가 S3에 확정, 레코드 생성은 백엔드), 종료 직후 리포트 |
+| 메시지 | 등급 | 페이로드 (예) | 왜 필요한가 |
+|---|---|---|---|
+| `broadcast.started` | **Critical** | streamId, streamerId, startedAt, 트랙 매니페스트(오디오 트랙 수·라벨) | 파이프라인 전체의 시동키 — 채팅 수집 시작 트리거, 라이브 상태 등록, 대시보드 "방송 중" 전환. **유실 시 방송 전체 클립 0** |
+| `broadcast.ended` | High | streamId, endedAt, 최종 세그먼트 범위 | 채팅 수집 종료, VOD 확정 처리(매니페스트는 Media가 S3에 확정, 레코드 생성은 백엔드), 종료 직후 리포트 |
 
 렌더·AI·업로드 잡은 Media EC2가 넣지 않는다 — 그것은 Clip Service의 역할이다. Media가 잡까지 만들면 인제스트 노드가 비즈니스 로직에 결합되고, 장애 시 복구 범위가 커진다.
+
+**전달 보증**([ADR-016](adr/ADR-016_방송이벤트전달보증.md)): 위 두 이벤트는 등급이 다르다. `broadcast.started`(Critical)는 재시도를 넉넉히·DLQ 1건이라도 즉시 알람·상태 재조정을 적용한다. 라이브 여부의 정본은 이벤트가 아니라 `Redis Live State` + 진행 중 SRT 연결에 두어(불변식), 이벤트 유실이 영구 손실이 아닌 **복구 가능한 지연**이 되게 한다. `started` 핸들러는 멱등(이미 라이브면 no-op)이라 redrive·재조정·중복 수신에 안전하다.
 
 ## 2. SQS → ECS — 큐별 생산자·소비자 매핑
 
