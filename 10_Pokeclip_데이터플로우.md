@@ -39,7 +39,7 @@ SQS는 "맡기는 주체"가 아니라 **생산자와 소비자 사이의 버퍼
 
 | 서비스 | 저장하는 것 | 저장하지 않는 것 |
 |---|---|---|
-| Auth·Account | 계정, 편집자 권한, 채널 연동, 스트림 키 | 유튜브 토큰 원문 (→ Secrets Manager, DB엔 참조만) |
+| Auth·Account | 계정, 편집자 권한, 채널 연동, 스트림 키(**streamid 해시**) | 유튜브 토큰·**SRT passphrase 원문** (→ Secrets Manager, DB엔 참조만 — [ADR-018](adr/ADR-018_스트림키저장분리.md)) |
 | Clip Service | 방송 세션, 점프카드, 레시피(영구), 클립 상태, 템플릿, 승인 이력 | 영상 파일 (→ S3 키만) |
 | Chat Collector | 윈도우 단위 집계(채팅량·참여율), 하이라이트 점수 | 채팅 원문 (→ S3 아카이브 — DB에 넣으면 쓰기량·용량 폭발) |
 | Render/AI Worker | 잡 상태(재시도·에러), 자막 메타, 추천 제목, 업로드 결과 | 자막 파일 본문 (→ S3, DB엔 키) |
@@ -54,7 +54,8 @@ users          (id PK, google_sub UNIQUE, email, display_name, role, created_at)
 channels       (id PK, user_id FK, platform 'chzzk'|'soop', channel_ext_id, name, connected_at)
 editor_grants  (id PK, streamer_id FK, editor_id FK, can_upload bool, can_auto_upload bool,
                 invited_at, accepted_at)                     -- 권한 토글 2종이 컬럼으로
-stream_keys    (id PK, user_id FK, key_hash, active bool, created_at)
+stream_keys    (id PK, user_id FK, streamid_hash, passphrase_ref, active bool, created_at)
+               -- ADR-018: streamid는 해시(대조용), passphrase 원문은 Secrets Manager·PG엔 참조만
 
 -- 방송·하이라이트 (Clip Service)
 broadcasts     (id PK, streamer_id FK, started_at, ended_at, status 'live'|'ended'|'vod_ready',

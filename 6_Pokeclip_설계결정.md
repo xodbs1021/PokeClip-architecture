@@ -31,6 +31,7 @@
 | [015](adr/ADR-015_CDN_CloudFront확정.md) | CDN 확정 | Akamai 분기 폐기 — CloudFront 전용 (라이브=Media EC2 · VOD/클립=S3 오리진) | 채택 | 2026-07-21 |
 | [016](adr/ADR-016_방송이벤트전달보증.md) | 이벤트 전달 보증 | 방송 생명주기 이벤트 등급화(Critical/High/Normal) + 상태 재조정·멱등 | 제안 | 2026-07-23 |
 | [017](adr/ADR-017_오디오트랙6트랙.md) | 오디오 트랙 수 | ~10트랙 믹서 우회 폐기 → OBS 네이티브 6트랙 (ADR-002 근거 대체) | 채택 | 2026-07-23 |
+| [018](adr/ADR-018_스트림키저장분리.md) | 스트림 키 저장 | streamid=해시(PG) / passphrase=원문(Secrets Manager) 분리 — 평문 PG 금지 | 제안 | 2026-07-23 |
 
 \* ADR-011은 골격 채택, 알고리즘 상세 파라미터(임계 K·롤링 창 W 등)는 멘토 협업 미결 — 상세는 [8_Pokeclip_하이라이트연구노트.md](8_Pokeclip_하이라이트연구노트.md).
 
