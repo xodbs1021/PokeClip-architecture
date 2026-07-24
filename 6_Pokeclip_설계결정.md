@@ -29,7 +29,7 @@
 | [013](adr/ADR-013_인프라.md) | 인프라 | Core=ECS Fargate 5서비스, Media=EC2 단독(EIP·UDP), HA 실적용 | 채택 | 2026-07-20 |
 | [014](adr/ADR-014_비용모델.md) | 비용 모델 | 비용은 방송시간에 선형 — 파일럿 ~$450 · 데모 ~$750, PUT 배칭·S3 티어링 파생 | 채택 | 2026-07-20 |
 | [015](adr/ADR-015_CDN_CloudFront확정.md) | CDN 확정 | Akamai 분기 폐기 — CloudFront 전용 (라이브=Media EC2 · VOD/클립=S3 오리진) | 채택 | 2026-07-21 |
-| [016](adr/ADR-016_방송이벤트전달보증.md) | 이벤트 전달 보증 | 방송 생명주기 이벤트 등급화(Critical/High/Normal) + 상태 재조정·멱등 | 제안 | 2026-07-23 |
+| [016](adr/ADR-016_방송이벤트_SNS_SQS팬아웃.md) | 방송 이벤트 팬아웃 | SNS FIFO → 소비자별 SQS FIFO + 전용 DLQ, 순서(MessageGroupId=streamId)·멱등(eventId) | 채택 | 2026-07-22 |
 | [017](adr/ADR-017_오디오트랙6트랙.md) | 오디오 트랙 수 | ~10트랙 믹서 우회 폐기 → OBS 네이티브 6트랙 (ADR-002 근거 대체) | 채택 | 2026-07-23 |
 | [018](adr/ADR-018_스트림키저장분리.md) | 스트림 키 저장 | streamid=해시(PG) / passphrase=원문(Secrets Manager) 분리 — 평문 PG 금지 | 제안 | 2026-07-23 |
 

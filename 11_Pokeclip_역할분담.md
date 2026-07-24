@@ -56,7 +56,7 @@
 | 6 | 레시피 JSON 스키마 (crop·트랙·자막) — **최우선 확정** | 2 ↔ 3 ↔ 1 |
 | 7 | FFmpeg 구간 디코드 커맨드 스펙 (E2·E3용) | 1 → 3 |
 | 8 | AI 결과 반영 API (워커→Clip Service, DB 직접 쓰기 금지) | 2 → 3 |
-| 9 | 방송 생명주기 이벤트 전달 보증 (Media→Chat·Clip, 등급·멱등·재조정 — [ADR-016](adr/ADR-016_방송이벤트전달보증.md)) | 1 → 2·3 |
+| 9 | 방송 생명주기 이벤트 **envelope** (Media→Chat·Clip) — `schemaVersion`·`eventId`·`eventType`·`occurredAt`·`streamId`·`streamerId`·`sequence`·`traceId`·`payload`. 전달=SNS FIFO→소비자별 SQS FIFO(전용 DLQ), 순서=`MessageGroupId=streamId`, 멱등=`eventId` ([ADR-016](adr/ADR-016_방송이벤트_SNS_SQS팬아웃.md)) | 1 → 2·3 |
 
 ## 유보·조정 사항
 
