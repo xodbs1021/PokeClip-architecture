@@ -12,7 +12,7 @@ M1에 필요한 계약 3개만 확정한다. 전부 1번이 초안, 2번이 소�
 
 | 계약 | 내용 |
 |---|---|
-| SRT 입력 규약 | streamid·passphrase·트랙 매핑 |
+| SRT 입력 규약 | `streamid`·`passphrase` **형식(길이·문자셋·발급 규칙)** · 트랙 매핑(**6트랙** — [ADR-017](adr/ADR-017_오디오트랙6트랙.md)) + **저장 위치·조회 경로**: streamid=해시(PG) / passphrase=원문 Secrets Manager, Media가 streamid로 조회·적용 ([ADR-018](adr/ADR-018_스트림키저장분리.md)) |
 | B7 세그먼트 계약 | 디렉토리·매니페스트 규격 — 폴백 헤지의 전제 |
 | LL-HLS/DVR 재생 규약 | 매니페스트 형태·윈도우 길이·세그먼트 URL·시킹 기준 (역할분담 계약 3번) |
 

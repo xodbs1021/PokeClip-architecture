@@ -51,7 +51,7 @@
 | 1 | SQS 잡 메시지 스키마 (렌더·AI·업로드) | 3 → 1·2 |
 | 2 | 점프카드 SSE + 채팅 차트 API | 3 ↔ 2 |
 | 3 | LL-HLS/DVR 재생 URL·매니페스트 규약 | 1 → 2 |
-| 4 | 스트림 키 검증 (발급=Auth, 검증=Media) | 3 ↔ 1 |
+| 4 | 스트림 키 검증 (발급=Auth, 검증=Media) — **저장**: `streamid`=해시(PG `stream_keys.streamid_hash`) / `passphrase`=원문 Secrets Manager(PG엔 `passphrase_ref`만, 평문 금지). **조회**: Media가 핸드셰이크의 streamid로 passphrase를 조회·적용 → 암호화 성립이 1차 관문, 해시 대조가 2차 ([ADR-018](adr/ADR-018_스트림키저장분리.md)) | 3 ↔ 1 |
 | 5 | 유튜브 토큰 조회 (보관=Auth, 사용=업로드 워커) | 3 → 1 |
 | 6 | 레시피 JSON 스키마 (crop·트랙·자막) — **최우선 확정** | 2 ↔ 3 ↔ 1 |
 | 7 | FFmpeg 구간 디코드 커맨드 스펙 (E2·E3용) | 1 → 3 |
